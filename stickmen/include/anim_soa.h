@@ -3,6 +3,7 @@
 #include "anim.h"
 
 #include <benchmark/benchmark.h>
+#include <memory>
 #include <vector>
 
 struct JointSoa
@@ -10,7 +11,7 @@ struct JointSoa
 	quat orient_relative;
 	quat orient_absolute;
 
-	std::vector<JointSoa> children;
+	std::vector<std::unique_ptr<JointSoa>> children;
 };
 
 struct WeightSoa

@@ -6,11 +6,11 @@
 static void animate_naive_impl(benchmark::State& state, JointNaive& joint)
 {
 	for (auto& e: joint.children) {
-		e.orient_absolute = e.orient_relative * joint.orient_absolute;
+		e->orient_absolute = e->orient_relative * joint.orient_absolute;
 	}
 
 	for (auto& e: joint.children) {
-		animate_naive_impl(state, e);
+		animate_naive_impl(state, *e);
 	}
 
 	state.ResumeTiming();

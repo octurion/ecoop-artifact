@@ -11,6 +11,18 @@ struct quat
 {
 	float w, x, y, z;
 
+	static inline quat from_xyz(float x, float y, float z)
+	{
+		quat r;
+
+		r.x = x;
+		r.y = y;
+		r.z = z;
+		r.w = 1 - x * x - y * y - z * z;
+
+		return r;
+	}
+
 	inline friend quat operator*(const quat& a, const quat& b)
 	{
 		quat r;

@@ -19,7 +19,7 @@ target_include_directories(anim PUBLIC SYSTEM lib/benchmark/include)
 target_compile_options(anim PRIVATE -Wall -Wextra -Wpedantic)
 target_link_libraries(anim benchmark)
 
-add_executable(bench test.cpp)
+add_executable(bench test.cpp data.cpp)
+target_include_directories(bench PUBLIC .)
 target_compile_options(bench PRIVATE -Wall -Wextra -Wpedantic)
 target_link_libraries(bench anim benchmark)
-

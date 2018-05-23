@@ -3,6 +3,7 @@
 #include "anim.h"
 
 #include <benchmark/benchmark.h>
+#include <memory>
 #include <vector>
 
 struct WeightNaive
@@ -16,7 +17,7 @@ struct JointNaive
 	quat orient_relative;
 	quat orient_absolute;
 
-	std::vector<JointNaive> children;
+	std::vector<std::unique_ptr<JointNaive>> children;
 	std::vector<WeightNaive> weights;
 };
 

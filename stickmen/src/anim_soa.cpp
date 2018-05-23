@@ -6,11 +6,11 @@
 static void animate_soa_joint_impl(benchmark::State& state, JointSoa& joint)
 {
 	for (auto& e: joint.children) {
-		e.orient_absolute = e.orient_relative * joint.orient_absolute;
+		e->orient_absolute = e->orient_relative * joint.orient_absolute;
 	}
 
 	for (auto& e: joint.children) {
-		animate_soa_joint_impl(state, e);
+		animate_soa_joint_impl(state, *e);
 	}
 }
 

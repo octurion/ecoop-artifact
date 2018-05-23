@@ -3,6 +3,7 @@
 #include "anim.h"
 
 #include <benchmark/benchmark.h>
+#include <memory>
 #include <vector>
 
 struct JointSmart
@@ -10,7 +11,7 @@ struct JointSmart
 	quat orient_relative;
 	quat orient_absolute;
 
-	std::vector<JointSmart> children;
+	std::vector<std::unique_ptr<JointSmart>> children;
 };
 
 struct WeightSmart
@@ -20,4 +21,4 @@ struct WeightSmart
 	float w;
 };
 
-void animate_smart(benchmark::State& state, JointSmart& joint);
+void animate_smart(benchmark::State& state, JointSmart& joint, std::vector<WeightSmart>& weights);
