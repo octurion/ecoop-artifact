@@ -14,7 +14,7 @@ add_library(anim src/anim/anim.cpp)
 target_include_directories(anim PRIVATE include/anim INTERFACE include/)
 target_compile_options(anim PRIVATE -Wall -Wextra -Wpedantic)
 
-add_executable(bench test.cpp data.cpp)
+add_executable(bench src/test/test.cpp src/test/data.cpp)
 target_include_directories(bench PRIVATE include/test)
 target_compile_options(bench PRIVATE -Wall -Wextra -Wpedantic)
 target_link_libraries(bench anim benchmark)
