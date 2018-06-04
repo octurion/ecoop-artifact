@@ -1,6 +1,6 @@
-#include "test.h"
+#include "test/dataset.h"
 
-const struct JointData JOINTS[NUM_JOINTS] =
+const struct JointData JOINTS1[NUM_JOINTS1] =
 {
 	{ -1, -0.7071067095,             0,            0   },
 	{ 0, -0.7071067095,             0,             0   },
@@ -114,7 +114,7 @@ const struct JointData JOINTS[NUM_JOINTS] =
 	{ 0, -0.7071067095,             0,             0   },
 };
 
-const struct WeightData WEIGHTS[NUM_WEIGHTS] = {
+const struct WeightData WEIGHTS1[NUM_WEIGHTS1] = {
 	{ 5, 0.7900747061, 1.9485528469, 7.4760251045, 23.7117900848 },
 	{ 64, 0.209925279, -2.1919908524, 4.9578447342, 1.4142047167 },
 	{ 5, 0.6999999881, 0.0828403607, 5.4251484871, 23.0223522186 },

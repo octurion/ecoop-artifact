@@ -1,7 +1,7 @@
 #pragma once
 
-#define NUM_JOINTS 110
-#define NUM_WEIGHTS 3206
+#define NUM_JOINTS1 110
+#define NUM_WEIGHTS1 3206
 
 struct JointData
 {
@@ -23,5 +23,5 @@ struct WeightData
 	float z;
 };
 
-extern const struct JointData JOINTS[NUM_JOINTS];
-extern const struct WeightData WEIGHTS[NUM_WEIGHTS];
+extern const struct JointData JOINTS1[NUM_JOINTS1];
+extern const struct WeightData WEIGHTS1[NUM_WEIGHTS1];
