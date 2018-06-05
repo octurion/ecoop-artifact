@@ -12,6 +12,7 @@
 
 enum class DatasetType {
 	Dataset1,
+	Dataset2,
 	DatasetCount
 };
 
@@ -40,6 +41,14 @@ static BenchmarkOptions from_args(benchmark::State& state)
 
 		opt.weight_data = WEIGHTS1;
 		opt.weight_count = NUM_WEIGHTS1;
+		break;
+
+	case DatasetType::Dataset2:
+		opt.joint_data = JOINTS2;
+		opt.joint_count = NUM_JOINTS2;
+
+		opt.weight_data = WEIGHTS2;
+		opt.weight_count = NUM_WEIGHTS2;
 		break;
 
 	default:
