@@ -479,3 +479,37 @@ void animate_weights_pooled_parentless_soa(std::vector<JointPooledOwningSoa>& jo
 		}
 	}
 }
+
+void animate_joints_pooled_ownerless_scattered(std::vector<JointPooledOwnerlessScattered>& joints)
+{
+	joints[0].orient_relative = joints[0].orient_absolute;
+	for (size_t i = 1; i < joints.size(); i++) {
+		auto& e = joints[i];
+		e.orient_absolute = e.parent->orient_relative * e.orient_relative;
+	}
+}
+
+void animate_weights_pooled_parentless_scattered(std::vector<JointPooledOwningScattered>& joints)
+{
+	for (auto& j: joints) {
+		for (auto& e: j.weights) {
+			e->pos = j.orient_absolute * e->pos;
+		}
+	}
+}
+
+void animate_joints_pooled_owning_scattered(std::vector<JointPooledOwningScattered>& joints)
+{
+	joints[0].orient_relative = joints[0].orient_absolute;
+	for (size_t i = 1; i < joints.size(); i++) {
+		auto& e = joints[i];
+		e.orient_absolute = e.parent->orient_relative * e.orient_relative;
+	}
+}
+
+void animate_weights_pooled_parent_scattered(std::vector<std::unique_ptr<WeightPooledParentScattered>>& weights)
+{
+	for (auto& e: weights) {
+		e->pos = e->joint->orient_absolute * e->pos;
+	}
+}

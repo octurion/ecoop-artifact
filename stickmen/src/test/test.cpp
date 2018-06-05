@@ -714,4 +714,148 @@ BENCHMARK(BM_PooledOwnerlessSoa)
 	->ArgNames({"Replication", "Dataset", "FlushCache"})
 	->Apply(CustomArgs);
 
+static void BM_PooledOwnerlessScattered(benchmark::State& state) {
+	size_t stride = sysconf(_SC_LEVEL1_DCACHE_LINESIZE);
+
+	auto opts = from_args(state);
+
+	std::vector<JointPooledOwnerlessScattered> joints(opts.joint_count);
+	std::vector<std::unique_ptr<WeightPooledParentScattered>> weights;
+
+	weights.reserve(opts.weight_count);
+
+	auto& root = joints[0];
+	root.orient_relative = quat::from_xyz(
+		opts.joint_data[0].qx, opts.joint_data[0].qy, opts.joint_data[0].qz);
+
+	root.orient_absolute.w = 1;
+	root.orient_absolute.x = 0;
+	root.orient_absolute.y = 0;
+	root.orient_absolute.z = 0;
+
+	for (size_t i = 1; i < opts.joint_count; i++) {
+		auto& new_joint = joints[i];
+		new_joint.orient_relative = quat::from_xyz(
+			opts.joint_data[i].qx, opts.joint_data[i].qy, opts.joint_data[i].qz);
+
+		new_joint.orient_absolute.w = 1;
+		new_joint.orient_absolute.x = 0;
+		new_joint.orient_absolute.y = 0;
+		new_joint.orient_absolute.z = 0;
+
+		new_joint.parent = &joints[opts.joint_data[i].parent];
+	}
+
+	for (size_t c = 0; c < opts.weight_replication_count; c++) {
+		for (size_t i = 0; i < opts.weight_count; i++) {
+			auto* joint = &joints[opts.weight_data[i].joint];
+			std::unique_ptr<WeightPooledParentScattered> new_weight(new WeightPooledParentScattered);
+
+			new_weight->w = opts.weight_data[i].w;
+			new_weight->pos.x = opts.weight_data[i].x;
+			new_weight->pos.y = opts.weight_data[i].y;
+			new_weight->pos.z = opts.weight_data[i].z;
+			new_weight->joint = joint;
+
+			weights.emplace_back(std::move(new_weight));
+		}
+	}
+
+	for (auto _: state) {
+		state.PauseTiming();
+		animate_joints_pooled_ownerless_scattered(joints);
+		state.ResumeTiming();
+
+		animate_weights_pooled_parent_scattered(weights);
+		benchmark::ClobberMemory();
+
+		state.PauseTiming();
+		if (opts.flush_cache) {
+			flush_cache(joints.data(), stride,
+						joints.size() * sizeof(decltype(joints)::value_type));
+
+			for (auto& e: weights) {
+				flush_cache (e.get(), stride, sizeof(*e));
+			}
+
+			flush_cache(weights.data(), stride,
+						weights.size() * sizeof(decltype(weights)::value_type));
+		}
+		state.ResumeTiming();
+	}
+}
+BENCHMARK(BM_PooledOwnerlessScattered)
+	->ArgNames({"Replication", "Dataset", "FlushCache"})
+	->Apply(CustomArgs);
+
+static void BM_PooledOwnerScattered(benchmark::State& state) {
+	size_t stride = sysconf(_SC_LEVEL1_DCACHE_LINESIZE);
+
+	auto opts = from_args(state);
+
+	std::vector<JointPooledOwningScattered> joints(opts.joint_count);
+
+	auto& root = joints[0];
+	root.orient_relative = quat::from_xyz(
+		opts.joint_data[0].qx, opts.joint_data[0].qy, opts.joint_data[0].qz);
+
+	root.orient_absolute.w = 1;
+	root.orient_absolute.x = 0;
+	root.orient_absolute.y = 0;
+	root.orient_absolute.z = 0;
+
+	for (size_t i = 1; i < opts.joint_count; i++) {
+		auto& new_joint = joints[i];
+		new_joint.orient_relative = quat::from_xyz(
+			opts.joint_data[i].qx, opts.joint_data[i].qy, opts.joint_data[i].qz);
+
+		new_joint.orient_absolute.w = 1;
+		new_joint.orient_absolute.x = 0;
+		new_joint.orient_absolute.y = 0;
+		new_joint.orient_absolute.z = 0;
+
+		new_joint.parent = &joints[opts.joint_data[i].parent];
+	}
+
+	for (size_t c = 0; c < opts.weight_replication_count; c++) {
+		for (size_t i = 0; i < opts.weight_count; i++) {
+			auto* joint = &joints[opts.weight_data[i].joint];
+			std::unique_ptr<WeightParentless> new_weight(new WeightParentless);
+
+			new_weight->w = opts.weight_data[i].w;
+			new_weight->pos.x = opts.weight_data[i].x;
+			new_weight->pos.y = opts.weight_data[i].y;
+			new_weight->pos.z = opts.weight_data[i].z;
+
+			joint->weights.emplace_back(std::move(new_weight));
+		}
+	}
+
+	for (auto _: state) {
+		state.PauseTiming();
+		animate_joints_pooled_owning_scattered(joints);
+		state.ResumeTiming();
+
+		animate_weights_pooled_parentless_scattered(joints);
+		benchmark::ClobberMemory();
+
+		state.PauseTiming();
+		if (opts.flush_cache) {
+			for (auto& e: joints) {
+				for (auto& w: e.weights) {
+					flush_cache (w.get(), stride, sizeof(*w));
+				}
+				flush_cache(e.weights.data(), stride,
+							e.weights.size() * sizeof(decltype(e.weights)::value_type));
+			}
+			flush_cache(joints.data(), stride,
+						joints.size() * sizeof(decltype(joints)::value_type));
+		}
+		state.ResumeTiming();
+	}
+}
+BENCHMARK(BM_PooledOwnerScattered)
+	->ArgNames({"Replication", "Dataset", "FlushCache"})
+	->Apply(CustomArgs);
+
 BENCHMARK_MAIN();

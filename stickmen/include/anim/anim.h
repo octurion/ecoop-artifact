@@ -97,12 +97,18 @@ struct JointPooledOwningSoa;
 struct JointPooledOwnerless;
 struct JointPooledOwnerlessSoa;
 
+struct JointPooledOwnerlessScattered;
+
 struct WeightParentless;
 struct WeightParentlessSoa;
+
 struct WeightScatteredParent;
 struct WeightScatteredParentSoa;
+
 struct WeightPooledParent;
 struct WeightPooledParentSoa;
+
+struct WeightPooledParentScattered;
 
 struct WeightParentless
 {
@@ -141,6 +147,14 @@ struct WeightScatteredParentSoa
 struct WeightPooledParent
 {
 	JointPooledOwnerless* joint;
+
+	vec3 pos;
+	float w;
+};
+
+struct WeightPooledParentScattered
+{
+	JointPooledOwnerlessScattered* joint;
 
 	vec3 pos;
 	float w;
@@ -227,6 +241,24 @@ struct JointPooledOwnerlessSoa
 	quat orient_absolute;
 };
 
+struct JointPooledOwningScattered
+{
+	JointPooledOwningScattered* parent;
+
+	quat orient_relative;
+	quat orient_absolute;
+
+	std::vector<std::unique_ptr<WeightParentless>> weights;
+};
+
+struct JointPooledOwnerlessScattered
+{
+	JointPooledOwnerlessScattered* parent;
+
+	quat orient_relative;
+	quat orient_absolute;
+};
+
 void animate_joints_scattered_owning(JointScatteredOwning& root);
 void animate_joints_scattered_owning_soa(JointScatteredOwningSoa& root);
 void animate_joints_scattered_ownerless(JointScatteredOwnerless& root);
@@ -248,3 +280,9 @@ void animate_weights_pooled_parentless_soa(std::vector<JointPooledOwningSoa>& jo
 
 void animate_weights_pooled_parent(std::vector<WeightPooledParent>& weights);
 void animate_weights_pooled_parent_soa(WeightPooledParentSoa& weights);
+
+void animate_joints_pooled_ownerless_scattered(std::vector<JointPooledOwnerlessScattered>& joints);
+void animate_weights_pooled_parentless_scattered(std::vector<JointPooledOwningScattered>& joints);
+
+void animate_joints_pooled_owning_scattered(std::vector<JointPooledOwningScattered>& joints);
+void animate_weights_pooled_parent_scattered(std::vector<std::unique_ptr<WeightPooledParentScattered>>& weights);
