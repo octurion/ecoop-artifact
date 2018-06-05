@@ -369,8 +369,8 @@ void animate_weights_scattered_parentless_soa(JointScatteredOwningSoa& root)
 		npy = _mm_add_ps(npy, _mm_mul_ps(a23, pz));
 
 		__m128 npz = _mm_mul_ps(a31, px);
-		npz = _mm_add_ps(npy, _mm_mul_ps(a32, py));
-		npz = _mm_add_ps(npy, _mm_mul_ps(a33, pz));
+		npz = _mm_add_ps(npz, _mm_mul_ps(a32, py));
+		npz = _mm_add_ps(npz, _mm_mul_ps(a33, pz));
 
 		_mm_storeu_ps(&weights.posx[i], npx);
 		_mm_storeu_ps(&weights.posy[i], npy);
@@ -457,8 +457,8 @@ void animate_weights_pooled_parentless_soa(std::vector<JointPooledOwningSoa>& jo
 			npy = _mm_add_ps(npy, _mm_mul_ps(a23, pz));
 
 			__m128 npz = _mm_mul_ps(a31, px);
-			npz = _mm_add_ps(npy, _mm_mul_ps(a32, py));
-			npz = _mm_add_ps(npy, _mm_mul_ps(a33, pz));
+			npz = _mm_add_ps(npz, _mm_mul_ps(a32, py));
+			npz = _mm_add_ps(npz, _mm_mul_ps(a33, pz));
 
 			_mm_storeu_ps(&weights.posx[i], npx);
 			_mm_storeu_ps(&weights.posy[i], npy);
