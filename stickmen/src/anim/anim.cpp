@@ -168,9 +168,9 @@ void animate_weights_scattered_parent_soa(WeightScatteredParentSoa& weights)
 
 		__m128 a21 = _mm_sub_ps(xy2, wz2);
 		__m128 a22 = _mm_sub_ps(_mm_sub_ps(ONES, xx2), zz2);
-		__m128 a23 = _mm_sub_ps(yz2, wx2);
+		__m128 a23 = _mm_add_ps(yz2, wx2);
 
-		__m128 a31 = _mm_sub_ps(xz2, wy2);
+		__m128 a31 = _mm_add_ps(xz2, wy2);
 		__m128 a32 = _mm_sub_ps(yz2, wx2);
 		__m128 a33 = _mm_sub_ps(_mm_sub_ps(ONES, xx2), yy2);
 
@@ -267,9 +267,9 @@ void animate_weights_pooled_parent_soa(WeightPooledParentSoa& weights)
 
 		__m128 a21 = _mm_sub_ps(xy2, wz2);
 		__m128 a22 = _mm_sub_ps(_mm_sub_ps(ONES, xx2), zz2);
-		__m128 a23 = _mm_sub_ps(yz2, wx2);
+		__m128 a23 = _mm_add_ps(yz2, wx2);
 
-		__m128 a31 = _mm_sub_ps(xz2, wy2);
+		__m128 a31 = _mm_add_ps(xz2, wy2);
 		__m128 a32 = _mm_sub_ps(yz2, wx2);
 		__m128 a33 = _mm_sub_ps(_mm_sub_ps(ONES, xx2), yy2);
 
@@ -343,14 +343,14 @@ void animate_weights_scattered_parentless_soa(JointScatteredOwningSoa& root)
 
 	__m128 a11 = _mm_set1_ps(1 - yy2 - zz2);
 	__m128 a12 = _mm_set1_ps(xy2 + wz2);
-	__m128 a13 = _mm_set1_ps(xz2 + wy2);
+	__m128 a13 = _mm_set1_ps(xz2 - wy2);
 
-	__m128 a21 = _mm_set1_ps(xy2 + wz2);
+	__m128 a21 = _mm_set1_ps(xy2 - wz2);
 	__m128 a22 = _mm_set1_ps(1 - xx2 - zz2);
 	__m128 a23 = _mm_set1_ps(yz2 + wx2);
 
 	__m128 a31 = _mm_set1_ps(xz2 + wy2);
-	__m128 a32 = _mm_set1_ps(yz2 + wx2);
+	__m128 a32 = _mm_set1_ps(yz2 - wx2);
 	__m128 a33 = _mm_set1_ps(1 - xx2 - yy2);
 
 	size_t len = weights.w.size();
@@ -431,14 +431,14 @@ void animate_weights_pooled_parentless_soa(std::vector<JointPooledOwningSoa>& jo
 
 		__m128 a11 = _mm_set1_ps(1 - yy2 - zz2);
 		__m128 a12 = _mm_set1_ps(xy2 + wz2);
-		__m128 a13 = _mm_set1_ps(xz2 + wy2);
+		__m128 a13 = _mm_set1_ps(xz2 - wy2);
 
-		__m128 a21 = _mm_set1_ps(xy2 + wz2);
+		__m128 a21 = _mm_set1_ps(xy2 - wz2);
 		__m128 a22 = _mm_set1_ps(1 - xx2 - zz2);
 		__m128 a23 = _mm_set1_ps(yz2 + wx2);
 
 		__m128 a31 = _mm_set1_ps(xz2 + wy2);
-		__m128 a32 = _mm_set1_ps(yz2 + wx2);
+		__m128 a32 = _mm_set1_ps(yz2 - wx2);
 		__m128 a33 = _mm_set1_ps(1 - xx2 - yy2);
 
 		size_t len = weights.w.size();
