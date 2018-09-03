@@ -62,10 +62,10 @@ static BenchmarkOptions from_args(benchmark::State& state)
 
 static void CustomArgs(benchmark::internal::Benchmark* b)
 {
-	for (int i = 1; i <= 1000; i *= 10) {
+	for (int i = 1; i <= 10; i++) {
+			b->Args({i * 32, 0, true});
 		for (int j = 0; j < static_cast<int>(DatasetType::DatasetCount); j++) {
-			b->Args({i, j, false});
-			b->Args({i, j, true});
+			// b->Args({i, j, true});
 		}
 	}
 }
@@ -159,7 +159,10 @@ static void BM_ScatteredOwning(benchmark::State& state) {
 			flush_cache_scattered_owning(root, stride);
 		}
 		state.ResumeTiming();
+
 	}
+
+	state.SetItemsProcessed(state.iterations() * opts.weight_count * opts.weight_replication_count);
 }
 BENCHMARK(BM_ScatteredOwning)
 	->ArgNames({"Replication", "Dataset", "FlushCache"})
@@ -251,7 +254,9 @@ static void BM_ScatteredOwningSoa(benchmark::State& state) {
 			flush_cache_scattered_owning_soa(root, stride);
 		}
 		state.ResumeTiming();
+
 	}
+	state.SetItemsProcessed(state.iterations() * opts.weight_count * opts.weight_replication_count);
 }
 BENCHMARK(BM_ScatteredOwningSoa)
 	->ArgNames({"Replication", "Dataset", "FlushCache"})
@@ -338,6 +343,7 @@ static void BM_ScatteredOwnerless(benchmark::State& state) {
 		}
 		state.ResumeTiming();
 	}
+	state.SetItemsProcessed(state.iterations() * opts.weight_count * opts.weight_replication_count);
 }
 BENCHMARK(BM_ScatteredOwnerless)
 	->ArgNames({"Replication", "Dataset", "FlushCache"})
@@ -432,6 +438,7 @@ static void BM_ScatteredOwnerlessSoa(benchmark::State& state) {
 		}
 		state.ResumeTiming();
 	}
+	state.SetItemsProcessed(state.iterations() * opts.weight_count * opts.weight_replication_count);
 }
 BENCHMARK(BM_ScatteredOwnerlessSoa)
 	->ArgNames({"Replication", "Dataset", "FlushCache"})
@@ -499,6 +506,7 @@ static void BM_PooledOwning(benchmark::State& state) {
 		}
 		state.ResumeTiming();
 	}
+	state.SetItemsProcessed(state.iterations() * opts.weight_count * opts.weight_replication_count);
 }
 BENCHMARK(BM_PooledOwning)
 	->ArgNames({"Replication", "Dataset", "FlushCache"})
@@ -571,6 +579,7 @@ static void BM_PooledOwningSoa(benchmark::State& state) {
 		}
 		state.ResumeTiming();
 	}
+	state.SetItemsProcessed(state.iterations() * opts.weight_count * opts.weight_replication_count);
 }
 BENCHMARK(BM_PooledOwningSoa)
 	->ArgNames({"Replication", "Dataset", "FlushCache"})
@@ -639,6 +648,7 @@ static void BM_PooledOwnerless(benchmark::State& state) {
 		}
 		state.ResumeTiming();
 	}
+	state.SetItemsProcessed(state.iterations() * opts.weight_count * opts.weight_replication_count);
 }
 BENCHMARK(BM_PooledOwnerless)
 	->ArgNames({"Replication", "Dataset", "FlushCache"})
@@ -718,6 +728,7 @@ static void BM_PooledOwnerlessSoa(benchmark::State& state) {
 		}
 		state.ResumeTiming();
 	}
+	state.SetItemsProcessed(state.iterations() * opts.weight_count * opts.weight_replication_count);
 }
 BENCHMARK(BM_PooledOwnerlessSoa)
 	->ArgNames({"Replication", "Dataset", "FlushCache"})
@@ -792,6 +803,7 @@ static void BM_PooledOwnerlessScattered(benchmark::State& state) {
 		}
 		state.ResumeTiming();
 	}
+	state.SetItemsProcessed(state.iterations() * opts.weight_count * opts.weight_replication_count);
 }
 BENCHMARK(BM_PooledOwnerlessScattered)
 	->ArgNames({"Replication", "Dataset", "FlushCache"})
@@ -862,6 +874,7 @@ static void BM_PooledOwnerScattered(benchmark::State& state) {
 		}
 		state.ResumeTiming();
 	}
+	state.SetItemsProcessed(state.iterations() * opts.weight_count * opts.weight_replication_count);
 }
 BENCHMARK(BM_PooledOwnerScattered)
 	->ArgNames({"Replication", "Dataset", "FlushCache"})
