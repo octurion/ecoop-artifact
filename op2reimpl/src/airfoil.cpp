@@ -5,6 +5,7 @@
 
 #include <array>
 #include <vector>
+#include <unordered_set>
 
 static const int num_iter = 1000;
 
@@ -22,6 +23,17 @@ static const double e = p / (r * gm1) + 0.5f * u * u;
 
 static const double qinf[4] = {
 	r, r * u, 0.0f, r * e,
+};
+
+struct Edge {
+	std::array<size_t, 2> pedge;
+	std::array<size_t, 2> pecell;
+};
+
+struct EdgeMap {
+	std::vector<size_t> indices;
+	std::unordered_set<size_t> ptr1;
+	std::unordered_set<size_t> ptr2;
 };
 
 struct EdgePool {
@@ -82,12 +94,13 @@ struct NodePool {
 	{}
 };
 
-inline void adt_calc(CellPool& cells) {
+inline void adt_calc(CellPool& cells, const NodePool& nodes) {
+	#pragma omp parallel for
 	for (size_t i = 0; i < cells.size; i++) {
-		const double *x1 = cells.pcell_new[i][0].data();
-		const double *x2 = cells.pcell_new[i][1].data();
-		const double *x3 = cells.pcell_new[i][2].data();
-		const double *x4 = cells.pcell_new[i][3].data();
+		const double *x1 = nodes.p_x[cells.pcell[i][0]].data();
+		const double *x2 = nodes.p_x[cells.pcell[i][1]].data();
+		const double *x3 = nodes.p_x[cells.pcell[i][2]].data();
+		const double *x4 = nodes.p_x[cells.pcell[i][3]].data();
 		const double *q = cells.p_q[i].data();
 		double *adt = &cells.adt[i];
 		double dx, dy, ri, u, v, c;
@@ -117,44 +130,51 @@ inline void adt_calc(CellPool& cells) {
 	}
 }
 
-inline void res_calc(const EdgePool& edges, const NodePool& nodes, CellPool& cells) {
-	for (size_t i = 0; i < edges.size; i++) {
-		const double *x1 = nodes.p_x[edges.pedge[i][0]].data();
-		const double *x2 = nodes.p_x[edges.pedge[i][1]].data();
-		const double *q1 = cells.p_q[edges.pecell[i][0]].data();
-		const double *q2 = cells.p_q[edges.pecell[i][1]].data();
-		const double *adt1 = &cells.adt[edges.pecell[i][0]];
-		const double *adt2 = &cells.adt[edges.pecell[i][1]];
-		double *res1 = cells.res[edges.pecell[i][0]].data();
-		double *res2 = cells.res[edges.pecell[i][1]].data();
+inline void res_calc(const EdgePool& edges, const NodePool& nodes, CellPool& cells, const std::vector<std::pair<size_t, size_t>>& ranges) {
+	#pragma omp parallel
+	for (const auto& r: ranges) {
+		size_t begin = r.first;
+		size_t end = r.second;
 
-		double dx, dy, mu, ri, p1, vol1, p2, vol2, f;
+		#pragma omp for
+		for (size_t i = begin; i < end; i++) {
+			const double *x1 = nodes.p_x[edges.pedge[i][0]].data();
+			const double *x2 = nodes.p_x[edges.pedge[i][1]].data();
+			const double *q1 = cells.p_q[edges.pecell[i][0]].data();
+			const double *q2 = cells.p_q[edges.pecell[i][1]].data();
+			const double *adt1 = &cells.adt[edges.pecell[i][0]];
+			const double *adt2 = &cells.adt[edges.pecell[i][1]];
+			double *res1 = cells.res[edges.pecell[i][0]].data();
+			double *res2 = cells.res[edges.pecell[i][1]].data();
 
-		dx = x1[0] - x2[0];
-		dy = x1[1] - x2[1];
+			double dx, dy, mu, ri, p1, vol1, p2, vol2, f;
 
-		ri = 1.0f / q1[0];
-		p1 = gm1 * (q1[3] - 0.5f * ri * (q1[1] * q1[1] + q1[2] * q1[2]));
-		vol1 = ri * (q1[1] * dy - q1[2] * dx);
+			dx = x1[0] - x2[0];
+			dy = x1[1] - x2[1];
 
-		ri = 1.0f / q2[0];
-		p2 = gm1 * (q2[3] - 0.5f * ri * (q2[1] * q2[1] + q2[2] * q2[2]));
-		vol2 = ri * (q2[1] * dy - q2[2] * dx);
+			ri = 1.0f / q1[0];
+			p1 = gm1 * (q1[3] - 0.5f * ri * (q1[1] * q1[1] + q1[2] * q1[2]));
+			vol1 = ri * (q1[1] * dy - q1[2] * dx);
 
-		mu = 0.5f * ((*adt1) + (*adt2)) * eps;
+			ri = 1.0f / q2[0];
+			p2 = gm1 * (q2[3] - 0.5f * ri * (q2[1] * q2[1] + q2[2] * q2[2]));
+			vol2 = ri * (q2[1] * dy - q2[2] * dx);
 
-		f = 0.5f * (vol1 * q1[0] + vol2 * q2[0]) + mu * (q1[0] - q2[0]);
-		res1[0] += f;
-		res2[0] -= f;
-		f = 0.5f * (vol1 * q1[1] + p1 * dy + vol2 * q2[1] + p2 * dy) + mu * (q1[1] - q2[1]);
-		res1[1] += f;
-		res2[1] -= f;
-		f = 0.5f * (vol1 * q1[2] - p1 * dx + vol2 * q2[2] - p2 * dx) + mu * (q1[2] - q2[2]);
-		res1[2] += f;
-		res2[2] -= f;
-		f = 0.5f * (vol1 * (q1[3] + p1) + vol2 * (q2[3] + p2)) + mu * (q1[3] - q2[3]);
-		res1[3] += f;
-		res2[3] -= f;
+			mu = 0.5f * ((*adt1) + (*adt2)) * eps;
+
+			f = 0.5f * (vol1 * q1[0] + vol2 * q2[0]) + mu * (q1[0] - q2[0]);
+			res1[0] += f;
+			res2[0] -= f;
+			f = 0.5f * (vol1 * q1[1] + p1 * dy + vol2 * q2[1] + p2 * dy) + mu * (q1[1] - q2[1]);
+			res1[1] += f;
+			res2[1] -= f;
+			f = 0.5f * (vol1 * q1[2] - p1 * dx + vol2 * q2[2] - p2 * dx) + mu * (q1[2] - q2[2]);
+			res1[2] += f;
+			res2[2] -= f;
+			f = 0.5f * (vol1 * (q1[3] + p1) + vol2 * (q2[3] + p2)) + mu * (q1[3] - q2[3]);
+			res1[3] += f;
+			res2[3] -= f;
+		}
 	}
 }
 
@@ -200,6 +220,9 @@ inline void bres_calc(const BackedgePool& bedges, const NodePool& nodes, CellPoo
 }
 
 inline void update(CellPool& cells, double* rms) {
+	double rms_acc = 0;
+
+	#pragma omp parallel for reduction(+:rms_acc)
 	for (size_t i = 0; i < cells.size; i++) {
 		const double *qold = cells.qold[i].data();
 		double *q = cells.p_q[i].data();
@@ -213,9 +236,11 @@ inline void update(CellPool& cells, double* rms) {
 			del = adti * res[n];
 			q[n] = qold[n] - del;
 			res[n] = 0.0f;
-			*rms += del * del;
+			rms_acc += del * del;
 		}
 	}
+
+	*rms = rms_acc;
 }
 
 double timespec_elapsed(const struct timespec* end, const struct timespec* start)
@@ -267,10 +292,12 @@ int main(int argc, char** argv)
 		}
 	}
 
+	std::vector<Edge> edges_raw(nedge);
+
 	for (size_t n = 0; n < nedge; n++) {
 		if (fscanf(in_file, "%zu %zu %zu %zu \n",
-				   &edges.pedge[n][0], &edges.pedge[n][1],
-				   &edges.pecell[n][0], &edges.pecell[n][1]) != 4) {
+				   &edges_raw[n].pedge[0], &edges_raw[n].pedge[1],
+				   &edges_raw[n].pecell[0], &edges_raw[n].pecell[1]) != 4) {
 			fprintf(stderr, "Error reading pedges and pecells\n");
 			return EXIT_FAILURE;
 		}
@@ -285,6 +312,54 @@ int main(int argc, char** argv)
 	}
 	fclose(in_file);
 
+	std::vector<std::pair<size_t, size_t>> ranges;
+	{
+		std::vector<EdgeMap> edge_maps;
+		for (size_t n = 0; n < nedge; n++) {
+			bool added = false;
+			for (auto& map: edge_maps) {
+				auto it1 = map.ptr1.find(edges_raw[n].pecell[0]);
+				auto it2 = map.ptr2.find(edges_raw[n].pecell[1]);
+
+				if (it1 == map.ptr1.end() && it2 == map.ptr2.end()) {
+					map.indices.push_back(n);
+					map.ptr1.insert(edges_raw[n].pecell[0]);
+					map.ptr2.insert(edges_raw[n].pecell[1]);
+
+					added = true;
+					break;
+				}
+			}
+			if (added) {
+				continue;
+			}
+
+			EdgeMap new_map;
+			new_map.indices.push_back(n);
+			new_map.ptr1.insert(edges_raw[n].pecell[0]);
+			new_map.ptr2.insert(edges_raw[n].pecell[1]);
+
+			edge_maps.emplace_back(std::move(new_map));
+		}
+
+		size_t last_idx = 0;
+		size_t idx = 0;
+		for (const auto& map: edge_maps) {
+			for (const auto& e: map.indices) {
+				edges.pedge[idx][0] = edges_raw[e].pedge[0];
+				edges.pedge[idx][1] = edges_raw[e].pedge[1];
+
+				edges.pecell[idx][0] = edges_raw[e].pecell[0];
+				edges.pecell[idx][1] = edges_raw[e].pecell[1];
+
+				idx++;
+			}
+
+			ranges.emplace_back(last_idx, idx);
+			last_idx = idx;
+		}
+	}
+
 	for (size_t n = 0; n < ncell; n++) {
 		for (size_t m = 0; m < 4; m++) {
 			cells.p_q[n][m] = qinf[m];
@@ -294,7 +369,7 @@ int main(int argc, char** argv)
 
 	for (size_t i = 0; i < cells.size; i++) {
 		for (size_t j = 0; j < 4; j++) {
-			for (size_t k = 0; k < 4; k++) {
+			for (size_t k = 0; k < 2; k++) {
 				cells.pcell_new[i][j][k] = nodes.p_x[cells.pcell[i][j]][k];
 			}
 		}
@@ -317,21 +392,21 @@ int main(int argc, char** argv)
 	double upd_time = 0;
 
 	for (int iter = 1; iter <= num_iter; iter++) {
+		#pragma omp parallel for
 		for (size_t i = 0; i < cells.size; i++) {
 			cells.qold[i] = cells.p_q[i];
 		}
 
 		for (int k = 0; k < 2; k++) {
-
 			struct timespec adt_start, adt_end;
 			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &adt_start);
-			adt_calc(cells);
+			adt_calc(cells, nodes);
 			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &adt_end);
 			adt_time += timespec_elapsed(&adt_end, &adt_start);
 
 			struct timespec res_start, res_end;
 			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &res_start);
-			res_calc(edges, nodes, cells);
+			res_calc(edges, nodes, cells, ranges);
 			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &res_end);
 			res_time += timespec_elapsed(&res_end, &res_start);
 
@@ -349,6 +424,10 @@ int main(int argc, char** argv)
 		}
 
 		rms = sqrt(rms / (double) cells.size);
+
+		if (iter % 100 == 0) {
+			printf("iter = %4d, rms = %10.5e\n", iter, rms);
+		}
 	}
 
 	printf("adt: %.8f, res: %.8f, bres: %.8f, upd: %.8f\n", adt_time, res_time, bres_time, upd_time);

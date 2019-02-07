@@ -3,8 +3,10 @@
 #include <stdlib.h>
 #include <math.h>
 
+#include <algorithm>
 #include <array>
 #include <vector>
+#include <unordered_set>
 
 static const double gam = 1.4;
 static const double gm1 = gam - 1.0;
@@ -131,172 +133,206 @@ struct CellPool {
 	{}
 };
 
-inline void res_calc(CellPool& cells, NodePool& nodes) {
-	for (size_t n = 0; n < cells.size; n++) {
-		std::array<const double*, 4> x = {
-			nodes.p_x[cells.pcell[n][0]].data(),
-			nodes.p_x[cells.pcell[n][1]].data(),
-			nodes.p_x[cells.pcell[n][2]].data(),
-			nodes.p_x[cells.pcell[n][3]].data(),
-		};
-		std::array<const double*, 4> phim = {
-			&nodes.p_phim[cells.pcell[n][0]],
-			&nodes.p_phim[cells.pcell[n][1]],
-			&nodes.p_phim[cells.pcell[n][2]],
-			&nodes.p_phim[cells.pcell[n][3]],
-		};
+struct CellRaw {
+	std::array<size_t, 4> pcell;
+};
 
-		std::array<double,16>& K = cells.p_K[n];
+struct CellSet {
+	std::vector<size_t> indices;
+	std::unordered_set<size_t> set;
+};
 
-		std::array<double*, 4> res = {
-			&nodes.p_resm[cells.pcell[n][0]],
-			&nodes.p_resm[cells.pcell[n][1]],
-			&nodes.p_resm[cells.pcell[n][2]],
-			&nodes.p_resm[cells.pcell[n][3]],
-		};
+void res_calc(CellPool& cells, NodePool& nodes, const std::vector<std::pair<size_t, size_t>>& ranges) {
+	#pragma omp parallel
+	for (const auto& r: ranges) {
+		size_t begin = r.first;
+		size_t end = r.second;
 
-		for (int j = 0; j < 4; j++) {
-			for (int k = 0; k < 4; k++) {
-				K[j * 4 + k] = 0;
-			}
-		}
-		for (int i = 0; i < 4; i++) { // for each gauss point
-			double det_x_xi = 0;
-			double N_x[8];
+		#pragma omp for
+		for (size_t n = begin; n < end; n++) {
+			std::array<const double*, 4> x = {
+				nodes.p_x[cells.pcell[n][0]].data(),
+				nodes.p_x[cells.pcell[n][1]].data(),
+				nodes.p_x[cells.pcell[n][2]].data(),
+				nodes.p_x[cells.pcell[n][3]].data(),
+			};
+			std::array<const double*, 4> phim = {
+				&nodes.p_phim[cells.pcell[n][0]],
+				&nodes.p_phim[cells.pcell[n][1]],
+				&nodes.p_phim[cells.pcell[n][2]],
+				&nodes.p_phim[cells.pcell[n][3]],
+			};
 
-			double a = 0;
-			for (int m = 0; m < 4; m++)
-				det_x_xi += Ng2_xi[4 * i + 16 + m] * x[m][1];
-			for (int m = 0; m < 4; m++)
-				N_x[m] = det_x_xi * Ng2_xi[4 * i + m];
+			std::array<double,16>& K = cells.p_K[n];
 
-			a = 0;
-			for (int m = 0; m < 4; m++)
-				a += Ng2_xi[4 * i + m] * x[m][0];
-			for (int m = 0; m < 4; m++)
-				N_x[4 + m] = a * Ng2_xi[4 * i + 16 + m];
+			std::array<double*, 4> res = {
+				&nodes.p_resm[cells.pcell[n][0]],
+				&nodes.p_resm[cells.pcell[n][1]],
+				&nodes.p_resm[cells.pcell[n][2]],
+				&nodes.p_resm[cells.pcell[n][3]],
+			};
 
-			det_x_xi *= a;
-
-			a = 0;
-			for (int m = 0; m < 4; m++)
-				a += Ng2_xi[4 * i + m] * x[m][1];
-			for (int m = 0; m < 4; m++)
-				N_x[m] -= a * Ng2_xi[4 * i + 16 + m];
-
-			double b = 0;
-			for (int m = 0; m < 4; m++)
-				b += Ng2_xi[4 * i + 16 + m] * x[m][0];
-			for (int m = 0; m < 4; m++)
-				N_x[4 + m] -= b * Ng2_xi[4 * i + m];
-
-			det_x_xi -= a * b;
-
-			for (int j = 0; j < 8; j++)
-				N_x[j] /= det_x_xi;
-
-			double wt1 = wtg2[i] * det_x_xi;
-			// double wt2 = wtg2[i]*det_x_xi/r;
-
-			double u[2] = {0.0, 0.0};
-			for (int j = 0; j < 4; j++) {
-				u[0] += N_x[j] * phim[j][0];
-				u[1] += N_x[4 + j] * phim[j][0];
-			}
-
-			double Dk = 1.0 + 0.5 * gm1 * (m2 - (u[0] * u[0] + u[1] * u[1]));
-			double rho = pow(Dk, gm1i);
-			double rc2 = rho / Dk;
-
-			for (int j = 0; j < 4; j++) {
-				res[j][0] += wt1 * rho * (u[0] * N_x[j] + u[1] * N_x[4 + j]);
-			}
 			for (int j = 0; j < 4; j++) {
 				for (int k = 0; k < 4; k++) {
-					K[j * 4 + k] +=
-						wt1 * rho * (N_x[j] * N_x[k] + N_x[4 + j] * N_x[4 + k]) -
-						wt1 * rc2 * (u[0] * N_x[j] + u[1] * N_x[4 + j]) *
-						(u[0] * N_x[k] + u[1] * N_x[4 + k]);
+					K[j * 4 + k] = 0;
+				}
+			}
+			for (int i = 0; i < 4; i++) { // for each gauss point
+				double det_x_xi = 0;
+				double N_x[8];
+
+				double a = 0;
+				for (int m = 0; m < 4; m++)
+					det_x_xi += Ng2_xi[4 * i + 16 + m] * x[m][1];
+				for (int m = 0; m < 4; m++)
+					N_x[m] = det_x_xi * Ng2_xi[4 * i + m];
+
+				a = 0;
+				for (int m = 0; m < 4; m++)
+					a += Ng2_xi[4 * i + m] * x[m][0];
+				for (int m = 0; m < 4; m++)
+					N_x[4 + m] = a * Ng2_xi[4 * i + 16 + m];
+
+				det_x_xi *= a;
+
+				a = 0;
+				for (int m = 0; m < 4; m++)
+					a += Ng2_xi[4 * i + m] * x[m][1];
+				for (int m = 0; m < 4; m++)
+					N_x[m] -= a * Ng2_xi[4 * i + 16 + m];
+
+				double b = 0;
+				for (int m = 0; m < 4; m++)
+					b += Ng2_xi[4 * i + 16 + m] * x[m][0];
+				for (int m = 0; m < 4; m++)
+					N_x[4 + m] -= b * Ng2_xi[4 * i + m];
+
+				det_x_xi -= a * b;
+
+				for (int j = 0; j < 8; j++)
+					N_x[j] /= det_x_xi;
+
+				double wt1 = wtg2[i] * det_x_xi;
+				// double wt2 = wtg2[i]*det_x_xi/r;
+
+				double u[2] = {0.0, 0.0};
+				for (int j = 0; j < 4; j++) {
+					u[0] += N_x[j] * phim[j][0];
+					u[1] += N_x[4 + j] * phim[j][0];
+				}
+
+				double Dk = 1.0 + 0.5 * gm1 * (m2 - (u[0] * u[0] + u[1] * u[1]));
+				double rho = pow(Dk, gm1i);
+				double rc2 = rho / Dk;
+
+				for (int j = 0; j < 4; j++) {
+					res[j][0] += wt1 * rho * (u[0] * N_x[j] + u[1] * N_x[4 + j]);
+				}
+				for (int j = 0; j < 4; j++) {
+					for (int k = 0; k < 4; k++) {
+						K[j * 4 + k] +=
+							wt1 * rho * (N_x[j] * N_x[k] + N_x[4 + j] * N_x[4 + k]) -
+							wt1 * rc2 * (u[0] * N_x[j] + u[1] * N_x[4 + j]) *
+							(u[0] * N_x[k] + u[1] * N_x[4 + k]);
+					}
 				}
 			}
 		}
 	}
 }
 
-inline void dirichlet_resm(const BacknodePool& bnodes, NodePool& nodes) {
+void dirichlet_resm(const BacknodePool& bnodes, NodePool& nodes) {
 	for (size_t i = 0; i < bnodes.size; i++) {
 		double *res = &nodes.p_resm[bnodes.pbedge[i]];
 		*res = 0.0;
 	}
 }
 
-inline void dirichletPV(const BacknodePool& bnodes, NodePool& nodes) {
+void dirichletPV(const BacknodePool& bnodes, NodePool& nodes) {
 	for (size_t i = 0; i < bnodes.size; i++) {
 		double *res = &nodes.p_V[bnodes.pbedge[i]];
 		*res = 0.0;
 	}
 }
 
-inline void init_cg(NodePool& nodes, double* c) {
+void init_cg(NodePool& nodes, double* c) {
+	double c_acc = 0;
+
+	#pragma omp parallel for reduction(+:c_acc)
 	for (size_t i = 0; i < nodes.size; i++) {
 		const double *r = &nodes.p_resm[i];
 		double *u = &nodes.p_U[i];
 		double *v = &nodes.p_V[i];
 		double *p = &nodes.p_P[i];
 
-		*c += (*r) * (*r);
+		c_acc += (*r) * (*r);
 		*p = *r;
 		*u = 0;
 		*v = 0;
 	}
+
+	*c += c_acc;
 }
 
-inline void spMV(const CellPool& cells, NodePool& nodes) {
-	for (size_t i = 0; i < cells.size; i++) {
-		std::array<double*, 4> v = {
-			&nodes.p_V[cells.pcell[i][0]],
-			&nodes.p_V[cells.pcell[i][1]],
-			&nodes.p_V[cells.pcell[i][2]],
-			&nodes.p_V[cells.pcell[i][3]],
-		};
-		std::array<const double*, 4> p = {
-			&nodes.p_P[cells.pcell[i][0]],
-			&nodes.p_P[cells.pcell[i][1]],
-			&nodes.p_P[cells.pcell[i][2]],
-			&nodes.p_P[cells.pcell[i][3]],
-		};
+void spMV(const CellPool& cells, NodePool& nodes, const std::vector<std::pair<size_t, size_t>>& ranges) {
+	#pragma omp parallel
+	for (const auto& r: ranges) {
+		size_t begin = r.first;
+		size_t end = r.second;
 
-		const std::array<double, 16>& K = cells.p_K[i];
+		#pragma omp for
+		for (size_t i = begin; i < end; i++) {
+			std::array<double*, 4> v = {
+				&nodes.p_V[cells.pcell[i][0]],
+				&nodes.p_V[cells.pcell[i][1]],
+				&nodes.p_V[cells.pcell[i][2]],
+				&nodes.p_V[cells.pcell[i][3]],
+			};
+			std::array<const double*, 4> p = {
+				&nodes.p_P[cells.pcell[i][0]],
+				&nodes.p_P[cells.pcell[i][1]],
+				&nodes.p_P[cells.pcell[i][2]],
+				&nodes.p_P[cells.pcell[i][3]],
+			};
 
-		v[0][0] += K[0] * p[0][0];
-		v[0][0] += K[1] * p[1][0];
-		v[1][0] += K[1] * p[0][0];
-		v[0][0] += K[2] * p[2][0];
-		v[2][0] += K[2] * p[0][0];
-		v[0][0] += K[3] * p[3][0];
-		v[3][0] += K[3] * p[0][0];
-		v[1][0] += K[4 + 1] * p[1][0];
-		v[1][0] += K[4 + 2] * p[2][0];
-		v[2][0] += K[4 + 2] * p[1][0];
-		v[1][0] += K[4 + 3] * p[3][0];
-		v[3][0] += K[4 + 3] * p[1][0];
-		v[2][0] += K[8 + 2] * p[2][0];
-		v[2][0] += K[8 + 3] * p[3][0];
-		v[3][0] += K[8 + 3] * p[2][0];
-		v[3][0] += K[15] * p[3][0];
+			const std::array<double, 16>& K = cells.p_K[i];
+
+			v[0][0] += K[0] * p[0][0];
+			v[0][0] += K[1] * p[1][0];
+			v[1][0] += K[1] * p[0][0];
+			v[0][0] += K[2] * p[2][0];
+			v[2][0] += K[2] * p[0][0];
+			v[0][0] += K[3] * p[3][0];
+			v[3][0] += K[3] * p[0][0];
+			v[1][0] += K[4 + 1] * p[1][0];
+			v[1][0] += K[4 + 2] * p[2][0];
+			v[2][0] += K[4 + 2] * p[1][0];
+			v[1][0] += K[4 + 3] * p[3][0];
+			v[3][0] += K[4 + 3] * p[1][0];
+			v[2][0] += K[8 + 2] * p[2][0];
+			v[2][0] += K[8 + 3] * p[3][0];
+			v[3][0] += K[8 + 3] * p[2][0];
+			v[3][0] += K[15] * p[3][0];
+		}
 	}
 }
 
-inline void dotPV(const NodePool& nodes, double* c) {
+void dotPV(const NodePool& nodes, double* c) {
+	double c_acc = 0;
+
+	#pragma omp parallel for reduction(+:c_acc)
 	for (size_t i = 0; i < nodes.size; i++) {
 		const double *p = &nodes.p_P[i];
 		const double *v = &nodes.p_V[i];
 
-		*c += (*p) * (*v);
+		c_acc += (*p) * (*v);
 	}
+
+	*c += c_acc;
 }
 
-inline void updateUR(NodePool& nodes, const double* alpha) {
+void updateUR(NodePool& nodes, const double* alpha) {
+	#pragma omp parallel for
 	for (size_t i = 0; i < nodes.size; i++) {
 		double *u = &nodes.p_U[i];
 		double *r = &nodes.p_resm[i];
@@ -309,15 +345,21 @@ inline void updateUR(NodePool& nodes, const double* alpha) {
 	}
 }
 
-inline void dotR(NodePool& nodes, double* c) {
+void dotR(NodePool& nodes, double* c) {
+	double c_acc = 0;
+
+	#pragma omp parallel for reduction(+:c_acc)
 	for (size_t i = 0; i < nodes.size; i++) {
 		const double *r = &nodes.p_resm[i];
 
-		*c += (*r) * (*r);
+		c_acc += (*r) * (*r);
 	}
+
+	*c += c_acc;
 }
 
-inline void updateP(NodePool& nodes, const double *beta) {
+void updateP(NodePool& nodes, const double *beta) {
+	#pragma omp parallel for
 	for (size_t i = 0; i < nodes.size; i++) {
 		const double *r = &nodes.p_resm[i];
 		double *p = &nodes.p_P[i];
@@ -326,7 +368,10 @@ inline void updateP(NodePool& nodes, const double *beta) {
 	}
 }
 
-inline void update(NodePool& nodes, double *rms) {
+void update(NodePool& nodes, double *rms) {
+	double rms_acc = 0;
+
+	#pragma omp parallel for reduction(+:rms_acc)
 	for (size_t i = 0; i < nodes.size; i++) {
 		double *phim = &nodes.p_phim[i];
 		double *res = &nodes.p_resm[i];
@@ -334,8 +379,10 @@ inline void update(NodePool& nodes, double *rms) {
 
 		*phim -= *u;
 		*res = 0.0;
-		*rms += (*u) * (*u);
+		rms_acc += (*u) * (*u);
 	}
+
+	*rms += rms_acc;
 }
 
 double timespec_elapsed(const struct timespec* end, const struct timespec* start)
@@ -375,15 +422,56 @@ int main(int argc, char** argv)
 		}
 	}
 
+	std::vector<CellRaw> cells_raw(ncell);
 	for (size_t n = 0; n < ncell; n++) {
 		if (fscanf(in_file, "%zu %zu %zu %zu \n",
-				   &cells.pcell[n][0],
-				   &cells.pcell[n][1],
-				   &cells.pcell[n][2],
-				   &cells.pcell[n][3]) != 4) {
+				   &cells_raw[n].pcell[0],
+				   &cells_raw[n].pcell[1],
+				   &cells_raw[n].pcell[2],
+				   &cells_raw[n].pcell[3]) != 4) {
 			fprintf(stderr, "Error reading pcells\n");
 			return EXIT_FAILURE;
 		}
+	}
+
+	std::vector<std::pair<size_t, size_t>> ranges;
+	{
+		std::vector<CellSet> sets;
+		for (size_t n = 0; n < ncell; n++) {
+			auto it = std::find_if(sets.begin(), sets.end(), [&](const CellSet& cell_set) {
+				const auto& s = cell_set.set;
+				for (auto idx: cells_raw[n].pcell) {
+					if (s.find(idx) != s.end()) {
+						return false;
+					}
+				}
+				return true;
+			});
+
+			if (it == sets.end()) {
+				CellSet new_set;
+				it = sets.insert(sets.end(), std::move(new_set));
+			}
+			it->indices.push_back(n);
+			it->set.insert(cells_raw[n].pcell.begin(), cells_raw[n].pcell.end());
+		}
+
+		size_t last_idx = 0;
+		size_t cur_idx = 0;
+		for (const auto& set: sets) {
+			for (const auto& idx: set.indices) {
+				for (size_t i = 0; i < 4; i++) {
+					cells.pcell[cur_idx][i] = cells_raw[idx].pcell[i];
+				}
+				cur_idx++;
+			}
+			ranges.emplace_back(last_idx, cur_idx);
+			last_idx = cur_idx;
+		}
+	}
+	printf("Num ranges: %zu\n", ranges.size());
+	for (auto& r: ranges) {
+		printf("Begin: %zu End: %zu\n", r.first, r.second);
 	}
 
 	for (size_t n = 0; n < nbnode; n++) {
@@ -416,7 +504,7 @@ int main(int argc, char** argv)
 	for (int iter = 1; iter <= num_iter; iter++) {
 		struct timespec res_calc_start, res_calc_end;
 		clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &res_calc_start);
-		res_calc(cells, nodes);
+		res_calc(cells, nodes, ranges);
 		clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &res_calc_end);
 		res_calc_time += timespec_elapsed(&res_calc_end, &res_calc_start);
 
@@ -447,7 +535,7 @@ int main(int argc, char** argv)
 		while (res > 0.1 * res0 && inner_iter < maxiter) {
 			struct timespec spMV_start, spMV_end;
 			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &spMV_start);
-			spMV(cells, nodes);
+			spMV(cells, nodes, ranges);
 			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &spMV_end);
 			spMV_time += timespec_elapsed(&spMV_end, &spMV_start);
 
