@@ -16,7 +16,7 @@
 #include <cstring>
 #include <unistd.h>
 
-#define NUM_MODELS 1
+#define NUM_MODELS 2
 #define TO_REMOVE_RATIO 0.1f
 
 struct BenchmarkOptions
@@ -43,7 +43,7 @@ static ModelInput INPUTS[NUM_MODELS];
 static void CustomArgs(benchmark::internal::Benchmark* b)
 {
 	for (int i = 1; i <= 10; i++) {
-		b->Args({i * 1000, 0});
+		b->Args({i * 500, 1});
 	}
 }
 
@@ -400,6 +400,231 @@ struct Bench_ScatteredJointsAosWeights
 	}
 };
 
+struct PooledJointsMixedWeights
+{
+	int frame;
+	const ModelInput* input;
+	std::vector<JointMixed> joints;
+};
+
+struct Bench_PooledJointsMixedWeights
+{
+	std::deque<PooledJointsMixedWeights> models;
+	size_t counter = 0;
+
+	PooledJointsMixedWeights construct_model(const ModelInput& input, size_t id)
+	{
+		PooledJointsMixedWeights model;
+		model.input = &input;
+		model.frame = id % input.frames.size();
+
+		for (size_t i = 0; i < input.joints_raw.size(); i++) {
+			JointMixed j;
+			j.orient = input.joints_raw[i].base_quat;
+			j.pos = input.joints_raw[i].base_pos;
+
+			model.joints.emplace_back(std::move(j));
+		}
+
+		model.joints[0].parent = nullptr;
+		model.joints[0].next = nullptr;
+		for (size_t i = 1; i < model.joints.size(); i++) {
+			model.joints[i].parent = &model.joints[input.joints_raw[i].parent];
+			model.joints[i].next = nullptr;
+			model.joints[i - 1].next = &model.joints[i];
+		}
+
+		for (size_t i = 0; i < input.weights_raw.size(); i++) {
+			auto& joint = model.joints[input.weights_raw[i].joint];
+			const auto& w = input.weights_raw[i];
+
+			joint.weight_bias.push_back(w.bias);
+			joint.weight_initial_pos.push_back(w.pos);
+
+			joint.weight_pos.emplace_back();
+		}
+
+		return model;
+	}
+
+	void initialize_from_opts(BenchmarkOptions& opts)
+	{
+		for (size_t i = 0; i < opts.num_copies; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.emplace_back(construct_model(INPUTS[j], i));
+			}
+		}
+
+		counter = opts.num_copies - 1;
+	}
+
+	void flush_from_cache(const BenchmarkOptions& opts)
+	{
+		for (const auto& m: models) {
+			for (const auto& j: m.joints) {
+				size_t range = j.weight_initial_pos.size() * sizeof(float);
+
+				flush_range(j.weight_initial_pos.data(), opts.stride, 3 * range);
+				flush_range(j.weight_pos.data(), opts.stride, 3 * range);
+
+				flush_range(j.weight_bias.data(), opts.stride, range);
+			}
+
+			size_t range = m.joints.size() * sizeof(decltype(m.joints)::value_type);
+			flush_range(m.joints.data(), opts.stride, range);
+		}
+	}
+
+	void run_animate_joints()
+	{
+		for (auto& m: models) {
+			animate_joints(&m.joints[0],
+						   m.input->joints_raw.data(),
+						   m.input->frames[m.frame].values.data());
+		}
+	}
+
+	void run_animate_weights()
+	{
+		for (auto& m: models) {
+			animate_weights(&m.joints[0]);
+
+			m.frame++;
+			m.frame %= m.input->frames.size();
+		}
+	}
+
+	void modify_structure(const BenchmarkOptions& opts)
+	{
+		size_t num_to_replace = opts.num_copies * TO_REMOVE_RATIO;
+		for (size_t i = 0; i < num_to_replace; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.pop_front();
+			}
+		}
+
+		for (size_t i = 0; i < num_to_replace; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.emplace_back(construct_model(INPUTS[j], counter));
+			}
+			counter++;
+		}
+	}
+};
+
+struct ScatteredJointsMixedWeights
+{
+	int frame;
+	const ModelInput* input;
+	std::vector<std::unique_ptr<JointMixed>> joints;
+};
+
+struct Bench_ScatteredJointsMixedWeights
+{
+	std::deque<ScatteredJointsMixedWeights> models;
+	size_t counter = 0;
+
+	ScatteredJointsMixedWeights construct_model(const ModelInput& input, size_t id)
+	{
+		ScatteredJointsMixedWeights model;
+		model.input = &input;
+		model.frame = id % input.frames.size();
+
+		for (size_t i = 0; i < input.joints_raw.size(); i++) {
+			std::unique_ptr<JointMixed> j(new JointMixed);
+			j->orient = input.joints_raw[i].base_quat;
+			j->pos = input.joints_raw[i].base_pos;
+
+			model.joints.emplace_back(std::move(j));
+		}
+
+		model.joints[0]->parent = nullptr;
+		model.joints[0]->next = nullptr;
+		for (size_t i = 1; i < model.joints.size(); i++) {
+			model.joints[i]->parent = model.joints[input.joints_raw[i].parent].get();
+			model.joints[i]->next = nullptr;
+			model.joints[i - 1]->next = model.joints[i].get();
+		}
+
+		for (size_t i = 0; i < input.weights_raw.size(); i++) {
+			auto& joint = model.joints[input.weights_raw[i].joint];
+			const auto& w = input.weights_raw[i];
+
+			joint->weight_bias.push_back(w.bias);
+			joint->weight_initial_pos.push_back(w.pos);
+
+			joint->weight_pos.emplace_back();
+		}
+
+		return model;
+	}
+
+	void initialize_from_opts(BenchmarkOptions& opts)
+	{
+		for (size_t i = 0; i < opts.num_copies; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.emplace_back(construct_model(INPUTS[j], i));
+			}
+		}
+
+		counter = opts.num_copies - 1;
+	}
+
+	void flush_from_cache(const BenchmarkOptions& opts)
+	{
+		for (const auto& m: models) {
+			for (const auto& j: m.joints) {
+				size_t range = j->weight_initial_pos.size() * sizeof(float);
+
+				flush_range(j->weight_initial_pos.data(), opts.stride, 3 * range);
+
+				flush_range(j->weight_pos.data(), opts.stride, 3 * range);
+
+				flush_range(j->weight_bias.data(), opts.stride, range);
+			}
+
+			size_t range = m.joints.size() * sizeof(decltype(m.joints)::value_type);
+			flush_range(m.joints.data(), opts.stride, range);
+		}
+	}
+
+	void run_animate_joints()
+	{
+		for (auto& m: models) {
+			animate_joints(m.joints[0].get(),
+						   m.input->joints_raw.data(),
+						   m.input->frames[m.frame].values.data());
+		}
+	}
+
+	void run_animate_weights()
+	{
+		for (auto& m: models) {
+			animate_weights(m.joints[0].get());
+
+			m.frame++;
+			m.frame %= m.input->frames.size();
+		}
+	}
+
+	void modify_structure(const BenchmarkOptions& opts)
+	{
+		size_t num_to_replace = opts.num_copies * TO_REMOVE_RATIO;
+		for (size_t i = 0; i < num_to_replace; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.pop_front();
+			}
+		}
+
+		for (size_t i = 0; i < num_to_replace; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.emplace_back(construct_model(INPUTS[j], counter));
+			}
+			counter++;
+		}
+	}
+};
+
 struct PooledJointsSoaWeights
 {
 	int frame;
@@ -646,8 +871,10 @@ template<typename DataStructure>
 void BM_Template(benchmark::State& state)
 {
 	if (!initialized) {
-		ModelInput input = parse_files("../resources/hellknight.md5mesh", "../resources/hellknight.md5anim");
-		INPUTS[0] = std::move(input);
+		ModelInput input0 = parse_files("../resources/hellknight.md5mesh", "../resources/hellknight.md5anim");
+		ModelInput input1 = parse_files("../resources/boblampclean.md5mesh", "../resources/boblampclean.md5anim");
+		INPUTS[0] = std::move(input0);
+		INPUTS[1] = std::move(input1);
 		initialized = true;
 	}
 
@@ -664,7 +891,7 @@ void BM_Template(benchmark::State& state)
 		benchmark::ClobberMemory();
 
 		state.PauseTiming();
-		// structure.modify_structure(opts);
+		structure.modify_structure(opts);
 		if (opts.flush_range) {
 			structure.flush_from_cache(opts);
 		}
@@ -700,6 +927,20 @@ BENCHMARK_TEMPLATE(BM_Template, Bench_ScatteredJointsAosWeights)
 	->ComputeStatistics("max", max_of_vector);
 
 BENCHMARK_TEMPLATE(BM_Template, Bench_PooledJointsAosWeights)
+	->ArgNames({"NumDuplicates", "FlushCache"})
+	->Apply(CustomArgs)
+	->Complexity(benchmark::oN)
+	->ComputeStatistics("min", min_of_vector)
+	->ComputeStatistics("max", max_of_vector);
+
+BENCHMARK_TEMPLATE(BM_Template, Bench_ScatteredJointsMixedWeights)
+	->ArgNames({"NumDuplicates", "FlushCache"})
+	->Apply(CustomArgs)
+	->Complexity(benchmark::oN)
+	->ComputeStatistics("min", min_of_vector)
+	->ComputeStatistics("max", max_of_vector);
+
+BENCHMARK_TEMPLATE(BM_Template, Bench_PooledJointsMixedWeights)
 	->ArgNames({"NumDuplicates", "FlushCache"})
 	->Apply(CustomArgs)
 	->Complexity(benchmark::oN)

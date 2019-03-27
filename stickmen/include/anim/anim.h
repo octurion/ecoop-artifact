@@ -5,7 +5,7 @@
 
 struct vec3
 {
-	float x, y, z;
+	float x = 0, y = 0, z = 0;
 
 	vec3 operator+(const vec3& rhs) const;
 	vec3 operator-(const vec3& rhs) const;
@@ -13,7 +13,7 @@ struct vec3
 
 struct quat
 {
-	float w, x, y, z;
+	float w = 1, x = 0, y = 0, z = 0;
 
 	void gen_w();
 	void normalize();
@@ -38,6 +38,21 @@ struct JointAos
 	quat orient;
 
 	std::vector<WeightAos> weights;
+
+	void animate_my_weights();
+};
+
+struct JointMixed
+{
+	JointMixed* parent;
+	JointMixed* next;
+	vec3 pos;
+	quat orient;
+
+	std::vector<vec3> weight_initial_pos;
+	std::vector<vec3> weight_pos;
+
+	std::vector<float> weight_bias;
 
 	void animate_my_weights();
 };
@@ -99,6 +114,9 @@ extern template
 void animate_joints<JointAos>(JointAos* root, const JointRaw* base, const float* frame_components);
 
 extern template
+void animate_joints<JointMixed>(JointMixed* root, const JointRaw* base, const float* frame_components);
+
+extern template
 void animate_joints<JointSoa>(JointSoa* root, const JointRaw* base, const float* frame_components);
 
 template<typename Joint>
@@ -106,6 +124,9 @@ void animate_weights(Joint* root);
 
 extern template
 void animate_weights<JointAos>(JointAos* root);
+
+extern template
+void animate_weights<JointMixed>(JointMixed* root);
 
 extern template
 void animate_weights<JointSoa>(JointSoa* root);
