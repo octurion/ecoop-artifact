@@ -2,29 +2,26 @@
 
 #include "test/dataset.h"
 
+#include <xmmintrin.h>
+
 #include <benchmark/benchmark.h>
 
-#include <unordered_map>
+#include <deque>
+#include <memory>
 #include <utility>
 
-#include <stdio.h>
+#include <cinttypes>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
 #include <unistd.h>
 
-enum class DatasetType {
-	Dataset1,
-	Dataset2,
-	DatasetCount
-};
+#define NUM_MODELS 1
+#define TO_REMOVE_RATIO 0.1f
 
 struct BenchmarkOptions
 {
-	const JointData* joint_data;
-	size_t joint_count;
-
-	const WeightData* weight_data;
-	size_t weight_count;
-
-	size_t weight_replication_count;
+	size_t num_copies;
 	size_t stride;
 	bool flush_range;
 };
@@ -33,38 +30,20 @@ static BenchmarkOptions from_args(benchmark::State& state)
 {
 	BenchmarkOptions opt;
 
-	opt.weight_replication_count = state.range(0);
-
-	switch (static_cast<DatasetType>(state.range(1))) {
-	case DatasetType::Dataset1:
-		opt.joint_data = JOINTS1;
-		opt.joint_count = NUM_JOINTS1;
-
-		opt.weight_data = WEIGHTS1;
-		opt.weight_count = NUM_WEIGHTS1;
-		break;
-
-	case DatasetType::Dataset2:
-		opt.joint_data = JOINTS2;
-		opt.joint_count = NUM_JOINTS2;
-
-		opt.weight_data = WEIGHTS2;
-		opt.weight_count = NUM_WEIGHTS2;
-		break;
-
-	default:
-		abort();
-	}
-
+	opt.num_copies = state.range(0);
 	opt.stride = sysconf(_SC_LEVEL1_DCACHE_LINESIZE);
+	opt.flush_range = state.range(1);
 
 	return opt;
 }
 
+static bool initialized = false;
+static ModelInput INPUTS[NUM_MODELS];
+
 static void CustomArgs(benchmark::internal::Benchmark* b)
 {
 	for (int i = 1; i <= 10; i++) {
-		b->Args({i * 32, (int)DatasetType::Dataset1});
+		b->Args({i * 1000, 0});
 	}
 }
 
@@ -77,778 +56,588 @@ static void flush_range(const void* ptr, size_t stride, size_t len)
 	}
 }
 
-struct ScatteredOwningAos
+ModelInput parse_files(const char* mesh_filename, const char* anim_filename)
 {
-	JointScatteredOwning root;
-	std::vector<std::pair<WeightParentless*, vec3>> initial;
+	ModelInput input;
+
+	size_t len = 0;
+	char* line = NULL;
+
+	FILE* mesh_in = fopen(mesh_filename, "r");
+	if (mesh_in == NULL) {
+		perror(mesh_filename);
+		abort();
+	}
+
+	while (getline(&line, &len, mesh_in) != -1) {
+		WeightRaw w;
+		if (sscanf(line, " weight %*d %zu %f ( %f %f %f )",
+				    &w.joint, &w.bias, &w.pos.x, &w.pos.y, &w.pos.z) != 5) {
+			continue;
+		}
+
+		input.weights_raw.push_back(w);
+	}
+	fclose(mesh_in);
+
+	FILE* anim_in = fopen(anim_filename, "r");
+	if (anim_in == NULL) {
+		perror(anim_filename);
+		abort();
+	}
+
+	size_t num_anim_components;
+
+	while (getline(&line, &len, anim_in) != -1) {
+		if (sscanf(line, " numAnimatedComponents %zu", &num_anim_components) == 1) {
+			break;
+		}
+	}
+
+	while (getline(&line, &len, anim_in) != -1) {
+		const char* pattern = "hierarchy {";
+		if (strncmp(line, pattern, strlen(pattern)) == 0) {
+			break;
+		}
+	}
+
+	while (getline(&line, &len, anim_in) != -1) {
+		const char* pattern = "}";
+		if (strncmp(line, pattern, strlen(pattern)) == 0) {
+			break;
+		}
+
+		JointRaw j;
+		if (sscanf(line, " %*s %zu %" SCNi8 " %zu", &j.parent, &j.flags, &j.base_idx) != 3) {
+			fprintf(stderr, "Couldn't read joint hierarchy\n");
+			abort();
+		}
+
+		j.base_pos.x = 0;
+		j.base_pos.y = 0;
+		j.base_pos.z = 0;
+
+		j.base_quat.x = 0;
+		j.base_quat.y = 0;
+		j.base_quat.z = 0;
+		j.base_quat.w = 0;
+
+		input.joints_raw.push_back(j);
+	}
+
+	while (getline(&line, &len, anim_in) != -1) {
+		const char* pattern = "baseframe {";
+		if (strncmp(line, pattern, strlen(pattern)) == 0) {
+			break;
+		}
+	}
+
+	size_t idx = 0;
+	while (getline(&line, &len, anim_in) != -1) {
+		const char* pattern = "}";
+		if (strncmp(line, pattern, strlen(pattern)) == 0) {
+			break;
+		}
+
+		auto& j = input.joints_raw[idx];
+		if (sscanf(line, " ( %f %f %f ) ( %f %f %f )",
+				   &j.base_pos.x, &j.base_pos.y, &j.base_pos.z,
+				   &j.base_quat.x, &j.base_quat.y, &j.base_quat.z) != 6) {
+			fprintf(stderr, "Couldn't read base frame\n");
+			abort();
+		}
+
+		j.base_quat.gen_w();
+		idx++;
+	}
+
+	if (idx != input.joints_raw.size()) {
+		fprintf(stderr, "Couldn't read base frame\n");
+		abort();
+	}
+
+	while (getline(&line, &len, anim_in) != -1) {
+		int frame_id;
+		if (sscanf(line, " frame %d {", &frame_id) != 1) {
+			continue;
+		}
+
+		Frame frame;
+		for (size_t i = 0; i < num_anim_components; i++) {
+			float value;
+			int ret = fscanf(anim_in, "%f", &value);
+			(void) ret;
+
+			frame.values.push_back(value);
+		}
+
+		input.frames.emplace_back(std::move(frame));
+	}
+
+	fclose(anim_in);
+
+	free(line);
+
+	return input;
+}
+
+struct PooledJointsAosWeights
+{
+	int frame;
+	const ModelInput* input;
+	std::vector<JointAos> joints;
+};
+
+struct Bench_PooledJointsAosWeights
+{
+	std::deque<PooledJointsAosWeights> models;
+	size_t counter = 0;
+
+	PooledJointsAosWeights construct_model(const ModelInput& input, size_t id)
+	{
+		PooledJointsAosWeights model;
+		model.input = &input;
+		model.frame = id % input.frames.size();
+
+		for (size_t i = 0; i < input.joints_raw.size(); i++) {
+			JointAos j;
+			j.orient = input.joints_raw[i].base_quat;
+			j.pos = input.joints_raw[i].base_pos;
+
+			model.joints.emplace_back(std::move(j));
+		}
+
+		model.joints[0].parent = nullptr;
+		model.joints[0].next = nullptr;
+		for (size_t i = 1; i < model.joints.size(); i++) {
+			model.joints[i].parent = &model.joints[input.joints_raw[i].parent];
+			model.joints[i].next = nullptr;
+			model.joints[i - 1].next = &model.joints[i];
+		}
+
+		for (size_t i = 0; i < input.weights_raw.size(); i++) {
+			WeightAos w;
+			w.bias = input.weights_raw[i].bias;
+			w.initial_pos = input.weights_raw[i].pos;
+			w.pos.x = 0;
+			w.pos.y = 0;
+			w.pos.z = 0;
+
+			model.joints[input.weights_raw[i].joint].weights.push_back(w);
+		}
+
+		return model;
+	}
 
 	void initialize_from_opts(BenchmarkOptions& opts)
 	{
-		std::unordered_map<int, JointScatteredOwning*> joint_map;
-		joint_map[0] = &root;
-
-		root.orient_relative = quat::from_xyz(
-			opts.joint_data[0].qx, opts.joint_data[0].qy, opts.joint_data[0].qz);
-
-		root.orient_absolute.w = 1;
-		root.orient_absolute.x = 0;
-		root.orient_absolute.y = 0;
-		root.orient_absolute.z = 0;
-
-		for (size_t i = 1; i < opts.joint_count; i++) {
-			auto& parent = joint_map[opts.joint_data[i].parent];
-
-			std::unique_ptr<JointScatteredOwning> new_joint(new JointScatteredOwning);
-			new_joint->orient_relative = quat::from_xyz(
-				opts.joint_data[i].qx, opts.joint_data[i].qy, opts.joint_data[i].qz);
-
-			new_joint->orient_absolute.w = 1;
-			new_joint->orient_absolute.x = 0;
-			new_joint->orient_absolute.y = 0;
-			new_joint->orient_absolute.z = 0;
-
-			joint_map[i] = new_joint.get();
-			parent->children.emplace_back(std::move(new_joint));
-		}
-
-		for (size_t c = 0; c < opts.weight_replication_count; c++) {
-			for (size_t i = 0; i < opts.weight_count; i++) {
-				auto& joint = joint_map[opts.weight_data[i].joint];
-
-				WeightParentless new_weight;
-
-				new_weight.w = opts.weight_data[i].w;
-
-				new_weight.pos.x = opts.weight_data[i].x;
-				new_weight.pos.y = opts.weight_data[i].y;
-				new_weight.pos.z = opts.weight_data[i].z;
-
-				joint->weights.push_back(new_weight);
+		for (size_t i = 0; i < opts.num_copies; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.emplace_back(construct_model(INPUTS[j], i));
 			}
 		}
 
-		for (auto& j: joint_map) {
-			for (auto& e: j.second->weights) {
-				initial.emplace_back(&e, e.pos);
-			}
-		}
+		counter = opts.num_copies - 1;
 	}
 
 	void flush_from_cache(const BenchmarkOptions& opts)
 	{
-		flush_from_cache(root, opts.stride);
+		for (const auto& m: models) {
+			for (const auto& j: m.joints) {
+				size_t range = j.weights.size() * sizeof(decltype(j.weights)::value_type);
+				flush_range(j.weights.data(), opts.stride, range);
+			}
+
+			size_t range = m.joints.size() * sizeof(decltype(m.joints)::value_type);
+			flush_range(m.joints.data(), opts.stride, range);
+		}
 	}
 
-	static void flush_from_cache(JointScatteredOwning& node, size_t stride)
+	void run_animate_joints()
 	{
-		for (auto& e: node.children) {
-			flush_from_cache(*e, stride);
+		for (auto& m: models) {
+			animate_joints(&m.joints[0],
+						   m.input->joints_raw.data(),
+						   m.input->frames[m.frame].values.data());
+		}
+	}
+
+	void run_animate_weights()
+	{
+		for (auto& m: models) {
+			animate_weights(&m.joints[0]);
+
+			m.frame++;
+			m.frame %= m.input->frames.size();
+		}
+	}
+
+	void modify_structure(const BenchmarkOptions& opts)
+	{
+		size_t num_to_replace = opts.num_copies * TO_REMOVE_RATIO;
+		for (size_t i = 0; i < num_to_replace; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.pop_front();
+			}
 		}
 
-		flush_range(node.weights.data(),
-					stride,
-					node.weights.size() * sizeof(decltype(root.weights)::value_type));
-
-		flush_range(node.children.data(),
-					stride,
-					node.children.size() * sizeof(decltype(root.children)::value_type));
-
-		flush_range(&node, stride, sizeof(root));
-	}
-
-	void animate_joints()
-	{
-		animate_joints_scattered_owning(root);
-	}
-
-	void animate_weights()
-	{
-		animate_weights_scattered_parentless(root);
-	}
-
-	void reset_weights()
-	{
-		for (auto& e: initial) {
-			e.first->pos = e.second;
+		for (size_t i = 0; i < num_to_replace; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.emplace_back(construct_model(INPUTS[j], counter));
+			}
+			counter++;
 		}
 	}
 };
 
-struct PooledOwningAos
+struct ScatteredJointsAosWeights
 {
-	std::vector<JointPooledOwning> joints;
-	std::vector<std::pair<WeightParentless*, vec3>> initial;
+	int frame;
+	const ModelInput* input;
+	std::vector<std::unique_ptr<JointAos>> joints;
+};
+
+struct Bench_ScatteredJointsAosWeights
+{
+	std::deque<ScatteredJointsAosWeights> models;
+	size_t counter = 0;
+
+	ScatteredJointsAosWeights construct_model(const ModelInput& input, size_t id)
+	{
+		ScatteredJointsAosWeights model;
+		model.input = &input;
+		model.frame = id % input.frames.size();
+
+		for (size_t i = 0; i < input.joints_raw.size(); i++) {
+			std::unique_ptr<JointAos> j(new JointAos);
+			j->orient = input.joints_raw[i].base_quat;
+			j->pos = input.joints_raw[i].base_pos;
+
+			model.joints.emplace_back(std::move(j));
+		}
+
+		model.joints[0]->parent = nullptr;
+		model.joints[0]->next = nullptr;
+		for (size_t i = 1; i < model.joints.size(); i++) {
+			model.joints[i]->parent = model.joints[input.joints_raw[i].parent].get();
+			model.joints[i]->next = nullptr;
+			model.joints[i - 1]->next = model.joints[i].get();
+		}
+
+		for (size_t i = 0; i < input.weights_raw.size(); i++) {
+			WeightAos w;
+			w.bias = input.weights_raw[i].bias;
+			w.initial_pos = input.weights_raw[i].pos;
+			w.pos.x = 0;
+			w.pos.y = 0;
+			w.pos.z = 0;
+
+			model.joints[input.weights_raw[i].joint]->weights.push_back(w);
+		}
+
+		return model;
+	}
 
 	void initialize_from_opts(BenchmarkOptions& opts)
 	{
-		joints.resize(opts.joint_count);
-		auto& root = joints[0];
-		root.orient_relative = quat::from_xyz(
-			opts.joint_data[0].qx, opts.joint_data[0].qy, opts.joint_data[0].qz);
-
-		root.orient_absolute.w = 1;
-		root.orient_absolute.x = 0;
-		root.orient_absolute.y = 0;
-		root.orient_absolute.z = 0;
-
-		for (size_t i = 1; i < opts.joint_count; i++) {
-			auto& new_joint = joints[i];
-			new_joint.orient_relative = quat::from_xyz(
-				opts.joint_data[i].qx, opts.joint_data[i].qy, opts.joint_data[i].qz);
-
-			new_joint.orient_absolute.w = 1;
-			new_joint.orient_absolute.x = 0;
-			new_joint.orient_absolute.y = 0;
-			new_joint.orient_absolute.z = 0;
-
-			new_joint.parent = &joints[opts.joint_data[i].parent];
-		}
-
-		for (size_t c = 0; c < opts.weight_replication_count; c++) {
-			for (size_t i = 0; i < opts.weight_count; i++) {
-				auto& joint = joints[opts.weight_data[i].joint];
-				WeightParentless new_weight;
-
-				new_weight.w = opts.weight_data[i].w;
-				new_weight.pos.x = opts.weight_data[i].x;
-				new_weight.pos.y = opts.weight_data[i].y;
-				new_weight.pos.z = opts.weight_data[i].z;
-
-				joint.weights.push_back(new_weight);
+		for (size_t i = 0; i < opts.num_copies; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.emplace_back(construct_model(INPUTS[j], i));
 			}
 		}
 
-		for (auto& j: joints) {
-			for (auto& e: j.weights) {
-				initial.emplace_back(&e, e.pos);
-			}
-		}
+		counter = opts.num_copies - 1;
 	}
 
 	void flush_from_cache(const BenchmarkOptions& opts)
 	{
-		for (auto& e: joints) {
-			flush_range(e.weights.data(), opts.stride,
-						e.weights.size() * sizeof(decltype(e.weights)::value_type));
+		for (const auto& m: models) {
+			for (const auto& j: m.joints) {
+				size_t range = j->weights.size() * sizeof(decltype(j->weights)::value_type);
+				flush_range(j->weights.data(), opts.stride, range);
+				flush_range(j.get(), opts.stride, sizeof(JointAos));
+			}
+
+			size_t range = m.joints.size() * sizeof(decltype(m.joints)::value_type);
+			flush_range(m.joints.data(), opts.stride, range);
 		}
-		flush_range(joints.data(), opts.stride,
-					joints.size() * sizeof(decltype(joints)::value_type));
 	}
 
-	void animate_joints()
+	void run_animate_joints()
 	{
-		animate_joints_pooled_owning(joints);
+		for (auto& m: models) {
+			animate_joints(m.joints[0].get(),
+						   m.input->joints_raw.data(),
+						   m.input->frames[m.frame].values.data());
+		}
 	}
 
-	void animate_weights()
+	void run_animate_weights()
 	{
-		animate_weights_pooled_parentless(joints);
+		for (auto& m: models) {
+			animate_weights(m.joints[0].get());
+
+			m.frame++;
+			m.frame %= m.input->frames.size();
+		}
 	}
 
-	void reset_weights()
+	void modify_structure(const BenchmarkOptions& opts)
 	{
-		for (auto& e: initial) {
-			e.first->pos = e.second;
+		size_t num_to_replace = opts.num_copies * TO_REMOVE_RATIO;
+		for (size_t i = 0; i < num_to_replace; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.pop_front();
+			}
+		}
+
+		for (size_t i = 0; i < num_to_replace; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.emplace_back(construct_model(INPUTS[j], counter));
+			}
+			counter++;
 		}
 	}
 };
 
-struct ScatteredOwnerlessAos
+struct PooledJointsSoaWeights
 {
-	JointScatteredOwnerless root;
-	std::vector<WeightScatteredParent> weights;
-	std::vector<vec3> initial;
+	int frame;
+	const ModelInput* input;
+	std::vector<JointSoa> joints;
+};
+
+struct Bench_PooledJointsSoaWeights
+{
+	std::deque<PooledJointsSoaWeights> models;
+	size_t counter = 0;
+
+	PooledJointsSoaWeights construct_model(const ModelInput& input, size_t id)
+	{
+		PooledJointsSoaWeights model;
+		model.input = &input;
+		model.frame = id % input.frames.size();
+
+		for (size_t i = 0; i < input.joints_raw.size(); i++) {
+			JointSoa j;
+			j.orient = input.joints_raw[i].base_quat;
+			j.pos = input.joints_raw[i].base_pos;
+
+			model.joints.emplace_back(std::move(j));
+		}
+
+		model.joints[0].parent = nullptr;
+		model.joints[0].next = nullptr;
+		for (size_t i = 1; i < model.joints.size(); i++) {
+			model.joints[i].parent = &model.joints[input.joints_raw[i].parent];
+			model.joints[i].next = nullptr;
+			model.joints[i - 1].next = &model.joints[i];
+		}
+
+		for (size_t i = 0; i < input.weights_raw.size(); i++) {
+			auto& joint = model.joints[input.weights_raw[i].joint];
+			const auto& w = input.weights_raw[i];
+
+			joint.weight_bias.push_back(w.bias);
+			joint.weight_initial_posx.push_back(w.pos.x);
+			joint.weight_initial_posy.push_back(w.pos.y);
+			joint.weight_initial_posz.push_back(w.pos.z);
+
+			joint.weight_posx.push_back(0);
+			joint.weight_posy.push_back(0);
+			joint.weight_posz.push_back(0);
+		}
+
+		return model;
+	}
 
 	void initialize_from_opts(BenchmarkOptions& opts)
 	{
-		std::unordered_map<int, JointScatteredOwnerless*> joint_map;
-
-		joint_map[0] = &root;
-
-		weights.reserve(opts.weight_count);
-
-		root.orient_relative = quat::from_xyz(
-			opts.joint_data[0].qx, opts.joint_data[0].qy, opts.joint_data[0].qz);
-
-		root.orient_absolute.w = 1;
-		root.orient_absolute.x = 0;
-		root.orient_absolute.y = 0;
-		root.orient_absolute.z = 0;
-
-		for (size_t i = 1; i < opts.joint_count; i++) {
-			auto& parent = joint_map[opts.joint_data[i].parent];
-
-			std::unique_ptr<JointScatteredOwnerless> new_joint(new JointScatteredOwnerless);
-			new_joint->orient_relative = quat::from_xyz(
-				opts.joint_data[i].qx, opts.joint_data[i].qy, opts.joint_data[i].qz);
-
-			new_joint->orient_absolute.w = 1;
-			new_joint->orient_absolute.x = 0;
-			new_joint->orient_absolute.y = 0;
-			new_joint->orient_absolute.z = 0;
-
-			joint_map[i] = new_joint.get();
-			parent->children.emplace_back(std::move(new_joint));
-		}
-
-		for (size_t c = 0; c < opts.weight_replication_count; c++) {
-			for (size_t i = 0; i < opts.weight_count; i++) {
-				auto* joint = joint_map[opts.weight_data[i].joint];
-
-				WeightScatteredParent new_weight;
-
-				new_weight.w = opts.weight_data[i].w;
-
-				new_weight.pos.x = opts.weight_data[i].x;
-				new_weight.pos.y = opts.weight_data[i].y;
-				new_weight.pos.z = opts.weight_data[i].z;
-				new_weight.joint = joint;
-
-				weights.push_back(new_weight);
-				initial.push_back(new_weight.pos);
+		for (size_t i = 0; i < opts.num_copies; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.emplace_back(construct_model(INPUTS[j], i));
 			}
 		}
+
+		counter = opts.num_copies - 1;
 	}
 
 	void flush_from_cache(const BenchmarkOptions& opts)
 	{
-		flush_from_cache(root, opts.stride);
-		flush_range(weights.data(), opts.stride,
-					weights.size() * sizeof(decltype(weights)::value_type));
+		for (const auto& m: models) {
+			for (const auto& j: m.joints) {
+				size_t range = j.weight_initial_posx.size() * sizeof(float);
+
+				flush_range(j.weight_initial_posx.data(), opts.stride, range);
+				flush_range(j.weight_initial_posy.data(), opts.stride, range);
+				flush_range(j.weight_initial_posz.data(), opts.stride, range);
+
+				flush_range(j.weight_posx.data(), opts.stride, range);
+				flush_range(j.weight_posy.data(), opts.stride, range);
+				flush_range(j.weight_posz.data(), opts.stride, range);
+
+				flush_range(j.weight_bias.data(), opts.stride, range);
+			}
+
+			size_t range = m.joints.size() * sizeof(decltype(m.joints)::value_type);
+			flush_range(m.joints.data(), opts.stride, range);
+		}
 	}
 
-	static void flush_from_cache(JointScatteredOwnerless& root, size_t stride)
+	void run_animate_joints()
 	{
-		for (auto& e: root.children) {
-			flush_from_cache(*e, stride);
+		for (auto& m: models) {
+			animate_joints(&m.joints[0],
+						   m.input->joints_raw.data(),
+						   m.input->frames[m.frame].values.data());
+		}
+	}
+
+	void run_animate_weights()
+	{
+		for (auto& m: models) {
+			animate_weights(&m.joints[0]);
+
+			m.frame++;
+			m.frame %= m.input->frames.size();
+		}
+	}
+
+	void modify_structure(const BenchmarkOptions& opts)
+	{
+		size_t num_to_replace = opts.num_copies * TO_REMOVE_RATIO;
+		for (size_t i = 0; i < num_to_replace; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.pop_front();
+			}
 		}
 
-		flush_range(root.children.data(),
-					stride,
-					root.children.size() * sizeof(decltype(root.children)::value_type));
-
-		flush_range(&root, stride, sizeof(root));
-	}
-
-	void animate_joints()
-	{
-		animate_joints_scattered_ownerless(root);
-	}
-
-	void animate_weights()
-	{
-		animate_weights_scattered_parent(weights);
-	}
-
-	void reset_weights()
-	{
-		for (size_t i = 0; i < initial.size(); i++) {
-			weights[i].pos = initial[i];
+		for (size_t i = 0; i < num_to_replace; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.emplace_back(construct_model(INPUTS[j], counter));
+			}
+			counter++;
 		}
 	}
 };
 
-struct PooledOwnerlessAos
+struct ScatteredJointsSoaWeights
 {
-	std::vector<JointPooledOwnerless> joints;
-	std::vector<WeightPooledParent> weights;
-	std::vector<vec3> initial;
-
-	void initialize_from_opts(BenchmarkOptions& opts)
-	{
-		joints.resize(opts.joint_count);
-		weights.reserve(opts.weight_count);
-
-		auto& root = joints[0];
-		root.orient_relative = quat::from_xyz(
-			opts.joint_data[0].qx, opts.joint_data[0].qy, opts.joint_data[0].qz);
-
-		root.orient_absolute.w = 1;
-		root.orient_absolute.x = 0;
-		root.orient_absolute.y = 0;
-		root.orient_absolute.z = 0;
-
-		for (size_t i = 1; i < opts.joint_count; i++) {
-			auto& new_joint = joints[i];
-			new_joint.orient_relative = quat::from_xyz(
-				opts.joint_data[i].qx, opts.joint_data[i].qy, opts.joint_data[i].qz);
-
-			new_joint.orient_absolute.w = 1;
-			new_joint.orient_absolute.x = 0;
-			new_joint.orient_absolute.y = 0;
-			new_joint.orient_absolute.z = 0;
-
-			new_joint.parent = &joints[opts.joint_data[i].parent];
-		}
-
-		for (size_t c = 0; c < opts.weight_replication_count; c++) {
-			for (size_t i = 0; i < opts.weight_count; i++) {
-				auto* joint = &joints[opts.weight_data[i].joint];
-				WeightPooledParent new_weight;
-
-				new_weight.w = opts.weight_data[i].w;
-				new_weight.pos.x = opts.weight_data[i].x;
-				new_weight.pos.y = opts.weight_data[i].y;
-				new_weight.pos.z = opts.weight_data[i].z;
-				new_weight.joint = joint;
-
-				weights.push_back(new_weight);
-				initial.push_back(new_weight.pos);
-			}
-		}
-	}
-
-	void flush_from_cache(const BenchmarkOptions& opts)
-	{
-		flush_range(joints.data(),
-					opts.stride,
-					joints.size() * sizeof(decltype(joints)::value_type));
-		flush_range(weights.data(),
-					opts.stride,
-					weights.size() * sizeof(decltype(weights)::value_type));
-	}
-
-	void animate_joints()
-	{
-		animate_joints_pooled_ownerless(joints);
-	}
-
-	void animate_weights()
-	{
-		animate_weights_pooled_parent(weights);
-	}
-
-	void reset_weights()
-	{
-		for (size_t i = 0; i < initial.size(); i++) {
-			weights[i].pos = initial[i];
-		}
-	}
+	int frame;
+	const ModelInput* input;
+	std::vector<std::unique_ptr<JointSoa>> joints;
 };
 
-struct ScatteredOwningSoa
+struct Bench_ScatteredJointsSoaWeights
 {
-	struct ResetInfo {
-		JointScatteredOwningSoa* joint;
-		size_t idx;
-		vec3 pos;
+	std::deque<ScatteredJointsSoaWeights> models;
+	size_t counter = 0;
 
-		ResetInfo(JointScatteredOwningSoa* joint, size_t idx, vec3 pos)
-			: joint(joint)
-			, idx(idx)
-			, pos(pos)
-		{
+	ScatteredJointsSoaWeights construct_model(const ModelInput& input, size_t id)
+	{
+		ScatteredJointsSoaWeights model;
+		model.input = &input;
+		model.frame = id % input.frames.size();
+
+		for (size_t i = 0; i < input.joints_raw.size(); i++) {
+			std::unique_ptr<JointSoa> j(new JointSoa);
+			j->orient = input.joints_raw[i].base_quat;
+			j->pos = input.joints_raw[i].base_pos;
+
+			model.joints.emplace_back(std::move(j));
 		}
-	};
 
-	JointScatteredOwningSoa root;
+		model.joints[0]->parent = nullptr;
+		model.joints[0]->next = nullptr;
+		for (size_t i = 1; i < model.joints.size(); i++) {
+			model.joints[i]->parent = model.joints[input.joints_raw[i].parent].get();
+			model.joints[i]->next = nullptr;
+			model.joints[i - 1]->next = model.joints[i].get();
+		}
 
-	std::vector<ResetInfo> initial;
+		for (size_t i = 0; i < input.weights_raw.size(); i++) {
+			auto& joint = model.joints[input.weights_raw[i].joint];
+			const auto& w = input.weights_raw[i];
+
+			joint->weight_bias.push_back(w.bias);
+			joint->weight_initial_posx.push_back(w.pos.x);
+			joint->weight_initial_posy.push_back(w.pos.y);
+			joint->weight_initial_posz.push_back(w.pos.z);
+
+			joint->weight_posx.push_back(0);
+			joint->weight_posy.push_back(0);
+			joint->weight_posz.push_back(0);
+		}
+
+		return model;
+	}
 
 	void initialize_from_opts(BenchmarkOptions& opts)
 	{
-		std::unordered_map<int, JointScatteredOwningSoa*> joint_map;
-		joint_map[0] = &root;
-
-		root.orient_relative = quat::from_xyz(
-			opts.joint_data[0].qx, opts.joint_data[0].qy, opts.joint_data[0].qz);
-
-		root.orient_absolute.w = 1;
-		root.orient_absolute.x = 0;
-		root.orient_absolute.y = 0;
-		root.orient_absolute.z = 0;
-
-		for (size_t i = 1; i < opts.joint_count; i++) {
-			auto& parent = joint_map[opts.joint_data[i].parent];
-
-			std::unique_ptr<JointScatteredOwningSoa> new_joint(new JointScatteredOwningSoa);
-			new_joint->orient_relative = quat::from_xyz(
-				opts.joint_data[i].qx, opts.joint_data[i].qy, opts.joint_data[i].qz);
-
-			new_joint->orient_absolute.w = 1;
-			new_joint->orient_absolute.x = 0;
-			new_joint->orient_absolute.y = 0;
-			new_joint->orient_absolute.z = 0;
-
-			joint_map[i] = new_joint.get();
-			parent->children.emplace_back(std::move(new_joint));
-		}
-
-		for (size_t c = 0; c < opts.weight_replication_count; c++) {
-			for (size_t i = 0; i < opts.weight_count; i++) {
-				auto& joint = joint_map[opts.weight_data[i].joint];
-
-				joint->weights.w.push_back(opts.weight_data[i].w);
-				joint->weights.posx.push_back(opts.weight_data[i].x);
-				joint->weights.posy.push_back(opts.weight_data[i].y);
-				joint->weights.posz.push_back(opts.weight_data[i].z);
-
-				vec3 v;
-				v.x = opts.weight_data[i].x;
-				v.y = opts.weight_data[i].y;
-				v.z = opts.weight_data[i].z;
-
-				initial.emplace_back(joint, joint->weights.w.size() - 1, v);
+		for (size_t i = 0; i < opts.num_copies; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.emplace_back(construct_model(INPUTS[j], i));
 			}
 		}
-	}
 
-	static void flush_from_cache(JointScatteredOwningSoa& root, size_t stride)
-	{
-		for (auto& e: root.children) {
-			flush_from_cache(*e, stride);
-		}
-
-		auto& weights = root.weights;
-
-		flush_range(weights.w.data(),
-					stride,
-					weights.w.size() * sizeof(decltype(weights.w)::value_type));
-		flush_range(weights.posx.data(),
-					stride,
-					weights.posx.size() * sizeof(decltype(weights.posx)::value_type));
-		flush_range(weights.posy.data(),
-					stride,
-					weights.posy.size() * sizeof(decltype(weights.posy)::value_type));
-		flush_range(weights.posz.data(),
-					stride,
-					weights.posz.size() * sizeof(decltype(weights.posz)::value_type));
-
-		flush_range(root.children.data(),
-					stride,
-					root.children.size() * sizeof(decltype(root.children)::value_type));
-
-		flush_range(&root, stride, sizeof(root));
+		counter = opts.num_copies - 1;
 	}
 
 	void flush_from_cache(const BenchmarkOptions& opts)
 	{
-		flush_from_cache(root, opts.stride);
-	}
+		for (const auto& m: models) {
+			for (const auto& j: m.joints) {
+				size_t range = j->weight_initial_posx.size() * sizeof(float);
 
-	void animate_joints()
-	{
-		animate_joints_scattered_owning_soa(root);
-	}
+				flush_range(j->weight_initial_posx.data(), opts.stride, range);
+				flush_range(j->weight_initial_posy.data(), opts.stride, range);
+				flush_range(j->weight_initial_posz.data(), opts.stride, range);
 
-	void animate_weights()
-	{
-		animate_weights_scattered_parentless_soa(root);
-	}
+				flush_range(j->weight_posx.data(), opts.stride, range);
+				flush_range(j->weight_posy.data(), opts.stride, range);
+				flush_range(j->weight_posz.data(), opts.stride, range);
 
-	void reset_weights()
-	{
-		for (auto& e: initial) {
-			e.joint->weights.posx[e.idx] = e.pos.x;
-			e.joint->weights.posy[e.idx] = e.pos.y;
-			e.joint->weights.posz[e.idx] = e.pos.z;
+				flush_range(j->weight_bias.data(), opts.stride, range);
+			}
+
+			size_t range = m.joints.size() * sizeof(decltype(m.joints)::value_type);
+			flush_range(m.joints.data(), opts.stride, range);
 		}
 	}
-};
 
-struct PooledOwningSoa
-{
-	struct ResetInfo {
-		JointPooledOwningSoa* joint;
-		size_t idx;
-		vec3 pos;
-
-		ResetInfo(JointPooledOwningSoa* joint, size_t idx, vec3 pos)
-			: joint(joint)
-			, idx(idx)
-			, pos(pos)
-		{
-		}
-	};
-
-	std::vector<JointPooledOwningSoa> joints;
-
-	std::vector<ResetInfo> initial;
-
-	void initialize_from_opts(BenchmarkOptions& opts)
+	void run_animate_joints()
 	{
-		joints.resize(opts.joint_count);
-		auto& root = joints[0];
-		root.orient_relative = quat::from_xyz(
-			opts.joint_data[0].qx, opts.joint_data[0].qy, opts.joint_data[0].qz);
-
-		root.orient_absolute.w = 1;
-		root.orient_absolute.x = 0;
-		root.orient_absolute.y = 0;
-		root.orient_absolute.z = 0;
-
-		for (size_t i = 1; i < opts.joint_count; i++) {
-			auto& new_joint = joints[i];
-			new_joint.orient_relative = quat::from_xyz(
-				opts.joint_data[i].qx, opts.joint_data[i].qy, opts.joint_data[i].qz);
-
-			new_joint.orient_absolute.w = 1;
-			new_joint.orient_absolute.x = 0;
-			new_joint.orient_absolute.y = 0;
-			new_joint.orient_absolute.z = 0;
-
-			new_joint.parent = &joints[opts.joint_data[i].parent];
+		for (auto& m: models) {
+			animate_joints(m.joints[0].get(),
+						   m.input->joints_raw.data(),
+						   m.input->frames[m.frame].values.data());
 		}
+	}
 
-		for (size_t c = 0; c < opts.weight_replication_count; c++) {
-			for (size_t i = 0; i < opts.weight_count; i++) {
-				auto& joint = joints[opts.weight_data[i].joint];
+	void run_animate_weights()
+	{
+		for (auto& m: models) {
+			animate_weights(m.joints[0].get());
 
-				joint.weights.w.push_back(opts.weight_data[i].w);
+			m.frame++;
+			m.frame %= m.input->frames.size();
+		}
+	}
 
-				joint.weights.posx.push_back(opts.weight_data[i].x);
-				joint.weights.posy.push_back(opts.weight_data[i].y);
-				joint.weights.posz.push_back(opts.weight_data[i].z);
-
-				vec3 v;
-				v.x = opts.weight_data[i].x;
-				v.y = opts.weight_data[i].y;
-				v.z = opts.weight_data[i].z;
-
-				initial.emplace_back(&joint, joint.weights.w.size() - 1, v);
+	void modify_structure(const BenchmarkOptions& opts)
+	{
+		size_t num_to_replace = opts.num_copies * TO_REMOVE_RATIO;
+		for (size_t i = 0; i < num_to_replace; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.pop_front();
 			}
 		}
-	}
 
-	void flush_from_cache(const BenchmarkOptions& opts)
-	{
-		for (auto& e: joints) {
-			flush_range(e.weights.w.data(), opts.stride,
-						e.weights.w.size() * sizeof(decltype(e.weights.w)::value_type));
-
-			flush_range(e.weights.posx.data(), opts.stride,
-						e.weights.posx.size() * sizeof(decltype(e.weights.posx)::value_type));
-			flush_range(e.weights.posy.data(), opts.stride,
-						e.weights.posy.size() * sizeof(decltype(e.weights.posy)::value_type));
-			flush_range(e.weights.posz.data(), opts.stride,
-						e.weights.posz.size() * sizeof(decltype(e.weights.posz)::value_type));
-		}
-		flush_range(joints.data(), opts.stride,
-					joints.size() * sizeof(decltype(joints)::value_type));
-	}
-
-	void animate_joints()
-	{
-		animate_joints_pooled_owning_soa(joints);
-	}
-
-	void animate_weights()
-	{
-		animate_weights_pooled_parentless_soa(joints);
-	}
-
-	void reset_weights()
-	{
-		for (auto& e: initial) {
-			e.joint->weights.posx[e.idx] = e.pos.x;
-			e.joint->weights.posy[e.idx] = e.pos.y;
-			e.joint->weights.posz[e.idx] = e.pos.z;
-		}
-	}
-};
-
-struct ScatteredOwnerlessSoa
-{
-	JointScatteredOwnerlessSoa root;
-	WeightScatteredParentSoa weights;
-	std::vector<vec3> initial;
-
-	void initialize_from_opts(BenchmarkOptions& opts)
-	{
-		std::unordered_map<int, JointScatteredOwnerlessSoa*> joint_map;
-
-		joint_map[0] = &root;
-
-		weights.joint.reserve(opts.weight_count);
-		weights.w.reserve(opts.weight_count);
-		weights.posx.reserve(opts.weight_count);
-		weights.posy.reserve(opts.weight_count);
-		weights.posz.reserve(opts.weight_count);
-
-		root.orient_relative = quat::from_xyz(
-			opts.joint_data[0].qx, opts.joint_data[0].qy, opts.joint_data[0].qz);
-
-		root.orient_absolute.w = 1;
-		root.orient_absolute.x = 0;
-		root.orient_absolute.y = 0;
-		root.orient_absolute.z = 0;
-
-		for (size_t i = 1; i < opts.joint_count; i++) {
-			auto& parent = joint_map[opts.joint_data[i].parent];
-
-			std::unique_ptr<JointScatteredOwnerlessSoa> new_joint(new JointScatteredOwnerlessSoa);
-			new_joint->orient_relative = quat::from_xyz(
-				opts.joint_data[i].qx, opts.joint_data[i].qy, opts.joint_data[i].qz);
-
-			new_joint->orient_absolute.w = 1;
-			new_joint->orient_absolute.x = 0;
-			new_joint->orient_absolute.y = 0;
-			new_joint->orient_absolute.z = 0;
-
-			joint_map[i] = new_joint.get();
-			parent->children.emplace_back(std::move(new_joint));
-		}
-
-		for (size_t c = 0; c < opts.weight_replication_count; c++) {
-			for (size_t i = 0; i < opts.weight_count; i++) {
-				auto* joint = joint_map[opts.weight_data[i].joint];
-
-				weights.joint.push_back(joint);
-				weights.w.push_back(opts.weight_data[i].w);
-
-				weights.posx.push_back(opts.weight_data[i].x);
-				weights.posy.push_back(opts.weight_data[i].y);
-				weights.posz.push_back(opts.weight_data[i].z);
-
-				vec3 v;
-				v.x = opts.weight_data[i].x;
-				v.y = opts.weight_data[i].y;
-				v.z = opts.weight_data[i].z;
-
-				initial.push_back(v);
+		for (size_t i = 0; i < num_to_replace; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.emplace_back(construct_model(INPUTS[j], counter));
 			}
-		}
-	}
-
-	static void flush_from_cache(JointScatteredOwnerlessSoa& root, size_t stride)
-	{
-		for (auto& e: root.children) {
-			flush_from_cache(*e, stride);
-		}
-
-		flush_range(root.children.data(),
-					stride,
-					root.children.size() * sizeof(decltype(root.children)::value_type));
-
-		flush_range(&root, stride, sizeof(root));
-	}
-
-	void flush_from_cache(const BenchmarkOptions& opts)
-	{
-			flush_from_cache(root, opts.stride);
-			flush_range(weights.joint.data(), opts.stride,
-						weights.joint.size() * sizeof(decltype(weights.joint)::value_type));
-			flush_range(weights.w.data(), opts.stride,
-						weights.w.size() * sizeof(decltype(weights.w)::value_type));
-			flush_range(weights.posx.data(), opts.stride,
-						weights.posx.size() * sizeof(decltype(weights.posx)::value_type));
-			flush_range(weights.posy.data(), opts.stride,
-						weights.posy.size() * sizeof(decltype(weights.posy)::value_type));
-			flush_range(weights.posz.data(), opts.stride,
-						weights.posz.size() * sizeof(decltype(weights.posz)::value_type));
-	}
-
-	void animate_joints()
-	{
-		animate_joints_scattered_ownerless_soa(root);
-	}
-
-	void animate_weights()
-	{
-		animate_weights_scattered_parent_soa(weights);
-	}
-
-	void reset_weights()
-	{
-		for (size_t i = 0; i < weights.w.size(); i++) {
-			weights.posx[i] = initial[i].x;
-			weights.posy[i] = initial[i].y;
-			weights.posz[i] = initial[i].z;
-		}
-	}
-};
-
-struct PooledOwnerlessSoa
-{
-	std::vector<JointPooledOwnerlessSoa> joints;
-	WeightPooledParentSoa weights;
-	std::vector<vec3> initial;
-
-	void initialize_from_opts(BenchmarkOptions& opts)
-	{
-		joints.resize(opts.joint_count);
-
-		weights.w.reserve(opts.weight_count);
-		weights.posx.reserve(opts.weight_count);
-		weights.posy.reserve(opts.weight_count);
-		weights.posz.reserve(opts.weight_count);
-		weights.joint.reserve(opts.weight_count);
-
-		auto& root = joints[0];
-		root.orient_relative = quat::from_xyz(
-			opts.joint_data[0].qx, opts.joint_data[0].qy, opts.joint_data[0].qz);
-
-		root.orient_absolute.w = 1;
-		root.orient_absolute.x = 0;
-		root.orient_absolute.y = 0;
-		root.orient_absolute.z = 0;
-
-		for (size_t i = 1; i < opts.joint_count; i++) {
-			auto& new_joint = joints[i];
-			new_joint.orient_relative = quat::from_xyz(
-				opts.joint_data[i].qx, opts.joint_data[i].qy, opts.joint_data[i].qz);
-
-			new_joint.orient_absolute.w = 1;
-			new_joint.orient_absolute.x = 0;
-			new_joint.orient_absolute.y = 0;
-			new_joint.orient_absolute.z = 0;
-
-			new_joint.parent = &joints[opts.joint_data[i].parent];
-		}
-
-		for (size_t c = 0; c < opts.weight_replication_count; c++) {
-			for (size_t i = 0; i < opts.weight_count; i++) {
-				auto* joint = &joints[opts.weight_data[i].joint];
-
-				weights.w.push_back(opts.weight_data[i].w);
-				weights.posx.push_back(opts.weight_data[i].x);
-				weights.posy.push_back(opts.weight_data[i].y);
-				weights.posz.push_back(opts.weight_data[i].z);
-				weights.joint.push_back(joint);
-
-				vec3 v;
-				v.x = opts.weight_data[i].x;
-				v.y = opts.weight_data[i].y;
-				v.z = opts.weight_data[i].z;
-
-				initial.push_back(v);
-			}
-		}
-	}
-
-	void flush_from_cache(const BenchmarkOptions& opts)
-	{
-		flush_range(joints.data(), opts.stride,
-					joints.size() * sizeof(decltype(joints)::value_type));
-
-		flush_range(weights.joint.data(), opts.stride,
-					weights.joint.size() * sizeof(decltype(weights.joint)::value_type));
-		flush_range(weights.w.data(), opts.stride,
-					weights.w.size() * sizeof(decltype(weights.w)::value_type));
-		flush_range(weights.posx.data(), opts.stride,
-					weights.posx.size() * sizeof(decltype(weights.posx)::value_type));
-		flush_range(weights.posy.data(), opts.stride,
-					weights.posy.size() * sizeof(decltype(weights.posy)::value_type));
-		flush_range(weights.posz.data(), opts.stride,
-					weights.posz.size() * sizeof(decltype(weights.posz)::value_type));
-	}
-
-	void animate_joints()
-	{
-		animate_joints_pooled_ownerless_soa(joints);
-	}
-
-	void animate_weights()
-	{
-		animate_weights_pooled_parent_soa(weights);
-	}
-
-	void reset_weights()
-	{
-		for (size_t i = 0; i < weights.w.size(); i++) {
-			weights.posx[i] = initial[i].x;
-			weights.posy[i] = initial[i].y;
-			weights.posz[i] = initial[i].z;
+			counter++;
 		}
 	}
 };
@@ -856,28 +645,41 @@ struct PooledOwnerlessSoa
 template<typename DataStructure>
 void BM_Template(benchmark::State& state)
 {
+	if (!initialized) {
+		ModelInput input = parse_files("../resources/hellknight.md5mesh", "../resources/hellknight.md5anim");
+		INPUTS[0] = std::move(input);
+		initialized = true;
+	}
+
 	auto opts = from_args(state);
 	DataStructure structure;
 	structure.initialize_from_opts(opts);
 
-	structure.animate_joints();
+	structure.run_animate_joints();
 	structure.flush_from_cache(opts);
 
 	for (auto _: state) {
-		structure.animate_weights();
+		structure.run_animate_weights();
 		structure.flush_from_cache(opts);
 		benchmark::ClobberMemory();
 
 		state.PauseTiming();
-		structure.reset_weights();
-		structure.flush_from_cache(opts);
+		// structure.modify_structure(opts);
+		if (opts.flush_range) {
+			structure.flush_from_cache(opts);
+		}
 		state.ResumeTiming();
 	}
 
-	state.SetComplexityN(opts.weight_count * opts.weight_replication_count);
-	auto items = state.iterations() * opts.weight_count * opts.weight_replication_count;
+	size_t num_weights = 0;
+	for (size_t i = 0; i < NUM_MODELS; i++) {
+		num_weights += INPUTS[i].weights_raw.size();
+	}
+
+	state.SetComplexityN(opts.num_copies);
+	auto items = state.iterations() * opts.num_copies * num_weights;
 	state.SetItemsProcessed(items);
-	state.SetBytesProcessed(3 * sizeof(float) * items);
+	state.SetBytesProcessed(6 * sizeof(float) * items);
 }
 
 double max_of_vector(const std::vector<double>& v)
@@ -890,57 +692,29 @@ double min_of_vector(const std::vector<double>& v)
 	return *(std::min_element(v.begin(), v.end()));
 }
 
-BENCHMARK_TEMPLATE(BM_Template, ScatteredOwningAos)
-	->ArgNames({"Replication", "Dataset"})
+BENCHMARK_TEMPLATE(BM_Template, Bench_ScatteredJointsAosWeights)
+	->ArgNames({"NumDuplicates", "FlushCache"})
 	->Apply(CustomArgs)
 	->Complexity(benchmark::oN)
 	->ComputeStatistics("min", min_of_vector)
 	->ComputeStatistics("max", max_of_vector);
 
-BENCHMARK_TEMPLATE(BM_Template, PooledOwningAos)
-	->ArgNames({"Replication", "Dataset"})
+BENCHMARK_TEMPLATE(BM_Template, Bench_PooledJointsAosWeights)
+	->ArgNames({"NumDuplicates", "FlushCache"})
 	->Apply(CustomArgs)
 	->Complexity(benchmark::oN)
 	->ComputeStatistics("min", min_of_vector)
 	->ComputeStatistics("max", max_of_vector);
 
-BENCHMARK_TEMPLATE(BM_Template, ScatteredOwnerlessAos)
-	->ArgNames({"Replication", "Dataset"})
+BENCHMARK_TEMPLATE(BM_Template, Bench_ScatteredJointsSoaWeights)
+	->ArgNames({"NumDuplicates", "FlushCache"})
 	->Apply(CustomArgs)
 	->Complexity(benchmark::oN)
 	->ComputeStatistics("min", min_of_vector)
 	->ComputeStatistics("max", max_of_vector);
 
-BENCHMARK_TEMPLATE(BM_Template, PooledOwnerlessAos)
-	->ArgNames({"Replication", "Dataset"})
-	->Apply(CustomArgs)
-	->Complexity(benchmark::oN)
-	->ComputeStatistics("min", min_of_vector)
-	->ComputeStatistics("max", max_of_vector);
-
-BENCHMARK_TEMPLATE(BM_Template, ScatteredOwningSoa)
-	->ArgNames({"Replication", "Dataset"})
-	->Apply(CustomArgs)
-	->Complexity(benchmark::oN)
-	->ComputeStatistics("min", min_of_vector)
-	->ComputeStatistics("max", max_of_vector);
-
-BENCHMARK_TEMPLATE(BM_Template, PooledOwningSoa)
-	->ArgNames({"Replication", "Dataset"})
-	->Apply(CustomArgs)
-	->Complexity(benchmark::oN)
-	->ComputeStatistics("min", min_of_vector)
-	->ComputeStatistics("max", max_of_vector);
-
-BENCHMARK_TEMPLATE(BM_Template, ScatteredOwnerlessSoa)
-	->ArgNames({"Replication", "Dataset"})
-	->Apply(CustomArgs)
-	->Complexity(benchmark::oN)
-	->ComputeStatistics("min", min_of_vector)
-	->ComputeStatistics("max", max_of_vector);
-
-BENCHMARK_TEMPLATE(BM_Template, PooledOwnerlessSoa)
-	->ArgNames({"Replication", "Dataset"})
+BENCHMARK_TEMPLATE(BM_Template, Bench_PooledJointsSoaWeights)
+	->ArgNames({"NumDuplicates", "FlushCache"})
 	->Apply(CustomArgs)
 	->Complexity(benchmark::oN)
 	->ComputeStatistics("min", min_of_vector)
