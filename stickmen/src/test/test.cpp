@@ -8,6 +8,7 @@
 
 #include <deque>
 #include <memory>
+#include <numeric>
 #include <utility>
 
 #include <cinttypes>
@@ -72,7 +73,7 @@ ModelInput parse_files(const char* mesh_filename, const char* anim_filename)
 	while (getline(&line, &len, mesh_in) != -1) {
 		WeightRaw w;
 		if (sscanf(line, " weight %*d %zu %f ( %f %f %f )",
-				    &w.joint, &w.bias, &w.pos.x, &w.pos.y, &w.pos.z) != 5) {
+				   &w.joint, &w.bias, &w.pos.x, &w.pos.y, &w.pos.z) != 5) {
 			continue;
 		}
 
@@ -121,6 +122,10 @@ ModelInput parse_files(const char* mesh_filename, const char* anim_filename)
 		j.base_quat.y = 0;
 		j.base_quat.z = 0;
 		j.base_quat.w = 0;
+
+		j.idx_start = 0;
+		j.idx_end = 0;
+		j.num_weights = 0;
 
 		input.joints_raw.push_back(j);
 	}
@@ -175,6 +180,24 @@ ModelInput parse_files(const char* mesh_filename, const char* anim_filename)
 	}
 
 	fclose(anim_in);
+
+	std::stable_sort(
+		input.weights_raw.begin(),
+		input.weights_raw.end(),
+		[](const WeightRaw& lhs, const WeightRaw& rhs) {
+			return lhs.joint < rhs.joint;
+		});
+
+	for (const auto& e: input.weights_raw) {
+		input.joints_raw[e.joint].num_weights++;
+	}
+
+	input.joints_raw[0].idx_end = input.joints_raw[0].num_weights;
+	for (size_t i = 1; i < input.joints_raw.size(); i++) {
+		input.joints_raw[i].idx_start = input.joints_raw[i - 1].idx_end;
+		input.joints_raw[i].idx_end = input.joints_raw[i].idx_start +
+			input.joints_raw[i].num_weights;
+	}
 
 	free(line);
 
@@ -867,6 +890,418 @@ struct Bench_ScatteredJointsSoaWeights
 	}
 };
 
+struct OnePoolJointsAosWeights
+{
+	int frame;
+	const ModelInput* input;
+	size_t idx_start;
+	size_t idx_end;
+
+};
+
+struct Bench_OnePoolJointsAosWeights
+{
+	std::vector<OnePoolJointsAosWeights> models;
+	std::vector<JointOnePool> joints;
+	WeightPoolAos wp;
+
+	size_t counter = 0;
+	size_t joint_counter = 0;
+	size_t weight_counter = 0;
+
+	void construct_model(const ModelInput& input, size_t id)
+	{
+		models[counter].idx_start = joint_counter;
+		models[counter].idx_end = joint_counter + input.joints_raw.size();
+		models[counter].frame = id % input.frames.size();;
+		models[counter].input = &input;
+		for (size_t idx = 0; idx < input.joints_raw.size(); idx++) {
+			size_t i = joint_counter + idx;
+			joints[i].orient = input.joints_raw[idx].base_quat;
+			joints[i].pos = input.joints_raw[idx].base_pos;
+			joints[i].weights_start = weight_counter + input.joints_raw[idx].idx_start;
+			joints[i].weights_end = weight_counter + input.joints_raw[idx].idx_end;
+		}
+
+		joints[joint_counter].parent = nullptr;
+		joints[joint_counter].next = nullptr;
+		for (size_t idx = 1; idx < input.joints_raw.size(); idx++) {
+			size_t i = joint_counter + idx;
+			joints[i].parent = &joints[joint_counter + input.joints_raw[idx].parent];
+			joints[i].next = nullptr;
+			joints[i - 1].next = &joints[i];
+		}
+
+		for (size_t idx = 0; idx < input.weights_raw.size(); idx++) {
+			size_t i = weight_counter + idx;
+
+			wp.weights[i].bias = input.weights_raw[idx].bias;
+			wp.weights[i].initial_pos = input.weights_raw[idx].pos;
+			wp.weights[i].pos.x = 0;
+			wp.weights[i].pos.y = 0;
+			wp.weights[i].pos.z = 0;
+		}
+
+		joint_counter += input.joints_raw.size();
+		if (joint_counter == joints.size()) {
+			joint_counter = 0;
+		}
+
+		weight_counter += input.weights_raw.size();
+		if (weight_counter == wp.weights.size()) {
+			weight_counter = 0;
+		}
+
+		counter++;
+		if (counter == models.size()) {
+			counter = 0;
+		}
+	}
+
+	void initialize_from_opts(BenchmarkOptions& opts)
+	{
+		models.resize(opts.num_copies * NUM_MODELS);
+		size_t num_joints = std::accumulate(INPUTS, INPUTS + NUM_MODELS, 0,
+			[](size_t acc, const ModelInput& m) {
+				return acc + m.joints_raw.size();
+			});
+		size_t num_weights = std::accumulate(INPUTS, INPUTS + NUM_MODELS, 0,
+			[](size_t acc, const ModelInput& m) {
+				return acc + m.weights_raw.size();
+			});
+		joints.resize(num_joints * models.size());
+		wp.weights.resize(num_weights * models.size());
+
+		for (size_t i = 0; i < opts.num_copies; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				construct_model(INPUTS[j], i);
+			}
+		}
+	}
+
+	void flush_from_cache(const BenchmarkOptions& opts)
+	{
+		size_t joints_range = joints.size() * sizeof(JointOnePool);
+		flush_range(joints.data(), opts.stride, joints_range);
+
+		size_t weights_range = wp.weights.size() * sizeof(WeightAos);
+		flush_range(wp.weights.data(), opts.stride, weights_range);
+	}
+
+	void run_animate_joints()
+	{
+		for (auto& m: models) {
+			JointOnePool* root = &joints[m.idx_start];
+			animate_joints(root,
+						   m.input->joints_raw.data(),
+						   m.input->frames[m.frame].values.data());
+		}
+	}
+
+	void run_animate_weights()
+	{
+		for (auto& m: models) {
+			animate_weights(&joints[m.idx_start], wp);
+
+			m.frame++;
+			m.frame %= m.input->frames.size();
+		}
+	}
+
+	void modify_structure(const BenchmarkOptions& opts)
+	{
+		size_t num_to_replace = opts.num_copies * TO_REMOVE_RATIO;
+		for (size_t i = 0; i < num_to_replace; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				construct_model(INPUTS[j], i);
+			}
+		}
+	}
+};
+
+struct OnePoolJointsMixedWeights
+{
+	int frame;
+	const ModelInput* input;
+	size_t idx_start;
+	size_t idx_end;
+
+};
+
+struct Bench_OnePoolJointsMixedWeights
+{
+	std::vector<OnePoolJointsMixedWeights> models;
+	std::vector<JointOnePool> joints;
+	WeightPoolMixed wp;
+
+	size_t counter = 0;
+	size_t joint_counter = 0;
+	size_t weight_counter = 0;
+
+	void construct_model(const ModelInput& input, size_t id)
+	{
+		models[counter].idx_start = joint_counter;
+		models[counter].idx_end = joint_counter + input.joints_raw.size();
+		models[counter].frame = id % input.frames.size();;
+		models[counter].input = &input;
+		for (size_t idx = 0; idx < input.joints_raw.size(); idx++) {
+			size_t i = joint_counter + idx;
+			joints[i].orient = input.joints_raw[idx].base_quat;
+			joints[i].pos = input.joints_raw[idx].base_pos;
+			joints[i].weights_start = weight_counter + input.joints_raw[idx].idx_start;
+			joints[i].weights_end = weight_counter + input.joints_raw[idx].idx_end;
+		}
+
+		joints[joint_counter].parent = nullptr;
+		joints[joint_counter].next = nullptr;
+		for (size_t idx = 1; idx < input.joints_raw.size(); idx++) {
+			size_t i = joint_counter + idx;
+			joints[i].parent = &joints[joint_counter + input.joints_raw[idx].parent];
+			joints[i].next = nullptr;
+			joints[i - 1].next = &joints[i];
+		}
+
+		for (size_t idx = 0; idx < input.weights_raw.size(); idx++) {
+			size_t i = weight_counter + idx;
+
+			wp.bias[i] = input.weights_raw[idx].bias;
+			wp.initial_pos[i] = input.weights_raw[idx].pos;
+			wp.pos[i].x = 0;
+			wp.pos[i].y = 0;
+			wp.pos[i].z = 0;
+		}
+
+		joint_counter += input.joints_raw.size();
+		if (joint_counter == joints.size()) {
+			joint_counter = 0;
+		}
+
+		weight_counter += input.weights_raw.size();
+		if (weight_counter == wp.pos.size()) {
+			weight_counter = 0;
+		}
+
+		counter++;
+		if (counter == models.size()) {
+			counter = 0;
+		}
+	}
+
+	void initialize_from_opts(BenchmarkOptions& opts)
+	{
+		models.resize(opts.num_copies * NUM_MODELS);
+		size_t num_joints = std::accumulate(INPUTS, INPUTS + NUM_MODELS, 0,
+			[](size_t acc, const ModelInput& m) {
+				return acc + m.joints_raw.size();
+			});
+		size_t num_weights = std::accumulate(INPUTS, INPUTS + NUM_MODELS, 0,
+			[](size_t acc, const ModelInput& m) {
+				return acc + m.weights_raw.size();
+			});
+		joints.resize(num_joints * models.size());
+
+		wp.pos.resize(num_weights * models.size());
+		wp.bias.resize(num_weights * models.size());
+		wp.initial_pos.resize(num_weights * models.size());
+
+		for (size_t i = 0; i < opts.num_copies; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				construct_model(INPUTS[j], i);
+			}
+		}
+	}
+
+	void flush_from_cache(const BenchmarkOptions& opts)
+	{
+		size_t joints_range = joints.size() * sizeof(JointOnePool);
+		flush_range(joints.data(), opts.stride, joints_range);
+
+		size_t weights_range = wp.pos.size() * sizeof(float);
+		flush_range(wp.pos.data(), opts.stride, 3 * weights_range);
+		flush_range(wp.initial_pos.data(), opts.stride, 3 * weights_range);
+		flush_range(wp.bias.data(), opts.stride, weights_range);
+	}
+
+	void run_animate_joints()
+	{
+		for (auto& m: models) {
+			JointOnePool* root = &joints[m.idx_start];
+			animate_joints(root,
+						   m.input->joints_raw.data(),
+						   m.input->frames[m.frame].values.data());
+		}
+	}
+
+	void run_animate_weights()
+	{
+		for (auto& m: models) {
+			animate_weights(&joints[m.idx_start], wp);
+
+			m.frame++;
+			m.frame %= m.input->frames.size();
+		}
+	}
+
+	void modify_structure(const BenchmarkOptions& opts)
+	{
+		size_t num_to_replace = opts.num_copies * TO_REMOVE_RATIO;
+		for (size_t i = 0; i < num_to_replace; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				construct_model(INPUTS[j], i);
+			}
+		}
+	}
+};
+
+struct OnePoolJointsSoaWeights
+{
+	int frame;
+	const ModelInput* input;
+	size_t idx_start;
+	size_t idx_end;
+
+};
+
+struct Bench_OnePoolJointsSoaWeights
+{
+	std::vector<OnePoolJointsSoaWeights> models;
+	std::vector<JointOnePool> joints;
+	WeightPoolSoa wp;
+
+	size_t counter = 0;
+	size_t joint_counter = 0;
+	size_t weight_counter = 0;
+
+	void construct_model(const ModelInput& input, size_t id)
+	{
+		models[counter].idx_start = joint_counter;
+		models[counter].idx_end = joint_counter + input.joints_raw.size();
+		models[counter].frame = id % input.frames.size();;
+		models[counter].input = &input;
+		for (size_t idx = 0; idx < input.joints_raw.size(); idx++) {
+			size_t i = joint_counter + idx;
+			joints[i].orient = input.joints_raw[idx].base_quat;
+			joints[i].pos = input.joints_raw[idx].base_pos;
+			joints[i].weights_start = weight_counter + input.joints_raw[idx].idx_start;
+			joints[i].weights_end = weight_counter + input.joints_raw[idx].idx_end;
+		}
+
+		joints[joint_counter].parent = nullptr;
+		joints[joint_counter].next = nullptr;
+		for (size_t idx = 1; idx < input.joints_raw.size(); idx++) {
+			size_t i = joint_counter + idx;
+			joints[i].parent = &joints[joint_counter + input.joints_raw[idx].parent];
+			joints[i].next = nullptr;
+			joints[i - 1].next = &joints[i];
+		}
+
+		for (size_t idx = 0; idx < input.weights_raw.size(); idx++) {
+			size_t i = weight_counter + idx;
+
+			wp.bias[i] = input.weights_raw[idx].bias;
+			wp.initial_posx[i] = input.weights_raw[idx].pos.x;
+			wp.initial_posy[i] = input.weights_raw[idx].pos.y;
+			wp.initial_posz[i] = input.weights_raw[idx].pos.z;
+
+			wp.posx[i] = 0;
+			wp.posy[i] = 0;
+			wp.posz[i] = 0;
+		}
+
+		joint_counter += input.joints_raw.size();
+		if (joint_counter == joints.size()) {
+			joint_counter = 0;
+		}
+
+		weight_counter += input.weights_raw.size();
+		if (weight_counter == wp.posx.size()) {
+			weight_counter = 0;
+		}
+
+		counter++;
+		if (counter == models.size()) {
+			counter = 0;
+		}
+	}
+
+	void initialize_from_opts(BenchmarkOptions& opts)
+	{
+		models.resize(opts.num_copies * NUM_MODELS);
+		size_t num_joints = std::accumulate(INPUTS, INPUTS + NUM_MODELS, 0,
+			[](size_t acc, const ModelInput& m) {
+				return acc + m.joints_raw.size();
+			});
+		size_t num_weights = std::accumulate(INPUTS, INPUTS + NUM_MODELS, 0,
+			[](size_t acc, const ModelInput& m) {
+				return acc + m.weights_raw.size();
+			});
+		joints.resize(num_joints * models.size());
+
+		wp.posx.resize(num_weights * models.size());
+		wp.posy.resize(num_weights * models.size());
+		wp.posz.resize(num_weights * models.size());
+
+		wp.initial_posx.resize(num_weights * models.size());
+		wp.initial_posy.resize(num_weights * models.size());
+		wp.initial_posz.resize(num_weights * models.size());
+
+		wp.bias.resize(num_weights * models.size());
+
+		for (size_t i = 0; i < opts.num_copies; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				construct_model(INPUTS[j], i);
+			}
+		}
+	}
+
+	void flush_from_cache(const BenchmarkOptions& opts)
+	{
+		size_t joints_range = joints.size() * sizeof(JointOnePool);
+		flush_range(joints.data(), opts.stride, joints_range);
+
+		size_t weights_range = wp.posx.size() * sizeof(float);
+		flush_range(wp.posx.data(), opts.stride, weights_range);
+		flush_range(wp.posy.data(), opts.stride, weights_range);
+		flush_range(wp.posz.data(), opts.stride, weights_range);
+
+		flush_range(wp.initial_posx.data(), opts.stride, weights_range);
+		flush_range(wp.initial_posy.data(), opts.stride, weights_range);
+		flush_range(wp.initial_posz.data(), opts.stride, weights_range);
+
+		flush_range(wp.bias.data(), opts.stride, weights_range);
+	}
+
+	void run_animate_joints()
+	{
+		for (auto& m: models) {
+			JointOnePool* root = &joints[m.idx_start];
+			animate_joints(root,
+						   m.input->joints_raw.data(),
+						   m.input->frames[m.frame].values.data());
+		}
+	}
+
+	void run_animate_weights()
+	{
+		for (auto& m: models) {
+			animate_weights(&joints[m.idx_start], wp);
+
+			m.frame++;
+			m.frame %= m.input->frames.size();
+		}
+	}
+
+	void modify_structure(const BenchmarkOptions& opts)
+	{
+		size_t num_to_replace = opts.num_copies * TO_REMOVE_RATIO;
+		for (size_t i = 0; i < num_to_replace; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				construct_model(INPUTS[j], i);
+			}
+		}
+	}
+};
+
 template<typename DataStructure>
 void BM_Template(benchmark::State& state)
 {
@@ -882,19 +1317,20 @@ void BM_Template(benchmark::State& state)
 	DataStructure structure;
 	structure.initialize_from_opts(opts);
 
-	structure.run_animate_joints();
-	structure.flush_from_cache(opts);
-
 	for (auto _: state) {
-		structure.run_animate_weights();
-		structure.flush_from_cache(opts);
-		benchmark::ClobberMemory();
-
 		state.PauseTiming();
-		structure.modify_structure(opts);
 		if (opts.flush_range) {
 			structure.flush_from_cache(opts);
 		}
+		structure.run_animate_joints();
+
+		state.ResumeTiming();
+		benchmark::ClobberMemory();
+		structure.run_animate_weights();
+		state.PauseTiming();
+
+		benchmark::ClobberMemory();
+		structure.modify_structure(opts);
 		state.ResumeTiming();
 	}
 
@@ -955,6 +1391,27 @@ BENCHMARK_TEMPLATE(BM_Template, Bench_ScatteredJointsSoaWeights)
 	->ComputeStatistics("max", max_of_vector);
 
 BENCHMARK_TEMPLATE(BM_Template, Bench_PooledJointsSoaWeights)
+	->ArgNames({"NumDuplicates", "FlushCache"})
+	->Apply(CustomArgs)
+	->Complexity(benchmark::oN)
+	->ComputeStatistics("min", min_of_vector)
+	->ComputeStatistics("max", max_of_vector);
+
+BENCHMARK_TEMPLATE(BM_Template, Bench_OnePoolJointsAosWeights)
+	->ArgNames({"NumDuplicates", "FlushCache"})
+	->Apply(CustomArgs)
+	->Complexity(benchmark::oN)
+	->ComputeStatistics("min", min_of_vector)
+	->ComputeStatistics("max", max_of_vector);
+
+BENCHMARK_TEMPLATE(BM_Template, Bench_OnePoolJointsMixedWeights)
+	->ArgNames({"NumDuplicates", "FlushCache"})
+	->Apply(CustomArgs)
+	->Complexity(benchmark::oN)
+	->ComputeStatistics("min", min_of_vector)
+	->ComputeStatistics("max", max_of_vector);
+
+BENCHMARK_TEMPLATE(BM_Template, Bench_OnePoolJointsSoaWeights)
 	->ArgNames({"NumDuplicates", "FlushCache"})
 	->Apply(CustomArgs)
 	->Complexity(benchmark::oN)

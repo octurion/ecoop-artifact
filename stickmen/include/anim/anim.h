@@ -77,6 +77,44 @@ struct JointSoa
 	void animate_my_weights();
 };
 
+struct WeightPoolAos {
+	std::vector<WeightAos> weights;
+};
+
+struct WeightPoolMixed {
+	std::vector<vec3> initial_pos;
+	std::vector<vec3> pos;
+	std::vector<float> bias;
+};
+
+struct WeightPoolSoa {
+	std::vector<float> initial_posx;
+	std::vector<float> initial_posy;
+	std::vector<float> initial_posz;
+
+	std::vector<float> posx;
+	std::vector<float> posy;
+	std::vector<float> posz;
+
+	std::vector<float> bias;
+};
+
+struct JointOnePool
+{
+	JointOnePool* parent;
+	JointOnePool* next;
+
+	vec3 pos;
+	quat orient;
+
+	size_t weights_start;
+	size_t weights_end;
+
+	void animate_my_weights(WeightPoolAos& weights);
+	void animate_my_weights(WeightPoolMixed& weights);
+	void animate_my_weights(WeightPoolSoa& weights);
+};
+
 struct JointRaw
 {
 	size_t parent;
@@ -85,6 +123,10 @@ struct JointRaw
 	vec3 base_pos;
 	quat base_quat;
 	int8_t flags;
+
+	size_t idx_start;
+	size_t num_weights;
+	size_t idx_end;
 };
 
 struct Frame
@@ -119,6 +161,9 @@ void animate_joints<JointMixed>(JointMixed* root, const JointRaw* base, const fl
 extern template
 void animate_joints<JointSoa>(JointSoa* root, const JointRaw* base, const float* frame_components);
 
+extern template
+void animate_joints<JointOnePool>(JointOnePool* root, const JointRaw* base, const float* frame_components);
+
 template<typename Joint>
 void animate_weights(Joint* root);
 
@@ -130,3 +175,7 @@ void animate_weights<JointMixed>(JointMixed* root);
 
 extern template
 void animate_weights<JointSoa>(JointSoa* root);
+
+void animate_weights(JointOnePool* root, WeightPoolAos& weights);
+void animate_weights(JointOnePool* root, WeightPoolMixed& weights);
+void animate_weights(JointOnePool* root, WeightPoolSoa& weights);
