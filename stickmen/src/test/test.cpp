@@ -17,7 +17,7 @@
 #include <cstring>
 #include <unistd.h>
 
-#define NUM_MODELS 2
+#define NUM_MODELS 3
 #define TO_REMOVE_RATIO 0.1f
 
 struct BenchmarkOptions
@@ -1654,8 +1654,10 @@ void BM_Template(benchmark::State& state)
 	if (!initialized) {
 		ModelInput input0 = parse_files("../resources/hellknight.md5mesh", "../resources/hellknight.md5anim");
 		ModelInput input1 = parse_files("../resources/boblampclean.md5mesh", "../resources/boblampclean.md5anim");
+		ModelInput input2 = parse_files("../resources/deer.md5mesh", "../resources/deer.md5anim");
 		INPUTS[0] = std::move(input0);
 		INPUTS[1] = std::move(input1);
+		INPUTS[2] = std::move(input2);
 		initialized = true;
 	}
 
