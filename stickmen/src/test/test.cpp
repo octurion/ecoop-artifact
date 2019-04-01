@@ -1302,6 +1302,352 @@ struct Bench_OnePoolJointsSoaWeights
 	}
 };
 
+struct PooledJointsAosPerJointPoolWeightsAos
+{
+	int frame;
+	const ModelInput* input;
+	std::vector<JointOnePool> joints;
+	WeightPoolAos wp;
+};
+
+struct Bench_PooledJointsPerJointPoolWeightsAos
+{
+	std::deque<PooledJointsAosPerJointPoolWeightsAos> models;
+	size_t counter = 0;
+
+	PooledJointsAosPerJointPoolWeightsAos construct_model(const ModelInput& input, size_t id)
+	{
+		PooledJointsAosPerJointPoolWeightsAos model;
+		model.input = &input;
+		model.frame = id % input.frames.size();
+
+		for (size_t i = 0; i < input.joints_raw.size(); i++) {
+			JointOnePool j;
+			j.orient = input.joints_raw[i].base_quat;
+			j.pos = input.joints_raw[i].base_pos;
+			j.weights_start = input.joints_raw[i].idx_start;
+			j.weights_end = input.joints_raw[i].idx_end;
+
+			model.joints.emplace_back(std::move(j));
+		}
+
+		model.joints[0].parent = nullptr;
+		model.joints[0].next = nullptr;
+		for (size_t i = 1; i < model.joints.size(); i++) {
+			model.joints[i].parent = &model.joints[input.joints_raw[i].parent];
+			model.joints[i].next = nullptr;
+			model.joints[i - 1].next = &model.joints[i];
+		}
+
+		for (size_t i = 0; i < input.weights_raw.size(); i++) {
+			WeightAos w;
+			w.bias = input.weights_raw[i].bias;
+			w.initial_pos = input.weights_raw[i].pos;
+			w.pos.x = 0;
+			w.pos.y = 0;
+			w.pos.z = 0;
+
+			model.wp.weights.emplace_back(w);
+		}
+
+		return model;
+	}
+
+	void initialize_from_opts(BenchmarkOptions& opts)
+	{
+		for (size_t i = 0; i < opts.num_copies; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.emplace_back(construct_model(INPUTS[j], i));
+			}
+		}
+
+		counter = opts.num_copies - 1;
+	}
+
+	void flush_from_cache(const BenchmarkOptions& opts)
+	{
+		for (const auto& m: models) {
+			size_t jrange = m.joints.size() * sizeof(decltype(m.joints)::value_type);
+			size_t wrange = m.wp.weights.size() * sizeof(decltype(m.wp.weights)::value_type);
+
+			flush_range(m.joints.data(), opts.stride, jrange);
+			flush_range(m.wp.weights.data(), opts.stride, wrange);
+		}
+	}
+
+	void run_animate_joints()
+	{
+		for (auto& m: models) {
+			animate_joints(&m.joints[0],
+						   m.input->joints_raw.data(),
+						   m.input->frames[m.frame].values.data());
+		}
+	}
+
+	void run_animate_weights()
+	{
+		for (auto& m: models) {
+			animate_weights(&m.joints[0], m.wp);
+
+			m.frame++;
+			m.frame %= m.input->frames.size();
+		}
+	}
+
+	void modify_structure(const BenchmarkOptions& opts)
+	{
+		size_t num_to_replace = opts.num_copies * TO_REMOVE_RATIO;
+		for (size_t i = 0; i < num_to_replace; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.pop_front();
+			}
+		}
+
+		for (size_t i = 0; i < num_to_replace; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.emplace_back(construct_model(INPUTS[j], counter));
+			}
+			counter++;
+		}
+	}
+};
+
+struct PooledJointsAosPerJointPoolWeightsMixed
+{
+	int frame;
+	const ModelInput* input;
+	std::vector<JointOnePool> joints;
+	WeightPoolMixed wp;
+};
+
+struct Bench_PooledJointsPerJointPoolWeightsMixed
+{
+	std::deque<PooledJointsAosPerJointPoolWeightsMixed> models;
+	size_t counter = 0;
+
+	PooledJointsAosPerJointPoolWeightsMixed construct_model(const ModelInput& input, size_t id)
+	{
+		PooledJointsAosPerJointPoolWeightsMixed model;
+		model.input = &input;
+		model.frame = id % input.frames.size();
+
+		for (size_t i = 0; i < input.joints_raw.size(); i++) {
+			JointOnePool j;
+			j.orient = input.joints_raw[i].base_quat;
+			j.pos = input.joints_raw[i].base_pos;
+			j.weights_start = input.joints_raw[i].idx_start;
+			j.weights_end = input.joints_raw[i].idx_end;
+
+			model.joints.emplace_back(std::move(j));
+		}
+
+		model.joints[0].parent = nullptr;
+		model.joints[0].next = nullptr;
+		for (size_t i = 1; i < model.joints.size(); i++) {
+			model.joints[i].parent = &model.joints[input.joints_raw[i].parent];
+			model.joints[i].next = nullptr;
+			model.joints[i - 1].next = &model.joints[i];
+		}
+
+		for (size_t i = 0; i < input.weights_raw.size(); i++) {
+			WeightAos w;
+			w.bias = input.weights_raw[i].bias;
+			w.initial_pos = input.weights_raw[i].pos;
+			w.pos.x = 0;
+			w.pos.y = 0;
+			w.pos.z = 0;
+
+			model.wp.pos.emplace_back(w.pos);
+			model.wp.initial_pos.emplace_back(w.initial_pos);
+			model.wp.bias.emplace_back(w.bias);
+		}
+
+		return model;
+	}
+
+	void initialize_from_opts(BenchmarkOptions& opts)
+	{
+		for (size_t i = 0; i < opts.num_copies; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.emplace_back(construct_model(INPUTS[j], i));
+			}
+		}
+
+		counter = opts.num_copies - 1;
+	}
+
+	void flush_from_cache(const BenchmarkOptions& opts)
+	{
+		for (const auto& m: models) {
+			size_t jrange = m.joints.size() * sizeof(decltype(m.joints)::value_type);
+			size_t prange = m.wp.pos.size() * sizeof(decltype(m.wp.pos)::value_type);
+			size_t iprange = m.wp.initial_pos.size() * sizeof(decltype(m.wp.initial_pos)::value_type);
+			size_t brange = m.wp.bias.size() * sizeof(decltype(m.wp.bias)::value_type);
+
+			flush_range(m.joints.data(), opts.stride, jrange);
+			flush_range(m.wp.pos.data(), opts.stride, prange);
+			flush_range(m.wp.initial_pos.data(), opts.stride, iprange);
+			flush_range(m.wp.bias.data(), opts.stride, brange);
+		}
+	}
+
+	void run_animate_joints()
+	{
+		for (auto& m: models) {
+			animate_joints(&m.joints[0],
+						   m.input->joints_raw.data(),
+						   m.input->frames[m.frame].values.data());
+		}
+	}
+
+	void run_animate_weights()
+	{
+		for (auto& m: models) {
+			animate_weights(&m.joints[0], m.wp);
+
+			m.frame++;
+			m.frame %= m.input->frames.size();
+		}
+	}
+
+	void modify_structure(const BenchmarkOptions& opts)
+	{
+		size_t num_to_replace = opts.num_copies * TO_REMOVE_RATIO;
+		for (size_t i = 0; i < num_to_replace; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.pop_front();
+			}
+		}
+
+		for (size_t i = 0; i < num_to_replace; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.emplace_back(construct_model(INPUTS[j], counter));
+			}
+			counter++;
+		}
+	}
+};
+
+struct PooledJointsAosPerJointPoolWeightsSoa
+{
+	int frame;
+	const ModelInput* input;
+	std::vector<JointOnePool> joints;
+	WeightPoolSoa wp;
+};
+
+struct Bench_PooledJointsPerJointPoolWeightsSoa
+{
+	std::deque<PooledJointsAosPerJointPoolWeightsSoa> models;
+	size_t counter = 0;
+
+	PooledJointsAosPerJointPoolWeightsSoa construct_model(const ModelInput& input, size_t id)
+	{
+		PooledJointsAosPerJointPoolWeightsSoa model;
+		model.input = &input;
+		model.frame = id % input.frames.size();
+
+		for (size_t i = 0; i < input.joints_raw.size(); i++) {
+			JointOnePool j;
+			j.orient = input.joints_raw[i].base_quat;
+			j.pos = input.joints_raw[i].base_pos;
+			j.weights_start = input.joints_raw[i].idx_start;
+			j.weights_end = input.joints_raw[i].idx_end;
+
+			model.joints.emplace_back(std::move(j));
+		}
+
+		model.joints[0].parent = nullptr;
+		model.joints[0].next = nullptr;
+		for (size_t i = 1; i < model.joints.size(); i++) {
+			model.joints[i].parent = &model.joints[input.joints_raw[i].parent];
+			model.joints[i].next = nullptr;
+			model.joints[i - 1].next = &model.joints[i];
+		}
+
+		for (size_t i = 0; i < input.weights_raw.size(); i++) {
+			model.wp.posx.emplace_back(0);
+			model.wp.posy.emplace_back(0);
+			model.wp.posz.emplace_back(0);
+
+			model.wp.initial_posx.emplace_back(input.weights_raw[i].pos.x);
+			model.wp.initial_posy.emplace_back(input.weights_raw[i].pos.y);
+			model.wp.initial_posz.emplace_back(input.weights_raw[i].pos.z);
+
+			model.wp.bias.emplace_back(input.weights_raw[i].bias);
+		}
+
+		return model;
+	}
+
+	void initialize_from_opts(BenchmarkOptions& opts)
+	{
+		for (size_t i = 0; i < opts.num_copies; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.emplace_back(construct_model(INPUTS[j], i));
+			}
+		}
+
+		counter = opts.num_copies - 1;
+	}
+
+	void flush_from_cache(const BenchmarkOptions& opts)
+	{
+		for (const auto& m: models) {
+			size_t jrange = m.joints.size() * sizeof(decltype(m.joints)::value_type);
+			size_t prange = m.wp.posx.size() * sizeof(decltype(m.wp.posx)::value_type);
+
+			flush_range(m.joints.data(), opts.stride, jrange);
+
+			flush_range(m.wp.posx.data(), opts.stride, prange);
+			flush_range(m.wp.posy.data(), opts.stride, prange);
+			flush_range(m.wp.posz.data(), opts.stride, prange);
+
+			flush_range(m.wp.initial_posx.data(), opts.stride, prange);
+			flush_range(m.wp.initial_posy.data(), opts.stride, prange);
+			flush_range(m.wp.initial_posz.data(), opts.stride, prange);
+
+			flush_range(m.wp.bias.data(), opts.stride, prange);
+		}
+	}
+
+	void run_animate_joints()
+	{
+		for (auto& m: models) {
+			animate_joints(&m.joints[0],
+						   m.input->joints_raw.data(),
+						   m.input->frames[m.frame].values.data());
+		}
+	}
+
+	void run_animate_weights()
+	{
+		for (auto& m: models) {
+			animate_weights(&m.joints[0], m.wp);
+
+			m.frame++;
+			m.frame %= m.input->frames.size();
+		}
+	}
+
+	void modify_structure(const BenchmarkOptions& opts)
+	{
+		size_t num_to_replace = opts.num_copies * TO_REMOVE_RATIO;
+		for (size_t i = 0; i < num_to_replace; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.pop_front();
+			}
+		}
+
+		for (size_t i = 0; i < num_to_replace; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.emplace_back(construct_model(INPUTS[j], counter));
+			}
+			counter++;
+		}
+	}
+};
+
 template<typename DataStructure>
 void BM_Template(benchmark::State& state)
 {
@@ -1412,6 +1758,27 @@ BENCHMARK_TEMPLATE(BM_Template, Bench_OnePoolJointsMixedWeights)
 	->ComputeStatistics("max", max_of_vector);
 
 BENCHMARK_TEMPLATE(BM_Template, Bench_OnePoolJointsSoaWeights)
+	->ArgNames({"NumDuplicates", "FlushCache"})
+	->Apply(CustomArgs)
+	->Complexity(benchmark::oN)
+	->ComputeStatistics("min", min_of_vector)
+	->ComputeStatistics("max", max_of_vector);
+
+BENCHMARK_TEMPLATE(BM_Template, Bench_PooledJointsPerJointPoolWeightsAos)
+	->ArgNames({"NumDuplicates", "FlushCache"})
+	->Apply(CustomArgs)
+	->Complexity(benchmark::oN)
+	->ComputeStatistics("min", min_of_vector)
+	->ComputeStatistics("max", max_of_vector);
+
+BENCHMARK_TEMPLATE(BM_Template, Bench_PooledJointsPerJointPoolWeightsMixed)
+	->ArgNames({"NumDuplicates", "FlushCache"})
+	->Apply(CustomArgs)
+	->Complexity(benchmark::oN)
+	->ComputeStatistics("min", min_of_vector)
+	->ComputeStatistics("max", max_of_vector);
+
+BENCHMARK_TEMPLATE(BM_Template, Bench_PooledJointsPerJointPoolWeightsSoa)
 	->ArgNames({"NumDuplicates", "FlushCache"})
 	->Apply(CustomArgs)
 	->Complexity(benchmark::oN)
