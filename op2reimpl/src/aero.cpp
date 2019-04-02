@@ -597,56 +597,56 @@ int main(int argc, char** argv)
 	std::vector<Color> colors;
 
 	{
-	size_t idx = 0;
-	for (size_t chunk_id = 0; chunk_id < (ncell + CHUNK_SIZE - 1) / CHUNK_SIZE; chunk_id++) {
-		Chunk chunk;
-		chunk.range.first = idx;
-		chunk.indices.reserve(2 * CHUNK_SIZE);
-		for (size_t block_idx = 0; idx < ncell && block_idx < CHUNK_SIZE; idx++, block_idx++) {
-			for (size_t k = 0; k < 4; k++) {
-				chunk.indices.push_back(cells_raw[idx].pcell[k]);
+		size_t idx = 0;
+		for (size_t chunk_id = 0; chunk_id < (ncell + CHUNK_SIZE - 1) / CHUNK_SIZE; chunk_id++) {
+			Chunk chunk;
+			chunk.range.first = idx;
+			chunk.indices.reserve(2 * CHUNK_SIZE);
+			for (size_t block_idx = 0; idx < ncell && block_idx < CHUNK_SIZE; idx++, block_idx++) {
+				for (size_t k = 0; k < 4; k++) {
+					chunk.indices.push_back(cells_raw[idx].pcell[k]);
+				}
 			}
-		}
-		chunk.range.second = idx;
-		std::sort(chunk.indices.begin(), chunk.indices.end());
-		chunk.indices.erase(std::unique(chunk.indices.begin(), chunk.indices.end()), chunk.indices.end());
+			chunk.range.second = idx;
+			std::sort(chunk.indices.begin(), chunk.indices.end());
+			chunk.indices.erase(std::unique(chunk.indices.begin(), chunk.indices.end()), chunk.indices.end());
 
-		Color* found = nullptr;
-		for (auto& c: colors) {
-			bool intersects = std::any_of(chunk.indices.begin(), chunk.indices.end(), [&c](size_t k) {
-				return c.indices.find(k) != c.indices.end();
-			});
-			if (!intersects) {
-				found = &c;
-				break;
+			Color* found = nullptr;
+			for (auto& c: colors) {
+				bool intersects = std::any_of(chunk.indices.begin(), chunk.indices.end(), [&c](size_t k) {
+					return c.indices.find(k) != c.indices.end();
+				});
+				if (!intersects) {
+					found = &c;
+					break;
+				}
 			}
-		}
-		
-		if (found == nullptr) {
-			colors.emplace_back();
-			found = &colors.back();
-		}
 
-		found->chunk_ranges.push_back(chunk.range);
-		found->indices.insert(chunk.indices.begin(), chunk.indices.end());
-	}
+			if (found == nullptr) {
+				colors.emplace_back();
+				found = &colors.back();
+			}
+
+			found->chunk_ranges.push_back(chunk.range);
+			found->indices.insert(chunk.indices.begin(), chunk.indices.end());
+		}
 	}
 
 	{
-	size_t last_idx = 0;
-	size_t i = 0;
-	for (const auto& c: colors) {
-		for (const auto& r: c.chunk_ranges) {
-			for (size_t k = r.first; k < r.second; k++, i++) {
-				for (size_t l = 0; l < 4; l++) {
-					cells.pcell[i][l] = cells_raw[k].pcell[l];
+		size_t last_idx = 0;
+		size_t i = 0;
+		for (const auto& c: colors) {
+			for (const auto& r: c.chunk_ranges) {
+				for (size_t k = r.first; k < r.second; k++, i++) {
+					for (size_t l = 0; l < 4; l++) {
+						cells.pcell[i][l] = cells_raw[k].pcell[l];
+					}
 				}
 			}
-		}
 
-		ranges.emplace_back(last_idx, i);
-		last_idx = i;
-	}
+			ranges.emplace_back(last_idx, i);
+			last_idx = i;
+		}
 	}
 
 	/*
