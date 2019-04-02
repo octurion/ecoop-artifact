@@ -8,6 +8,8 @@
 #include <vector>
 #include <unordered_set>
 
+static const size_t CHUNK_SIZE = 384;
+
 static const double gam = 1.4;
 static const double gm1 = gam - 1.0;
 static const double gm1i = 1.0 / gm1;
@@ -142,6 +144,117 @@ struct CellSet {
 	std::unordered_set<size_t> set;
 };
 
+struct Color {
+	std::vector<std::pair<size_t, size_t>> chunk_ranges;
+	std::unordered_set<size_t> indices;
+};
+
+struct Chunk {
+	std::pair<size_t, size_t> range;
+	std::vector<size_t> indices;
+};
+
+void res_calc(CellPool& cells, NodePool& nodes, const std::vector<Color>& colors) {
+	for (const auto& c: colors) {
+		#pragma omp parallel for
+		for (size_t i = 0; i < c.chunk_ranges.size(); i++) {
+			const auto& r = c.chunk_ranges[i];
+
+			size_t begin = r.first;
+			size_t end = r.second;
+			for (size_t n = begin; n < end; n++) {
+				std::array<const double*, 4> x = {
+					nodes.p_x[cells.pcell[n][0]].data(),
+					nodes.p_x[cells.pcell[n][1]].data(),
+					nodes.p_x[cells.pcell[n][2]].data(),
+					nodes.p_x[cells.pcell[n][3]].data(),
+				};
+				std::array<const double*, 4> phim = {
+					&nodes.p_phim[cells.pcell[n][0]],
+					&nodes.p_phim[cells.pcell[n][1]],
+					&nodes.p_phim[cells.pcell[n][2]],
+					&nodes.p_phim[cells.pcell[n][3]],
+				};
+
+				std::array<double,16>& K = cells.p_K[n];
+
+				std::array<double*, 4> res = {
+					&nodes.p_resm[cells.pcell[n][0]],
+					&nodes.p_resm[cells.pcell[n][1]],
+					&nodes.p_resm[cells.pcell[n][2]],
+					&nodes.p_resm[cells.pcell[n][3]],
+				};
+
+				for (int j = 0; j < 4; j++) {
+					for (int k = 0; k < 4; k++) {
+						K[j * 4 + k] = 0;
+					}
+				}
+				for (int i = 0; i < 4; i++) { // for each gauss point
+					double det_x_xi = 0;
+					double N_x[8];
+
+					double a = 0;
+					for (int m = 0; m < 4; m++)
+						det_x_xi += Ng2_xi[4 * i + 16 + m] * x[m][1];
+					for (int m = 0; m < 4; m++)
+						N_x[m] = det_x_xi * Ng2_xi[4 * i + m];
+
+					a = 0;
+					for (int m = 0; m < 4; m++)
+						a += Ng2_xi[4 * i + m] * x[m][0];
+					for (int m = 0; m < 4; m++)
+						N_x[4 + m] = a * Ng2_xi[4 * i + 16 + m];
+
+					det_x_xi *= a;
+
+					a = 0;
+					for (int m = 0; m < 4; m++)
+						a += Ng2_xi[4 * i + m] * x[m][1];
+					for (int m = 0; m < 4; m++)
+						N_x[m] -= a * Ng2_xi[4 * i + 16 + m];
+
+					double b = 0;
+					for (int m = 0; m < 4; m++)
+						b += Ng2_xi[4 * i + 16 + m] * x[m][0];
+					for (int m = 0; m < 4; m++)
+						N_x[4 + m] -= b * Ng2_xi[4 * i + m];
+
+					det_x_xi -= a * b;
+
+					for (int j = 0; j < 8; j++)
+						N_x[j] /= det_x_xi;
+
+					double wt1 = wtg2[i] * det_x_xi;
+					// double wt2 = wtg2[i]*det_x_xi/r;
+
+					double u[2] = {0.0, 0.0};
+					for (int j = 0; j < 4; j++) {
+						u[0] += N_x[j] * phim[j][0];
+						u[1] += N_x[4 + j] * phim[j][0];
+					}
+
+					double Dk = 1.0 + 0.5 * gm1 * (m2 - (u[0] * u[0] + u[1] * u[1]));
+					double rho = pow(Dk, gm1i);
+					double rc2 = rho / Dk;
+
+					for (int j = 0; j < 4; j++) {
+						res[j][0] += wt1 * rho * (u[0] * N_x[j] + u[1] * N_x[4 + j]);
+					}
+					for (int j = 0; j < 4; j++) {
+						for (int k = 0; k < 4; k++) {
+							K[j * 4 + k] +=
+								wt1 * rho * (N_x[j] * N_x[k] + N_x[4 + j] * N_x[4 + k]) -
+								wt1 * rc2 * (u[0] * N_x[j] + u[1] * N_x[4 + j]) *
+								(u[0] * N_x[k] + u[1] * N_x[4 + k]);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 void res_calc(CellPool& cells, NodePool& nodes, const std::vector<std::pair<size_t, size_t>>& ranges) {
 	#pragma omp parallel
 	for (const auto& r: ranges) {
@@ -272,6 +385,52 @@ void init_cg(NodePool& nodes, double* c) {
 	}
 
 	*c += c_acc;
+}
+
+void spMV(const CellPool& cells, NodePool& nodes, const std::vector<Color>& colors) {
+	for (const auto& c: colors) {
+		#pragma omp parallel for
+		for (size_t i = 0; i < c.chunk_ranges.size(); i++) {
+			const auto& r = c.chunk_ranges[i];
+
+			size_t begin = r.first;
+			size_t end = r.second;
+
+			for (size_t i = begin; i < end; i++) {
+				std::array<double*, 4> v = {
+					&nodes.p_V[cells.pcell[i][0]],
+					&nodes.p_V[cells.pcell[i][1]],
+					&nodes.p_V[cells.pcell[i][2]],
+					&nodes.p_V[cells.pcell[i][3]],
+				};
+				std::array<const double*, 4> p = {
+					&nodes.p_P[cells.pcell[i][0]],
+					&nodes.p_P[cells.pcell[i][1]],
+					&nodes.p_P[cells.pcell[i][2]],
+					&nodes.p_P[cells.pcell[i][3]],
+				};
+
+				const std::array<double, 16>& K = cells.p_K[i];
+
+				v[0][0] += K[0] * p[0][0];
+				v[0][0] += K[1] * p[1][0];
+				v[1][0] += K[1] * p[0][0];
+				v[0][0] += K[2] * p[2][0];
+				v[2][0] += K[2] * p[0][0];
+				v[0][0] += K[3] * p[3][0];
+				v[3][0] += K[3] * p[0][0];
+				v[1][0] += K[4 + 1] * p[1][0];
+				v[1][0] += K[4 + 2] * p[2][0];
+				v[2][0] += K[4 + 2] * p[1][0];
+				v[1][0] += K[4 + 3] * p[3][0];
+				v[3][0] += K[4 + 3] * p[1][0];
+				v[2][0] += K[8 + 2] * p[2][0];
+				v[2][0] += K[8 + 3] * p[3][0];
+				v[3][0] += K[8 + 3] * p[2][0];
+				v[3][0] += K[15] * p[3][0];
+			}
+		}
+	}
 }
 
 void spMV(const CellPool& cells, NodePool& nodes, const std::vector<std::pair<size_t, size_t>>& ranges) {
@@ -435,6 +594,62 @@ int main(int argc, char** argv)
 	}
 
 	std::vector<std::pair<size_t, size_t>> ranges;
+	std::vector<Color> colors;
+
+	{
+	size_t idx = 0;
+	for (size_t chunk_id = 0; chunk_id < (ncell + CHUNK_SIZE - 1) / CHUNK_SIZE; chunk_id++) {
+		Chunk chunk;
+		chunk.range.first = idx;
+		chunk.indices.reserve(2 * CHUNK_SIZE);
+		for (size_t block_idx = 0; idx < ncell && block_idx < CHUNK_SIZE; idx++, block_idx++) {
+			for (size_t k = 0; k < 4; k++) {
+				chunk.indices.push_back(cells_raw[idx].pcell[k]);
+			}
+		}
+		chunk.range.second = idx;
+		std::sort(chunk.indices.begin(), chunk.indices.end());
+		chunk.indices.erase(std::unique(chunk.indices.begin(), chunk.indices.end()), chunk.indices.end());
+
+		Color* found = nullptr;
+		for (auto& c: colors) {
+			bool intersects = std::any_of(chunk.indices.begin(), chunk.indices.end(), [&c](size_t k) {
+				return c.indices.find(k) != c.indices.end();
+			});
+			if (!intersects) {
+				found = &c;
+				break;
+			}
+		}
+		
+		if (found == nullptr) {
+			colors.emplace_back();
+			found = &colors.back();
+		}
+
+		found->chunk_ranges.push_back(chunk.range);
+		found->indices.insert(chunk.indices.begin(), chunk.indices.end());
+	}
+	}
+
+	{
+	size_t last_idx = 0;
+	size_t i = 0;
+	for (const auto& c: colors) {
+		for (const auto& r: c.chunk_ranges) {
+			for (size_t k = r.first; k < r.second; k++, i++) {
+				for (size_t l = 0; l < 4; l++) {
+					cells.pcell[i][l] = cells_raw[k].pcell[l];
+				}
+			}
+		}
+
+		ranges.emplace_back(last_idx, i);
+		last_idx = i;
+	}
+	}
+
+	/*
 	{
 		std::vector<CellSet> sets;
 		for (size_t n = 0; n < ncell; n++) {
@@ -469,10 +684,7 @@ int main(int argc, char** argv)
 			last_idx = cur_idx;
 		}
 	}
-	printf("Num ranges: %zu\n", ranges.size());
-	for (auto& r: ranges) {
-		printf("Begin: %zu End: %zu\n", r.first, r.second);
-	}
+	*/
 
 	for (size_t n = 0; n < nbnode; n++) {
 		if (fscanf(in_file, "%zu \n", &bnodes.pbedge[n]) != 1) {
@@ -504,6 +716,7 @@ int main(int argc, char** argv)
 	for (int iter = 1; iter <= num_iter; iter++) {
 		struct timespec res_calc_start, res_calc_end;
 		clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &res_calc_start);
+		//res_calc(cells, nodes, colors);
 		res_calc(cells, nodes, ranges);
 		clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &res_calc_end);
 		res_calc_time += timespec_elapsed(&res_calc_end, &res_calc_start);
@@ -536,6 +749,7 @@ int main(int argc, char** argv)
 			struct timespec spMV_start, spMV_end;
 			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &spMV_start);
 			spMV(cells, nodes, ranges);
+			//spMV(cells, nodes, colors);
 			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &spMV_end);
 			spMV_time += timespec_elapsed(&spMV_end, &spMV_start);
 

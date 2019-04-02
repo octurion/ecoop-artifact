@@ -3,10 +3,14 @@
 #include <stdlib.h>
 #include <math.h>
 
+#include <algorithm>
 #include <array>
+#include <unordered_set>
 #include <vector>
 
-static const int num_iter = 1000;
+static const size_t CHUNK_SIZE = 256;
+
+static const int num_iter = 5;
 
 static const double gam = 1.4f;
 static const double gm1 = gam - 1.0f;
@@ -22,6 +26,16 @@ static const double e = p / (r * gm1) + 0.5f * u * u;
 
 static const double qinf[4] = {
 	r, r * u, 0.0f, r * e,
+};
+
+struct Color {
+	std::vector<std::pair<size_t, size_t>> chunk_ranges;
+	std::unordered_set<size_t> indices;
+};
+
+struct Chunk {
+	std::pair<size_t, size_t> range;
+	std::vector<size_t> indices;
 };
 
 struct Edge {
@@ -44,13 +58,24 @@ struct Cell {
 	std::array<double, 4> qold;
 	double adt;
 	std::array<double, 4> res;
+
+	std::vector<size_t> edges;
+	std::vector<size_t> bedges;
 };
 
 struct Node {
 	std::array<double, 2> p_x; // x
 };
 
-inline void adt_calc(std::vector<Cell>& cells) {
+void copy_oldq(std::vector<Cell>& cells) {
+	#pragma omp parallel for
+	for (size_t i = 0; i < cells.size(); i++) {
+		cells[i].qold = cells[i].p_q;
+	}
+}
+
+void adt_calc(std::vector<Cell>& cells) {
+	#pragma omp parallel for
 	for (size_t i = 0; i < cells.size(); i++) {
 		const double *x1 = cells[i].pcell_new[0].data();
 		const double *x2 = cells[i].pcell_new[1].data();
@@ -85,55 +110,69 @@ inline void adt_calc(std::vector<Cell>& cells) {
 	}
 }
 
-inline void res_calc(const std::vector<Edge>& edges, const std::vector<Node>& nodes, std::vector<Cell>& cells) {
-	for (size_t i = 0; i < edges.size(); i++) {
-		const double *x1 = nodes[edges[i].pedge[0]].p_x.data();
-		const double *x2 = nodes[edges[i].pedge[1]].p_x.data();
-		const double *q1 = cells[edges[i].pecell[0]].p_q.data();
-		const double *q2 = cells[edges[i].pecell[1]].p_q.data();
-		const double *adt1 = &cells[edges[i].pecell[0]].adt;
-		const double *adt2 = &cells[edges[i].pecell[1]].adt;
-		double *res1 = cells[edges[i].pecell[0]].res.data();
-		double *res2 = cells[edges[i].pecell[1]].res.data();
+void res_calc(std::vector<Edge>& edges, const std::vector<Node>& nodes, std::vector<Cell>& cells, const std::vector<std::pair<size_t, size_t>>& ranges) {
+	for (const auto& r: ranges) {
+		#pragma omp parallel for
+		for (size_t i = r.first; i < r.second; i++) {
+			const double *x1 = nodes[edges[i].pedge[0]].p_x.data();
+			const double *x2 = nodes[edges[i].pedge[1]].p_x.data();
+			const double *q1 = cells[edges[i].pecell[0]].p_q.data();
+			const double *q2 = cells[edges[i].pecell[1]].p_q.data();
+			const double *adt1 = &cells[edges[i].pecell[0]].adt;
+			const double *adt2 = &cells[edges[i].pecell[1]].adt;
+			double *res1 = cells[edges[i].pecell[0]].res.data();
+			double *res2 = cells[edges[i].pecell[1]].res.data();
 
-		double dx, dy, mu, ri, p1, vol1, p2, vol2, f;
+			double q1_0 = q1[0];
+			double q1_1 = q1[1];
+			double q1_2 = q1[2];
+			double q1_3 = q1[3];
 
-		dx = x1[0] - x2[0];
-		dy = x1[1] - x2[1];
+			double q2_0 = q2[0];
+			double q2_1 = q2[1];
+			double q2_2 = q2[2];
+			double q2_3 = q2[3];
 
-		ri = 1.0f / q1[0];
-		p1 = gm1 * (q1[3] - 0.5f * ri * (q1[1] * q1[1] + q1[2] * q1[2]));
-		vol1 = ri * (q1[1] * dy - q1[2] * dx);
+			double ri1 = 1.0f / q1_0;
+			double ri2 = 1.0f / q2_0;
 
-		ri = 1.0f / q2[0];
-		p2 = gm1 * (q2[3] - 0.5f * ri * (q2[1] * q2[1] + q2[2] * q2[2]));
-		vol2 = ri * (q2[1] * dy - q2[2] * dx);
+			double dx = x1[0] - x2[0];
+			double dy = x1[1] - x2[1];
 
-		mu = 0.5f * ((*adt1) + (*adt2)) * eps;
+			double p1 = gm1 * (q1_3 - 0.5f * ri1 * (q1_1 * q1_1 + q1_2 * q1_2));
+			double vol1 = ri1 * (q1_1 * dy - q1_2 * dx);
 
-		f = 0.5f * (vol1 * q1[0] + vol2 * q2[0]) + mu * (q1[0] - q2[0]);
-		res1[0] += f;
-		res2[0] -= f;
-		f = 0.5f * (vol1 * q1[1] + p1 * dy + vol2 * q2[1] + p2 * dy) + mu * (q1[1] - q2[1]);
-		res1[1] += f;
-		res2[1] -= f;
-		f = 0.5f * (vol1 * q1[2] - p1 * dx + vol2 * q2[2] - p2 * dx) + mu * (q1[2] - q2[2]);
-		res1[2] += f;
-		res2[2] -= f;
-		f = 0.5f * (vol1 * (q1[3] + p1) + vol2 * (q2[3] + p2)) + mu * (q1[3] - q2[3]);
-		res1[3] += f;
-		res2[3] -= f;
+			double p2 = gm1 * (q2_3 - 0.5f * ri2 * (q2_1 * q2_1 + q2_2 * q2_2));
+			double vol2 = ri2 * (q2_1 * dy - q2_2 * dx);
+
+			double mu = 0.5f * ((*adt1) + (*adt2)) * eps;
+
+			double f;
+
+			f = 0.5f * (vol1 * q1[0] + vol2 * q2[0]) + mu * (q1[0] - q2[0]);
+			res1[0] += f;
+			res2[0] -= f;
+			f = 0.5f * (vol1 * q1[1] + p1 * dy + vol2 * q2[1] + p2 * dy) + mu * (q1[1] - q2[1]);
+			res1[1] += f;
+			res2[1] -= f;
+			f = 0.5f * (vol1 * q1[2] - p1 * dx + vol2 * q2[2] - p2 * dx) + mu * (q1[2] - q2[2]);
+			res1[2] += f;
+			res2[2] -= f;
+			f = 0.5f * (vol1 * (q1[3] + p1) + vol2 * (q2[3] + p2)) + mu * (q1[3] - q2[3]);
+			res1[3] += f;
+			res2[3] -= f;
+		}
 	}
 }
 
-inline void bres_calc(const std::vector<Backedge>& bedges, const std::vector<Node>& nodes, std::vector<Cell>& cells) {
+void bres_calc(std::vector<Backedge>& bedges, const std::vector<Node>& nodes, std::vector<Cell>& cells) {
 	for (size_t i = 0; i < bedges.size(); i++) {
 		const double *x1 = nodes[bedges[i].pbedge[0]].p_x.data();
 		const double *x2 = nodes[bedges[i].pbedge[1]].p_x.data();
 		const double *q1 = cells[bedges[i].pbecell].p_q.data();
 		const double *adt1 = &cells[bedges[i].pbecell].adt;
-		double *res1 = cells[bedges[i].pbecell].res.data();
 		const int *bound = &bedges[i].p_bound;
+		double *res1 = cells[bedges[i].pbecell].res.data();
 
 		double dx, dy, mu, ri, p1, vol1, p2, vol2, f;
 
@@ -167,7 +206,9 @@ inline void bres_calc(const std::vector<Backedge>& bedges, const std::vector<Nod
 	}
 }
 
-inline void update(std::vector<Cell>& cells, double* rms) {
+void update(std::vector<Cell>& cells, double* rms) {
+	double rms_acc = 0;
+	#pragma omp parallel for reduction(+:rms_acc)
 	for (size_t i = 0; i < cells.size(); i++) {
 		const double *qold = cells[i].qold.data();
 		double *q = cells[i].p_q.data();
@@ -181,9 +222,11 @@ inline void update(std::vector<Cell>& cells, double* rms) {
 			del = adti * res[n];
 			q[n] = qold[n] - del;
 			res[n] = 0.0f;
-			*rms += del * del;
+			rms_acc += del * del;
 		}
 	}
+
+	*rms += rms_acc;
 }
 
 double timespec_elapsed(const struct timespec* end, const struct timespec* start)
@@ -235,10 +278,12 @@ int main(int argc, char** argv)
 		}
 	}
 
+	std::vector<Edge> edges_raw(nedge);
+
 	for (size_t n = 0; n < nedge; n++) {
 		if (fscanf(in_file, "%zu %zu %zu %zu \n",
-				   &edges[n].pedge[0], &edges[n].pedge[1],
-				   &edges[n].pecell[0], &edges[n].pecell[1]) != 4) {
+				   &edges_raw[n].pedge[0], &edges_raw[n].pedge[1],
+				   &edges_raw[n].pecell[0], &edges_raw[n].pecell[1]) != 4) {
 			fprintf(stderr, "Error reading pedges and pecells\n");
 			return EXIT_FAILURE;
 		}
@@ -254,6 +299,63 @@ int main(int argc, char** argv)
 	}
 	fclose(in_file);
 
+	std::vector<std::pair<size_t, size_t>> ranges;
+	{
+		std::vector<Color> colors;
+		{
+			size_t idx = 0;
+			for (size_t chunk_id = 0; chunk_id < (nedge + CHUNK_SIZE - 1) / CHUNK_SIZE; chunk_id++) {
+				Chunk chunk;
+				chunk.range.first = idx;
+				chunk.indices.reserve(2 * CHUNK_SIZE);
+				for (size_t block_idx = 0; idx < nedge && block_idx < CHUNK_SIZE; idx++, block_idx++) {
+					for (size_t k = 0; k < 2; k++) {
+						chunk.indices.push_back(edges_raw[idx].pecell[k]);
+					}
+				}
+				chunk.range.second = idx;
+				std::sort(chunk.indices.begin(), chunk.indices.end());
+				chunk.indices.erase(std::unique(chunk.indices.begin(), chunk.indices.end()), chunk.indices.end());
+
+				Color* found = nullptr;
+				for (auto& c: colors) {
+					bool intersects = std::any_of(chunk.indices.begin(), chunk.indices.end(), [&c](size_t k) {
+						return c.indices.find(k) != c.indices.end();
+					});
+					if (!intersects) {
+						found = &c;
+						break;
+					}
+				}
+
+				if (found == nullptr) {
+					colors.emplace_back();
+					found = &colors.back();
+				}
+
+				found->chunk_ranges.push_back(chunk.range);
+				found->indices.insert(chunk.indices.begin(), chunk.indices.end());
+			}
+		}
+
+		size_t last_idx = 0;
+		size_t i = 0;
+		for (const auto& c: colors) {
+			for (const auto& r: c.chunk_ranges) {
+				for (size_t k = r.first; k < r.second; k++, i++) {
+					edges[i].pedge[0] = edges_raw[k].pedge[0];
+					edges[i].pedge[1] = edges_raw[k].pedge[1];
+
+					edges[i].pecell[0] = edges_raw[k].pecell[0];
+					edges[i].pecell[1] = edges_raw[k].pecell[1];
+				}
+			}
+
+			ranges.emplace_back(last_idx, i);
+			last_idx = i;
+		}
+	}
+
 	for (size_t n = 0; n < ncell; n++) {
 		for (size_t m = 0; m < 4; m++) {
 			cells[n].p_q[m] = qinf[m];
@@ -263,7 +365,7 @@ int main(int argc, char** argv)
 
 	for (size_t i = 0; i < cells.size(); i++) {
 		for (size_t j = 0; j < 4; j++) {
-			for (size_t k = 0; k < 4; k++) {
+			for (size_t k = 0; k < 2; k++) {
 				cells[i].pcell_new[j][k] = nodes[cells[i].pcell[j]].p_x[k];
 			}
 		}
@@ -286,35 +388,13 @@ int main(int argc, char** argv)
 	double upd_time = 0;
 
 	for (int iter = 1; iter <= num_iter; iter++) {
-		for (size_t i = 0; i < cells.size(); i++) {
-			cells[i].qold = cells[i].p_q;
-		}
-
+		copy_oldq(cells);
 		for (int k = 0; k < 2; k++) {
-
-			struct timespec adt_start, adt_end;
-			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &adt_start);
 			adt_calc(cells);
-			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &adt_end);
-			adt_time += timespec_elapsed(&adt_end, &adt_start);
-
-			struct timespec res_start, res_end;
-			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &res_start);
-			res_calc(edges, nodes, cells);
-			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &res_end);
-			res_time += timespec_elapsed(&res_end, &res_start);
-
-			struct timespec bres_start, bres_end;
-			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &bres_start);
+			res_calc(edges, nodes, cells, ranges);
 			bres_calc(bedges, nodes, cells);
-			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &bres_end);
-			bres_time += timespec_elapsed(&bres_end, &bres_start);
 
-			struct timespec upd_start, upd_end;
-			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &upd_start);
 			update(cells, &rms);
-			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &upd_end);
-			upd_time += timespec_elapsed(&upd_end, &upd_start);
 		}
 
 		rms = sqrt(rms / (double) cells.size());
@@ -333,15 +413,15 @@ int main(int argc, char** argv)
 	double cpu_elapsed = timespec_elapsed(&cpu_end, &cpu_start);
 	printf("CPU clock time: %.8f\n", cpu_elapsed);
 
-	fprintf(stderr, "Now writing to file %s...\n", argv[2]);
+	// fprintf(stderr, "Now writing to file %s...\n", argv[2]);
 
-	FILE* out_file = fopen(argv[2], "w");
-	for (size_t i = 0; i < cells.size(); i++) {
-		fprintf(out_file, "%f %f %f %f\n",
-			cells[i].p_q[0], cells[i].p_q[1],
-			cells[i].p_q[2], cells[i].p_q[3]);
-	}
-	fclose(out_file);
+	// FILE* out_file = fopen(argv[2], "w");
+	// for (size_t i = 0; i < cells.size(); i++) {
+	// 	fprintf(out_file, "%f %f %f %f\n",
+	// 		cells[i].p_q[0], cells[i].p_q[1],
+	// 		cells[i].p_q[2], cells[i].p_q[3]);
+	// }
+	// fclose(out_file);
 
 	return EXIT_SUCCESS;
 }
