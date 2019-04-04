@@ -10,7 +10,7 @@
 
 static const size_t CHUNK_SIZE = 256;
 
-static const int num_iter = 5;
+static const int num_iter = 1000;
 
 static const double gam = 1.4f;
 static const double gm1 = gam - 1.0f;
@@ -398,6 +398,10 @@ int main(int argc, char** argv)
 		}
 
 		rms = sqrt(rms / (double) cells.size());
+
+		if (iter % 100 == 0) {
+			printf("iter = %4d, rms = %10.5e\n", iter, rms);
+		}
 	}
 
 	printf("adt: %.8f, res: %.8f, bres: %.8f, upd: %.8f\n", adt_time, res_time, bres_time, upd_time);
