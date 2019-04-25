@@ -2062,7 +2062,7 @@ BENCHMARK_TEMPLATE(BM_TemplateManyPools, Bench_OnePoolJointsAosWeightsDynamic)
 	->ComputeStatistics("min", min_of_vector)
 	->ComputeStatistics("max", max_of_vector);
 
-BENCHMARK_TEMPLATE(BM_TemplateManyPools, Bench_OnePoolJointsAosWeightsDynamic)
+BENCHMARK_TEMPLATE(BM_TemplateManyPools, Bench_PooledJointsAosWeightsDynamic)
 	->ArgNames({"NumDuplicates", "FlushCache"})
 	->Apply(CustomArgs)
 	->Complexity(benchmark::oN)
