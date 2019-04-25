@@ -101,6 +101,9 @@ template
 void animate_joints<JointOnePool>(JointOnePool* root, const JointRaw* base, const float* frame_components);
 
 template
+void animate_joints<JointAosDynamic>(JointAosDynamic* root, const JointRaw* base, const float* frame_components);
+
+template
 void animate_weights<JointAos>(JointAos* root);
 
 template
@@ -424,6 +427,60 @@ inline void JointOnePool::animate_my_weights(WeightPoolSoa& wp)
 		wp.posx[i] = npx;
 		wp.posy[i] = npy;
 		wp.posz[i] = npz;
+	}
+}
+
+void animate_weights(JointAosDynamic* root)
+{
+	for (auto* j = root; j != nullptr; j = j->next) {
+		float x = j->orient.x;
+		float y = j->orient.y;
+		float z = j->orient.z;
+		float w = j->orient.w;
+
+		float x2 = x + x;
+		float y2 = y + y;
+		float z2 = z + z;
+		float xx2 = x * x2;
+		float yy2 = y * y2;
+		float zz2 = z * z2;
+
+		float xy2 = x * y2;
+		float wz2 = w * z2;
+		float xz2 = x * z2;
+		float wy2 = w * y2;
+		float yz2 = y * z2;
+		float wx2 = w * x2;
+
+		float a11 = 1 - yy2 - zz2;
+		float a12 = xy2 + wz2;
+		float a13 = xz2 + wy2;
+
+		float a21 = xy2 - wz2;
+		float a22 = 1 - xx2 - zz2;
+		float a23 = yz2 + wx2;
+
+		float a31 = xz2 - wy2;
+		float a32 = yz2 - wx2;
+		float a33 = 1 - xx2 - yy2;
+
+		float posx = j->pos.x;
+		float posy = j->pos.y;
+		float posz = j->pos.z;
+
+		for (auto* it = j->weight_start; it != nullptr; it = it->next) {
+			float ix = it->initial_pos.x;
+			float iy = it->initial_pos.y;
+			float iz = it->initial_pos.z;
+
+			float npx = a11 * ix + a12 * iy + a13 * iz + posx;
+			float npy = a21 * ix + a22 * iy + a23 * iz + posy;
+			float npz = a31 * ix + a32 * iy + a33 * iz + posz;
+
+			it->pos.x = npx;
+			it->pos.y = npy;
+			it->pos.z = npz;
+		}
 	}
 }
 

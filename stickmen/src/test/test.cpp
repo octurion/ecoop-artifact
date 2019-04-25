@@ -38,7 +38,6 @@ static BenchmarkOptions from_args(benchmark::State& state)
 	return opt;
 }
 
-static bool initialized = false;
 static ModelInput INPUTS[NUM_MODELS];
 
 static void CustomArgs(benchmark::internal::Benchmark* b)
@@ -1648,8 +1647,231 @@ struct Bench_PooledJointsPerJointPoolWeightsSoa
 	}
 };
 
-template<typename DataStructure>
-void BM_Template(benchmark::State& state)
+struct OnePoolJointsAosWeightsDynamic
+{
+	int frame;
+	const ModelInput* input;
+	size_t idx_start;
+	size_t idx_end;
+};
+
+struct Bench_OnePoolJointsAosWeightsDynamic
+{
+	std::vector<OnePoolJointsAosWeightsDynamic> models;
+	std::vector<JointAosDynamic> joints;
+	std::vector<WeightAosDynamic> weights;
+
+	size_t counter = 0;
+	size_t joint_counter = 0;
+	size_t weight_counter = 0;
+
+	void construct_model(const ModelInput& input, size_t id)
+	{
+		models[counter].idx_start = joint_counter;
+		models[counter].idx_end = joint_counter + input.joints_raw.size();
+		models[counter].frame = id % input.frames.size();;
+		models[counter].input = &input;
+		for (size_t idx = 0; idx < input.joints_raw.size(); idx++) {
+			size_t i = joint_counter + idx;
+			joints[i].orient = input.joints_raw[idx].base_quat;
+			joints[i].pos = input.joints_raw[idx].base_pos;
+			joints[i].weight_start = nullptr;
+		}
+
+		joints[joint_counter].parent = nullptr;
+		joints[joint_counter].next = nullptr;
+		for (size_t idx = 1; idx < input.joints_raw.size(); idx++) {
+			size_t i = joint_counter + idx;
+			joints[i].parent = &joints[joint_counter + input.joints_raw[idx].parent];
+			joints[i].next = nullptr;
+			joints[i - 1].next = &joints[i];
+		}
+
+		for (size_t idx = 0; idx < input.weights_raw.size(); idx++) {
+			size_t i = weight_counter + idx;
+
+			weights[i].bias = input.weights_raw[idx].bias;
+			weights[i].initial_pos = input.weights_raw[idx].pos;
+			weights[i].pos.x = 0;
+			weights[i].pos.y = 0;
+			weights[i].pos.z = 0;
+
+			auto* parent = &joints[models[counter].idx_start + input.weights_raw[idx].joint];
+			if (parent->weight_start == nullptr) {
+				weights[i].next = parent->weight_start;
+				parent->weight_start = &weights[i];
+			}
+		}
+
+		joint_counter += input.joints_raw.size();
+		if (joint_counter == joints.size()) {
+			joint_counter = 0;
+		}
+
+		weight_counter += input.weights_raw.size();
+		if (weight_counter == weights.size()) {
+			weight_counter = 0;
+		}
+
+		counter++;
+		if (counter == models.size()) {
+			counter = 0;
+		}
+	}
+
+	void initialize_from_opts(BenchmarkOptions& opts)
+	{
+		models.resize(opts.num_copies * NUM_MODELS);
+		size_t num_joints = std::accumulate(INPUTS, INPUTS + NUM_MODELS, 0,
+			[](size_t acc, const ModelInput& m) {
+				return acc + m.joints_raw.size();
+			});
+		size_t num_weights = std::accumulate(INPUTS, INPUTS + NUM_MODELS, 0,
+			[](size_t acc, const ModelInput& m) {
+				return acc + m.weights_raw.size();
+			});
+		joints.resize(num_joints * models.size());
+		weights.resize(num_weights * models.size());
+
+		for (size_t i = 0; i < opts.num_copies; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				construct_model(INPUTS[j], i);
+			}
+		}
+	}
+
+	void run_animate_joints()
+	{
+		for (auto& m: models) {
+			JointAosDynamic* root = &joints[m.idx_start];
+			animate_joints(root,
+						   m.input->joints_raw.data(),
+						   m.input->frames[m.frame].values.data());
+		}
+	}
+
+	void run_animate_weights()
+	{
+		for (auto& m: models) {
+			animate_weights(&joints[m.idx_start]);
+
+			m.frame++;
+			m.frame %= m.input->frames.size();
+		}
+	}
+
+	void modify_structure(const BenchmarkOptions&)
+	{
+		for (auto& j: joints) {
+			auto* parent = j.parent;
+			if (parent != nullptr) {
+				parent->next = nullptr;
+			}
+		}
+	}
+};
+
+struct PooledJointsAosWeightsDynamic
+{
+	int frame;
+	const ModelInput* input;
+
+	std::vector<JointAosDynamic> joints;
+	std::vector<WeightAosDynamic> weights;
+};
+
+struct Bench_PooledJointsAosWeightsDynamic
+{
+	std::vector<PooledJointsAosWeightsDynamic> models;
+
+	PooledJointsAosWeightsDynamic construct_model(const ModelInput& input, size_t id)
+	{
+		PooledJointsAosWeightsDynamic model;
+
+		model.frame = id % input.frames.size();;
+		model.input = &input;
+
+		auto& joints = model.joints;
+		auto& weights = model.weights;
+
+		joints.resize(input.joints_raw.size());
+		weights.resize(input.weights_raw.size());
+
+		for (size_t i = 0; i < input.joints_raw.size(); i++) {
+			joints[i].orient = input.joints_raw[i].base_quat;
+			joints[i].pos = input.joints_raw[i].base_pos;
+			joints[i].weight_start = nullptr;
+		}
+
+		joints[0].parent = nullptr;
+		joints[0].next = nullptr;
+		for (size_t i = 1; i < input.joints_raw.size(); i++) {
+			joints[i].parent = &joints[input.joints_raw[i].parent];
+			joints[i].next = nullptr;
+			joints[i - 1].next = &joints[i];
+		}
+
+		for (size_t i = 0; i < input.weights_raw.size(); i++) {
+			weights[i].bias = input.weights_raw[i].bias;
+			weights[i].initial_pos = input.weights_raw[i].pos;
+			weights[i].pos.x = 0;
+			weights[i].pos.y = 0;
+			weights[i].pos.z = 0;
+
+			auto* parent = &joints[input.weights_raw[i].joint];
+			if (parent->weight_start == nullptr) {
+				weights[i].next = parent->weight_start;
+				parent->weight_start = &weights[i];
+			}
+		}
+
+		return model;
+	}
+
+	void initialize_from_opts(BenchmarkOptions& opts)
+	{
+		for (size_t i = 0; i < opts.num_copies; i++) {
+			for (size_t j = 0; j < NUM_MODELS; j++) {
+				models.emplace_back(construct_model(INPUTS[j], i));
+			}
+		}
+	}
+
+	void run_animate_joints()
+	{
+		for (auto& m: models) {
+			JointAosDynamic* root = &m.joints[0];
+			animate_joints(root,
+						   m.input->joints_raw.data(),
+						   m.input->frames[m.frame].values.data());
+		}
+	}
+
+	void run_animate_weights()
+	{
+		for (auto& m: models) {
+			animate_weights(&m.joints[0]);
+
+			m.frame++;
+			m.frame %= m.input->frames.size();
+		}
+	}
+
+	void modify_structure(const BenchmarkOptions&)
+	{
+		for (auto& m: models) {
+			for (auto& j: m.joints) {
+				auto* parent = j.parent;
+				if (parent != nullptr) {
+					parent->next = nullptr;
+				}
+			}
+		}
+	}
+};
+
+static bool initialized = false;
+void initialize()
 {
 	if (!initialized) {
 		ModelInput input0 = parse_files("../resources/hellknight.md5mesh", "../resources/hellknight.md5anim");
@@ -1660,6 +1882,12 @@ void BM_Template(benchmark::State& state)
 		INPUTS[2] = std::move(input2);
 		initialized = true;
 	}
+}
+
+template<typename DataStructure>
+void BM_Template(benchmark::State& state)
+{
+	initialize();
 
 	auto opts = from_args(state);
 	DataStructure structure;
@@ -1679,6 +1907,46 @@ void BM_Template(benchmark::State& state)
 
 		benchmark::ClobberMemory();
 		structure.modify_structure(opts);
+		state.ResumeTiming();
+	}
+
+	size_t num_weights = 0;
+	for (size_t i = 0; i < NUM_MODELS; i++) {
+		num_weights += INPUTS[i].weights_raw.size();
+	}
+
+	state.SetComplexityN(opts.num_copies);
+	auto items = state.iterations() * opts.num_copies * num_weights;
+	state.SetItemsProcessed(items);
+	state.SetBytesProcessed(6 * sizeof(float) * items);
+}
+
+template<typename DataStructure>
+void BM_TemplateManyPools(benchmark::State& state)
+{
+	initialize();
+
+	auto opts = from_args(state);
+
+	for (auto _: state) {
+		state.PauseTiming();
+		{
+			DataStructure structure;
+			structure.initialize_from_opts(opts);
+			state.ResumeTiming();
+
+			structure.run_animate_joints();
+			structure.run_animate_weights();
+
+			structure.modify_structure(opts);
+
+			structure.run_animate_joints();
+			structure.run_animate_weights();
+
+			state.PauseTiming();
+
+			// Destructor destroys the data structure
+		}
 		state.ResumeTiming();
 	}
 
@@ -1781,6 +2049,20 @@ BENCHMARK_TEMPLATE(BM_Template, Bench_PooledJointsPerJointPoolWeightsMixed)
 	->ComputeStatistics("max", max_of_vector);
 
 BENCHMARK_TEMPLATE(BM_Template, Bench_PooledJointsPerJointPoolWeightsSoa)
+	->ArgNames({"NumDuplicates", "FlushCache"})
+	->Apply(CustomArgs)
+	->Complexity(benchmark::oN)
+	->ComputeStatistics("min", min_of_vector)
+	->ComputeStatistics("max", max_of_vector);
+
+BENCHMARK_TEMPLATE(BM_TemplateManyPools, Bench_OnePoolJointsAosWeightsDynamic)
+	->ArgNames({"NumDuplicates", "FlushCache"})
+	->Apply(CustomArgs)
+	->Complexity(benchmark::oN)
+	->ComputeStatistics("min", min_of_vector)
+	->ComputeStatistics("max", max_of_vector);
+
+BENCHMARK_TEMPLATE(BM_TemplateManyPools, Bench_OnePoolJointsAosWeightsDynamic)
 	->ArgNames({"NumDuplicates", "FlushCache"})
 	->Apply(CustomArgs)
 	->Complexity(benchmark::oN)
