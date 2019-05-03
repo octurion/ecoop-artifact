@@ -1,4 +1,5 @@
 #include <array>
+#include <cstdint>
 #include <random>
 #include <vector>
 
@@ -33,7 +34,7 @@ static const std::array<uint64_t, 100> SEEDS {
 	1857780532ULL, 1712268066ULL, 1300192787ULL, 6611195909ULL, 2164201989ULL,
 };
 
-enum class Allegiance
+enum class Allegiance: uint8_t
 {
 	Red, Blue
 };
@@ -94,7 +95,7 @@ void open_doors(std::vector<DoorOnePool>& doors, std::vector<CharacterOnePool>& 
 			float dy = c.y - d.y;
 
 			float dist2 = dx * dx + dy * dy;
-			if (dist2 <= DOOR_DIST * DOOR_DIST) {
+			if (dist2 > DOOR_DIST * DOOR_DIST) {
 				continue;
 			}
 
@@ -112,7 +113,7 @@ void open_doors(std::vector<DoorManyPools>& doors, std::vector<CharacterManyPool
 			float dy = c.y - d.y;
 
 			float dist2 = dx * dx + dy * dy;
-			if (dist2 <= DOOR_DIST * DOOR_DIST) {
+			if (dist2 > DOOR_DIST * DOOR_DIST) {
 				continue;
 			}
 
@@ -146,17 +147,21 @@ size_t num_open_doors(const std::vector<DoorManyPools>& doors)
 	return count;
 }
 
-void generate_entities(std::vector<DoorOnePool>& doors, std::vector<CharacterOnePool>& characters, uint64_t seed)
+void generate_entities(
+	std::vector<DoorOnePool>& doors,
+	std::vector<CharacterOnePool>& characters,
+	uint64_t seed,
+	float allegiance_probability)
 {
 	std::mt19937 mt(seed);
 	std::uniform_real_distribution<float> coord_dist(0, DIMENSION_MAX);
-	std::uniform_int_distribution<int> allegiance_dist(0, 1);
+	std::uniform_real_distribution<float> allegiance_dist(0, 1);
 
 	for (size_t i = 0; i < NUM_DOORS; i++) {
 		DoorOnePool door;
 		door.x = coord_dist(mt);
 		door.y = coord_dist(mt);
-		door.allegiance = (Allegiance) allegiance_dist(mt);
+		door.allegiance = (Allegiance) (allegiance_dist(mt) < allegiance_probability);
 		door.open = false;
 
 		doors.push_back(door);
@@ -166,7 +171,7 @@ void generate_entities(std::vector<DoorOnePool>& doors, std::vector<CharacterOne
 		CharacterOnePool character;
 		character.x = coord_dist(mt);
 		character.y = coord_dist(mt);
-		character.allegiance = (Allegiance) allegiance_dist(mt);
+		character.allegiance = (Allegiance) (allegiance_dist(mt) < allegiance_probability);
 
 		characters.push_back(character);
 	}
@@ -177,11 +182,12 @@ void generate_entities(
 	std::vector<DoorManyPools>& blue_doors,
 	std::vector<CharacterManyPools>& red_characters,
 	std::vector<CharacterManyPools>& blue_characters,
-	uint64_t seed)
+	uint64_t seed,
+	float allegiance_probability)
 {
 	std::mt19937 mt(seed);
 	std::uniform_real_distribution<float> coord_dist(0, DIMENSION_MAX);
-	std::uniform_int_distribution<int> allegiance_dist(0, 1);
+	std::uniform_real_distribution<float> allegiance_dist(0, 1);
 
 	for (size_t i = 0; i < NUM_DOORS; i++) {
 		DoorManyPools door;
@@ -189,7 +195,7 @@ void generate_entities(
 		door.y = coord_dist(mt);
 		door.open = false;
 
-		if (allegiance_dist(mt) == 0) {
+		if (allegiance_dist(mt) < allegiance_probability) {
 			red_doors.push_back(door);
 		} else {
 			blue_doors.push_back(door);
@@ -201,7 +207,7 @@ void generate_entities(
 		character.x = coord_dist(mt);
 		character.y = coord_dist(mt);
 
-		if (allegiance_dist(mt) == 0) {
+		if (allegiance_dist(mt) < allegiance_probability) {
 			red_characters.push_back(character);
 		} else {
 			blue_characters.push_back(character);
@@ -212,11 +218,12 @@ void generate_entities(
 void BM_DoorsOnePool(benchmark::State& state)
 {
 	uint64_t seed = state.range(0);
+	float allegiance_probability = state.range(1) / 100.f;
 
 	std::vector<DoorOnePool> doors;
 	std::vector<CharacterOnePool> characters;
 
-	generate_entities(doors, characters, seed);
+	generate_entities(doors, characters, seed, allegiance_probability);
 
 	for (auto _: state) {
 		open_doors(doors, characters);
@@ -231,13 +238,14 @@ void BM_DoorsOnePool(benchmark::State& state)
 void BM_DoorsManyPools(benchmark::State& state)
 {
 	uint64_t seed = state.range(0);
+	float allegiance_probability = state.range(1) / 100.f;
 
 	std::vector<DoorManyPools> red_doors;
 	std::vector<DoorManyPools> blue_doors;
 	std::vector<CharacterManyPools> red_characters;
 	std::vector<CharacterManyPools> blue_characters;
 
-	generate_entities(red_doors, blue_doors, red_characters, blue_characters, seed);
+	generate_entities(red_doors, blue_doors, red_characters, blue_characters, seed, allegiance_probability);
 
 	for (auto _: state) {
 		open_doors(red_doors, red_characters);
@@ -254,16 +262,18 @@ void BM_DoorsManyPools(benchmark::State& state)
 
 static void CustomArguments(benchmark::internal::Benchmark* b) {
 	for (const auto& j: SEEDS) {
-		b->Args({(int64_t) j});
+		b->Args({(int64_t) j, 50});
+		b->Args({(int64_t) j, 70});
+		b->Args({(int64_t) j, 90});
 	}
 }
 
 BENCHMARK(BM_DoorsOnePool)
 	->Apply(CustomArguments)
-	->ArgNames({"Mersenne seed"});
+	->ArgNames({"Mersenne seed", "Allegiance probability"});
 
 BENCHMARK(BM_DoorsManyPools)
 	->Apply(CustomArguments)
-	->ArgNames({"Mersenne seed"});
+	->ArgNames({"Mersenne seed", "Allegiance probability"});
 
 BENCHMARK_MAIN();
