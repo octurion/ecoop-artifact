@@ -4,14 +4,20 @@ cat /proc/cpuinfo
 echo "--------------------"
 
 echo "Now running Aero AoS"
-echo "--------------------"
-build/aero_aos FE_grid.dat /dev/null
-echo "--------------------"
+for i in {0..20}
+do
+    echo "--------------------"
+    build/aero_aos FE_grid.dat /dev/null
+    echo "--------------------"
+done
 
 echo "Now running Aero partial SoA"
-echo "--------------------"
-build/aero FE_grid.dat /dev/null
-echo "--------------------"
+for i in {0..20}
+do
+    echo "--------------------"
+    build/aero FE_grid.dat /dev/null
+    echo "--------------------"
+done
 
 # echo "Now running Aero partial SoA with opts"
 # echo "--------------------"
@@ -19,19 +25,28 @@ echo "--------------------"
 # echo "--------------------"
 
 echo "Now running Airfoil AoS"
-echo "--------------------"
-build/airfoil_aos new_grid.dat /dev/null
-echo "--------------------"
+for i in {0..20}
+do
+    echo "--------------------"
+    build/airfoil_aos new_grid.dat /dev/null
+    echo "--------------------"
+done
 
 echo "Now running Airfoil partial SoA"
-echo "--------------------"
-build/airfoil new_grid.dat /dev/null
-echo "--------------------"
+for i in {0..20}
+do
+    echo "--------------------"
+    build/airfoil new_grid.dat /dev/null
+    echo "--------------------"
+done
 
 echo "Now running Airfoil full SoA"
-echo "--------------------"
-build/airfoil_soa new_grid.dat /dev/null
-echo "--------------------"
+for i in {0..20}
+do
+    echo "--------------------"
+    build/airfoil_soa new_grid.dat /dev/null
+    echo "--------------------"
+done
 
 # echo "Now running airfoil full SoA no opts"
 # echo "--------------------"
