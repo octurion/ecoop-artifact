@@ -143,9 +143,13 @@ inline void adt_calc(CellPool& cells, const NodePool& nodes) {
 }
 
 inline void res_calc(const EdgePool& edges, const NodePool& nodes, CellPool& cells, const std::vector<std::pair<size_t, size_t>>& ranges) {
+	#pragma omp parallel
 	for (const auto& r: ranges) {
-		#pragma omp parallel for
-		for (size_t i = r.first; i < r.second; i++) {
+		size_t begin = r.first;
+		size_t end = r.second;
+
+		#pragma omp for
+		for (size_t i = begin; i < end; i++) {
 			const double *x1 = nodes.p_x[edges.pedge[i][0]].data();
 			const double *x2 = nodes.p_x[edges.pedge[i][1]].data();
 			const double *q1 = cells.p_q[edges.pecell[i][0]].data();
@@ -441,7 +445,7 @@ int main(int argc, char** argv)
 
 	struct timespec wall_start, wall_end, cpu_start, cpu_end;
 
-	clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &cpu_start);
+	clock_gettime(CLOCK_THREAD_CPUTIME_ID, &cpu_start);
 	clock_gettime(CLOCK_REALTIME, &wall_start);
 
 	double rms = 0;
@@ -456,27 +460,27 @@ int main(int argc, char** argv)
 		for (int k = 0; k < 2; k++) {
 
 			struct timespec adt_start, adt_end;
-			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &adt_start);
+			clock_gettime(CLOCK_THREAD_CPUTIME_ID, &adt_start);
 			adt_calc(cells, nodes);
-			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &adt_end);
+			clock_gettime(CLOCK_THREAD_CPUTIME_ID, &adt_end);
 			adt_time += timespec_elapsed(&adt_end, &adt_start);
 
 			struct timespec res_start, res_end;
-			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &res_start);
+			clock_gettime(CLOCK_THREAD_CPUTIME_ID, &res_start);
 			res_calc(edges, nodes, cells, ranges);
-			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &res_end);
+			clock_gettime(CLOCK_THREAD_CPUTIME_ID, &res_end);
 			res_time += timespec_elapsed(&res_end, &res_start);
 
 			struct timespec bres_start, bres_end;
-			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &bres_start);
+			clock_gettime(CLOCK_THREAD_CPUTIME_ID, &bres_start);
 			bres_calc(bedges, nodes, cells);
-			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &bres_end);
+			clock_gettime(CLOCK_THREAD_CPUTIME_ID, &bres_end);
 			bres_time += timespec_elapsed(&bres_end, &bres_start);
 
 			struct timespec upd_start, upd_end;
-			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &upd_start);
+			clock_gettime(CLOCK_THREAD_CPUTIME_ID, &upd_start);
 			update(cells, &rms);
-			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &upd_end);
+			clock_gettime(CLOCK_THREAD_CPUTIME_ID, &upd_end);
 			upd_time += timespec_elapsed(&upd_end, &upd_start);
 		}
 
@@ -490,7 +494,7 @@ int main(int argc, char** argv)
 	printf("adt: %.8f, res: %.8f, bres: %.8f, upd: %.8f\n", adt_time, res_time, bres_time, upd_time);
 
 	clock_gettime(CLOCK_REALTIME, &wall_end);
-	clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &cpu_end);
+	clock_gettime(CLOCK_THREAD_CPUTIME_ID, &cpu_end);
 
 	fprintf(stderr, "Iterations complete!\n");
 

@@ -709,22 +709,22 @@ int main(int argc, char** argv)
 	double inner_time = 0;
 	double spMV_time = 0;
 
-	clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &cpu_start);
+	clock_gettime(CLOCK_THREAD_CPUTIME_ID, &cpu_start);
 	clock_gettime(CLOCK_REALTIME, &wall_start);
 
 	double rms = 1;
 	for (int iter = 1; iter <= num_iter; iter++) {
 		struct timespec res_calc_start, res_calc_end;
-		clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &res_calc_start);
+		clock_gettime(CLOCK_THREAD_CPUTIME_ID, &res_calc_start);
 		//res_calc(cells, nodes, colors);
 		res_calc(cells, nodes, ranges);
-		clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &res_calc_end);
+		clock_gettime(CLOCK_THREAD_CPUTIME_ID, &res_calc_end);
 		res_calc_time += timespec_elapsed(&res_calc_end, &res_calc_start);
 
 		struct timespec dirichlet_resm_start, dirichlet_resm_end;
-		clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &dirichlet_resm_start);
+		clock_gettime(CLOCK_THREAD_CPUTIME_ID, &dirichlet_resm_start);
 		dirichlet_resm(bnodes, nodes);
-		clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &dirichlet_resm_end);
+		clock_gettime(CLOCK_THREAD_CPUTIME_ID, &dirichlet_resm_end);
 		dirichlet_resm_time += timespec_elapsed(&dirichlet_resm_end, &dirichlet_resm_start);
 
 		double c1 = 0;
@@ -733,13 +733,13 @@ int main(int argc, char** argv)
 		double beta = 0;
 
 		struct timespec init_cg_start, init_cg_end;
-		clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &init_cg_start);
+		clock_gettime(CLOCK_THREAD_CPUTIME_ID, &init_cg_start);
 		init_cg(nodes, &c1);
-		clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &init_cg_end);
+		clock_gettime(CLOCK_THREAD_CPUTIME_ID, &init_cg_end);
 		init_cg_time += timespec_elapsed(&init_cg_end, &init_cg_start);
 
 		struct timespec inner_start, inner_end;
-		clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &inner_start);
+		clock_gettime(CLOCK_THREAD_CPUTIME_ID, &inner_start);
 
 		double res0 = sqrt(c1);
 		double res = res0;
@@ -747,10 +747,10 @@ int main(int argc, char** argv)
 		int maxiter = 200;
 		while (res > 0.1 * res0 && inner_iter < maxiter) {
 			struct timespec spMV_start, spMV_end;
-			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &spMV_start);
+			clock_gettime(CLOCK_THREAD_CPUTIME_ID, &spMV_start);
 			spMV(cells, nodes, ranges);
 			//spMV(cells, nodes, colors);
-			clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &spMV_end);
+			clock_gettime(CLOCK_THREAD_CPUTIME_ID, &spMV_end);
 			spMV_time += timespec_elapsed(&spMV_end, &spMV_start);
 
 			dirichletPV(bnodes, nodes);
@@ -774,14 +774,14 @@ int main(int argc, char** argv)
 		rms = 0;
 		update(nodes, &rms);
 
-		clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &inner_end);
+		clock_gettime(CLOCK_THREAD_CPUTIME_ID, &inner_end);
 		inner_time += timespec_elapsed(&inner_end, &inner_start);
 
 		printf("rms = %10.5e iter: %d\n", sqrt(rms) / sqrt(nnode), inner_iter);
 	}
 
 	clock_gettime(CLOCK_REALTIME, &wall_end);
-	clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &cpu_end);
+	clock_gettime(CLOCK_THREAD_CPUTIME_ID, &cpu_end);
 
 	fprintf(stderr, "Iterations complete!\n");
 
