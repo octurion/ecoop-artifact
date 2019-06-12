@@ -12,10 +12,6 @@ set(COMMON_FLAGS -Wall -Wextra -Wpedantic)
 
 add_subdirectory(lib/benchmark)
 
-add_executable(traffic_aos src/traffic_aos.cpp)
-target_compile_options(traffic_aos PRIVATE ${COMMON_FLAGS})
-target_link_libraries(traffic_aos benchmark)
-
-add_executable(traffic_soa src/traffic_soa.cpp)
-target_compile_options(traffic_soa PRIVATE ${COMMON_FLAGS})
-target_link_libraries(traffic_soa benchmark)
+add_executable(traffic src/traffic.cpp)
+target_compile_options(traffic PRIVATE ${COMMON_FLAGS})
+target_link_libraries(traffic benchmark)
