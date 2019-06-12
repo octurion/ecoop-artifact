@@ -18,7 +18,7 @@
 #include <unistd.h>
 
 #define NUM_MODELS 3
-#define TO_REMOVE_RATIO 0.1f
+#define TO_REMOVE_RATIO 0.0f
 
 struct BenchmarkOptions
 {
@@ -43,7 +43,7 @@ static ModelInput INPUTS[NUM_MODELS];
 static void CustomArgs(benchmark::internal::Benchmark* b)
 {
 	for (int i = 1; i <= 10; i++) {
-		b->Args({i * 500, 1});
+		b->Args({i * 500, 0});
 	}
 }
 
@@ -1647,6 +1647,7 @@ struct Bench_PooledJointsPerJointPoolWeightsSoa
 	}
 };
 
+#if 0
 struct OnePoolJointsAosWeightsDynamic
 {
 	int frame;
@@ -1869,6 +1870,7 @@ struct Bench_PooledJointsAosWeightsDynamic
 		}
 	}
 };
+#endif
 
 static bool initialized = false;
 void initialize()
@@ -2013,6 +2015,7 @@ BENCHMARK_TEMPLATE(BM_Template, Bench_PooledJointsSoaWeights)
 	->ComputeStatistics("min", min_of_vector)
 	->ComputeStatistics("max", max_of_vector);
 
+#if 0
 BENCHMARK_TEMPLATE(BM_Template, Bench_OnePoolJointsAosWeights)
 	->ArgNames({"NumDuplicates", "FlushCache"})
 	->Apply(CustomArgs)
@@ -2054,7 +2057,9 @@ BENCHMARK_TEMPLATE(BM_Template, Bench_PooledJointsPerJointPoolWeightsSoa)
 	->Complexity(benchmark::oN)
 	->ComputeStatistics("min", min_of_vector)
 	->ComputeStatistics("max", max_of_vector);
+#endif
 
+#if 0
 BENCHMARK_TEMPLATE(BM_TemplateManyPools, Bench_OnePoolJointsAosWeightsDynamic)
 	->ArgNames({"NumDuplicates", "FlushCache"})
 	->Apply(CustomArgs)
@@ -2068,5 +2073,6 @@ BENCHMARK_TEMPLATE(BM_TemplateManyPools, Bench_PooledJointsAosWeightsDynamic)
 	->Complexity(benchmark::oN)
 	->ComputeStatistics("min", min_of_vector)
 	->ComputeStatistics("max", max_of_vector);
+#endif
 
 BENCHMARK_MAIN();
