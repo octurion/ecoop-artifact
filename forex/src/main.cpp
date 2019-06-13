@@ -18,6 +18,8 @@
 #define DATE_RECENT "2018-01-01"
 #define PROB_RECENT 0.8
 
+#define NUM_QUERIES 5000
+
 static const std::array<uint64_t, 100> SEEDS {
 	1415926535ULL, 8979323846ULL, 2643383279ULL, 5028841971ULL, 6939937510ULL,
 	5820974944ULL, 5923078164ULL,  628620899ULL, 8628034825ULL, 3421170679ULL,
@@ -344,9 +346,7 @@ BENCHMARK_DEFINE_F(Fixture, MixedManyPools)(benchmark::State& st)
 
 static void CustomArguments(benchmark::internal::Benchmark* b) {
 	for (const auto& j: SEEDS) {
-		for (size_t i = 0; i < 10; i++) {
-			b->Args({8 << i, (int64_t) j});
-		}
+		b->Args({NUM_QUERIES, (int64_t) j});
 	}
 }
 
