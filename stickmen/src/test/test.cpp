@@ -669,6 +669,8 @@ struct Bench_PooledJointsSoaWeights
 			JointSoa j;
 			j.orient = input.joints_raw[i].base_quat;
 			j.pos = input.joints_raw[i].base_pos;
+			j.parent = nullptr;
+			j.next = nullptr;
 
 			model.joints.emplace_back(std::move(j));
 		}
