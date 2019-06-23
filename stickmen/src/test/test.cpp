@@ -42,7 +42,7 @@ static ModelInput INPUTS[NUM_MODELS];
 
 static void CustomArgs(benchmark::internal::Benchmark* b)
 {
-	for (int i = 1; i <= 10; i++) {
+	for (int i = 10; i <= 10; i++) {
 		b->Args({i * 500, 0});
 	}
 }

@@ -19,8 +19,8 @@ void animate_joints(Joint* root, const JointRaw* base, const float* frame_compon
 	}
 
 	size_t i = 0;
+	size_t idx = 0;
 	for (Joint* it = root; it != nullptr; it = it->next, i++) {
-		size_t idx = 0;
 
 		auto flags = base[i].flags;
 		auto base_pos = base[i].base_pos;
