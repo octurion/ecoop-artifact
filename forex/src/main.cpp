@@ -83,6 +83,13 @@ struct Comp
 	}
 };
 
+struct DateComp
+{
+	bool operator()(const std::array<char, ISO_8601_LEN + 1>& rate, const char* date) const {
+		return strcmp(rate.data(), date) < 0;
+	}
+};
+
 static bool initialized = false;
 static std::vector<Rate> rates;
 
@@ -344,6 +351,137 @@ BENCHMARK_DEFINE_F(Fixture, MixedManyPools)(benchmark::State& st)
 	st.SetComplexityN(st.range());
 }
 
+BENCHMARK_DEFINE_F(Fixture, MixedManyPoolsSoa)(benchmark::State& st)
+{
+	auto from_2018_onward = std::lower_bound(
+		rates.begin(), rates.end(), DATE_RECENT, Comp<Rate>());
+
+	std::vector<std::array<char, ISO_8601_LEN + 1>> dates;
+	std::vector<double> USD;
+	std::vector<double> JPY;
+	std::vector<double> BGN;
+	std::vector<double> CYP;
+	std::vector<double> CZK;
+	std::vector<double> DKK;
+	std::vector<double> EEK;
+	std::vector<double> GBP;
+	std::vector<double> HUF;
+	std::vector<double> LTL;
+	std::vector<double> LVL;
+	std::vector<double> MTL;
+	std::vector<double> PLN;
+	std::vector<double> ROL;
+	std::vector<double> RON;
+	std::vector<double> SEK;
+	std::vector<double> SIT;
+	std::vector<double> SKK;
+	std::vector<double> CHF;
+	std::vector<double> ISK;
+	std::vector<double> NOK;
+	std::vector<double> HRK;
+	std::vector<double> RUB;
+	std::vector<double> TRL;
+	std::vector<double> TRY;
+	std::vector<double> AUD;
+	std::vector<double> BRL;
+	std::vector<double> CAD;
+	std::vector<double> CNY;
+	std::vector<double> HKD;
+	std::vector<double> IDR;
+	std::vector<double> ILS;
+	std::vector<double> INR;
+	std::vector<double> KRW;
+	std::vector<double> MXN;
+	std::vector<double> MYR;
+	std::vector<double> NZD;
+	std::vector<double> PHP;
+	std::vector<double> SGD;
+	std::vector<double> THB;
+	std::vector<double> ZAR;
+
+	std::vector<Rate> rare;
+
+	for (auto it = from_2018_onward; it != rates.end(); it++) {
+		std::array<char, ISO_8601_LEN + 1> date = {};
+		strcpy(date.data(), it->date);
+		dates.push_back(date);
+
+		USD.push_back(it->USD);
+		GBP.push_back(it->GBP);
+
+		JPY.push_back(it->JPY);
+		BGN.push_back(it->BGN);
+		CYP.push_back(it->CYP);
+		CZK.push_back(it->CZK);
+		DKK.push_back(it->DKK);
+		EEK.push_back(it->EEK);
+		HUF.push_back(it->HUF);
+		LTL.push_back(it->LTL);
+		LVL.push_back(it->LVL);
+		MTL.push_back(it->MTL);
+		PLN.push_back(it->PLN);
+		ROL.push_back(it->ROL);
+		RON.push_back(it->RON);
+		SEK.push_back(it->SEK);
+		SIT.push_back(it->SIT);
+		SKK.push_back(it->SKK);
+		CHF.push_back(it->CHF);
+		ISK.push_back(it->ISK);
+		NOK.push_back(it->NOK);
+		HRK.push_back(it->HRK);
+		RUB.push_back(it->RUB);
+		TRL.push_back(it->TRL);
+		TRY.push_back(it->TRY);
+		AUD.push_back(it->AUD);
+		BRL.push_back(it->BRL);
+		CAD.push_back(it->CAD);
+		CNY.push_back(it->CNY);
+		HKD.push_back(it->HKD);
+		IDR.push_back(it->IDR);
+		ILS.push_back(it->ILS);
+		INR.push_back(it->INR);
+		KRW.push_back(it->KRW);
+		MXN.push_back(it->MXN);
+		MYR.push_back(it->MYR);
+		NZD.push_back(it->NZD);
+		PHP.push_back(it->PHP);
+		SGD.push_back(it->SGD);
+		THB.push_back(it->THB);
+		ZAR.push_back(it->ZAR);
+	}
+	for (auto it = rates.begin(); it != from_2018_onward; it++) {
+		rare.push_back(*it);
+	}
+
+	for (auto _ : st) {
+		for (const auto& q: queries) {
+			if (strcmp(q.date, DATE_RECENT) >= 0) {
+				auto freq_it = std::lower_bound(
+					dates.begin(), dates.end(), q.date, DateComp());
+				if (freq_it != dates.end()) {
+					auto idx = std::distance(dates.begin(), freq_it);
+					auto rate = q.currency == Currency::USD
+						? USD[idx]
+						: GBP[idx];
+
+					benchmark::DoNotOptimize(rate);
+				}
+			} else {
+				auto rare_it = std::lower_bound(
+					rare.begin(), rare.end(), q.date, Comp<Rate>());
+				if (rare_it != rare.end()) {
+					auto rate = q.currency == Currency::USD
+						? rare_it->USD
+						: rare_it->GBP;
+
+					benchmark::DoNotOptimize(rate);
+				}
+			}
+		}
+	}
+	st.SetComplexityN(st.range());
+}
+
 static void CustomArguments(benchmark::internal::Benchmark* b) {
 	for (const auto& j: SEEDS) {
 		b->Args({NUM_QUERIES, (int64_t) j});
@@ -354,6 +492,9 @@ BENCHMARK_REGISTER_F(Fixture, AosOnePool)
 	->Apply(CustomArguments)
 	->Complexity(benchmark::oN);
 BENCHMARK_REGISTER_F(Fixture, MixedManyPools)
+	->Apply(CustomArguments)
+	->Complexity(benchmark::oN);
+BENCHMARK_REGISTER_F(Fixture, MixedManyPoolsSoa)
 	->Apply(CustomArguments)
 	->Complexity(benchmark::oN);
 
