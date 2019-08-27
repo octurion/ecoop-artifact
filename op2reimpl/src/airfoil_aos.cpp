@@ -52,15 +52,12 @@ struct Backedge {
 
 struct Cell {
 	std::array<size_t, 4> pcell; // Node indices
-	std::array<std::array<double, 2>, 4> pcell_new; // Node indices
+	// std::array<std::array<double, 2>, 4> pcell_new; // Node indices
 
 	std::array<double, 4> p_q;
 	std::array<double, 4> qold;
 	double adt;
 	std::array<double, 4> res;
-
-	std::vector<size_t> edges;
-	std::vector<size_t> bedges;
 };
 
 struct Node {
@@ -74,13 +71,13 @@ void copy_oldq(std::vector<Cell>& cells) {
 	}
 }
 
-void adt_calc(std::vector<Cell>& cells) {
+void adt_calc(std::vector<Cell>& cells, const std::vector<Node>& nodes) {
 	#pragma omp parallel for
 	for (size_t i = 0; i < cells.size(); i++) {
-		const double *x1 = cells[i].pcell_new[0].data();
-		const double *x2 = cells[i].pcell_new[1].data();
-		const double *x3 = cells[i].pcell_new[2].data();
-		const double *x4 = cells[i].pcell_new[3].data();
+		const double *x1 = nodes[cells[i].pcell[0]].p_x.data();
+		const double *x2 = nodes[cells[i].pcell[1]].p_x.data();;
+		const double *x3 = nodes[cells[i].pcell[2]].p_x.data();;
+		const double *x4 = nodes[cells[i].pcell[3]].p_x.data();;
 		const double *q = cells[i].p_q.data();
 		double *adt = &cells[i].adt;
 		double dx, dy, ri, u, v, c;
@@ -367,14 +364,6 @@ int main(int argc, char** argv)
 		}
 	}
 
-	for (size_t i = 0; i < cells.size(); i++) {
-		for (size_t j = 0; j < 4; j++) {
-			for (size_t k = 0; k < 2; k++) {
-				cells[i].pcell_new[j][k] = nodes[cells[i].pcell[j]].p_x[k];
-			}
-		}
-	}
-
 	fprintf(stderr, "Parsing complete!\n");
 
 	fprintf(stderr, "Now performing iterations...\n");
@@ -394,7 +383,7 @@ int main(int argc, char** argv)
 	for (int iter = 1; iter <= num_iter; iter++) {
 		copy_oldq(cells);
 		for (int k = 0; k < 2; k++) {
-			adt_calc(cells);
+			adt_calc(cells, nodes);
 			res_calc(edges, nodes, cells, ranges);
 			bres_calc(bedges, nodes, cells);
 
