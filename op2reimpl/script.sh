@@ -4,7 +4,7 @@ cat /proc/cpuinfo
 echo "--------------------"
 
 echo "Now running Aero AoS"
-for i in {0..20}
+for i in {0..19}
 do
     echo "--------------------"
     build/aero_aos FE_grid.dat /dev/null
@@ -12,7 +12,7 @@ do
 done
 
 echo "Now running Aero partial SoA"
-for i in {0..20}
+for i in {0..19}
 do
     echo "--------------------"
     build/aero FE_grid.dat /dev/null
@@ -25,7 +25,7 @@ done
 # echo "--------------------"
 
 echo "Now running Airfoil AoS"
-for i in {0..20}
+for i in {0..19}
 do
     echo "--------------------"
     build/airfoil_aos new_grid.dat /dev/null
@@ -33,7 +33,7 @@ do
 done
 
 echo "Now running Airfoil partial SoA"
-for i in {0..20}
+for i in {0..19}
 do
     echo "--------------------"
     build/airfoil new_grid.dat /dev/null
@@ -41,7 +41,7 @@ do
 done
 
 echo "Now running Airfoil full SoA"
-for i in {0..20}
+for i in {0..19}
 do
     echo "--------------------"
     build/airfoil_soa new_grid.dat /dev/null
