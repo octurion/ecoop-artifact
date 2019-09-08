@@ -1,26 +1,3 @@
-alexandros @ ThinkPad-T530 in ~ |13:44:52  
-$ sudo cpupower frequency-set --governor performance
-[sudo] password for alexandros: 
-Setting cpu: 0
-Setting cpu: 1
-Setting cpu: 2
-Setting cpu: 3
-alexandros @ ThinkPad-T530 in ~ |13:44:57  
-$ cd projects/op2
-OP2-Common/ op2meme/    
-alexandros @ ThinkPad-T530 in ~ |13:44:57  
-$ cd projects/op2meme/
-alexandros @ ThinkPad-T530 in ~/projects/op2meme |13:45:05  |master ✓| 
-$ cd build/
-alexandros @ ThinkPad-T530 in ~/projects/op2meme/build |13:45:08  |master ✓| 
-$ ninja
-[2/2] Linking CXX executable airfoil_aos
-alexandros @ ThinkPad-T530 in ~/projects/op2meme/build |13:45:11  |master ✓| 
-$ gd
-alexandros @ ThinkPad-T530 in ~/projects/op2meme/build |13:45:13  |master ✓| 
-$ ..
-alexandros @ ThinkPad-T530 in ~/projects/op2meme |13:45:16  |master ✓| 
-$ ./script.sh 
 CPU information:
 --------------------
 processor	: 0
@@ -30,7 +7,7 @@ model		: 58
 model name	: Intel(R) Core(TM) i5-3230M CPU @ 2.60GHz
 stepping	: 9
 microcode	: 0x21
-cpu MHz		: 2400.987
+cpu MHz		: 1427.419
 cache size	: 3072 KB
 physical id	: 0
 siblings	: 4
@@ -43,8 +20,8 @@ fpu_exception	: yes
 cpuid level	: 13
 wp		: yes
 flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d
-bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds
-bogomips	: 5187.83
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs
+bogomips	: 5188.04
 clflush size	: 64
 cache_alignment	: 64
 address sizes	: 36 bits physical, 48 bits virtual
@@ -57,7 +34,7 @@ model		: 58
 model name	: Intel(R) Core(TM) i5-3230M CPU @ 2.60GHz
 stepping	: 9
 microcode	: 0x21
-cpu MHz		: 2353.553
+cpu MHz		: 1250.917
 cache size	: 3072 KB
 physical id	: 0
 siblings	: 4
@@ -70,8 +47,8 @@ fpu_exception	: yes
 cpuid level	: 13
 wp		: yes
 flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d
-bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds
-bogomips	: 5187.83
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs
+bogomips	: 5188.04
 clflush size	: 64
 cache_alignment	: 64
 address sizes	: 36 bits physical, 48 bits virtual
@@ -84,7 +61,7 @@ model		: 58
 model name	: Intel(R) Core(TM) i5-3230M CPU @ 2.60GHz
 stepping	: 9
 microcode	: 0x21
-cpu MHz		: 2435.633
+cpu MHz		: 1645.561
 cache size	: 3072 KB
 physical id	: 0
 siblings	: 4
@@ -97,8 +74,8 @@ fpu_exception	: yes
 cpuid level	: 13
 wp		: yes
 flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d
-bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds
-bogomips	: 5187.83
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs
+bogomips	: 5188.04
 clflush size	: 64
 cache_alignment	: 64
 address sizes	: 36 bits physical, 48 bits virtual
@@ -111,7 +88,7 @@ model		: 58
 model name	: Intel(R) Core(TM) i5-3230M CPU @ 2.60GHz
 stepping	: 9
 microcode	: 0x21
-cpu MHz		: 2399.416
+cpu MHz		: 1358.476
 cache size	: 3072 KB
 physical id	: 0
 siblings	: 4
@@ -124,8 +101,8 @@ fpu_exception	: yes
 cpuid level	: 13
 wp		: yes
 flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d
-bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds
-bogomips	: 5187.83
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs
+bogomips	: 5188.04
 clflush size	: 64
 cache_alignment	: 64
 address sizes	: 36 bits physical, 48 bits virtual
@@ -134,9 +111,6 @@ power management:
 --------------------
 Now running Aero AoS
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 rms = 6.00030e-04 iter: 136
 rms = 1.67006e-04 iter: 200
 rms = 9.74435e-05 iter: 200
@@ -153,20 +127,65 @@ rms = 6.70230e-10 iter: 200
 rms = 1.04975e-10 iter: 200
 rms = 6.32402e-11 iter: 200
 rms = 9.91538e-12 iter: 200
-rms = 5.98449e-12 iter: 200
-rms = 9.39054e-13 iter: 200
-rms = 5.67625e-13 iter: 200
-rms = 8.91395e-14 iter: 200
-Iterations complete!
-res_calc: 5.01518038, dirichlet_resm: 0.00025070, init_cg: 0.02354716, spMV: 17.72840618, inner = 13.72815266
-Wall clock time: 39.46909948
-CPU clock time: 36.49640758
-Now writing to file /dev/null...
+rms = 5.98451e-12 iter: 200
+rms = 9.39043e-13 iter: 200
+rms = 5.67611e-13 iter: 200
+rms = 8.91310e-14 iter: 200
+res_calc: 5.04274616, dirichlet_resm: 0.00026577, init_cg: 0.03008384, spMV: 18.76455788, inner = 15.72812370
+Wall clock time: 43.26205932
+CPU clock time: 39.56615775
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74435e-05 iter: 200
+rms = 1.49385e-05 iter: 200
+rms = 8.86222e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18285e-07 iter: 200
+rms = 1.27375e-07 iter: 200
+rms = 7.61626e-08 iter: 200
+rms = 1.18892e-08 iter: 200
+rms = 7.12883e-09 iter: 200
+rms = 1.11499e-09 iter: 200
+rms = 6.70229e-10 iter: 200
+rms = 1.04975e-10 iter: 200
+rms = 6.32401e-11 iter: 200
+rms = 9.91537e-12 iter: 200
+rms = 5.98448e-12 iter: 200
+rms = 9.39046e-13 iter: 200
+rms = 5.67615e-13 iter: 200
+rms = 8.91434e-14 iter: 200
+res_calc: 5.03984513, dirichlet_resm: 0.00022728, init_cg: 0.02257230, spMV: 16.43290682, inner = 12.39880903
+Wall clock time: 35.89783262
+CPU clock time: 33.89471333
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74435e-05 iter: 200
+rms = 1.49385e-05 iter: 200
+rms = 8.86222e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18285e-07 iter: 200
+rms = 1.27375e-07 iter: 200
+rms = 7.61629e-08 iter: 200
+rms = 1.18893e-08 iter: 200
+rms = 7.12886e-09 iter: 200
+rms = 1.11499e-09 iter: 200
+rms = 6.70232e-10 iter: 200
+rms = 1.04975e-10 iter: 200
+rms = 6.32404e-11 iter: 200
+rms = 9.91541e-12 iter: 200
+rms = 5.98453e-12 iter: 200
+rms = 9.39047e-13 iter: 200
+rms = 5.67650e-13 iter: 200
+rms = 8.91277e-14 iter: 200
+res_calc: 5.05097135, dirichlet_resm: 0.00024378, init_cg: 0.02246954, spMV: 16.38978803, inner = 12.56069850
+Wall clock time: 36.04567399
+CPU clock time: 34.02452500
+--------------------
+--------------------
 rms = 6.00030e-04 iter: 136
 rms = 1.67006e-04 iter: 200
 rms = 9.74435e-05 iter: 200
@@ -177,456 +196,6 @@ rms = 8.18285e-07 iter: 200
 rms = 1.27375e-07 iter: 200
 rms = 7.61627e-08 iter: 200
 rms = 1.18892e-08 iter: 200
-rms = 7.12884e-09 iter: 200
-rms = 1.11499e-09 iter: 200
-rms = 6.70229e-10 iter: 200
-rms = 1.04975e-10 iter: 200
-rms = 6.32401e-11 iter: 200
-rms = 9.91536e-12 iter: 200
-rms = 5.98448e-12 iter: 200
-rms = 9.39043e-13 iter: 200
-rms = 5.67641e-13 iter: 200
-rms = 8.91264e-14 iter: 200
-Iterations complete!
-res_calc: 5.02447210, dirichlet_resm: 0.00024059, init_cg: 0.02239846, spMV: 16.21575242, inner = 13.02870248
-Wall clock time: 36.42034877
-CPU clock time: 34.29239834
-Now writing to file /dev/null...
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-rms = 6.00030e-04 iter: 136
-rms = 1.67006e-04 iter: 200
-rms = 9.74435e-05 iter: 200
-rms = 1.49385e-05 iter: 200
-rms = 8.86222e-06 iter: 200
-rms = 1.37294e-06 iter: 200
-rms = 8.18285e-07 iter: 200
-rms = 1.27375e-07 iter: 200
-rms = 7.61627e-08 iter: 200
-rms = 1.18893e-08 iter: 200
-rms = 7.12884e-09 iter: 200
-rms = 1.11499e-09 iter: 200
-rms = 6.70229e-10 iter: 200
-rms = 1.04975e-10 iter: 200
-rms = 6.32401e-11 iter: 200
-rms = 9.91536e-12 iter: 200
-rms = 5.98448e-12 iter: 200
-rms = 9.39051e-13 iter: 200
-rms = 5.67622e-13 iter: 200
-rms = 8.91274e-14 iter: 200
-Iterations complete!
-res_calc: 5.01492503, dirichlet_resm: 0.00024013, init_cg: 0.02172454, spMV: 16.19062603, inner = 13.06245474
-Wall clock time: 36.35925653
-CPU clock time: 34.29074073
-Now writing to file /dev/null...
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-rms = 6.00030e-04 iter: 136
-rms = 1.67006e-04 iter: 200
-rms = 9.74435e-05 iter: 200
-rms = 1.49385e-05 iter: 200
-rms = 8.86222e-06 iter: 200
-rms = 1.37294e-06 iter: 200
-rms = 8.18285e-07 iter: 200
-rms = 1.27375e-07 iter: 200
-rms = 7.61629e-08 iter: 200
-rms = 1.18893e-08 iter: 200
-rms = 7.12885e-09 iter: 200
-rms = 1.11499e-09 iter: 200
-rms = 6.70231e-10 iter: 200
-rms = 1.04975e-10 iter: 200
-rms = 6.32403e-11 iter: 200
-rms = 9.91540e-12 iter: 200
-rms = 5.98445e-12 iter: 200
-rms = 9.39059e-13 iter: 200
-rms = 5.67655e-13 iter: 200
-rms = 8.91316e-14 iter: 200
-Iterations complete!
-res_calc: 5.01057203, dirichlet_resm: 0.00023915, init_cg: 0.02307478, spMV: 16.20091638, inner = 13.03146879
-Wall clock time: 36.39445023
-CPU clock time: 34.26707864
-Now writing to file /dev/null...
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-rms = 6.00030e-04 iter: 136
-rms = 1.67006e-04 iter: 200
-rms = 9.74435e-05 iter: 200
-rms = 1.49385e-05 iter: 200
-rms = 8.86222e-06 iter: 200
-rms = 1.37294e-06 iter: 200
-rms = 8.18285e-07 iter: 200
-rms = 1.27375e-07 iter: 200
-rms = 7.61630e-08 iter: 200
-rms = 1.18893e-08 iter: 200
-rms = 7.12886e-09 iter: 200
-rms = 1.11499e-09 iter: 200
-rms = 6.70232e-10 iter: 200
-rms = 1.04975e-10 iter: 200
-rms = 6.32405e-11 iter: 200
-rms = 9.91540e-12 iter: 200
-rms = 5.98456e-12 iter: 200
-rms = 9.39051e-13 iter: 200
-rms = 5.67633e-13 iter: 200
-rms = 8.91212e-14 iter: 200
-Iterations complete!
-res_calc: 5.03506042, dirichlet_resm: 0.00024188, init_cg: 0.02253121, spMV: 16.17206805, inner = 13.04753926
-Wall clock time: 36.45776314
-CPU clock time: 34.27821739
-Now writing to file /dev/null...
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-rms = 6.00030e-04 iter: 136
-rms = 1.67006e-04 iter: 200
-rms = 9.74435e-05 iter: 200
-rms = 1.49385e-05 iter: 200
-rms = 8.86222e-06 iter: 200
-rms = 1.37294e-06 iter: 200
-rms = 8.18285e-07 iter: 200
-rms = 1.27375e-07 iter: 200
-rms = 7.61628e-08 iter: 200
-rms = 1.18893e-08 iter: 200
-rms = 7.12885e-09 iter: 200
-rms = 1.11499e-09 iter: 200
-rms = 6.70230e-10 iter: 200
-rms = 1.04975e-10 iter: 200
-rms = 6.32402e-11 iter: 200
-rms = 9.91536e-12 iter: 200
-rms = 5.98450e-12 iter: 200
-rms = 9.39044e-13 iter: 200
-rms = 5.67618e-13 iter: 200
-rms = 8.91226e-14 iter: 200
-Iterations complete!
-res_calc: 4.97872311, dirichlet_resm: 0.00024153, init_cg: 0.02256590, spMV: 16.18570303, inner = 13.02798708
-Wall clock time: 36.39981377
-CPU clock time: 34.21601715
-Now writing to file /dev/null...
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-rms = 6.00030e-04 iter: 136
-rms = 1.67006e-04 iter: 200
-rms = 9.74435e-05 iter: 200
-rms = 1.49385e-05 iter: 200
-rms = 8.86222e-06 iter: 200
-rms = 1.37294e-06 iter: 200
-rms = 8.18285e-07 iter: 200
-rms = 1.27375e-07 iter: 200
-rms = 7.61628e-08 iter: 200
-rms = 1.18893e-08 iter: 200
-rms = 7.12884e-09 iter: 200
-rms = 1.11499e-09 iter: 200
-rms = 6.70230e-10 iter: 200
-rms = 1.04975e-10 iter: 200
-rms = 6.32402e-11 iter: 200
-rms = 9.91537e-12 iter: 200
-rms = 5.98448e-12 iter: 200
-rms = 9.39049e-13 iter: 200
-rms = 5.67620e-13 iter: 200
-rms = 8.91322e-14 iter: 200
-Iterations complete!
-res_calc: 5.02096098, dirichlet_resm: 0.00025266, init_cg: 0.02393837, spMV: 16.22722862, inner = 13.03365318
-Wall clock time: 36.42289581
-CPU clock time: 34.30684994
-Now writing to file /dev/null...
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-rms = 6.00030e-04 iter: 136
-rms = 1.67006e-04 iter: 200
-rms = 9.74435e-05 iter: 200
-rms = 1.49385e-05 iter: 200
-rms = 8.86222e-06 iter: 200
-rms = 1.37294e-06 iter: 200
-rms = 8.18285e-07 iter: 200
-rms = 1.27375e-07 iter: 200
-rms = 7.61628e-08 iter: 200
-rms = 1.18893e-08 iter: 200
-rms = 7.12884e-09 iter: 200
-rms = 1.11499e-09 iter: 200
-rms = 6.70230e-10 iter: 200
-rms = 1.04975e-10 iter: 200
-rms = 6.32402e-11 iter: 200
-rms = 9.91537e-12 iter: 200
-rms = 5.98450e-12 iter: 200
-rms = 9.39036e-13 iter: 200
-rms = 5.67643e-13 iter: 200
-rms = 8.91202e-14 iter: 200
-Iterations complete!
-res_calc: 5.01189097, dirichlet_resm: 0.00023467, init_cg: 0.02256807, spMV: 16.20503560, inner = 13.08697999
-Wall clock time: 36.45850655
-CPU clock time: 34.32750215
-Now writing to file /dev/null...
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-rms = 6.00030e-04 iter: 136
-rms = 1.67006e-04 iter: 200
-rms = 9.74435e-05 iter: 200
-rms = 1.49385e-05 iter: 200
-rms = 8.86222e-06 iter: 200
-rms = 1.37294e-06 iter: 200
-rms = 8.18285e-07 iter: 200
-rms = 1.27375e-07 iter: 200
-rms = 7.61628e-08 iter: 200
-rms = 1.18893e-08 iter: 200
-rms = 7.12885e-09 iter: 200
-rms = 1.11499e-09 iter: 200
-rms = 6.70230e-10 iter: 200
-rms = 1.04975e-10 iter: 200
-rms = 6.32402e-11 iter: 200
-rms = 9.91537e-12 iter: 200
-rms = 5.98447e-12 iter: 200
-rms = 9.39048e-13 iter: 200
-rms = 5.67667e-13 iter: 200
-rms = 8.91169e-14 iter: 200
-Iterations complete!
-res_calc: 5.04776616, dirichlet_resm: 0.00023969, init_cg: 0.02274821, spMV: 16.22943065, inner = 13.05472310
-Wall clock time: 36.38780351
-CPU clock time: 34.35570130
-Now writing to file /dev/null...
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-rms = 6.00030e-04 iter: 136
-rms = 1.67006e-04 iter: 200
-rms = 9.74435e-05 iter: 200
-rms = 1.49385e-05 iter: 200
-rms = 8.86222e-06 iter: 200
-rms = 1.37294e-06 iter: 200
-rms = 8.18285e-07 iter: 200
-rms = 1.27375e-07 iter: 200
-rms = 7.61628e-08 iter: 200
-rms = 1.18893e-08 iter: 200
-rms = 7.12884e-09 iter: 200
-rms = 1.11499e-09 iter: 200
-rms = 6.70230e-10 iter: 200
-rms = 1.04975e-10 iter: 200
-rms = 6.32402e-11 iter: 200
-rms = 9.91536e-12 iter: 200
-rms = 5.98451e-12 iter: 200
-rms = 9.39049e-13 iter: 200
-rms = 5.67630e-13 iter: 200
-rms = 8.91303e-14 iter: 200
-Iterations complete!
-res_calc: 4.96230454, dirichlet_resm: 0.00023924, init_cg: 0.02253143, spMV: 16.21043242, inner = 13.06312993
-Wall clock time: 36.45615746
-CPU clock time: 34.25948942
-Now writing to file /dev/null...
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-rms = 6.00030e-04 iter: 136
-rms = 1.67006e-04 iter: 200
-rms = 9.74435e-05 iter: 200
-rms = 1.49385e-05 iter: 200
-rms = 8.86222e-06 iter: 200
-rms = 1.37294e-06 iter: 200
-rms = 8.18285e-07 iter: 200
-rms = 1.27375e-07 iter: 200
-rms = 7.61630e-08 iter: 200
-rms = 1.18893e-08 iter: 200
-rms = 7.12886e-09 iter: 200
-rms = 1.11499e-09 iter: 200
-rms = 6.70232e-10 iter: 200
-rms = 1.04975e-10 iter: 200
-rms = 6.32405e-11 iter: 200
-rms = 9.91541e-12 iter: 200
-rms = 5.98454e-12 iter: 200
-rms = 9.39052e-13 iter: 200
-rms = 5.67620e-13 iter: 200
-rms = 8.91263e-14 iter: 200
-Iterations complete!
-res_calc: 4.96457521, dirichlet_resm: 0.00025718, init_cg: 0.02320623, spMV: 16.22248480, inner = 13.09730421
-Wall clock time: 36.58384085
-CPU clock time: 34.30867682
-Now writing to file /dev/null...
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-rms = 6.00030e-04 iter: 136
-rms = 1.67006e-04 iter: 200
-rms = 9.74435e-05 iter: 200
-rms = 1.49385e-05 iter: 200
-rms = 8.86222e-06 iter: 200
-rms = 1.37294e-06 iter: 200
-rms = 8.18285e-07 iter: 200
-rms = 1.27375e-07 iter: 200
-rms = 7.61628e-08 iter: 200
-rms = 1.18893e-08 iter: 200
-rms = 7.12885e-09 iter: 200
-rms = 1.11499e-09 iter: 200
-rms = 6.70230e-10 iter: 200
-rms = 1.04975e-10 iter: 200
-rms = 6.32402e-11 iter: 200
-rms = 9.91538e-12 iter: 200
-rms = 5.98452e-12 iter: 200
-rms = 9.39043e-13 iter: 200
-rms = 5.67635e-13 iter: 200
-rms = 8.91265e-14 iter: 200
-Iterations complete!
-res_calc: 5.03881427, dirichlet_resm: 0.00024946, init_cg: 0.02228103, spMV: 16.20234001, inner = 13.07512602
-Wall clock time: 36.40672471
-CPU clock time: 34.33960663
-Now writing to file /dev/null...
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-rms = 6.00030e-04 iter: 136
-rms = 1.67006e-04 iter: 200
-rms = 9.74435e-05 iter: 200
-rms = 1.49385e-05 iter: 200
-rms = 8.86222e-06 iter: 200
-rms = 1.37294e-06 iter: 200
-rms = 8.18285e-07 iter: 200
-rms = 1.27375e-07 iter: 200
-rms = 7.61629e-08 iter: 200
-rms = 1.18893e-08 iter: 200
-rms = 7.12886e-09 iter: 200
-rms = 1.11499e-09 iter: 200
-rms = 6.70231e-10 iter: 200
-rms = 1.04975e-10 iter: 200
-rms = 6.32404e-11 iter: 200
-rms = 9.91539e-12 iter: 200
-rms = 5.98453e-12 iter: 200
-rms = 9.39054e-13 iter: 200
-rms = 5.67644e-13 iter: 200
-rms = 8.91235e-14 iter: 200
-Iterations complete!
-res_calc: 5.05945903, dirichlet_resm: 0.00023876, init_cg: 0.02252647, spMV: 16.18381669, inner = 13.04045571
-Wall clock time: 36.42637876
-CPU clock time: 34.30730061
-Now writing to file /dev/null...
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-rms = 6.00030e-04 iter: 136
-rms = 1.67006e-04 iter: 200
-rms = 9.74435e-05 iter: 200
-rms = 1.49385e-05 iter: 200
-rms = 8.86222e-06 iter: 200
-rms = 1.37294e-06 iter: 200
-rms = 8.18285e-07 iter: 200
-rms = 1.27375e-07 iter: 200
-rms = 7.61627e-08 iter: 200
-rms = 1.18893e-08 iter: 200
-rms = 7.12884e-09 iter: 200
-rms = 1.11499e-09 iter: 200
-rms = 6.70230e-10 iter: 200
-rms = 1.04975e-10 iter: 200
-rms = 6.32402e-11 iter: 200
-rms = 9.91536e-12 iter: 200
-rms = 5.98448e-12 iter: 200
-rms = 9.39047e-13 iter: 200
-rms = 5.67639e-13 iter: 200
-rms = 8.91291e-14 iter: 200
-Iterations complete!
-res_calc: 5.03600382, dirichlet_resm: 0.00024262, init_cg: 0.02249480, spMV: 16.22372110, inner = 13.08294627
-Wall clock time: 36.52128827
-CPU clock time: 34.36619820
-Now writing to file /dev/null...
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-rms = 6.00030e-04 iter: 136
-rms = 1.67006e-04 iter: 200
-rms = 9.74435e-05 iter: 200
-rms = 1.49385e-05 iter: 200
-rms = 8.86222e-06 iter: 200
-rms = 1.37294e-06 iter: 200
-rms = 8.18285e-07 iter: 200
-rms = 1.27375e-07 iter: 200
-rms = 7.61628e-08 iter: 200
-rms = 1.18893e-08 iter: 200
-rms = 7.12885e-09 iter: 200
-rms = 1.11499e-09 iter: 200
-rms = 6.70230e-10 iter: 200
-rms = 1.04975e-10 iter: 200
-rms = 6.32403e-11 iter: 200
-rms = 9.91538e-12 iter: 200
-rms = 5.98448e-12 iter: 200
-rms = 9.39040e-13 iter: 200
-rms = 5.67635e-13 iter: 200
-rms = 8.91235e-14 iter: 200
-Iterations complete!
-res_calc: 5.02903339, dirichlet_resm: 0.00024258, init_cg: 0.02249185, spMV: 16.19736011, inner = 13.04622284
-Wall clock time: 36.33039572
-CPU clock time: 34.29615000
-Now writing to file /dev/null...
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-rms = 6.00030e-04 iter: 136
-rms = 1.67006e-04 iter: 200
-rms = 9.74435e-05 iter: 200
-rms = 1.49385e-05 iter: 200
-rms = 8.86222e-06 iter: 200
-rms = 1.37294e-06 iter: 200
-rms = 8.18285e-07 iter: 200
-rms = 1.27375e-07 iter: 200
-rms = 7.61628e-08 iter: 200
-rms = 1.18893e-08 iter: 200
-rms = 7.12885e-09 iter: 200
-rms = 1.11499e-09 iter: 200
-rms = 6.70230e-10 iter: 200
-rms = 1.04975e-10 iter: 200
-rms = 6.32402e-11 iter: 200
-rms = 9.91537e-12 iter: 200
-rms = 5.98449e-12 iter: 200
-rms = 9.39034e-13 iter: 200
-rms = 5.67608e-13 iter: 200
-rms = 8.91247e-14 iter: 200
-Iterations complete!
-res_calc: 4.98613339, dirichlet_resm: 0.00024686, init_cg: 0.02247023, spMV: 16.17847342, inner = 13.05655383
-Wall clock time: 36.46134174
-CPU clock time: 34.24467071
-Now writing to file /dev/null...
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-rms = 6.00030e-04 iter: 136
-rms = 1.67006e-04 iter: 200
-rms = 9.74435e-05 iter: 200
-rms = 1.49385e-05 iter: 200
-rms = 8.86222e-06 iter: 200
-rms = 1.37294e-06 iter: 200
-rms = 8.18285e-07 iter: 200
-rms = 1.27375e-07 iter: 200
-rms = 7.61627e-08 iter: 200
-rms = 1.18893e-08 iter: 200
 rms = 7.12884e-09 iter: 200
 rms = 1.11499e-09 iter: 200
 rms = 6.70229e-10 iter: 200
@@ -634,49 +203,14 @@ rms = 1.04975e-10 iter: 200
 rms = 6.32401e-11 iter: 200
 rms = 9.91535e-12 iter: 200
 rms = 5.98450e-12 iter: 200
-rms = 9.39040e-13 iter: 200
-rms = 5.67634e-13 iter: 200
-rms = 8.91266e-14 iter: 200
-Iterations complete!
-res_calc: 5.02189943, dirichlet_resm: 0.00025191, init_cg: 0.02371080, spMV: 16.21459020, inner = 13.06145611
-Wall clock time: 36.39678375
-CPU clock time: 34.32270672
-Now writing to file /dev/null...
+rms = 9.39050e-13 iter: 200
+rms = 5.67637e-13 iter: 200
+rms = 8.91233e-14 iter: 200
+res_calc: 5.03726398, dirichlet_resm: 0.00023461, init_cg: 0.02246574, spMV: 16.45909478, inner = 12.44783923
+Wall clock time: 35.97640753
+CPU clock time: 33.96728163
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-rms = 6.00030e-04 iter: 136
-rms = 1.67006e-04 iter: 200
-rms = 9.74435e-05 iter: 200
-rms = 1.49385e-05 iter: 200
-rms = 8.86222e-06 iter: 200
-rms = 1.37294e-06 iter: 200
-rms = 8.18285e-07 iter: 200
-rms = 1.27375e-07 iter: 200
-rms = 7.61628e-08 iter: 200
-rms = 1.18893e-08 iter: 200
-rms = 7.12885e-09 iter: 200
-rms = 1.11499e-09 iter: 200
-rms = 6.70230e-10 iter: 200
-rms = 1.04975e-10 iter: 200
-rms = 6.32403e-11 iter: 200
-rms = 9.91537e-12 iter: 200
-rms = 5.98451e-12 iter: 200
-rms = 9.39053e-13 iter: 200
-rms = 5.67601e-13 iter: 200
-rms = 8.91395e-14 iter: 200
-Iterations complete!
-res_calc: 5.09157070, dirichlet_resm: 0.00025026, init_cg: 0.02254843, spMV: 16.21781913, inner = 13.09731574
-Wall clock time: 36.55034869
-CPU clock time: 34.43032563
-Now writing to file /dev/null...
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 rms = 6.00030e-04 iter: 136
 rms = 1.67006e-04 iter: 200
 rms = 9.74435e-05 iter: 200
@@ -692,21 +226,16 @@ rms = 1.11499e-09 iter: 200
 rms = 6.70230e-10 iter: 200
 rms = 1.04975e-10 iter: 200
 rms = 6.32402e-11 iter: 200
-rms = 9.91538e-12 iter: 200
-rms = 5.98447e-12 iter: 200
-rms = 9.39050e-13 iter: 200
-rms = 5.67633e-13 iter: 200
-rms = 8.91166e-14 iter: 200
-Iterations complete!
-res_calc: 5.03479743, dirichlet_resm: 0.00024198, init_cg: 0.02250165, spMV: 16.18817442, inner = 13.05250227
-Wall clock time: 36.38840659
-CPU clock time: 34.29899773
-Now writing to file /dev/null...
+rms = 9.91537e-12 iter: 200
+rms = 5.98451e-12 iter: 200
+rms = 9.39043e-13 iter: 200
+rms = 5.67626e-13 iter: 200
+rms = 8.91338e-14 iter: 200
+res_calc: 4.98536467, dirichlet_resm: 0.00023505, init_cg: 0.02231456, spMV: 16.46607091, inner = 12.44101170
+Wall clock time: 35.97590030
+CPU clock time: 33.91536376
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 rms = 6.00030e-04 iter: 136
 rms = 1.67006e-04 iter: 200
 rms = 9.74435e-05 iter: 200
@@ -719,24 +248,69 @@ rms = 7.61627e-08 iter: 200
 rms = 1.18893e-08 iter: 200
 rms = 7.12884e-09 iter: 200
 rms = 1.11499e-09 iter: 200
+rms = 6.70229e-10 iter: 200
+rms = 1.04975e-10 iter: 200
+rms = 6.32401e-11 iter: 200
+rms = 9.91536e-12 iter: 200
+rms = 5.98449e-12 iter: 200
+rms = 9.39031e-13 iter: 200
+rms = 5.67645e-13 iter: 200
+rms = 8.91136e-14 iter: 200
+res_calc: 4.98394074, dirichlet_resm: 0.00024989, init_cg: 0.02206196, spMV: 16.44458889, inner = 12.40896683
+Wall clock time: 35.92690590
+CPU clock time: 33.86017705
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74435e-05 iter: 200
+rms = 1.49385e-05 iter: 200
+rms = 8.86222e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18285e-07 iter: 200
+rms = 1.27375e-07 iter: 200
+rms = 7.61628e-08 iter: 200
+rms = 1.18893e-08 iter: 200
+rms = 7.12884e-09 iter: 200
+rms = 1.11499e-09 iter: 200
 rms = 6.70230e-10 iter: 200
 rms = 1.04975e-10 iter: 200
 rms = 6.32402e-11 iter: 200
-rms = 9.91538e-12 iter: 200
-rms = 5.98448e-12 iter: 200
-rms = 9.39050e-13 iter: 200
-rms = 5.67632e-13 iter: 200
-rms = 8.91343e-14 iter: 200
-Iterations complete!
-res_calc: 5.03939590, dirichlet_resm: 0.00023768, init_cg: 0.02236272, spMV: 16.18599451, inner = 13.04617241
-Wall clock time: 36.34513271
-CPU clock time: 34.29495320
-Now writing to file /dev/null...
+rms = 9.91537e-12 iter: 200
+rms = 5.98449e-12 iter: 200
+rms = 9.39047e-13 iter: 200
+rms = 5.67638e-13 iter: 200
+rms = 8.91258e-14 iter: 200
+res_calc: 4.98450212, dirichlet_resm: 0.00023725, init_cg: 0.02256012, spMV: 16.48418075, inner = 12.46930700
+Wall clock time: 36.03924900
+CPU clock time: 33.96114152
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74435e-05 iter: 200
+rms = 1.49385e-05 iter: 200
+rms = 8.86222e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18285e-07 iter: 200
+rms = 1.27375e-07 iter: 200
+rms = 7.61628e-08 iter: 200
+rms = 1.18893e-08 iter: 200
+rms = 7.12884e-09 iter: 200
+rms = 1.11499e-09 iter: 200
+rms = 6.70230e-10 iter: 200
+rms = 1.04975e-10 iter: 200
+rms = 6.32402e-11 iter: 200
+rms = 9.91537e-12 iter: 200
+rms = 5.98451e-12 iter: 200
+rms = 9.39049e-13 iter: 200
+rms = 5.67639e-13 iter: 200
+rms = 8.91188e-14 iter: 200
+res_calc: 5.01768315, dirichlet_resm: 0.00024091, init_cg: 0.02252061, spMV: 16.19397548, inner = 13.04810755
+Wall clock time: 36.30896024
+CPU clock time: 34.28289120
+--------------------
+--------------------
 rms = 6.00030e-04 iter: 136
 rms = 1.67006e-04 iter: 200
 rms = 9.74435e-05 iter: 200
@@ -752,52 +326,41 @@ rms = 1.11499e-09 iter: 200
 rms = 6.70229e-10 iter: 200
 rms = 1.04975e-10 iter: 200
 rms = 6.32401e-11 iter: 200
+rms = 9.91534e-12 iter: 200
+rms = 5.98448e-12 iter: 200
+rms = 9.39040e-13 iter: 200
+rms = 5.67615e-13 iter: 200
+rms = 8.91377e-14 iter: 200
+res_calc: 5.03695365, dirichlet_resm: 0.00023341, init_cg: 0.02254593, spMV: 16.30401564, inner = 13.01202406
+Wall clock time: 36.33541217
+CPU clock time: 34.37613363
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74435e-05 iter: 200
+rms = 1.49385e-05 iter: 200
+rms = 8.86222e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18285e-07 iter: 200
+rms = 1.27375e-07 iter: 200
+rms = 7.61628e-08 iter: 200
+rms = 1.18893e-08 iter: 200
+rms = 7.12885e-09 iter: 200
+rms = 1.11499e-09 iter: 200
+rms = 6.70230e-10 iter: 200
+rms = 1.04975e-10 iter: 200
+rms = 6.32402e-11 iter: 200
 rms = 9.91537e-12 iter: 200
 rms = 5.98449e-12 iter: 200
-rms = 9.39047e-13 iter: 200
-rms = 5.67632e-13 iter: 200
-rms = 8.91256e-14 iter: 200
-Iterations complete!
-res_calc: 5.03648962, dirichlet_resm: 0.00024110, init_cg: 0.02258743, spMV: 16.23452721, inner = 13.10871441
-Wall clock time: 36.47019740
-CPU clock time: 34.40334410
-Now writing to file /dev/null...
---------------------
-Now running Aero partial SoA
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-rms = 6.00030e-04 iter: 136
-rms = 1.67006e-04 iter: 200
-rms = 9.74435e-05 iter: 200
-rms = 1.49385e-05 iter: 200
-rms = 8.86222e-06 iter: 200
-rms = 1.37294e-06 iter: 200
-rms = 8.18285e-07 iter: 200
-rms = 1.27375e-07 iter: 200
-rms = 7.61630e-08 iter: 200
-rms = 1.18893e-08 iter: 200
-rms = 7.12887e-09 iter: 200
-rms = 1.11499e-09 iter: 200
-rms = 6.70233e-10 iter: 200
-rms = 1.04975e-10 iter: 200
-rms = 6.32406e-11 iter: 200
-rms = 9.91544e-12 iter: 200
-rms = 5.98454e-12 iter: 200
-rms = 9.39055e-13 iter: 200
+rms = 9.39048e-13 iter: 200
 rms = 5.67613e-13 iter: 200
-rms = 8.91349e-14 iter: 200
-Iterations complete!
-res_calc: 4.96562907, dirichlet_resm: 0.00013691, init_cg: 0.01118813, spMV: 9.21397068, inner = 3.35288390
-Wall clock time: 19.60814686
-CPU clock time: 17.54457135
-Now writing to file /dev/null...
+rms = 8.91253e-14 iter: 200
+res_calc: 4.96826660, dirichlet_resm: 0.00024480, init_cg: 0.02237988, spMV: 16.19608124, inner = 13.05748443
+Wall clock time: 36.30572872
+CPU clock time: 34.24481035
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 rms = 6.00030e-04 iter: 136
 rms = 1.67006e-04 iter: 200
 rms = 9.74435e-05 iter: 200
@@ -806,28 +369,23 @@ rms = 8.86222e-06 iter: 200
 rms = 1.37294e-06 iter: 200
 rms = 8.18285e-07 iter: 200
 rms = 1.27375e-07 iter: 200
-rms = 7.61629e-08 iter: 200
+rms = 7.61627e-08 iter: 200
 rms = 1.18893e-08 iter: 200
-rms = 7.12886e-09 iter: 200
+rms = 7.12884e-09 iter: 200
 rms = 1.11499e-09 iter: 200
-rms = 6.70232e-10 iter: 200
+rms = 6.70230e-10 iter: 200
 rms = 1.04975e-10 iter: 200
-rms = 6.32404e-11 iter: 200
-rms = 9.91539e-12 iter: 200
-rms = 5.98455e-12 iter: 200
-rms = 9.39032e-13 iter: 200
-rms = 5.67651e-13 iter: 200
-rms = 8.91232e-14 iter: 200
-Iterations complete!
-res_calc: 5.01516752, dirichlet_resm: 0.00012894, init_cg: 0.01136396, spMV: 9.20391412, inner = 3.32959098
-Wall clock time: 19.56432330
-CPU clock time: 17.56090419
-Now writing to file /dev/null...
+rms = 6.32402e-11 iter: 200
+rms = 9.91536e-12 iter: 200
+rms = 5.98448e-12 iter: 200
+rms = 9.39051e-13 iter: 200
+rms = 5.67632e-13 iter: 200
+rms = 8.91259e-14 iter: 200
+res_calc: 5.05035626, dirichlet_resm: 0.00023616, init_cg: 0.02293131, spMV: 16.63172246, inner = 12.68609752
+Wall clock time: 36.34631762
+CPU clock time: 34.39170694
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 rms = 6.00030e-04 iter: 136
 rms = 1.67006e-04 iter: 200
 rms = 9.74435e-05 iter: 200
@@ -845,199 +403,14 @@ rms = 1.04975e-10 iter: 200
 rms = 6.32403e-11 iter: 200
 rms = 9.91539e-12 iter: 200
 rms = 5.98451e-12 iter: 200
-rms = 9.39054e-13 iter: 200
-rms = 5.67634e-13 iter: 200
-rms = 8.91399e-14 iter: 200
-Iterations complete!
-res_calc: 5.02950603, dirichlet_resm: 0.00014682, init_cg: 0.01220484, spMV: 9.21425118, inner = 3.35003568
-Wall clock time: 19.59913879
-CPU clock time: 17.60691016
-Now writing to file /dev/null...
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-rms = 6.00030e-04 iter: 136
-rms = 1.67006e-04 iter: 200
-rms = 9.74435e-05 iter: 200
-rms = 1.49385e-05 iter: 200
-rms = 8.86222e-06 iter: 200
-rms = 1.37294e-06 iter: 200
-rms = 8.18285e-07 iter: 200
-rms = 1.27375e-07 iter: 200
-rms = 7.61628e-08 iter: 200
-rms = 1.18893e-08 iter: 200
-rms = 7.12885e-09 iter: 200
-rms = 1.11499e-09 iter: 200
-rms = 6.70230e-10 iter: 200
-rms = 1.04975e-10 iter: 200
-rms = 6.32403e-11 iter: 200
-rms = 9.91537e-12 iter: 200
-rms = 5.98448e-12 iter: 200
-rms = 9.39052e-13 iter: 200
-rms = 5.67632e-13 iter: 200
-rms = 8.91314e-14 iter: 200
-Iterations complete!
-res_calc: 5.03359320, dirichlet_resm: 0.00013601, init_cg: 0.01153256, spMV: 9.82483156, inner = 3.54665788
-Wall clock time: 20.46214569
-CPU clock time: 18.41752208
-Now writing to file /dev/null...
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-rms = 6.00030e-04 iter: 136
-rms = 1.67006e-04 iter: 200
-rms = 9.74435e-05 iter: 200
-rms = 1.49385e-05 iter: 200
-rms = 8.86222e-06 iter: 200
-rms = 1.37294e-06 iter: 200
-rms = 8.18285e-07 iter: 200
-rms = 1.27375e-07 iter: 200
-rms = 7.61627e-08 iter: 200
-rms = 1.18893e-08 iter: 200
-rms = 7.12884e-09 iter: 200
-rms = 1.11499e-09 iter: 200
-rms = 6.70229e-10 iter: 200
-rms = 1.04975e-10 iter: 200
-rms = 6.32401e-11 iter: 200
-rms = 9.91536e-12 iter: 200
-rms = 5.98449e-12 iter: 200
-rms = 9.39043e-13 iter: 200
-rms = 5.67619e-13 iter: 200
-rms = 8.91306e-14 iter: 200
-Iterations complete!
-res_calc: 5.03657625, dirichlet_resm: 0.00013427, init_cg: 0.01168552, spMV: 9.98122546, inner = 3.55516931
-Wall clock time: 20.59271990
-CPU clock time: 18.58554422
-Now writing to file /dev/null...
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-rms = 6.00030e-04 iter: 136
-rms = 1.67006e-04 iter: 200
-rms = 9.74435e-05 iter: 200
-rms = 1.49385e-05 iter: 200
-rms = 8.86222e-06 iter: 200
-rms = 1.37294e-06 iter: 200
-rms = 8.18285e-07 iter: 200
-rms = 1.27375e-07 iter: 200
-rms = 7.61628e-08 iter: 200
-rms = 1.18893e-08 iter: 200
-rms = 7.12885e-09 iter: 200
-rms = 1.11499e-09 iter: 200
-rms = 6.70230e-10 iter: 200
-rms = 1.04975e-10 iter: 200
-rms = 6.32402e-11 iter: 200
-rms = 9.91538e-12 iter: 200
-rms = 5.98451e-12 iter: 200
-rms = 9.39044e-13 iter: 200
-rms = 5.67620e-13 iter: 200
-rms = 8.91298e-14 iter: 200
-Iterations complete!
-res_calc: 5.06394801, dirichlet_resm: 0.00013271, init_cg: 0.01222882, spMV: 9.94255999, inner = 3.54321529
-Wall clock time: 20.70287718
-CPU clock time: 18.56283305
-Now writing to file /dev/null...
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-rms = 6.00030e-04 iter: 136
-rms = 1.67006e-04 iter: 200
-rms = 9.74435e-05 iter: 200
-rms = 1.49385e-05 iter: 200
-rms = 8.86222e-06 iter: 200
-rms = 1.37294e-06 iter: 200
-rms = 8.18285e-07 iter: 200
-rms = 1.27375e-07 iter: 200
-rms = 7.61628e-08 iter: 200
-rms = 1.18893e-08 iter: 200
-rms = 7.12885e-09 iter: 200
-rms = 1.11499e-09 iter: 200
-rms = 6.70230e-10 iter: 200
-rms = 1.04975e-10 iter: 200
-rms = 6.32402e-11 iter: 200
-rms = 9.91538e-12 iter: 200
-rms = 5.98447e-12 iter: 200
-rms = 9.39061e-13 iter: 200
-rms = 5.67620e-13 iter: 200
-rms = 8.91297e-14 iter: 200
-Iterations complete!
-res_calc: 5.04217980, dirichlet_resm: 0.00012429, init_cg: 0.01180294, spMV: 10.04688247, inner = 3.58128057
-Wall clock time: 20.65415182
-CPU clock time: 18.68303873
-Now writing to file /dev/null...
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-rms = 6.00030e-04 iter: 136
-rms = 1.67006e-04 iter: 200
-rms = 9.74435e-05 iter: 200
-rms = 1.49385e-05 iter: 200
-rms = 8.86222e-06 iter: 200
-rms = 1.37294e-06 iter: 200
-rms = 8.18285e-07 iter: 200
-rms = 1.27375e-07 iter: 200
-rms = 7.61627e-08 iter: 200
-rms = 1.18892e-08 iter: 200
-rms = 7.12884e-09 iter: 200
-rms = 1.11499e-09 iter: 200
-rms = 6.70229e-10 iter: 200
-rms = 1.04975e-10 iter: 200
-rms = 6.32401e-11 iter: 200
-rms = 9.91537e-12 iter: 200
-rms = 5.98450e-12 iter: 200
 rms = 9.39048e-13 iter: 200
-rms = 5.67614e-13 iter: 200
-rms = 8.91301e-14 iter: 200
-Iterations complete!
-res_calc: 5.06534825, dirichlet_resm: 0.00014253, init_cg: 0.01177614, spMV: 10.00208274, inner = 3.55914021
-Wall clock time: 20.58391029
-CPU clock time: 18.63926121
-Now writing to file /dev/null...
+rms = 5.67642e-13 iter: 200
+rms = 8.91381e-14 iter: 200
+res_calc: 5.02441650, dirichlet_resm: 0.00023045, init_cg: 0.02431522, spMV: 17.36815117, inner = 14.50938609
+Wall clock time: 38.95656923
+CPU clock time: 36.92685287
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-rms = 6.00030e-04 iter: 136
-rms = 1.67006e-04 iter: 200
-rms = 9.74435e-05 iter: 200
-rms = 1.49385e-05 iter: 200
-rms = 8.86222e-06 iter: 200
-rms = 1.37294e-06 iter: 200
-rms = 8.18285e-07 iter: 200
-rms = 1.27375e-07 iter: 200
-rms = 7.61627e-08 iter: 200
-rms = 1.18892e-08 iter: 200
-rms = 7.12884e-09 iter: 200
-rms = 1.11499e-09 iter: 200
-rms = 6.70229e-10 iter: 200
-rms = 1.04975e-10 iter: 200
-rms = 6.32401e-11 iter: 200
-rms = 9.91536e-12 iter: 200
-rms = 5.98448e-12 iter: 200
-rms = 9.39043e-13 iter: 200
-rms = 5.67629e-13 iter: 200
-rms = 8.91600e-14 iter: 200
-Iterations complete!
-res_calc: 5.02644410, dirichlet_resm: 0.00013684, init_cg: 0.01185261, spMV: 10.20538789, inner = 3.67367271
-Wall clock time: 20.88461719
-CPU clock time: 18.91824761
-Now writing to file /dev/null...
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 rms = 6.00030e-04 iter: 136
 rms = 1.67006e-04 iter: 200
 rms = 9.74435e-05 iter: 200
@@ -1053,21 +426,16 @@ rms = 1.11499e-09 iter: 200
 rms = 6.70232e-10 iter: 200
 rms = 1.04975e-10 iter: 200
 rms = 6.32405e-11 iter: 200
-rms = 9.91540e-12 iter: 200
-rms = 5.98453e-12 iter: 200
-rms = 9.39040e-13 iter: 200
-rms = 5.67648e-13 iter: 200
-rms = 8.91216e-14 iter: 200
-Iterations complete!
-res_calc: 5.10010495, dirichlet_resm: 0.00014521, init_cg: 0.01279727, spMV: 10.37825275, inner = 3.70262395
-Wall clock time: 21.29375752
-CPU clock time: 19.19470338
-Now writing to file /dev/null...
+rms = 9.91543e-12 iter: 200
+rms = 5.98452e-12 iter: 200
+rms = 9.39056e-13 iter: 200
+rms = 5.67636e-13 iter: 200
+rms = 8.91353e-14 iter: 200
+res_calc: 5.04552890, dirichlet_resm: 0.00023916, init_cg: 0.02477536, spMV: 18.35105667, inner = 14.41537842
+Wall clock time: 39.75541330
+CPU clock time: 37.83733645
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 rms = 6.00030e-04 iter: 136
 rms = 1.67006e-04 iter: 200
 rms = 9.74435e-05 iter: 200
@@ -1076,88 +444,23 @@ rms = 8.86222e-06 iter: 200
 rms = 1.37294e-06 iter: 200
 rms = 8.18285e-07 iter: 200
 rms = 1.27375e-07 iter: 200
-rms = 7.61628e-08 iter: 200
-rms = 1.18893e-08 iter: 200
-rms = 7.12885e-09 iter: 200
+rms = 7.61626e-08 iter: 200
+rms = 1.18892e-08 iter: 200
+rms = 7.12884e-09 iter: 200
 rms = 1.11499e-09 iter: 200
-rms = 6.70230e-10 iter: 200
+rms = 6.70229e-10 iter: 200
 rms = 1.04975e-10 iter: 200
-rms = 6.32402e-11 iter: 200
-rms = 9.91538e-12 iter: 200
-rms = 5.98449e-12 iter: 200
-rms = 9.39044e-13 iter: 200
-rms = 5.67649e-13 iter: 200
-rms = 8.91199e-14 iter: 200
-Iterations complete!
-res_calc: 5.03396128, dirichlet_resm: 0.00013741, init_cg: 0.01189921, spMV: 10.39307301, inner = 3.69109458
-Wall clock time: 21.15717484
-CPU clock time: 19.13091286
-Now writing to file /dev/null...
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-rms = 6.00030e-04 iter: 136
-rms = 1.67006e-04 iter: 200
-rms = 9.74435e-05 iter: 200
-rms = 1.49385e-05 iter: 200
-rms = 8.86222e-06 iter: 200
-rms = 1.37294e-06 iter: 200
-rms = 8.18285e-07 iter: 200
-rms = 1.27375e-07 iter: 200
-rms = 7.61628e-08 iter: 200
-rms = 1.18893e-08 iter: 200
-rms = 7.12885e-09 iter: 200
-rms = 1.11499e-09 iter: 200
-rms = 6.70230e-10 iter: 200
-rms = 1.04975e-10 iter: 200
-rms = 6.32402e-11 iter: 200
-rms = 9.91538e-12 iter: 200
+rms = 6.32401e-11 iter: 200
+rms = 9.91537e-12 iter: 200
 rms = 5.98448e-12 iter: 200
-rms = 9.39040e-13 iter: 200
-rms = 5.67631e-13 iter: 200
-rms = 8.91190e-14 iter: 200
-Iterations complete!
-res_calc: 5.03839635, dirichlet_resm: 0.00012788, init_cg: 0.01187998, spMV: 10.43285217, inner = 3.64835849
-Wall clock time: 21.06365317
-CPU clock time: 19.13237882
-Now writing to file /dev/null...
+rms = 9.39049e-13 iter: 200
+rms = 5.67638e-13 iter: 200
+rms = 8.91259e-14 iter: 200
+res_calc: 4.98939765, dirichlet_resm: 0.00024098, init_cg: 0.02568844, spMV: 17.89798326, inner = 15.08604187
+Wall clock time: 40.08618474
+CPU clock time: 37.99970682
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-rms = 6.00030e-04 iter: 136
-rms = 1.67006e-04 iter: 200
-rms = 9.74435e-05 iter: 200
-rms = 1.49385e-05 iter: 200
-rms = 8.86222e-06 iter: 200
-rms = 1.37294e-06 iter: 200
-rms = 8.18285e-07 iter: 200
-rms = 1.27375e-07 iter: 200
-rms = 7.61628e-08 iter: 200
-rms = 1.18893e-08 iter: 200
-rms = 7.12885e-09 iter: 200
-rms = 1.11499e-09 iter: 200
-rms = 6.70231e-10 iter: 200
-rms = 1.04975e-10 iter: 200
-rms = 6.32403e-11 iter: 200
-rms = 9.91538e-12 iter: 200
-rms = 5.98450e-12 iter: 200
-rms = 9.39041e-13 iter: 200
-rms = 5.67635e-13 iter: 200
-rms = 8.91252e-14 iter: 200
-Iterations complete!
-res_calc: 5.04499769, dirichlet_resm: 0.00013351, init_cg: 0.01181888, spMV: 10.40881519, inner = 3.69460954
-Wall clock time: 21.37714438
-CPU clock time: 19.16113802
-Now writing to file /dev/null...
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 rms = 6.00030e-04 iter: 136
 rms = 1.67006e-04 iter: 200
 rms = 9.74435e-05 iter: 200
@@ -1174,20 +477,191 @@ rms = 6.70231e-10 iter: 200
 rms = 1.04975e-10 iter: 200
 rms = 6.32404e-11 iter: 200
 rms = 9.91539e-12 iter: 200
-rms = 5.98453e-12 iter: 200
-rms = 9.39060e-13 iter: 200
+rms = 5.98450e-12 iter: 200
+rms = 9.39053e-13 iter: 200
+rms = 5.67649e-13 iter: 200
+rms = 8.91288e-14 iter: 200
+res_calc: 5.05267481, dirichlet_resm: 0.00023790, init_cg: 0.02492705, spMV: 17.93200727, inner = 15.08115122
+Wall clock time: 40.07250586
+CPU clock time: 38.09137507
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74435e-05 iter: 200
+rms = 1.49385e-05 iter: 200
+rms = 8.86222e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18285e-07 iter: 200
+rms = 1.27375e-07 iter: 200
+rms = 7.61628e-08 iter: 200
+rms = 1.18893e-08 iter: 200
+rms = 7.12885e-09 iter: 200
+rms = 1.11499e-09 iter: 200
+rms = 6.70230e-10 iter: 200
+rms = 1.04975e-10 iter: 200
+rms = 6.32402e-11 iter: 200
+rms = 9.91536e-12 iter: 200
+rms = 5.98448e-12 iter: 200
+rms = 9.39043e-13 iter: 200
+rms = 5.67626e-13 iter: 200
+rms = 8.91262e-14 iter: 200
+res_calc: 5.02328622, dirichlet_resm: 0.00023996, init_cg: 0.02509895, spMV: 17.92418841, inner = 15.13515881
+Wall clock time: 40.08525561
+CPU clock time: 38.10834128
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74435e-05 iter: 200
+rms = 1.49385e-05 iter: 200
+rms = 8.86222e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18285e-07 iter: 200
+rms = 1.27375e-07 iter: 200
+rms = 7.61628e-08 iter: 200
+rms = 1.18893e-08 iter: 200
+rms = 7.12885e-09 iter: 200
+rms = 1.11499e-09 iter: 200
+rms = 6.70230e-10 iter: 200
+rms = 1.04975e-10 iter: 200
+rms = 6.32403e-11 iter: 200
+rms = 9.91537e-12 iter: 200
+rms = 5.98451e-12 iter: 200
+rms = 9.39043e-13 iter: 200
 rms = 5.67622e-13 iter: 200
-rms = 8.91251e-14 iter: 200
-Iterations complete!
-res_calc: 5.03625792, dirichlet_resm: 0.00014195, init_cg: 0.01178622, spMV: 10.37312011, inner = 3.65143079
-Wall clock time: 21.15669333
-CPU clock time: 19.07350020
-Now writing to file /dev/null...
+rms = 8.91438e-14 iter: 200
+res_calc: 4.99240465, dirichlet_resm: 0.00023270, init_cg: 0.02478241, spMV: 17.92196245, inner = 15.13925677
+Wall clock time: 40.12088755
+CPU clock time: 38.07900640
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74435e-05 iter: 200
+rms = 1.49385e-05 iter: 200
+rms = 8.86222e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18285e-07 iter: 200
+rms = 1.27375e-07 iter: 200
+rms = 7.61627e-08 iter: 200
+rms = 1.18892e-08 iter: 200
+rms = 7.12884e-09 iter: 200
+rms = 1.11499e-09 iter: 200
+rms = 6.70229e-10 iter: 200
+rms = 1.04975e-10 iter: 200
+rms = 6.32401e-11 iter: 200
+rms = 9.91537e-12 iter: 200
+rms = 5.98447e-12 iter: 200
+rms = 9.39060e-13 iter: 200
+rms = 5.67643e-13 iter: 200
+rms = 8.91360e-14 iter: 200
+res_calc: 5.06141891, dirichlet_resm: 0.00024887, init_cg: 0.02668791, spMV: 18.94512707, inner = 15.98689021
+Wall clock time: 42.04556475
+CPU clock time: 40.02073971
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74435e-05 iter: 200
+rms = 1.49385e-05 iter: 200
+rms = 8.86222e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18285e-07 iter: 200
+rms = 1.27375e-07 iter: 200
+rms = 7.61627e-08 iter: 200
+rms = 1.18892e-08 iter: 200
+rms = 7.12884e-09 iter: 200
+rms = 1.11499e-09 iter: 200
+rms = 6.70229e-10 iter: 200
+rms = 1.04975e-10 iter: 200
+rms = 6.32401e-11 iter: 200
+rms = 9.91536e-12 iter: 200
+rms = 5.98446e-12 iter: 200
+rms = 9.39053e-13 iter: 200
+rms = 5.67626e-13 iter: 200
+rms = 8.91326e-14 iter: 200
+res_calc: 4.97252864, dirichlet_resm: 0.00024626, init_cg: 0.02659655, spMV: 19.42634157, inner = 16.53271927
+Wall clock time: 43.17243422
+CPU clock time: 40.95879327
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74435e-05 iter: 200
+rms = 1.49385e-05 iter: 200
+rms = 8.86222e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18285e-07 iter: 200
+rms = 1.27375e-07 iter: 200
+rms = 7.61628e-08 iter: 200
+rms = 1.18893e-08 iter: 200
+rms = 7.12885e-09 iter: 200
+rms = 1.11499e-09 iter: 200
+rms = 6.70230e-10 iter: 200
+rms = 1.04975e-10 iter: 200
+rms = 6.32402e-11 iter: 200
+rms = 9.91538e-12 iter: 200
+rms = 5.98447e-12 iter: 200
+rms = 9.39060e-13 iter: 200
+rms = 5.67635e-13 iter: 200
+rms = 8.91229e-14 iter: 200
+res_calc: 5.04158539, dirichlet_resm: 0.00024106, init_cg: 0.02824037, spMV: 20.33033411, inner = 17.29177127
+Wall clock time: 44.73874732
+CPU clock time: 42.69254506
+--------------------
+Now running Aero partial SoA
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74435e-05 iter: 200
+rms = 1.49385e-05 iter: 200
+rms = 8.86222e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18285e-07 iter: 200
+rms = 1.27375e-07 iter: 200
+rms = 7.61628e-08 iter: 200
+rms = 1.18893e-08 iter: 200
+rms = 7.12884e-09 iter: 200
+rms = 1.11499e-09 iter: 200
+rms = 6.70230e-10 iter: 200
+rms = 1.04975e-10 iter: 200
+rms = 6.32402e-11 iter: 200
+rms = 9.91537e-12 iter: 200
+rms = 5.98450e-12 iter: 200
+rms = 9.39049e-13 iter: 200
+rms = 5.67644e-13 iter: 200
+rms = 8.91296e-14 iter: 200
+res_calc: 5.05299828, dirichlet_resm: 0.00013597, init_cg: 0.01331580, spMV: 11.90734761, inner = 4.16873807
+Wall clock time: 23.05383559
+CPU clock time: 21.14287645
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74435e-05 iter: 200
+rms = 1.49385e-05 iter: 200
+rms = 8.86222e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18285e-07 iter: 200
+rms = 1.27375e-07 iter: 200
+rms = 7.61627e-08 iter: 200
+rms = 1.18893e-08 iter: 200
+rms = 7.12884e-09 iter: 200
+rms = 1.11499e-09 iter: 200
+rms = 6.70229e-10 iter: 200
+rms = 1.04975e-10 iter: 200
+rms = 6.32401e-11 iter: 200
+rms = 9.91537e-12 iter: 200
+rms = 5.98448e-12 iter: 200
+rms = 9.39053e-13 iter: 200
+rms = 5.67640e-13 iter: 200
+rms = 8.91250e-14 iter: 200
+res_calc: 5.05008770, dirichlet_resm: 0.00013629, init_cg: 0.01353308, spMV: 12.39478041, inner = 4.12476656
+Wall clock time: 23.53296991
+CPU clock time: 21.58365855
+--------------------
+--------------------
 rms = 6.00030e-04 iter: 136
 rms = 1.67006e-04 iter: 200
 rms = 9.74435e-05 iter: 200
@@ -1204,20 +678,40 @@ rms = 6.70229e-10 iter: 200
 rms = 1.04975e-10 iter: 200
 rms = 6.32401e-11 iter: 200
 rms = 9.91536e-12 iter: 200
-rms = 5.98447e-12 iter: 200
-rms = 9.39061e-13 iter: 200
-rms = 5.67624e-13 iter: 200
-rms = 8.91368e-14 iter: 200
-Iterations complete!
-res_calc: 5.02878447, dirichlet_resm: 0.00013767, init_cg: 0.01220839, spMV: 10.37255396, inner = 3.65027733
-Wall clock time: 21.05460048
-CPU clock time: 19.06474178
-Now writing to file /dev/null...
+rms = 5.98446e-12 iter: 200
+rms = 9.39054e-13 iter: 200
+rms = 5.67612e-13 iter: 200
+rms = 8.91354e-14 iter: 200
+res_calc: 5.04208080, dirichlet_resm: 0.00013895, init_cg: 0.01351720, spMV: 12.00300543, inner = 4.15742151
+Wall clock time: 23.12204134
+CPU clock time: 21.21650719
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74435e-05 iter: 200
+rms = 1.49385e-05 iter: 200
+rms = 8.86222e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18285e-07 iter: 200
+rms = 1.27375e-07 iter: 200
+rms = 7.61627e-08 iter: 200
+rms = 1.18892e-08 iter: 200
+rms = 7.12884e-09 iter: 200
+rms = 1.11499e-09 iter: 200
+rms = 6.70229e-10 iter: 200
+rms = 1.04975e-10 iter: 200
+rms = 6.32401e-11 iter: 200
+rms = 9.91536e-12 iter: 200
+rms = 5.98449e-12 iter: 200
+rms = 9.39045e-13 iter: 200
+rms = 5.67634e-13 iter: 200
+rms = 8.91292e-14 iter: 200
+res_calc: 5.03593645, dirichlet_resm: 0.00013831, init_cg: 0.01358331, spMV: 12.01314195, inner = 4.20450266
+Wall clock time: 23.43502782
+CPU clock time: 21.26766072
+--------------------
+--------------------
 rms = 6.00030e-04 iter: 136
 rms = 1.67006e-04 iter: 200
 rms = 9.74435e-05 iter: 200
@@ -1235,19 +729,239 @@ rms = 1.04975e-10 iter: 200
 rms = 6.32402e-11 iter: 200
 rms = 9.91538e-12 iter: 200
 rms = 5.98449e-12 iter: 200
+rms = 9.39057e-13 iter: 200
+rms = 5.67615e-13 iter: 200
+rms = 8.91304e-14 iter: 200
+res_calc: 5.06588599, dirichlet_resm: 0.00012854, init_cg: 0.01358304, spMV: 12.00040443, inner = 4.20420809
+Wall clock time: 23.20153412
+CPU clock time: 21.28455682
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74435e-05 iter: 200
+rms = 1.49385e-05 iter: 200
+rms = 8.86222e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18285e-07 iter: 200
+rms = 1.27375e-07 iter: 200
+rms = 7.61627e-08 iter: 200
+rms = 1.18893e-08 iter: 200
+rms = 7.12884e-09 iter: 200
+rms = 1.11499e-09 iter: 200
+rms = 6.70230e-10 iter: 200
+rms = 1.04975e-10 iter: 200
+rms = 6.32401e-11 iter: 200
+rms = 9.91537e-12 iter: 200
+rms = 5.98448e-12 iter: 200
+rms = 9.39054e-13 iter: 200
+rms = 5.67617e-13 iter: 200
+rms = 8.91319e-14 iter: 200
+res_calc: 5.04400214, dirichlet_resm: 0.00013826, init_cg: 0.01361259, spMV: 12.03391559, inner = 4.18552621
+Wall clock time: 23.19055271
+CPU clock time: 21.27753969
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74435e-05 iter: 200
+rms = 1.49385e-05 iter: 200
+rms = 8.86222e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18285e-07 iter: 200
+rms = 1.27375e-07 iter: 200
+rms = 7.61627e-08 iter: 200
+rms = 1.18892e-08 iter: 200
+rms = 7.12884e-09 iter: 200
+rms = 1.11499e-09 iter: 200
+rms = 6.70229e-10 iter: 200
+rms = 1.04975e-10 iter: 200
+rms = 6.32402e-11 iter: 200
+rms = 9.91535e-12 iter: 200
+rms = 5.98447e-12 iter: 200
+rms = 9.39043e-13 iter: 200
+rms = 5.67641e-13 iter: 200
+rms = 8.91274e-14 iter: 200
+res_calc: 5.11821770, dirichlet_resm: 0.00013743, init_cg: 0.01371517, spMV: 12.00434395, inner = 4.22468552
+Wall clock time: 23.38114124
+CPU clock time: 21.36145032
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74435e-05 iter: 200
+rms = 1.49385e-05 iter: 200
+rms = 8.86222e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18285e-07 iter: 200
+rms = 1.27375e-07 iter: 200
+rms = 7.61629e-08 iter: 200
+rms = 1.18893e-08 iter: 200
+rms = 7.12886e-09 iter: 200
+rms = 1.11499e-09 iter: 200
+rms = 6.70231e-10 iter: 200
+rms = 1.04975e-10 iter: 200
+rms = 6.32404e-11 iter: 200
+rms = 9.91540e-12 iter: 200
+rms = 5.98453e-12 iter: 200
+rms = 9.39044e-13 iter: 200
+rms = 5.67651e-13 iter: 200
+rms = 8.91228e-14 iter: 200
+res_calc: 5.14177221, dirichlet_resm: 0.00013023, init_cg: 0.01360975, spMV: 12.02285820, inner = 4.23137079
+Wall clock time: 23.44635350
+CPU clock time: 21.41008949
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74435e-05 iter: 200
+rms = 1.49385e-05 iter: 200
+rms = 8.86222e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18285e-07 iter: 200
+rms = 1.27375e-07 iter: 200
+rms = 7.61628e-08 iter: 200
+rms = 1.18893e-08 iter: 200
+rms = 7.12885e-09 iter: 200
+rms = 1.11499e-09 iter: 200
+rms = 6.70230e-10 iter: 200
+rms = 1.04975e-10 iter: 200
+rms = 6.32403e-11 iter: 200
+rms = 9.91537e-12 iter: 200
+rms = 5.98449e-12 iter: 200
+rms = 9.39041e-13 iter: 200
+rms = 5.67639e-13 iter: 200
+rms = 8.91215e-14 iter: 200
+res_calc: 5.13011023, dirichlet_resm: 0.00013288, init_cg: 0.01360071, spMV: 12.03778597, inner = 4.22387560
+Wall clock time: 23.36828673
+CPU clock time: 21.40585596
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74435e-05 iter: 200
+rms = 1.49385e-05 iter: 200
+rms = 8.86222e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18285e-07 iter: 200
+rms = 1.27375e-07 iter: 200
+rms = 7.61628e-08 iter: 200
+rms = 1.18893e-08 iter: 200
+rms = 7.12884e-09 iter: 200
+rms = 1.11499e-09 iter: 200
+rms = 6.70230e-10 iter: 200
+rms = 1.04975e-10 iter: 200
+rms = 6.32402e-11 iter: 200
+rms = 9.91537e-12 iter: 200
+rms = 5.98450e-12 iter: 200
+rms = 9.39031e-13 iter: 200
+rms = 5.67635e-13 iter: 200
+rms = 8.91160e-14 iter: 200
+res_calc: 5.12406823, dirichlet_resm: 0.00013637, init_cg: 0.01387239, spMV: 12.01306766, inner = 4.17697851
+Wall clock time: 23.32047258
+CPU clock time: 21.32846155
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74435e-05 iter: 200
+rms = 1.49385e-05 iter: 200
+rms = 8.86222e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18285e-07 iter: 200
+rms = 1.27375e-07 iter: 200
+rms = 7.61629e-08 iter: 200
+rms = 1.18893e-08 iter: 200
+rms = 7.12885e-09 iter: 200
+rms = 1.11499e-09 iter: 200
+rms = 6.70231e-10 iter: 200
+rms = 1.04975e-10 iter: 200
+rms = 6.32403e-11 iter: 200
+rms = 9.91538e-12 iter: 200
+rms = 5.98450e-12 iter: 200
+rms = 9.39048e-13 iter: 200
+rms = 5.67609e-13 iter: 200
+rms = 8.91344e-14 iter: 200
+res_calc: 5.05991514, dirichlet_resm: 0.00013451, init_cg: 0.01335266, spMV: 12.24140374, inner = 4.16059524
+Wall clock time: 23.45010680
+CPU clock time: 21.47573729
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74435e-05 iter: 200
+rms = 1.49385e-05 iter: 200
+rms = 8.86222e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18285e-07 iter: 200
+rms = 1.27375e-07 iter: 200
+rms = 7.61627e-08 iter: 200
+rms = 1.18892e-08 iter: 200
+rms = 7.12884e-09 iter: 200
+rms = 1.11499e-09 iter: 200
+rms = 6.70229e-10 iter: 200
+rms = 1.04975e-10 iter: 200
+rms = 6.32401e-11 iter: 200
+rms = 9.91536e-12 iter: 200
+rms = 5.98450e-12 iter: 200
+rms = 9.39053e-13 iter: 200
+rms = 5.67651e-13 iter: 200
+rms = 8.91469e-14 iter: 200
+res_calc: 5.15771922, dirichlet_resm: 0.00014895, init_cg: 0.01344613, spMV: 12.03621994, inner = 4.17150886
+Wall clock time: 23.66030272
+CPU clock time: 21.37941123
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74435e-05 iter: 200
+rms = 1.49385e-05 iter: 200
+rms = 8.86222e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18285e-07 iter: 200
+rms = 1.27375e-07 iter: 200
+rms = 7.61628e-08 iter: 200
+rms = 1.18893e-08 iter: 200
+rms = 7.12884e-09 iter: 200
+rms = 1.11499e-09 iter: 200
+rms = 6.70230e-10 iter: 200
+rms = 1.04975e-10 iter: 200
+rms = 6.32402e-11 iter: 200
+rms = 9.91536e-12 iter: 200
+rms = 5.98452e-12 iter: 200
 rms = 9.39037e-13 iter: 200
-rms = 5.67642e-13 iter: 200
-rms = 8.91198e-14 iter: 200
-Iterations complete!
-res_calc: 5.10070479, dirichlet_resm: 0.00013408, init_cg: 0.01187154, spMV: 10.35323311, inner = 3.69638224
-Wall clock time: 21.32987290
-CPU clock time: 19.16307774
-Now writing to file /dev/null...
+rms = 5.67631e-13 iter: 200
+rms = 8.91127e-14 iter: 200
+res_calc: 5.11823324, dirichlet_resm: 0.00012717, init_cg: 0.01400684, spMV: 12.54310060, inner = 4.13437169
+Wall clock time: 23.84618837
+CPU clock time: 21.81019937
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74435e-05 iter: 200
+rms = 1.49385e-05 iter: 200
+rms = 8.86222e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18285e-07 iter: 200
+rms = 1.27375e-07 iter: 200
+rms = 7.61629e-08 iter: 200
+rms = 1.18893e-08 iter: 200
+rms = 7.12885e-09 iter: 200
+rms = 1.11499e-09 iter: 200
+rms = 6.70231e-10 iter: 200
+rms = 1.04975e-10 iter: 200
+rms = 6.32403e-11 iter: 200
+rms = 9.91539e-12 iter: 200
+rms = 5.98448e-12 iter: 200
+rms = 9.39057e-13 iter: 200
+rms = 5.67637e-13 iter: 200
+rms = 8.91333e-14 iter: 200
+res_calc: 5.10569614, dirichlet_resm: 0.00013709, init_cg: 0.01363386, spMV: 12.62922174, inner = 4.14789022
+Wall clock time: 23.93169195
+CPU clock time: 21.89693266
+--------------------
+--------------------
 rms = 6.00030e-04 iter: 136
 rms = 1.67006e-04 iter: 200
 rms = 9.74435e-05 iter: 200
@@ -1264,20 +978,15 @@ rms = 6.70231e-10 iter: 200
 rms = 1.04975e-10 iter: 200
 rms = 6.32404e-11 iter: 200
 rms = 9.91541e-12 iter: 200
-rms = 5.98451e-12 iter: 200
+rms = 5.98453e-12 iter: 200
 rms = 9.39062e-13 iter: 200
-rms = 5.67646e-13 iter: 200
-rms = 8.91283e-14 iter: 200
-Iterations complete!
-res_calc: 5.15139817, dirichlet_resm: 0.00013356, init_cg: 0.01184609, spMV: 10.41286201, inner = 3.72989975
-Wall clock time: 21.42234715
-CPU clock time: 19.30690374
-Now writing to file /dev/null...
+rms = 5.67636e-13 iter: 200
+rms = 8.91297e-14 iter: 200
+res_calc: 5.06391380, dirichlet_resm: 0.00013202, init_cg: 0.01365453, spMV: 12.66040374, inner = 4.07810291
+Wall clock time: 23.79815647
+CPU clock time: 21.81657001
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 rms = 6.00030e-04 iter: 136
 rms = 1.67006e-04 iter: 200
 rms = 9.74435e-05 iter: 200
@@ -1288,26 +997,46 @@ rms = 8.18285e-07 iter: 200
 rms = 1.27375e-07 iter: 200
 rms = 7.61628e-08 iter: 200
 rms = 1.18893e-08 iter: 200
-rms = 7.12884e-09 iter: 200
+rms = 7.12885e-09 iter: 200
 rms = 1.11499e-09 iter: 200
 rms = 6.70230e-10 iter: 200
 rms = 1.04975e-10 iter: 200
 rms = 6.32402e-11 iter: 200
+rms = 9.91538e-12 iter: 200
+rms = 5.98448e-12 iter: 200
+rms = 9.39050e-13 iter: 200
+rms = 5.67643e-13 iter: 200
+rms = 8.91271e-14 iter: 200
+res_calc: 5.04978835, dirichlet_resm: 0.00012725, init_cg: 0.01354463, spMV: 12.68417373, inner = 4.11957906
+Wall clock time: 23.84145667
+CPU clock time: 21.86756862
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74435e-05 iter: 200
+rms = 1.49385e-05 iter: 200
+rms = 8.86222e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18285e-07 iter: 200
+rms = 1.27375e-07 iter: 200
+rms = 7.61628e-08 iter: 200
+rms = 1.18893e-08 iter: 200
+rms = 7.12885e-09 iter: 200
+rms = 1.11499e-09 iter: 200
+rms = 6.70231e-10 iter: 200
+rms = 1.04975e-10 iter: 200
+rms = 6.32403e-11 iter: 200
 rms = 9.91537e-12 iter: 200
-rms = 5.98450e-12 iter: 200
-rms = 9.39044e-13 iter: 200
-rms = 5.67631e-13 iter: 200
-rms = 8.91121e-14 iter: 200
-Iterations complete!
-res_calc: 4.97409066, dirichlet_resm: 0.00013255, init_cg: 0.01184970, spMV: 10.95957053, inner = 3.58980510
-Wall clock time: 21.68469156
-CPU clock time: 19.53624651
-Now writing to file /dev/null...
+rms = 5.98449e-12 iter: 200
+rms = 9.39040e-13 iter: 200
+rms = 5.67620e-13 iter: 200
+rms = 8.91306e-14 iter: 200
+res_calc: 5.05477906, dirichlet_resm: 0.00013527, init_cg: 0.01344229, spMV: 12.66139705, inner = 4.08282520
+Wall clock time: 23.74968674
+CPU clock time: 21.81294356
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 rms = 6.00030e-04 iter: 136
 rms = 1.67006e-04 iter: 200
 rms = 9.74435e-05 iter: 200
@@ -1322,52 +1051,17 @@ rms = 7.12885e-09 iter: 200
 rms = 1.11499e-09 iter: 200
 rms = 6.70231e-10 iter: 200
 rms = 1.04975e-10 iter: 200
-rms = 6.32404e-11 iter: 200
-rms = 9.91540e-12 iter: 200
-rms = 5.98450e-12 iter: 200
-rms = 9.39056e-13 iter: 200
-rms = 5.67625e-13 iter: 200
-rms = 8.91264e-14 iter: 200
-Iterations complete!
-res_calc: 5.05343447, dirichlet_resm: 0.00013150, init_cg: 0.01189287, spMV: 10.33644392, inner = 3.67771473
-Wall clock time: 21.30169491
-CPU clock time: 19.08034860
-Now writing to file /dev/null...
+rms = 6.32403e-11 iter: 200
+rms = 9.91539e-12 iter: 200
+rms = 5.98448e-12 iter: 200
+rms = 9.39054e-13 iter: 200
+rms = 5.67650e-13 iter: 200
+rms = 8.91320e-14 iter: 200
+res_calc: 5.06239687, dirichlet_resm: 0.00013197, init_cg: 0.01342613, spMV: 12.70212978, inner = 4.07994360
+Wall clock time: 23.83584636
+CPU clock time: 21.85838480
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-rms = 6.00030e-04 iter: 136
-rms = 1.67006e-04 iter: 200
-rms = 9.74435e-05 iter: 200
-rms = 1.49385e-05 iter: 200
-rms = 8.86222e-06 iter: 200
-rms = 1.37294e-06 iter: 200
-rms = 8.18285e-07 iter: 200
-rms = 1.27375e-07 iter: 200
-rms = 7.61627e-08 iter: 200
-rms = 1.18892e-08 iter: 200
-rms = 7.12884e-09 iter: 200
-rms = 1.11499e-09 iter: 200
-rms = 6.70229e-10 iter: 200
-rms = 1.04975e-10 iter: 200
-rms = 6.32401e-11 iter: 200
-rms = 9.91536e-12 iter: 200
-rms = 5.98450e-12 iter: 200
-rms = 9.39036e-13 iter: 200
-rms = 5.67611e-13 iter: 200
-rms = 8.91338e-14 iter: 200
-Iterations complete!
-res_calc: 4.98372764, dirichlet_resm: 0.00013728, init_cg: 0.01227967, spMV: 10.39186324, inner = 3.69895908
-Wall clock time: 21.18766557
-CPU clock time: 19.08772552
-Now writing to file /dev/null...
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 rms = 6.00030e-04 iter: 136
 rms = 1.67006e-04 iter: 200
 rms = 9.74435e-05 iter: 200
@@ -1380,25 +1074,45 @@ rms = 7.61629e-08 iter: 200
 rms = 1.18893e-08 iter: 200
 rms = 7.12886e-09 iter: 200
 rms = 1.11499e-09 iter: 200
-rms = 6.70231e-10 iter: 200
+rms = 6.70232e-10 iter: 200
 rms = 1.04975e-10 iter: 200
 rms = 6.32404e-11 iter: 200
+rms = 9.91541e-12 iter: 200
+rms = 5.98451e-12 iter: 200
+rms = 9.39058e-13 iter: 200
+rms = 5.67624e-13 iter: 200
+rms = 8.91270e-14 iter: 200
+res_calc: 5.06448130, dirichlet_resm: 0.00012956, init_cg: 0.01345942, spMV: 12.11195122, inner = 4.12401368
+Wall clock time: 23.38699703
+CPU clock time: 21.31439479
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74435e-05 iter: 200
+rms = 1.49385e-05 iter: 200
+rms = 8.86222e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18285e-07 iter: 200
+rms = 1.27375e-07 iter: 200
+rms = 7.61629e-08 iter: 200
+rms = 1.18893e-08 iter: 200
+rms = 7.12885e-09 iter: 200
+rms = 1.11499e-09 iter: 200
+rms = 6.70231e-10 iter: 200
+rms = 1.04975e-10 iter: 200
+rms = 6.32403e-11 iter: 200
 rms = 9.91539e-12 iter: 200
-rms = 5.98452e-12 iter: 200
-rms = 9.39052e-13 iter: 200
-rms = 5.67640e-13 iter: 200
-rms = 8.91202e-14 iter: 200
-Iterations complete!
-res_calc: 5.03397538, dirichlet_resm: 0.00013853, init_cg: 0.01216814, spMV: 10.46913635, inner = 3.65445570
-Wall clock time: 21.24377369
-CPU clock time: 19.17065173
-Now writing to file /dev/null...
+rms = 5.98448e-12 iter: 200
+rms = 9.39048e-13 iter: 200
+rms = 5.67634e-13 iter: 200
+rms = 8.91205e-14 iter: 200
+res_calc: 5.11206782, dirichlet_resm: 0.00013357, init_cg: 0.01350301, spMV: 12.66430366, inner = 4.13145783
+Wall clock time: 23.95373033
+CPU clock time: 21.92184996
 --------------------
 Now running Airfoil AoS
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 6.18157e-04
 iter =  200, rms = 4.62303e-04
 iter =  300, rms = 3.76792e-04
@@ -1410,14 +1124,10 @@ iter =  800, rms = 2.02410e-04
 iter =  900, rms = 1.85973e-04
 iter = 1000, rms = 1.72140e-04
 adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
-Iterations complete!
-Wall clock time: 639.30097378
-CPU clock time: 631.81850272
+Wall clock time: 526.06925980
+CPU clock time: 520.50006055
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 6.18157e-04
 iter =  200, rms = 4.62303e-04
 iter =  300, rms = 3.76792e-04
@@ -1429,14 +1139,10 @@ iter =  800, rms = 2.02410e-04
 iter =  900, rms = 1.85973e-04
 iter = 1000, rms = 1.72140e-04
 adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
-Iterations complete!
-Wall clock time: 716.05514096
-CPU clock time: 706.97294538
+Wall clock time: 528.36579860
+CPU clock time: 523.07022157
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 6.18157e-04
 iter =  200, rms = 4.62303e-04
 iter =  300, rms = 3.76792e-04
@@ -1448,14 +1154,10 @@ iter =  800, rms = 2.02410e-04
 iter =  900, rms = 1.85973e-04
 iter = 1000, rms = 1.72140e-04
 adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
-Iterations complete!
-Wall clock time: 734.42850444
-CPU clock time: 724.91413358
+Wall clock time: 522.87815707
+CPU clock time: 518.23303607
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 6.18157e-04
 iter =  200, rms = 4.62303e-04
 iter =  300, rms = 3.76792e-04
@@ -1467,14 +1169,10 @@ iter =  800, rms = 2.02410e-04
 iter =  900, rms = 1.85973e-04
 iter = 1000, rms = 1.72140e-04
 adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
-Iterations complete!
-Wall clock time: 737.94103435
-CPU clock time: 728.38605479
+Wall clock time: 525.02197963
+CPU clock time: 519.64433056
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 6.18157e-04
 iter =  200, rms = 4.62303e-04
 iter =  300, rms = 3.76792e-04
@@ -1486,14 +1184,10 @@ iter =  800, rms = 2.02410e-04
 iter =  900, rms = 1.85973e-04
 iter = 1000, rms = 1.72140e-04
 adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
-Iterations complete!
-Wall clock time: 736.30143586
-CPU clock time: 726.15674263
+Wall clock time: 523.61643366
+CPU clock time: 518.62112290
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 6.18157e-04
 iter =  200, rms = 4.62303e-04
 iter =  300, rms = 3.76792e-04
@@ -1505,14 +1199,10 @@ iter =  800, rms = 2.02410e-04
 iter =  900, rms = 1.85973e-04
 iter = 1000, rms = 1.72140e-04
 adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
-Iterations complete!
-Wall clock time: 735.70986850
-CPU clock time: 725.64639913
+Wall clock time: 525.39165041
+CPU clock time: 520.35314159
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 6.18157e-04
 iter =  200, rms = 4.62303e-04
 iter =  300, rms = 3.76792e-04
@@ -1524,14 +1214,10 @@ iter =  800, rms = 2.02410e-04
 iter =  900, rms = 1.85973e-04
 iter = 1000, rms = 1.72140e-04
 adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
-Iterations complete!
-Wall clock time: 735.03058439
-CPU clock time: 725.39507726
+Wall clock time: 523.72164111
+CPU clock time: 518.75434525
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 6.18157e-04
 iter =  200, rms = 4.62303e-04
 iter =  300, rms = 3.76792e-04
@@ -1543,14 +1229,10 @@ iter =  800, rms = 2.02410e-04
 iter =  900, rms = 1.85973e-04
 iter = 1000, rms = 1.72140e-04
 adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
-Iterations complete!
-Wall clock time: 734.04992114
-CPU clock time: 723.75610222
+Wall clock time: 526.83498563
+CPU clock time: 521.36520750
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 6.18157e-04
 iter =  200, rms = 4.62303e-04
 iter =  300, rms = 3.76792e-04
@@ -1562,14 +1244,10 @@ iter =  800, rms = 2.02410e-04
 iter =  900, rms = 1.85973e-04
 iter = 1000, rms = 1.72140e-04
 adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
-Iterations complete!
-Wall clock time: 733.55450855
-CPU clock time: 724.73485468
+Wall clock time: 525.20989314
+CPU clock time: 519.65621997
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 6.18157e-04
 iter =  200, rms = 4.62303e-04
 iter =  300, rms = 3.76792e-04
@@ -1581,14 +1259,10 @@ iter =  800, rms = 2.02410e-04
 iter =  900, rms = 1.85973e-04
 iter = 1000, rms = 1.72140e-04
 adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
-Iterations complete!
-Wall clock time: 734.83414602
-CPU clock time: 725.87651721
+Wall clock time: 525.24137682
+CPU clock time: 519.85774479
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 6.18157e-04
 iter =  200, rms = 4.62303e-04
 iter =  300, rms = 3.76792e-04
@@ -1600,14 +1274,10 @@ iter =  800, rms = 2.02410e-04
 iter =  900, rms = 1.85973e-04
 iter = 1000, rms = 1.72140e-04
 adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
-Iterations complete!
-Wall clock time: 733.15591704
-CPU clock time: 723.69552694
+Wall clock time: 523.54561980
+CPU clock time: 518.67714300
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 6.18157e-04
 iter =  200, rms = 4.62303e-04
 iter =  300, rms = 3.76792e-04
@@ -1619,14 +1289,10 @@ iter =  800, rms = 2.02410e-04
 iter =  900, rms = 1.85973e-04
 iter = 1000, rms = 1.72140e-04
 adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
-Iterations complete!
-Wall clock time: 750.17612255
-CPU clock time: 735.88507730
+Wall clock time: 523.96516797
+CPU clock time: 519.10700799
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 6.18157e-04
 iter =  200, rms = 4.62303e-04
 iter =  300, rms = 3.76792e-04
@@ -1638,14 +1304,10 @@ iter =  800, rms = 2.02410e-04
 iter =  900, rms = 1.85973e-04
 iter = 1000, rms = 1.72140e-04
 adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
-Iterations complete!
-Wall clock time: 733.05015314
-CPU clock time: 723.57130890
+Wall clock time: 525.59477902
+CPU clock time: 519.94929322
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 6.18157e-04
 iter =  200, rms = 4.62303e-04
 iter =  300, rms = 3.76792e-04
@@ -1657,14 +1319,10 @@ iter =  800, rms = 2.02410e-04
 iter =  900, rms = 1.85973e-04
 iter = 1000, rms = 1.72140e-04
 adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
-Iterations complete!
-Wall clock time: 733.72877197
-CPU clock time: 723.83625718
+Wall clock time: 523.66324056
+CPU clock time: 518.68533460
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 6.18157e-04
 iter =  200, rms = 4.62303e-04
 iter =  300, rms = 3.76792e-04
@@ -1676,14 +1334,10 @@ iter =  800, rms = 2.02410e-04
 iter =  900, rms = 1.85973e-04
 iter = 1000, rms = 1.72140e-04
 adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
-Iterations complete!
-Wall clock time: 731.82787241
-CPU clock time: 722.57844703
+Wall clock time: 524.86829136
+CPU clock time: 519.29631259
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 6.18157e-04
 iter =  200, rms = 4.62303e-04
 iter =  300, rms = 3.76792e-04
@@ -1695,14 +1349,10 @@ iter =  800, rms = 2.02410e-04
 iter =  900, rms = 1.85973e-04
 iter = 1000, rms = 1.72140e-04
 adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
-Iterations complete!
-Wall clock time: 733.63027020
-CPU clock time: 724.24405453
+Wall clock time: 523.04477884
+CPU clock time: 517.85562977
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 6.18157e-04
 iter =  200, rms = 4.62303e-04
 iter =  300, rms = 3.76792e-04
@@ -1714,14 +1364,10 @@ iter =  800, rms = 2.02410e-04
 iter =  900, rms = 1.85973e-04
 iter = 1000, rms = 1.72140e-04
 adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
-Iterations complete!
-Wall clock time: 739.05345109
-CPU clock time: 725.73697156
+Wall clock time: 523.03999701
+CPU clock time: 517.59181779
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 6.18157e-04
 iter =  200, rms = 4.62303e-04
 iter =  300, rms = 3.76792e-04
@@ -1733,14 +1379,10 @@ iter =  800, rms = 2.02410e-04
 iter =  900, rms = 1.85973e-04
 iter = 1000, rms = 1.72140e-04
 adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
-Iterations complete!
-Wall clock time: 731.82824644
-CPU clock time: 723.14152574
+Wall clock time: 524.03175150
+CPU clock time: 519.35344993
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 6.18157e-04
 iter =  200, rms = 4.62303e-04
 iter =  300, rms = 3.76792e-04
@@ -1752,14 +1394,10 @@ iter =  800, rms = 2.02410e-04
 iter =  900, rms = 1.85973e-04
 iter = 1000, rms = 1.72140e-04
 adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
-Iterations complete!
-Wall clock time: 730.99332976
-CPU clock time: 721.15965596
+Wall clock time: 524.61655159
+CPU clock time: 519.29798356
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 6.18157e-04
 iter =  200, rms = 4.62303e-04
 iter =  300, rms = 3.76792e-04
@@ -1771,34 +1409,11 @@ iter =  800, rms = 2.02410e-04
 iter =  900, rms = 1.85973e-04
 iter = 1000, rms = 1.72140e-04
 adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
-Iterations complete!
-Wall clock time: 732.52512132
-CPU clock time: 723.04511212
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-iter =  100, rms = 6.18157e-04
-iter =  200, rms = 4.62303e-04
-iter =  300, rms = 3.76792e-04
-iter =  400, rms = 3.19748e-04
-iter =  500, rms = 2.78444e-04
-iter =  600, rms = 2.47044e-04
-iter =  700, rms = 2.22347e-04
-iter =  800, rms = 2.02410e-04
-iter =  900, rms = 1.85973e-04
-iter = 1000, rms = 1.72140e-04
-adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
-Iterations complete!
-Wall clock time: 730.81512299
-CPU clock time: 722.24244955
+Wall clock time: 521.58111547
+CPU clock time: 516.50790624
 --------------------
 Now running Airfoil partial SoA
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 4.36778e-04
 iter =  200, rms = 3.26659e-04
 iter =  300, rms = 2.66219e-04
@@ -1809,16 +1424,11 @@ iter =  700, rms = 1.57058e-04
 iter =  800, rms = 1.42967e-04
 iter =  900, rms = 1.31349e-04
 iter = 1000, rms = 1.21571e-04
-adt: 91.47419791, res: 152.93999571, bres: 0.97695407, upd: 69.69883942
-Iterations complete!
-Wall clock time: 338.82650801
-CPU clock time: 335.70583307
-Now writing to file /dev/null...
+adt: 91.55305057, res: 153.31056190, bres: 0.98741011, upd: 69.81230016
+Wall clock time: 338.53485312
+CPU clock time: 336.35355479
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 4.36778e-04
 iter =  200, rms = 3.26659e-04
 iter =  300, rms = 2.66219e-04
@@ -1829,16 +1439,11 @@ iter =  700, rms = 1.57058e-04
 iter =  800, rms = 1.42967e-04
 iter =  900, rms = 1.31349e-04
 iter = 1000, rms = 1.21571e-04
-adt: 91.53696770, res: 152.80346625, bres: 0.97544533, upd: 69.61863733
-Iterations complete!
-Wall clock time: 338.70636662
-CPU clock time: 335.60198880
-Now writing to file /dev/null...
+adt: 91.54212738, res: 153.41758873, bres: 0.97233061, upd: 69.88718408
+Wall clock time: 338.65708632
+CPU clock time: 336.56015727
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 4.36778e-04
 iter =  200, rms = 3.26659e-04
 iter =  300, rms = 2.66219e-04
@@ -1849,16 +1454,11 @@ iter =  700, rms = 1.57058e-04
 iter =  800, rms = 1.42967e-04
 iter =  900, rms = 1.31349e-04
 iter = 1000, rms = 1.21571e-04
-adt: 91.49582347, res: 153.01720116, bres: 0.97696244, upd: 69.49845756
-Iterations complete!
-Wall clock time: 338.79966702
-CPU clock time: 335.70394777
-Now writing to file /dev/null...
+adt: 91.47498207, res: 152.91357305, bres: 0.97947460, upd: 70.06791395
+Wall clock time: 338.53167123
+CPU clock time: 336.10979830
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 4.36778e-04
 iter =  200, rms = 3.26659e-04
 iter =  300, rms = 2.66219e-04
@@ -1869,16 +1469,11 @@ iter =  700, rms = 1.57058e-04
 iter =  800, rms = 1.42967e-04
 iter =  900, rms = 1.31349e-04
 iter = 1000, rms = 1.21571e-04
-adt: 91.36428621, res: 153.15483790, bres: 0.97127101, upd: 70.34213962
-Iterations complete!
-Wall clock time: 340.06173447
-CPU clock time: 336.72462253
-Now writing to file /dev/null...
+adt: 91.59708189, res: 152.88690353, bres: 0.97606677, upd: 70.13190572
+Wall clock time: 338.53901464
+CPU clock time: 336.41541661
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 4.36778e-04
 iter =  200, rms = 3.26659e-04
 iter =  300, rms = 2.66219e-04
@@ -1889,16 +1484,11 @@ iter =  700, rms = 1.57058e-04
 iter =  800, rms = 1.42967e-04
 iter =  900, rms = 1.31349e-04
 iter = 1000, rms = 1.21571e-04
-adt: 91.52179013, res: 152.97017015, bres: 0.98821101, upd: 69.91553994
-Iterations complete!
-Wall clock time: 339.09867607
-CPU clock time: 335.99324527
-Now writing to file /dev/null...
+adt: 91.48293465, res: 153.15713680, bres: 0.98766407, upd: 70.03352533
+Wall clock time: 338.58749801
+CPU clock time: 336.41874944
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 4.36778e-04
 iter =  200, rms = 3.26659e-04
 iter =  300, rms = 2.66219e-04
@@ -1909,16 +1499,11 @@ iter =  700, rms = 1.57058e-04
 iter =  800, rms = 1.42967e-04
 iter =  900, rms = 1.31349e-04
 iter = 1000, rms = 1.21571e-04
-adt: 91.42811570, res: 152.78825471, bres: 0.97762529, upd: 70.05725673
-Iterations complete!
-Wall clock time: 339.43239779
-CPU clock time: 336.08818004
-Now writing to file /dev/null...
+adt: 91.38570607, res: 152.62140866, bres: 0.97708150, upd: 69.67621946
+Wall clock time: 337.99709454
+CPU clock time: 335.38536238
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 4.36778e-04
 iter =  200, rms = 3.26659e-04
 iter =  300, rms = 2.66219e-04
@@ -1929,16 +1514,11 @@ iter =  700, rms = 1.57058e-04
 iter =  800, rms = 1.42967e-04
 iter =  900, rms = 1.31349e-04
 iter = 1000, rms = 1.21571e-04
-adt: 91.36295106, res: 153.30596641, bres: 0.97537526, upd: 70.18116857
-Iterations complete!
-Wall clock time: 339.91836893
-CPU clock time: 336.62721966
-Now writing to file /dev/null...
+adt: 91.48674909, res: 153.23372954, bres: 0.97362766, upd: 70.05536861
+Wall clock time: 338.93574265
+CPU clock time: 336.51474792
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 4.36778e-04
 iter =  200, rms = 3.26659e-04
 iter =  300, rms = 2.66219e-04
@@ -1949,16 +1529,11 @@ iter =  700, rms = 1.57058e-04
 iter =  800, rms = 1.42967e-04
 iter =  900, rms = 1.31349e-04
 iter = 1000, rms = 1.21571e-04
-adt: 91.47645332, res: 152.79597302, bres: 0.98299684, upd: 69.82647272
-Iterations complete!
-Wall clock time: 339.53622508
-CPU clock time: 336.05068960
-Now writing to file /dev/null...
+adt: 91.47767789, res: 153.29346325, bres: 0.97567874, upd: 70.01270852
+Wall clock time: 338.84547190
+CPU clock time: 336.47853546
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 4.36778e-04
 iter =  200, rms = 3.26659e-04
 iter =  300, rms = 2.66219e-04
@@ -1969,16 +1544,11 @@ iter =  700, rms = 1.57058e-04
 iter =  800, rms = 1.42967e-04
 iter =  900, rms = 1.31349e-04
 iter = 1000, rms = 1.21571e-04
-adt: 91.48496444, res: 153.48667116, bres: 0.97684892, upd: 70.28058618
-Iterations complete!
-Wall clock time: 339.90181107
-CPU clock time: 336.97887634
-Now writing to file /dev/null...
+adt: 91.43786987, res: 153.20318784, bres: 0.98139924, upd: 70.04421802
+Wall clock time: 338.66708560
+CPU clock time: 336.41066857
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 4.36778e-04
 iter =  200, rms = 3.26659e-04
 iter =  300, rms = 2.66219e-04
@@ -1989,16 +1559,11 @@ iter =  700, rms = 1.57058e-04
 iter =  800, rms = 1.42967e-04
 iter =  900, rms = 1.31349e-04
 iter = 1000, rms = 1.21571e-04
-adt: 91.40428454, res: 153.37357866, bres: 0.97617264, upd: 70.03300447
-Iterations complete!
-Wall clock time: 339.78822127
-CPU clock time: 336.62051423
-Now writing to file /dev/null...
+adt: 91.47988509, res: 153.01989946, bres: 0.97473326, upd: 69.85209168
+Wall clock time: 338.57475567
+CPU clock time: 336.05119182
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 4.36778e-04
 iter =  200, rms = 3.26659e-04
 iter =  300, rms = 2.66219e-04
@@ -2009,16 +1574,11 @@ iter =  700, rms = 1.57058e-04
 iter =  800, rms = 1.42967e-04
 iter =  900, rms = 1.31349e-04
 iter = 1000, rms = 1.21571e-04
-adt: 91.39687179, res: 152.94607876, bres: 0.98364041, upd: 69.52382179
-Iterations complete!
-Wall clock time: 338.63804402
-CPU clock time: 335.48500752
-Now writing to file /dev/null...
+adt: 91.43767953, res: 153.31665371, bres: 0.97825103, upd: 70.06805639
+Wall clock time: 339.36014349
+CPU clock time: 336.63097643
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 4.36778e-04
 iter =  200, rms = 3.26659e-04
 iter =  300, rms = 2.66219e-04
@@ -2029,16 +1589,11 @@ iter =  700, rms = 1.57058e-04
 iter =  800, rms = 1.42967e-04
 iter =  900, rms = 1.31349e-04
 iter = 1000, rms = 1.21571e-04
-adt: 91.48151709, res: 151.49534961, bres: 0.98134867, upd: 69.40477887
-Iterations complete!
-Wall clock time: 337.08916166
-CPU clock time: 333.95824467
-Now writing to file /dev/null...
+adt: 91.56755430, res: 152.86976385, bres: 0.99004127, upd: 70.16499062
+Wall clock time: 338.54677099
+CPU clock time: 336.41618024
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 4.36778e-04
 iter =  200, rms = 3.26659e-04
 iter =  300, rms = 2.66219e-04
@@ -2049,16 +1604,11 @@ iter =  700, rms = 1.57058e-04
 iter =  800, rms = 1.42967e-04
 iter =  900, rms = 1.31349e-04
 iter = 1000, rms = 1.21571e-04
-adt: 91.50317265, res: 152.22765486, bres: 0.98693769, upd: 70.59782013
-Iterations complete!
-Wall clock time: 338.82183580
-CPU clock time: 335.73294474
-Now writing to file /dev/null...
+adt: 91.47676539, res: 152.73082958, bres: 0.98340010, upd: 69.92592605
+Wall clock time: 338.38188438
+CPU clock time: 335.83566262
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 4.36778e-04
 iter =  200, rms = 3.26659e-04
 iter =  300, rms = 2.66219e-04
@@ -2069,16 +1619,11 @@ iter =  700, rms = 1.57058e-04
 iter =  800, rms = 1.42967e-04
 iter =  900, rms = 1.31349e-04
 iter = 1000, rms = 1.21571e-04
-adt: 91.36136261, res: 151.74002212, bres: 0.98985894, upd: 68.99849730
-Iterations complete!
-Wall clock time: 336.85191130
-CPU clock time: 333.60977279
-Now writing to file /dev/null...
+adt: 91.54799421, res: 152.66573269, bres: 0.97876664, upd: 69.78317317
+Wall clock time: 338.25643901
+CPU clock time: 335.73312131
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 4.36778e-04
 iter =  200, rms = 3.26659e-04
 iter =  300, rms = 2.66219e-04
@@ -2089,16 +1634,11 @@ iter =  700, rms = 1.57058e-04
 iter =  800, rms = 1.42967e-04
 iter =  900, rms = 1.31349e-04
 iter = 1000, rms = 1.21571e-04
-adt: 91.35301842, res: 152.11850944, bres: 0.98815009, upd: 68.94719629
-Iterations complete!
-Wall clock time: 337.02434204
-CPU clock time: 333.84726317
-Now writing to file /dev/null...
+adt: 91.58858188, res: 152.79739351, bres: 0.98213565, upd: 69.69846275
+Wall clock time: 338.09094900
+CPU clock time: 335.85948187
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 4.36778e-04
 iter =  200, rms = 3.26659e-04
 iter =  300, rms = 2.66219e-04
@@ -2109,16 +1649,11 @@ iter =  700, rms = 1.57058e-04
 iter =  800, rms = 1.42967e-04
 iter =  900, rms = 1.31349e-04
 iter = 1000, rms = 1.21571e-04
-adt: 91.36943644, res: 151.31769992, bres: 0.98245972, upd: 68.37431405
-Iterations complete!
-Wall clock time: 335.77276296
-CPU clock time: 332.32690124
-Now writing to file /dev/null...
+adt: 91.55597186, res: 152.80907798, bres: 0.97651471, upd: 69.84470343
+Wall clock time: 338.41210127
+CPU clock time: 335.96296782
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 4.36778e-04
 iter =  200, rms = 3.26659e-04
 iter =  300, rms = 2.66219e-04
@@ -2129,16 +1664,11 @@ iter =  700, rms = 1.57058e-04
 iter =  800, rms = 1.42967e-04
 iter =  900, rms = 1.31349e-04
 iter = 1000, rms = 1.21571e-04
-adt: 91.46347399, res: 151.47804422, bres: 0.96823707, upd: 68.98090350
-Iterations complete!
-Wall clock time: 335.88978463
-CPU clock time: 333.19721200
-Now writing to file /dev/null...
+adt: 91.50110544, res: 153.00591161, bres: 0.98001224, upd: 69.70576286
+Wall clock time: 338.50551032
+CPU clock time: 335.97760920
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 4.36778e-04
 iter =  200, rms = 3.26659e-04
 iter =  300, rms = 2.66219e-04
@@ -2149,16 +1679,11 @@ iter =  700, rms = 1.57058e-04
 iter =  800, rms = 1.42967e-04
 iter =  900, rms = 1.31349e-04
 iter = 1000, rms = 1.21571e-04
-adt: 91.50138245, res: 149.30855111, bres: 0.98724896, upd: 67.94678696
-Iterations complete!
-Wall clock time: 332.76251286
-CPU clock time: 329.81561862
-Now writing to file /dev/null...
+adt: 91.35153504, res: 152.63087897, bres: 0.98960008, upd: 69.64122811
+Wall clock time: 338.33881019
+CPU clock time: 335.44977899
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 4.36778e-04
 iter =  200, rms = 3.26659e-04
 iter =  300, rms = 2.66219e-04
@@ -2169,16 +1694,11 @@ iter =  700, rms = 1.57058e-04
 iter =  800, rms = 1.42967e-04
 iter =  900, rms = 1.31349e-04
 iter = 1000, rms = 1.21571e-04
-adt: 91.36490445, res: 149.58005023, bres: 0.97272424, upd: 67.72044299
-Iterations complete!
-Wall clock time: 332.85826511
-CPU clock time: 329.64597624
-Now writing to file /dev/null...
+adt: 91.47795908, res: 153.01662222, bres: 0.98344515, upd: 69.70004663
+Wall clock time: 338.31376027
+CPU clock time: 335.93527694
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
 iter =  100, rms = 4.36778e-04
 iter =  200, rms = 3.26659e-04
 iter =  300, rms = 2.66219e-04
@@ -2189,450 +1709,308 @@ iter =  700, rms = 1.57058e-04
 iter =  800, rms = 1.42967e-04
 iter =  900, rms = 1.31349e-04
 iter = 1000, rms = 1.21571e-04
-adt: 91.38090091, res: 149.36597984, bres: 0.96829763, upd: 67.73244631
-Iterations complete!
-Wall clock time: 332.39567092
-CPU clock time: 329.53923277
-Now writing to file /dev/null...
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-iter =  100, rms = 4.36778e-04
-iter =  200, rms = 3.26659e-04
-iter =  300, rms = 2.66219e-04
-iter =  400, rms = 2.25900e-04
-iter =  500, rms = 1.96707e-04
-iter =  600, rms = 1.74514e-04
-iter =  700, rms = 1.57058e-04
-iter =  800, rms = 1.42967e-04
-iter =  900, rms = 1.31349e-04
-iter = 1000, rms = 1.21571e-04
-adt: 91.43920032, res: 149.48021572, bres: 0.97459011, upd: 68.77245785
-Iterations complete!
-Wall clock time: 333.66434215
-CPU clock time: 330.53820558
-Now writing to file /dev/null...
+adt: 91.39436499, res: 152.88383415, bres: 0.98520542, upd: 70.09638245
+Wall clock time: 338.70855815
+CPU clock time: 336.23282136
 --------------------
 Now running Airfoil full SoA
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-iter =  100, rms = 2.63033e-04
-iter =  200, rms = 3.02648e-04
-iter =  300, rms = 2.00245e-04
-iter =  400, rms = 1.51789e-04
-iter =  500, rms = 1.48709e-04
-iter =  600, rms = 1.10139e-04
-iter =  700, rms = 1.07419e-04
-iter =  800, rms = 1.14374e-04
-iter =  900, rms = 9.39104e-05
-iter = 1000, rms = 8.75141e-05
-adt: 93.61424244, res: 236.60053209, bres: 1.63620717, upd: 184.62836252
-Iterations complete!
-Wall clock time: 536.89975190
-CPU clock time: 533.62390421
-Now writing to file /dev/null...
+iter =  100, rms = 3.04704e-04
+iter =  200, rms = 2.26492e-04
+iter =  300, rms = 1.53618e-04
+iter =  400, rms = 1.67332e-04
+iter =  500, rms = 1.10653e-04
+iter =  600, rms = 1.23481e-04
+iter =  700, rms = 1.14511e-04
+iter =  800, rms = 1.07719e-04
+iter =  900, rms = 8.67853e-05
+iter = 1000, rms = 8.67477e-05
+adt: 93.57000763, res: 236.09660271, bres: 1.64993187, upd: 183.07846331
+Wall clock time: 542.85638213
+CPU clock time: 533.86500469
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-iter =  100, rms = 3.13061e-04
-iter =  200, rms = 3.00941e-04
-iter =  300, rms = 8.56214e-05
-iter =  400, rms = 2.22122e-04
-iter =  500, rms = 9.31938e-05
-iter =  600, rms = 1.58413e-04
-iter =  700, rms = 7.15062e-05
-iter =  800, rms = 1.14827e-04
-iter =  900, rms = 1.19451e-04
-iter = 1000, rms = 1.08549e-04
-adt: 93.52209295, res: 236.01905286, bres: 1.62977760, upd: 180.37282415
-Iterations complete!
-Wall clock time: 533.26743830
-CPU clock time: 528.65788081
-Now writing to file /dev/null...
+iter =  100, rms = 4.24875e-04
+iter =  200, rms = 1.73106e-04
+iter =  300, rms = 2.36342e-04
+iter =  400, rms = 1.95075e-04
+iter =  500, rms = 1.26853e-04
+iter =  600, rms = 1.08831e-04
+iter =  700, rms = 8.83440e-05
+iter =  800, rms = 1.11815e-04
+iter =  900, rms = 6.33412e-05
+iter = 1000, rms = 6.10966e-05
+adt: 93.48397295, res: 235.94295043, bres: 1.66073231, upd: 179.92677191
+Wall clock time: 532.06300784
+CPU clock time: 528.18807458
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-iter =  100, rms = 2.77277e-04
-iter =  200, rms = 2.43082e-04
-iter =  300, rms = 1.23970e-04
-iter =  400, rms = 9.05694e-05
-iter =  500, rms = 9.33306e-05
-iter =  600, rms = 8.85872e-05
-iter =  700, rms = 1.24539e-04
-iter =  800, rms = 1.27810e-04
-iter =  900, rms = 6.94211e-05
-iter = 1000, rms = 7.49111e-05
-adt: 93.53924201, res: 236.41668156, bres: 1.63576444, upd: 180.35558930
-Iterations complete!
-Wall clock time: 533.62583055
-CPU clock time: 529.08541043
-Now writing to file /dev/null...
+iter =  100, rms = 3.18695e-04
+iter =  200, rms = 1.84147e-04
+iter =  300, rms = 1.56655e-04
+iter =  400, rms = 1.62526e-04
+iter =  500, rms = 1.42545e-04
+iter =  600, rms = 1.48623e-04
+iter =  700, rms = 1.09531e-04
+iter =  800, rms = 1.05264e-04
+iter =  900, rms = 1.02218e-04
+iter = 1000, rms = 9.18828e-05
+adt: 93.60467718, res: 236.13810157, bres: 1.63658363, upd: 184.55909995
+Wall clock time: 535.90724752
+CPU clock time: 533.09331987
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-iter =  100, rms = 2.91950e-04
-iter =  200, rms = 2.00851e-04
-iter =  300, rms = 1.75584e-04
-iter =  400, rms = 1.27456e-04
-iter =  500, rms = 1.53504e-04
-iter =  600, rms = 1.22247e-04
-iter =  700, rms = 1.10799e-04
-iter =  800, rms = 1.14255e-04
-iter =  900, rms = 9.29983e-05
-iter = 1000, rms = 7.68611e-05
-adt: 93.75322006, res: 237.80185169, bres: 1.66502134, upd: 185.03129825
-Iterations complete!
-Wall clock time: 540.84510088
-CPU clock time: 535.46690166
-Now writing to file /dev/null...
+iter =  100, rms = 2.69181e-04
+iter =  200, rms = 2.44419e-04
+iter =  300, rms = 1.86606e-04
+iter =  400, rms = 1.46039e-04
+iter =  500, rms = 1.43715e-04
+iter =  600, rms = 1.42384e-04
+iter =  700, rms = 1.21239e-04
+iter =  800, rms = 9.53080e-05
+iter =  900, rms = 9.08661e-05
+iter = 1000, rms = 1.16957e-04
+adt: 93.49744455, res: 234.17359131, bres: 1.63415308, upd: 182.97132470
+Wall clock time: 541.63210871
+CPU clock time: 529.28323125
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-iter =  100, rms = 2.46863e-04
-iter =  200, rms = 1.66033e-04
-iter =  300, rms = 2.30008e-04
-iter =  400, rms = 1.94811e-04
-iter =  500, rms = 1.78377e-04
-iter =  600, rms = 1.55196e-04
-iter =  700, rms = 1.12983e-04
-iter =  800, rms = 7.90477e-05
-iter =  900, rms = 6.59095e-05
-iter = 1000, rms = 1.14828e-04
-adt: 93.62544680, res: 237.08629185, bres: 1.63679195, upd: 179.88059367
-Iterations complete!
-Wall clock time: 533.72529012
-CPU clock time: 529.36713633
-Now writing to file /dev/null...
+iter =  100, rms = 3.14976e-04
+iter =  200, rms = 2.74120e-04
+iter =  300, rms = 2.48242e-04
+iter =  400, rms = 1.67060e-04
+iter =  500, rms = 1.54202e-04
+iter =  600, rms = 8.92808e-05
+iter =  700, rms = 1.39760e-04
+iter =  800, rms = 6.63699e-05
+iter =  900, rms = 6.12701e-05
+iter = 1000, rms = 1.08149e-04
+adt: 93.25123658, res: 234.99842089, bres: 1.62387027, upd: 179.94257245
+Wall clock time: 530.97330694
+CPU clock time: 526.88548473
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-iter =  100, rms = 2.57488e-04
-iter =  200, rms = 1.64684e-04
-iter =  300, rms = 2.15398e-04
-iter =  400, rms = 1.71390e-04
-iter =  500, rms = 1.34757e-04
-iter =  600, rms = 1.37310e-04
-iter =  700, rms = 1.20643e-04
-iter =  800, rms = 1.03116e-04
-iter =  900, rms = 9.09921e-05
-iter = 1000, rms = 8.73405e-05
-adt: 93.50160002, res: 236.11037842, bres: 1.64708710, upd: 184.80456760
-Iterations complete!
-Wall clock time: 536.63751420
-CPU clock time: 533.06798136
-Now writing to file /dev/null...
+iter =  100, rms = 2.90202e-04
+iter =  200, rms = 2.71109e-04
+iter =  300, rms = 2.15044e-04
+iter =  400, rms = 1.57103e-04
+iter =  500, rms = 1.62117e-04
+iter =  600, rms = 1.42533e-04
+iter =  700, rms = 1.09248e-04
+iter =  800, rms = 9.81227e-05
+iter =  900, rms = 9.04093e-05
+iter = 1000, rms = 7.16484e-05
+adt: 93.63463087, res: 235.93751439, bres: 1.62907441, upd: 187.76296484
+Wall clock time: 538.91192426
+CPU clock time: 536.05687668
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-iter =  100, rms = 2.08440e-04
-iter =  200, rms = 1.77798e-04
-iter =  300, rms = 1.77588e-04
-iter =  400, rms = 1.25000e-04
-iter =  500, rms = 1.02394e-04
-iter =  600, rms = 9.69086e-05
-iter =  700, rms = 9.38208e-05
-iter =  800, rms = 1.19246e-04
-iter =  900, rms = 6.53075e-05
-iter = 1000, rms = 1.06176e-04
-adt: 93.61529865, res: 235.99936765, bres: 1.63134126, upd: 179.64383639
-Iterations complete!
-Wall clock time: 532.52015892
-CPU clock time: 527.84402902
-Now writing to file /dev/null...
+iter =  100, rms = 4.34540e-04
+iter =  200, rms = 1.92261e-04
+iter =  300, rms = 1.85933e-04
+iter =  400, rms = 1.10037e-04
+iter =  500, rms = 1.34910e-04
+iter =  600, rms = 1.18496e-04
+iter =  700, rms = 7.85459e-05
+iter =  800, rms = 1.21000e-04
+iter =  900, rms = 1.04312e-04
+iter = 1000, rms = 9.28816e-05
+adt: 93.66539884, res: 236.47476745, bres: 1.63531454, upd: 183.91811582
+Wall clock time: 535.96469540
+CPU clock time: 532.92005701
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-iter =  100, rms = 4.22406e-04
-iter =  200, rms = 2.14951e-04
-iter =  300, rms = 1.55509e-04
-iter =  400, rms = 1.82574e-04
-iter =  500, rms = 1.74250e-04
-iter =  600, rms = 9.28872e-05
-iter =  700, rms = 1.40727e-04
-iter =  800, rms = 8.24696e-05
-iter =  900, rms = 1.14490e-04
-iter = 1000, rms = 6.18060e-05
-adt: 93.61685705, res: 235.57935997, bres: 1.63421022, upd: 180.23372292
-Iterations complete!
-Wall clock time: 532.36167124
-CPU clock time: 527.90643550
-Now writing to file /dev/null...
+iter =  100, rms = 3.51137e-04
+iter =  200, rms = 2.50008e-04
+iter =  300, rms = 1.86177e-04
+iter =  400, rms = 1.45881e-04
+iter =  500, rms = 1.49061e-04
+iter =  600, rms = 1.14885e-04
+iter =  700, rms = 9.80216e-05
+iter =  800, rms = 9.86269e-05
+iter =  900, rms = 9.17335e-05
+iter = 1000, rms = 8.69374e-05
+adt: 93.88333440, res: 236.46022126, bres: 1.63984314, upd: 184.79958379
+Wall clock time: 536.56044577
+CPU clock time: 533.95510016
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-iter =  100, rms = 3.58618e-04
-iter =  200, rms = 3.05447e-04
-iter =  300, rms = 1.63379e-04
-iter =  400, rms = 1.98050e-04
-iter =  500, rms = 1.65871e-04
-iter =  600, rms = 1.53147e-04
-iter =  700, rms = 1.47389e-04
-iter =  800, rms = 1.11929e-04
-iter =  900, rms = 6.60778e-05
-iter = 1000, rms = 1.00912e-04
-adt: 93.55490806, res: 237.16363823, bres: 1.64037413, upd: 179.79349824
-Iterations complete!
-Wall clock time: 533.32394803
-CPU clock time: 528.86624519
-Now writing to file /dev/null...
+iter =  100, rms = 3.25793e-04
+iter =  200, rms = 2.37704e-04
+iter =  300, rms = 1.76631e-04
+iter =  400, rms = 1.96190e-04
+iter =  500, rms = 1.43692e-04
+iter =  600, rms = 1.09242e-04
+iter =  700, rms = 1.03967e-04
+iter =  800, rms = 1.05686e-04
+iter =  900, rms = 8.61140e-05
+iter = 1000, rms = 8.63628e-05
+adt: 93.66633308, res: 236.66867236, bres: 1.64148413, upd: 184.38263982
+Wall clock time: 536.08755640
+CPU clock time: 533.56307844
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-iter =  100, rms = 2.20576e-04
-iter =  200, rms = 3.13219e-04
-iter =  300, rms = 2.39551e-04
-iter =  400, rms = 1.89616e-04
-iter =  500, rms = 1.22282e-04
-iter =  600, rms = 1.41704e-04
-iter =  700, rms = 1.22664e-04
-iter =  800, rms = 7.79326e-05
-iter =  900, rms = 9.41254e-05
-iter = 1000, rms = 1.04115e-04
-adt: 93.77909381, res: 236.67304032, bres: 1.63678010, upd: 183.98219281
-Iterations complete!
-Wall clock time: 536.52971218
-CPU clock time: 532.61637028
-Now writing to file /dev/null...
+iter =  100, rms = 2.49320e-04
+iter =  200, rms = 2.43856e-04
+iter =  300, rms = 1.99415e-04
+iter =  400, rms = 1.54393e-04
+iter =  500, rms = 1.60531e-04
+iter =  600, rms = 1.34546e-04
+iter =  700, rms = 1.06616e-04
+iter =  800, rms = 1.11157e-04
+iter =  900, rms = 9.88025e-05
+iter = 1000, rms = 8.89319e-05
+adt: 93.61049581, res: 235.84045416, bres: 1.64116580, upd: 184.87743255
+Wall clock time: 536.02298990
+CPU clock time: 533.03056578
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-iter =  100, rms = 3.12963e-04
-iter =  200, rms = 3.03326e-04
-iter =  300, rms = 1.80221e-04
-iter =  400, rms = 1.97616e-04
-iter =  500, rms = 1.11088e-04
-iter =  600, rms = 8.32406e-05
-iter =  700, rms = 1.30832e-04
-iter =  800, rms = 1.17365e-04
-iter =  900, rms = 1.13719e-04
-iter = 1000, rms = 1.04383e-04
-adt: 93.78722657, res: 237.62337094, bres: 1.68214509, upd: 180.18460932
-Iterations complete!
-Wall clock time: 538.02769652
-CPU clock time: 530.34398640
-Now writing to file /dev/null...
+iter =  100, rms = 2.79876e-04
+iter =  200, rms = 2.24034e-04
+iter =  300, rms = 1.72628e-04
+iter =  400, rms = 1.49861e-04
+iter =  500, rms = 1.46885e-04
+iter =  600, rms = 1.22894e-04
+iter =  700, rms = 1.16696e-04
+iter =  800, rms = 1.01448e-04
+iter =  900, rms = 8.72058e-05
+iter = 1000, rms = 8.51149e-05
+adt: 93.65105089, res: 236.04475752, bres: 1.63722475, upd: 184.97803432
+Wall clock time: 536.00049592
+CPU clock time: 533.44697833
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-iter =  100, rms = 3.68192e-04
-iter =  200, rms = 2.83240e-04
-iter =  300, rms = 1.57150e-04
-iter =  400, rms = 1.51959e-04
-iter =  500, rms = 9.61158e-05
-iter =  600, rms = 1.39538e-04
-iter =  700, rms = 1.10229e-04
-iter =  800, rms = 9.58072e-05
-iter =  900, rms = 8.94309e-05
-iter = 1000, rms = 8.71668e-05
-adt: 93.62198667, res: 235.80472663, bres: 1.63829818, upd: 184.54196100
-Iterations complete!
-Wall clock time: 536.17788130
-CPU clock time: 532.64520056
-Now writing to file /dev/null...
+iter =  100, rms = 3.06917e-04
+iter =  200, rms = 2.33539e-04
+iter =  300, rms = 2.10009e-04
+iter =  400, rms = 1.77183e-04
+iter =  500, rms = 1.21589e-04
+iter =  600, rms = 1.30356e-04
+iter =  700, rms = 1.07238e-04
+iter =  800, rms = 1.08920e-04
+iter =  900, rms = 9.77866e-05
+iter = 1000, rms = 7.03043e-05
+adt: 93.50222985, res: 235.90339343, bres: 1.61891659, upd: 184.21440627
+Wall clock time: 534.53875858
+CPU clock time: 531.71580399
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-iter =  100, rms = 3.44894e-04
-iter =  200, rms = 2.25446e-04
-iter =  300, rms = 2.14773e-04
-iter =  400, rms = 1.52241e-04
-iter =  500, rms = 1.73594e-04
-iter =  600, rms = 1.33380e-04
-iter =  700, rms = 1.25534e-04
-iter =  800, rms = 9.70996e-05
-iter =  900, rms = 9.09858e-05
-iter = 1000, rms = 8.48212e-05
-adt: 93.61230353, res: 236.24171783, bres: 1.63074954, upd: 187.65382320
-Iterations complete!
-Wall clock time: 539.76406942
-CPU clock time: 536.24485062
-Now writing to file /dev/null...
+iter =  100, rms = 4.10370e-04
+iter =  200, rms = 2.42229e-04
+iter =  300, rms = 2.24280e-04
+iter =  400, rms = 1.97598e-04
+iter =  500, rms = 8.52467e-05
+iter =  600, rms = 9.55586e-05
+iter =  700, rms = 9.03975e-05
+iter =  800, rms = 7.08718e-05
+iter =  900, rms = 1.12605e-04
+iter = 1000, rms = 6.10801e-05
+adt: 93.59784543, res: 235.71429465, bres: 1.65905904, upd: 179.95756309
+Wall clock time: 530.75438352
+CPU clock time: 527.30081938
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-iter =  100, rms = 3.52289e-04
-iter =  200, rms = 2.69772e-04
-iter =  300, rms = 1.77002e-04
-iter =  400, rms = 1.19480e-04
-iter =  500, rms = 1.63067e-04
-iter =  600, rms = 1.55049e-04
-iter =  700, rms = 1.16325e-04
-iter =  800, rms = 1.06035e-04
-iter =  900, rms = 9.63748e-05
-iter = 1000, rms = 8.25147e-05
-adt: 93.59551264, res: 236.20711454, bres: 1.64360383, upd: 184.72585779
-Iterations complete!
-Wall clock time: 536.59958434
-CPU clock time: 533.25636837
-Now writing to file /dev/null...
+iter =  100, rms = 3.85220e-04
+iter =  200, rms = 2.83826e-04
+iter =  300, rms = 2.32064e-04
+iter =  400, rms = 1.04926e-04
+iter =  500, rms = 1.57263e-04
+iter =  600, rms = 1.51756e-04
+iter =  700, rms = 7.95426e-05
+iter =  800, rms = 1.25031e-04
+iter =  900, rms = 7.00058e-05
+iter = 1000, rms = 6.40143e-05
+adt: 93.62846504, res: 236.23104196, bres: 1.63340523, upd: 180.76027114
+Wall clock time: 531.37753295
+CPU clock time: 528.61080383
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-iter =  100, rms = 3.19325e-04
-iter =  200, rms = 1.93045e-04
-iter =  300, rms = 2.13896e-04
-iter =  400, rms = 1.77399e-04
-iter =  500, rms = 1.41022e-04
-iter =  600, rms = 1.03799e-04
-iter =  700, rms = 1.14822e-04
-iter =  800, rms = 9.94216e-05
-iter =  900, rms = 9.17537e-05
-iter = 1000, rms = 8.51247e-05
-adt: 93.70567310, res: 236.20865249, bres: 1.63366453, upd: 184.96660689
-Iterations complete!
-Wall clock time: 537.16667987
-CPU clock time: 533.60363777
-Now writing to file /dev/null...
+iter =  100, rms = 2.95103e-04
+iter =  200, rms = 2.19918e-04
+iter =  300, rms = 2.10731e-04
+iter =  400, rms = 1.42417e-04
+iter =  500, rms = 1.50748e-04
+iter =  600, rms = 1.31153e-04
+iter =  700, rms = 1.15015e-04
+iter =  800, rms = 1.01676e-04
+iter =  900, rms = 9.33072e-05
+iter = 1000, rms = 8.58253e-05
+adt: 93.64552604, res: 235.96587450, bres: 1.62564770, upd: 184.34149683
+Wall clock time: 534.66026304
+CPU clock time: 531.91063542
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-iter =  100, rms = 2.84332e-04
-iter =  200, rms = 1.79927e-04
-iter =  300, rms = 1.44730e-04
-iter =  400, rms = 1.64675e-04
-iter =  500, rms = 1.58141e-04
-iter =  600, rms = 6.86466e-05
-iter =  700, rms = 1.31293e-04
-iter =  800, rms = 1.07470e-04
-iter =  900, rms = 1.09428e-04
-iter = 1000, rms = 6.33150e-05
-adt: 93.71242833, res: 237.55844399, bres: 1.65791418, upd: 180.35688808
-Iterations complete!
-Wall clock time: 537.36545059
-CPU clock time: 530.54953660
-Now writing to file /dev/null...
+iter =  100, rms = 1.20717e-04
+iter =  200, rms = 2.02907e-04
+iter =  300, rms = 2.10099e-04
+iter =  400, rms = 1.33686e-04
+iter =  500, rms = 1.76206e-04
+iter =  600, rms = 1.65491e-04
+iter =  700, rms = 1.11311e-04
+iter =  800, rms = 1.29342e-04
+iter =  900, rms = 7.20337e-05
+iter = 1000, rms = 6.56098e-05
+adt: 93.75496528, res: 235.98955758, bres: 1.63242195, upd: 179.70409056
+Wall clock time: 530.91594077
+CPU clock time: 527.41816889
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-iter =  100, rms = 3.91435e-04
-iter =  200, rms = 1.86365e-04
-iter =  300, rms = 1.65678e-04
-iter =  400, rms = 1.06653e-04
-iter =  500, rms = 1.57205e-04
-iter =  600, rms = 1.66663e-04
-iter =  700, rms = 8.27236e-05
-iter =  800, rms = 1.28821e-04
-iter =  900, rms = 1.09055e-04
-iter = 1000, rms = 1.01396e-04
-adt: 93.87733071, res: 236.40807677, bres: 1.63529420, upd: 180.27182976
-Iterations complete!
-Wall clock time: 533.96555238
-CPU clock time: 529.30132139
-Now writing to file /dev/null...
+iter =  100, rms = 2.39812e-04
+iter =  200, rms = 2.28040e-04
+iter =  300, rms = 1.92068e-04
+iter =  400, rms = 1.58752e-04
+iter =  500, rms = 1.31269e-04
+iter =  600, rms = 1.39676e-04
+iter =  700, rms = 1.06835e-04
+iter =  800, rms = 1.03811e-04
+iter =  900, rms = 9.09667e-05
+iter = 1000, rms = 8.21498e-05
+adt: 93.55855179, res: 235.78656099, bres: 1.62838423, upd: 184.77636988
+Wall clock time: 534.73821010
+CPU clock time: 532.07739463
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-iter =  100, rms = 3.61291e-04
-iter =  200, rms = 1.85418e-04
-iter =  300, rms = 2.07082e-04
-iter =  400, rms = 1.62618e-04
-iter =  500, rms = 1.41547e-04
-iter =  600, rms = 1.08650e-04
-iter =  700, rms = 1.22963e-04
-iter =  800, rms = 9.59291e-05
-iter =  900, rms = 8.95056e-05
-iter = 1000, rms = 7.87335e-05
-adt: 93.69155454, res: 236.55116394, bres: 1.66609479, upd: 185.18252932
-Iterations complete!
-Wall clock time: 537.78439559
-CPU clock time: 534.17351805
-Now writing to file /dev/null...
+iter =  100, rms = 3.62780e-04
+iter =  200, rms = 1.91677e-04
+iter =  300, rms = 1.85074e-04
+iter =  400, rms = 1.48392e-04
+iter =  500, rms = 1.29706e-04
+iter =  600, rms = 1.14779e-04
+iter =  700, rms = 1.03038e-04
+iter =  800, rms = 9.15152e-05
+iter =  900, rms = 9.92314e-05
+iter = 1000, rms = 8.42802e-05
+adt: 93.61109687, res: 236.39444092, bres: 1.62653403, upd: 184.22606078
+Wall clock time: 534.63128722
+CPU clock time: 532.24034521
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-iter =  100, rms = 3.98764e-04
-iter =  200, rms = 2.32301e-04
-iter =  300, rms = 2.07825e-04
-iter =  400, rms = 1.52020e-04
-iter =  500, rms = 1.33802e-04
-iter =  600, rms = 1.17714e-04
-iter =  700, rms = 1.28051e-04
-iter =  800, rms = 1.03830e-04
-iter =  900, rms = 8.92631e-05
-iter = 1000, rms = 8.31391e-05
-adt: 94.03277364, res: 238.42828789, bres: 1.66447111, upd: 188.05507219
-Iterations complete!
-Wall clock time: 543.97376244
-CPU clock time: 539.62499507
-Now writing to file /dev/null...
+iter =  100, rms = 4.02471e-04
+iter =  200, rms = 1.47876e-04
+iter =  300, rms = 2.27036e-04
+iter =  400, rms = 1.93531e-04
+iter =  500, rms = 1.48961e-04
+iter =  600, rms = 1.10410e-04
+iter =  700, rms = 1.34471e-04
+iter =  800, rms = 7.11257e-05
+iter =  900, rms = 7.01045e-05
+iter = 1000, rms = 1.03167e-04
+adt: 93.53616225, res: 235.77229106, bres: 1.65097824, upd: 183.78996421
+Wall clock time: 534.68628631
+CPU clock time: 531.39756850
 --------------------
 --------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-iter =  100, rms = 3.49362e-04
-iter =  200, rms = 2.21863e-04
-iter =  300, rms = 2.13093e-04
-iter =  400, rms = 1.24042e-04
-iter =  500, rms = 1.50186e-04
-iter =  600, rms = 1.29625e-04
-iter =  700, rms = 1.20904e-04
-iter =  800, rms = 9.22520e-05
-iter =  900, rms = 7.86824e-05
-iter = 1000, rms = 8.83251e-05
-adt: 93.67729080, res: 236.20122458, bres: 1.67496866, upd: 184.62082074
-Iterations complete!
-Wall clock time: 536.76949006
-CPU clock time: 533.29689949
-Now writing to file /dev/null...
---------------------
---------------------
-Now parsing the file...
-Parsing complete!
-Now performing iterations...
-iter =  100, rms = 3.82935e-04
-iter =  200, rms = 2.82522e-04
-iter =  300, rms = 1.17821e-04
-iter =  400, rms = 1.33459e-04
-iter =  500, rms = 1.73760e-04
-iter =  600, rms = 9.53206e-05
-iter =  700, rms = 1.38606e-04
-iter =  800, rms = 1.04978e-04
-iter =  900, rms = 1.05659e-04
-iter = 1000, rms = 6.22444e-05
-adt: 93.54603678, res: 235.99125628, bres: 1.63489755, upd: 179.84477603
-Iterations complete!
-Wall clock time: 532.97694640
-CPU clock time: 528.11733764
-Now writing to file /dev/null...
+iter =  100, rms = 3.22250e-04
+iter =  200, rms = 2.25918e-04
+iter =  300, rms = 1.82218e-04
+iter =  400, rms = 1.51963e-04
+iter =  500, rms = 1.23436e-04
+iter =  600, rms = 1.16091e-04
+iter =  700, rms = 1.15773e-04
+iter =  800, rms = 1.06264e-04
+iter =  900, rms = 8.59388e-05
+iter = 1000, rms = 7.67909e-05
+adt: 93.41554504, res: 235.79775822, bres: 1.62191760, upd: 184.93788889
+Wall clock time: 535.73161270
+CPU clock time: 532.72406547
 --------------------
