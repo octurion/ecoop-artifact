@@ -1,14 +1,14 @@
+#!/usr/bin/env python3
 import csv
 import itertools as it
 import os
 import sys
 
 def main(root):
-    #machines = ["desktop", "laptop", "graphic", "ray", "voxel"]
-    machines = ["laptop"]
+    machines = ["desktop", "laptop", "graphic", "ray", "voxel"]
     weight_variants = ["Aos", "Mixed", "Soa"]
     joint_variants = ["Scattered", "Pooled"]
-    skip_first = 9
+    skip_first = 10
     num_runs = 100
     skip_every = 7
 
@@ -19,17 +19,17 @@ def main(root):
         with open(filename, 'r') as f:
             r = csv.reader(f, delimiter=',')
             for _ in range(skip_first):
-                r.next()
+                next(r)
 
             for _ in range(len(weight_variants) * len(joint_variants)):
                 new_col = []
                 for _ in range(num_runs):
-                    e = r.next()
+                    e = next(r)
                     cpu_time = e[3]
                     new_col.append(cpu_time)
 
                 for _ in range(skip_every):
-                    r.next()
+                    next(r)
 
                 cols.append(new_col)
 
