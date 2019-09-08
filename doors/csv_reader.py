@@ -38,12 +38,14 @@ def main(root):
 
                 idx = 0 if "OnePool" in test_name else 1
 
-                if ":50" in test_name:
+                if "probability:50" in test_name:
                     prob50[idx].append(cpu_time)
-                elif ":70" in test_name:
+                elif "probability:70" in test_name:
                     prob70[idx].append(cpu_time)
-                else:
+                elif "probability:90" in test_name:
                     prob90[idx].append(cpu_time)
+                else:
+                    print("Warning: Couldn't parse line for test {}".format(test_name))
 
             prob50_cols.extend(prob50)
             prob70_cols.extend(prob70)
