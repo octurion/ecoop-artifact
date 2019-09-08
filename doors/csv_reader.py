@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import csv
 import itertools as it
 import os
@@ -12,8 +13,7 @@ def write_csv(f, cols, machines, variants):
         w.writerow(list(e))
 
 def main(root):
-    #machines = ["desktop", "laptop", "graphic", "ray", "voxel"]
-    machines = ["laptop"]
+    machines = ["desktop", "laptop", "graphic", "ray", "voxel"]
     variants = ["one", "many"]
     skip_lines = 10
 
@@ -30,7 +30,7 @@ def main(root):
 
             r = csv.reader(f, delimiter=',')
             for _ in range(skip_lines):
-                r.next()
+                next(r)
 
             for e in r:
                 test_name = e[0]
