@@ -12,6 +12,6 @@ set(COMMON_FLAGS -Wall -Wextra -Wpedantic)
 
 add_subdirectory(lib/benchmark)
 
-add_executable(traffic src/traffic.cpp)
-target_compile_options(traffic PRIVATE ${COMMON_FLAGS})
-target_link_libraries(traffic benchmark)
+add_executable(bench src/traffic.cpp)
+target_compile_options(bench PRIVATE ${COMMON_FLAGS})
+target_link_libraries(bench benchmark)
