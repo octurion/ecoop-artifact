@@ -4,7 +4,8 @@
 - CMake (version 3.5 or later)
 - Any build system supported by CMake: Ninja (preferred and used in these
   instructions), Make, Visual Studio
-- A compiler that supports C++11
+- A compiler that supports C++11 and OpenMP 2.0 or later (*e.g.* `gcc` via
+  the `libgomp` library)
 - Any version of Python 3 to run the results script
 
 # How to compile
@@ -16,6 +17,13 @@
   1. `mkdir build && cd build`
   2. `cmake -DCMAKE_BUILD_TYPE=Release -DBENCHMARK_ENABLE_TESTING=OFF -DBENCHMARK_ENABLE_GTEST_TESTS=OFF -DBENCHMARK_ENABLE_LTO=ON -GNinja ..`
   3. `ninja`
+- When building the OP2 samples, two files named `new_grid.dat` and
+  `FE_grid.dat` should have been generated (refer to the relevant readme).
+  Alternatively, you can download them from here:
+  - [new_grid.dat](https://drive.google.com/open?id=1Afw2IDrObOQK7-T-pjCX30RWj-1gL3et)
+  - [FE_grid.dat](https://drive.google.com/open?id=144ydk9w5oehzERWHq68SmlBtOpcecr_0)
+
+  Place `new_grid.dat` and `FE_grid.dat` inside the `build/` directory.
 
 # How to run the benchmark
 
