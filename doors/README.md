@@ -14,7 +14,7 @@
   run `git submodule update --init --recursive` in the root directory
 - Run:
   1. `mkdir build && cd build`
-  2. `cmake -DCMAKE_BUILD_TYPE=Release -GNinja ..`
+  2. `cmake -DCMAKE_BUILD_TYPE=Release -DBENCHMARK_ENABLE_TESTING=OFF -DBENCHMARK_ENABLE_GTEST_TESTS=OFF -DBENCHMARK_ENABLE_LTO=ON -GNinja ..`
   3. `ninja`
 
 # How to run the benchmark
