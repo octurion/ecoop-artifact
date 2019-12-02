@@ -35,8 +35,11 @@ In the root directory, run:
 
 # How to generate the result CSV files
 
-- Consolidate all benchmark output CSV files in a single directory (*e.g.*
-  `results/`)
+- Consolidate all benchmark output `txt` files corresponding to
+  the original OP2 applications' runs (*i.e.* repo `OP2-Common`)
+  on the various machines, as well as the output `csv` files
+  corresponding to the reimplementation's runs (*i.e.* repo
+  `op2reimpl`) in a single directory (*e.g.* `results/`).
 - Run `./csv_generator.py RESULTS_DIR` (where `RESULTS_DIR` is the
   aforementioned directory (*e.g.* `results/`).
 - The output files should have the name `aero.csv` and `airfoil.csv`.
