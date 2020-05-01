@@ -15,7 +15,7 @@ jobs:
       with:
         submodules: 'true'
     - name: Install dependencies
-      run: sudo apt-get -y install git cmake g++ libgomp1 ninja-build texlive-picture
+      run: sudo apt-get -y install git cmake g++ libgomp1 ninja-build texlive-pictures
     - name: Run CMake
       run: |
         mkdir build
