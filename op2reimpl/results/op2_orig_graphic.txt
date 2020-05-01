@@ -1,0 +1,3918 @@
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 62
+model name	: Intel(R) Xeon(R) CPU E5-1620 v2 @ 3.70GHz
+stepping	: 4
+microcode	: 0x42e
+cpu MHz		: 3694.458
+cache size	: 10240 KB
+physical id	: 0
+siblings	: 8
+core id		: 0
+cpu cores	: 4
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds
+bogomips	: 7382.57
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 46 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 62
+model name	: Intel(R) Xeon(R) CPU E5-1620 v2 @ 3.70GHz
+stepping	: 4
+microcode	: 0x42e
+cpu MHz		: 3691.383
+cache size	: 10240 KB
+physical id	: 0
+siblings	: 8
+core id		: 1
+cpu cores	: 4
+apicid		: 2
+initial apicid	: 2
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds
+bogomips	: 7382.57
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 46 bits physical, 48 bits virtual
+power management:
+
+processor	: 2
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 62
+model name	: Intel(R) Xeon(R) CPU E5-1620 v2 @ 3.70GHz
+stepping	: 4
+microcode	: 0x42e
+cpu MHz		: 3691.456
+cache size	: 10240 KB
+physical id	: 0
+siblings	: 8
+core id		: 2
+cpu cores	: 4
+apicid		: 4
+initial apicid	: 4
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds
+bogomips	: 7382.57
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 46 bits physical, 48 bits virtual
+power management:
+
+processor	: 3
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 62
+model name	: Intel(R) Xeon(R) CPU E5-1620 v2 @ 3.70GHz
+stepping	: 4
+microcode	: 0x42e
+cpu MHz		: 3772.671
+cache size	: 10240 KB
+physical id	: 0
+siblings	: 8
+core id		: 3
+cpu cores	: 4
+apicid		: 6
+initial apicid	: 6
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds
+bogomips	: 7382.57
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 46 bits physical, 48 bits virtual
+power management:
+
+processor	: 4
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 62
+model name	: Intel(R) Xeon(R) CPU E5-1620 v2 @ 3.70GHz
+stepping	: 4
+microcode	: 0x42e
+cpu MHz		: 3691.318
+cache size	: 10240 KB
+physical id	: 0
+siblings	: 8
+core id		: 0
+cpu cores	: 4
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds
+bogomips	: 7382.57
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 46 bits physical, 48 bits virtual
+power management:
+
+processor	: 5
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 62
+model name	: Intel(R) Xeon(R) CPU E5-1620 v2 @ 3.70GHz
+stepping	: 4
+microcode	: 0x42e
+cpu MHz		: 3691.336
+cache size	: 10240 KB
+physical id	: 0
+siblings	: 8
+core id		: 1
+cpu cores	: 4
+apicid		: 3
+initial apicid	: 3
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds
+bogomips	: 7382.57
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 46 bits physical, 48 bits virtual
+power management:
+
+processor	: 6
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 62
+model name	: Intel(R) Xeon(R) CPU E5-1620 v2 @ 3.70GHz
+stepping	: 4
+microcode	: 0x42e
+cpu MHz		: 3691.389
+cache size	: 10240 KB
+physical id	: 0
+siblings	: 8
+core id		: 2
+cpu cores	: 4
+apicid		: 5
+initial apicid	: 5
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds
+bogomips	: 7382.57
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 46 bits physical, 48 bits virtual
+power management:
+
+processor	: 7
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 62
+model name	: Intel(R) Xeon(R) CPU E5-1620 v2 @ 3.70GHz
+stepping	: 4
+microcode	: 0x42e
+cpu MHz		: 3691.285
+cache size	: 10240 KB
+physical id	: 0
+siblings	: 8
+core id		: 3
+cpu cores	: 4
+apicid		: 7
+initial apicid	: 7
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid dca sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat pln pts md_clear flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds
+bogomips	: 7382.57
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 46 bits physical, 48 bits virtual
+power management:
+
+Now running Airfoil OP2
+--------------------
+
+ Initializing OP2
+reading in grid 
+initialising flow field 
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes    2883601
+     edges    5757200
+    bedges       5600
+     cells    2880000
+
+       map        dim       from         to
+  -----------------------------------------
+     pedge          2      edges      nodes
+    pecell          2      edges      cells
+    pbedge          2     bedges      nodes
+   pbecell          1     bedges      cells
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+   p_bound          1     bedges
+       p_x          2      nodes
+       p_q          4      cells
+    p_qold          4      cells
+     p_adt          1      cells
+     p_res          4      cells
+
+ new execution plan #0 for kernel adt_calc
+ number of blocks       = 7500 
+ number of block colors = 1 
+ maximum block size     = 384 
+ average thread colors  = 1.00 
+ shared memory required =  12.06 KB
+ average data reuse     = 1.99 
+ data transfer (used)   = 242.00 MB 
+ data transfer (total)  = 243.60 MB 
+ SoA/AoS transfer ratio = 1.01 
+
+ new execution plan #1 for kernel res_calc
+ number of blocks       = 22490 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 3.00 
+ shared memory required =  23.44 KB, 26.19 KB, 26.19 KB, 26.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 837.47 MB 
+ data transfer (total)  = 859.67 MB 
+ SoA/AoS transfer ratio = 1.06 
+
+ new execution plan #2 for kernel bres_calc
+ number of blocks       = 22 
+ number of block colors = 1 
+ maximum block size     = 256 
+ average thread colors  = 1.09 
+ shared memory required =  22.06 KB
+ average data reuse     = 1.18 
+ data transfer (used)   = 0.80 MB 
+ data transfer (total)  = 1.99 MB 
+ SoA/AoS transfer ratio = 2.47 
+
+ 100  4.36778e-04 
+ 200  3.26659e-04 
+ 300  2.66219e-04 
+ 400  2.25900e-04 
+ 500  1.96707e-04 
+ 600  1.74514e-04 
+ 700  1.57058e-04 
+ 800  1.42967e-04 
+ 900  1.31349e-04 
+ 1000  1.21571e-04 
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+   1000;    0.0000;    0.0000(  0.0000);    9.9734(  0.0000);   27.7218;         ;   save_soln 
+   2000;    0.0000;    0.0000(  0.0000);   51.1304(  0.0000);   9.9258;   9.9912;   adt_calc 
+   2000;    0.0000;    0.0000(  0.0000);  110.2843(  0.0000);  15.9256;  16.3471;   res_calc 
+   2000;    0.0000;    0.0000(  0.0000);    5.1809(  0.0000);   0.3244;   0.8068;   bres_calc 
+   2000;    0.0000;    0.0000(  0.0000);   34.0510(  0.0000);   28.4174;         ;   update 
+Total plan time:   2.2620
+Max total runtime = 210.654466
+--------------------
+--------------------
+
+ Initializing OP2
+reading in grid 
+initialising flow field 
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes    2883601
+     edges    5757200
+    bedges       5600
+     cells    2880000
+
+       map        dim       from         to
+  -----------------------------------------
+     pedge          2      edges      nodes
+    pecell          2      edges      cells
+    pbedge          2     bedges      nodes
+   pbecell          1     bedges      cells
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+   p_bound          1     bedges
+       p_x          2      nodes
+       p_q          4      cells
+    p_qold          4      cells
+     p_adt          1      cells
+     p_res          4      cells
+
+ new execution plan #0 for kernel adt_calc
+ number of blocks       = 7500 
+ number of block colors = 1 
+ maximum block size     = 384 
+ average thread colors  = 1.00 
+ shared memory required =  12.06 KB
+ average data reuse     = 1.99 
+ data transfer (used)   = 242.00 MB 
+ data transfer (total)  = 243.60 MB 
+ SoA/AoS transfer ratio = 1.01 
+
+ new execution plan #1 for kernel res_calc
+ number of blocks       = 22490 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 3.00 
+ shared memory required =  23.44 KB, 26.19 KB, 26.19 KB, 26.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 837.47 MB 
+ data transfer (total)  = 859.67 MB 
+ SoA/AoS transfer ratio = 1.06 
+
+ new execution plan #2 for kernel bres_calc
+ number of blocks       = 22 
+ number of block colors = 1 
+ maximum block size     = 256 
+ average thread colors  = 1.09 
+ shared memory required =  22.06 KB
+ average data reuse     = 1.18 
+ data transfer (used)   = 0.80 MB 
+ data transfer (total)  = 1.99 MB 
+ SoA/AoS transfer ratio = 2.47 
+
+ 100  4.36778e-04 
+ 200  3.26659e-04 
+ 300  2.66219e-04 
+ 400  2.25900e-04 
+ 500  1.96707e-04 
+ 600  1.74514e-04 
+ 700  1.57058e-04 
+ 800  1.42967e-04 
+ 900  1.31349e-04 
+ 1000  1.21571e-04 
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+   1000;    0.0000;    0.0000(  0.0000);    9.5703(  0.0000);   28.8893;         ;   save_soln 
+   2000;    0.0000;    0.0000(  0.0000);   47.8844(  0.0000);  10.5987;  10.6685;   adt_calc 
+   2000;    0.0000;    0.0000(  0.0000);   99.7522(  0.0000);  17.6071;  18.0731;   res_calc 
+   2000;    0.0000;    0.0000(  0.0000);    3.8846(  0.0000);   0.4326;   1.0760;   bres_calc 
+   2000;    0.0000;    0.0000(  0.0000);   33.0678(  0.0000);   29.2623;         ;   update 
+Total plan time:   2.2599
+Max total runtime = 194.193920
+--------------------
+--------------------
+
+ Initializing OP2
+reading in grid 
+initialising flow field 
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes    2883601
+     edges    5757200
+    bedges       5600
+     cells    2880000
+
+       map        dim       from         to
+  -----------------------------------------
+     pedge          2      edges      nodes
+    pecell          2      edges      cells
+    pbedge          2     bedges      nodes
+   pbecell          1     bedges      cells
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+   p_bound          1     bedges
+       p_x          2      nodes
+       p_q          4      cells
+    p_qold          4      cells
+     p_adt          1      cells
+     p_res          4      cells
+
+ new execution plan #0 for kernel adt_calc
+ number of blocks       = 7500 
+ number of block colors = 1 
+ maximum block size     = 384 
+ average thread colors  = 1.00 
+ shared memory required =  12.06 KB
+ average data reuse     = 1.99 
+ data transfer (used)   = 242.00 MB 
+ data transfer (total)  = 243.60 MB 
+ SoA/AoS transfer ratio = 1.01 
+
+ new execution plan #1 for kernel res_calc
+ number of blocks       = 22490 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 3.00 
+ shared memory required =  23.44 KB, 26.19 KB, 26.19 KB, 26.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 837.47 MB 
+ data transfer (total)  = 859.67 MB 
+ SoA/AoS transfer ratio = 1.06 
+
+ new execution plan #2 for kernel bres_calc
+ number of blocks       = 22 
+ number of block colors = 1 
+ maximum block size     = 256 
+ average thread colors  = 1.09 
+ shared memory required =  22.06 KB
+ average data reuse     = 1.18 
+ data transfer (used)   = 0.80 MB 
+ data transfer (total)  = 1.99 MB 
+ SoA/AoS transfer ratio = 2.47 
+
+ 100  4.36778e-04 
+ 200  3.26659e-04 
+ 300  2.66219e-04 
+ 400  2.25900e-04 
+ 500  1.96707e-04 
+ 600  1.74514e-04 
+ 700  1.57058e-04 
+ 800  1.42967e-04 
+ 900  1.31349e-04 
+ 1000  1.21571e-04 
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+   1000;    0.0000;    0.0000(  0.0000);    9.4389(  0.0000);   29.2916;         ;   save_soln 
+   2000;    0.0000;    0.0000(  0.0000);   46.4897(  0.0000);  10.9166;  10.9885;   adt_calc 
+   2000;    0.0000;    0.0000(  0.0000);   98.6236(  0.0000);  17.8085;  18.2799;   res_calc 
+   2000;    0.0000;    0.0000(  0.0000);    3.4235(  0.0000);   0.4909;   1.2210;   bres_calc 
+   2000;    0.0000;    0.0000(  0.0000);   33.4691(  0.0000);   28.9114;         ;   update 
+Total plan time:   2.1566
+Max total runtime = 191.476797
+--------------------
+--------------------
+
+ Initializing OP2
+reading in grid 
+initialising flow field 
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes    2883601
+     edges    5757200
+    bedges       5600
+     cells    2880000
+
+       map        dim       from         to
+  -----------------------------------------
+     pedge          2      edges      nodes
+    pecell          2      edges      cells
+    pbedge          2     bedges      nodes
+   pbecell          1     bedges      cells
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+   p_bound          1     bedges
+       p_x          2      nodes
+       p_q          4      cells
+    p_qold          4      cells
+     p_adt          1      cells
+     p_res          4      cells
+
+ new execution plan #0 for kernel adt_calc
+ number of blocks       = 7500 
+ number of block colors = 1 
+ maximum block size     = 384 
+ average thread colors  = 1.00 
+ shared memory required =  12.06 KB
+ average data reuse     = 1.99 
+ data transfer (used)   = 242.00 MB 
+ data transfer (total)  = 243.60 MB 
+ SoA/AoS transfer ratio = 1.01 
+
+ new execution plan #1 for kernel res_calc
+ number of blocks       = 22490 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 3.00 
+ shared memory required =  23.44 KB, 26.19 KB, 26.19 KB, 26.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 837.47 MB 
+ data transfer (total)  = 859.67 MB 
+ SoA/AoS transfer ratio = 1.06 
+
+ new execution plan #2 for kernel bres_calc
+ number of blocks       = 22 
+ number of block colors = 1 
+ maximum block size     = 256 
+ average thread colors  = 1.09 
+ shared memory required =  22.06 KB
+ average data reuse     = 1.18 
+ data transfer (used)   = 0.80 MB 
+ data transfer (total)  = 1.99 MB 
+ SoA/AoS transfer ratio = 2.47 
+
+ 100  4.36778e-04 
+ 200  3.26659e-04 
+ 300  2.66219e-04 
+ 400  2.25900e-04 
+ 500  1.96707e-04 
+ 600  1.74514e-04 
+ 700  1.57058e-04 
+ 800  1.42967e-04 
+ 900  1.31349e-04 
+ 1000  1.21571e-04 
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+   1000;    0.0000;    0.0000(  0.0000);    9.3947(  0.0000);   29.4294;         ;   save_soln 
+   2000;    0.0000;    0.0000(  0.0000);   46.7791(  0.0000);  10.8491;  10.9206;   adt_calc 
+   2000;    0.0000;    0.0000(  0.0000);   96.2538(  0.0000);  18.2470;  18.7300;   res_calc 
+   2000;    0.0000;    0.0000(  0.0000);    3.5186(  0.0000);   0.4776;   1.1880;   bres_calc 
+   2000;    0.0000;    0.0000(  0.0000);   32.8131(  0.0000);   29.4894;         ;   update 
+Total plan time:   2.3007
+Max total runtime = 188.795574
+--------------------
+--------------------
+
+ Initializing OP2
+reading in grid 
+initialising flow field 
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes    2883601
+     edges    5757200
+    bedges       5600
+     cells    2880000
+
+       map        dim       from         to
+  -----------------------------------------
+     pedge          2      edges      nodes
+    pecell          2      edges      cells
+    pbedge          2     bedges      nodes
+   pbecell          1     bedges      cells
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+   p_bound          1     bedges
+       p_x          2      nodes
+       p_q          4      cells
+    p_qold          4      cells
+     p_adt          1      cells
+     p_res          4      cells
+
+ new execution plan #0 for kernel adt_calc
+ number of blocks       = 7500 
+ number of block colors = 1 
+ maximum block size     = 384 
+ average thread colors  = 1.00 
+ shared memory required =  12.06 KB
+ average data reuse     = 1.99 
+ data transfer (used)   = 242.00 MB 
+ data transfer (total)  = 243.60 MB 
+ SoA/AoS transfer ratio = 1.01 
+
+ new execution plan #1 for kernel res_calc
+ number of blocks       = 22490 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 3.00 
+ shared memory required =  23.44 KB, 26.19 KB, 26.19 KB, 26.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 837.47 MB 
+ data transfer (total)  = 859.67 MB 
+ SoA/AoS transfer ratio = 1.06 
+
+ new execution plan #2 for kernel bres_calc
+ number of blocks       = 22 
+ number of block colors = 1 
+ maximum block size     = 256 
+ average thread colors  = 1.09 
+ shared memory required =  22.06 KB
+ average data reuse     = 1.18 
+ data transfer (used)   = 0.80 MB 
+ data transfer (total)  = 1.99 MB 
+ SoA/AoS transfer ratio = 2.47 
+
+ 100  4.36778e-04 
+ 200  3.26659e-04 
+ 300  2.66219e-04 
+ 400  2.25900e-04 
+ 500  1.96707e-04 
+ 600  1.74514e-04 
+ 700  1.57058e-04 
+ 800  1.42967e-04 
+ 900  1.31349e-04 
+ 1000  1.21571e-04 
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+   1000;    0.0000;    0.0000(  0.0000);    9.4866(  0.0000);   29.1444;         ;   save_soln 
+   2000;    0.0000;    0.0000(  0.0000);   47.5731(  0.0000);  10.6680;  10.7383;   adt_calc 
+   2000;    0.0000;    0.0000(  0.0000);   98.2998(  0.0000);  17.8672;  18.3401;   res_calc 
+   2000;    0.0000;    0.0000(  0.0000);    3.7501(  0.0000);   0.4481;   1.1146;   bres_calc 
+   2000;    0.0000;    0.0000(  0.0000);   32.9528(  0.0000);   29.3644;         ;   update 
+Total plan time:   2.2767
+Max total runtime = 192.091872
+--------------------
+--------------------
+
+ Initializing OP2
+reading in grid 
+initialising flow field 
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes    2883601
+     edges    5757200
+    bedges       5600
+     cells    2880000
+
+       map        dim       from         to
+  -----------------------------------------
+     pedge          2      edges      nodes
+    pecell          2      edges      cells
+    pbedge          2     bedges      nodes
+   pbecell          1     bedges      cells
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+   p_bound          1     bedges
+       p_x          2      nodes
+       p_q          4      cells
+    p_qold          4      cells
+     p_adt          1      cells
+     p_res          4      cells
+
+ new execution plan #0 for kernel adt_calc
+ number of blocks       = 7500 
+ number of block colors = 1 
+ maximum block size     = 384 
+ average thread colors  = 1.00 
+ shared memory required =  12.06 KB
+ average data reuse     = 1.99 
+ data transfer (used)   = 242.00 MB 
+ data transfer (total)  = 243.60 MB 
+ SoA/AoS transfer ratio = 1.01 
+
+ new execution plan #1 for kernel res_calc
+ number of blocks       = 22490 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 3.00 
+ shared memory required =  23.44 KB, 26.19 KB, 26.19 KB, 26.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 837.47 MB 
+ data transfer (total)  = 859.67 MB 
+ SoA/AoS transfer ratio = 1.06 
+
+ new execution plan #2 for kernel bres_calc
+ number of blocks       = 22 
+ number of block colors = 1 
+ maximum block size     = 256 
+ average thread colors  = 1.09 
+ shared memory required =  22.06 KB
+ average data reuse     = 1.18 
+ data transfer (used)   = 0.80 MB 
+ data transfer (total)  = 1.99 MB 
+ SoA/AoS transfer ratio = 2.47 
+
+ 100  4.36778e-04 
+ 200  3.26659e-04 
+ 300  2.66219e-04 
+ 400  2.25900e-04 
+ 500  1.96707e-04 
+ 600  1.74514e-04 
+ 700  1.57058e-04 
+ 800  1.42967e-04 
+ 900  1.31349e-04 
+ 1000  1.21571e-04 
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+   1000;    0.0000;    0.0000(  0.0000);    9.3708(  0.0000);   29.5045;         ;   save_soln 
+   2000;    0.0000;    0.0000(  0.0000);   46.3431(  0.0000);  10.9512;  11.0233;   adt_calc 
+   2000;    0.0000;    0.0000(  0.0000);   94.0819(  0.0000);  18.6683;  19.1623;   res_calc 
+   2000;    0.0000;    0.0000(  0.0000);    3.3656(  0.0000);   0.4993;   1.2420;   bres_calc 
+   2000;    0.0000;    0.0000(  0.0000);   32.4575(  0.0000);   29.8125;         ;   update 
+Total plan time:   2.2039
+Max total runtime = 185.652824
+--------------------
+--------------------
+
+ Initializing OP2
+reading in grid 
+initialising flow field 
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes    2883601
+     edges    5757200
+    bedges       5600
+     cells    2880000
+
+       map        dim       from         to
+  -----------------------------------------
+     pedge          2      edges      nodes
+    pecell          2      edges      cells
+    pbedge          2     bedges      nodes
+   pbecell          1     bedges      cells
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+   p_bound          1     bedges
+       p_x          2      nodes
+       p_q          4      cells
+    p_qold          4      cells
+     p_adt          1      cells
+     p_res          4      cells
+
+ new execution plan #0 for kernel adt_calc
+ number of blocks       = 7500 
+ number of block colors = 1 
+ maximum block size     = 384 
+ average thread colors  = 1.00 
+ shared memory required =  12.06 KB
+ average data reuse     = 1.99 
+ data transfer (used)   = 242.00 MB 
+ data transfer (total)  = 243.60 MB 
+ SoA/AoS transfer ratio = 1.01 
+
+ new execution plan #1 for kernel res_calc
+ number of blocks       = 22490 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 3.00 
+ shared memory required =  23.44 KB, 26.19 KB, 26.19 KB, 26.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 837.47 MB 
+ data transfer (total)  = 859.67 MB 
+ SoA/AoS transfer ratio = 1.06 
+
+ new execution plan #2 for kernel bres_calc
+ number of blocks       = 22 
+ number of block colors = 1 
+ maximum block size     = 256 
+ average thread colors  = 1.09 
+ shared memory required =  22.06 KB
+ average data reuse     = 1.18 
+ data transfer (used)   = 0.80 MB 
+ data transfer (total)  = 1.99 MB 
+ SoA/AoS transfer ratio = 2.47 
+
+ 100  4.36778e-04 
+ 200  3.26659e-04 
+ 300  2.66219e-04 
+ 400  2.25900e-04 
+ 500  1.96707e-04 
+ 600  1.74514e-04 
+ 700  1.57058e-04 
+ 800  1.42967e-04 
+ 900  1.31349e-04 
+ 1000  1.21571e-04 
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+   1000;    0.0000;    0.0000(  0.0000);    9.3065(  0.0000);   29.7082;         ;   save_soln 
+   2000;    0.0000;    0.0000(  0.0000);   45.9811(  0.0000);  11.0374;  11.1101;   adt_calc 
+   2000;    0.0000;    0.0000(  0.0000);   92.8434(  0.0000);  18.9173;  19.4180;   res_calc 
+   2000;    0.0000;    0.0000(  0.0000);    3.2241(  0.0000);   0.5212;   1.2965;   bres_calc 
+   2000;    0.0000;    0.0000(  0.0000);   32.3013(  0.0000);   29.9567;         ;   update 
+Total plan time:   2.3214
+Max total runtime = 183.690232
+--------------------
+--------------------
+
+ Initializing OP2
+reading in grid 
+initialising flow field 
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes    2883601
+     edges    5757200
+    bedges       5600
+     cells    2880000
+
+       map        dim       from         to
+  -----------------------------------------
+     pedge          2      edges      nodes
+    pecell          2      edges      cells
+    pbedge          2     bedges      nodes
+   pbecell          1     bedges      cells
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+   p_bound          1     bedges
+       p_x          2      nodes
+       p_q          4      cells
+    p_qold          4      cells
+     p_adt          1      cells
+     p_res          4      cells
+
+ new execution plan #0 for kernel adt_calc
+ number of blocks       = 7500 
+ number of block colors = 1 
+ maximum block size     = 384 
+ average thread colors  = 1.00 
+ shared memory required =  12.06 KB
+ average data reuse     = 1.99 
+ data transfer (used)   = 242.00 MB 
+ data transfer (total)  = 243.60 MB 
+ SoA/AoS transfer ratio = 1.01 
+
+ new execution plan #1 for kernel res_calc
+ number of blocks       = 22490 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 3.00 
+ shared memory required =  23.44 KB, 26.19 KB, 26.19 KB, 26.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 837.47 MB 
+ data transfer (total)  = 859.67 MB 
+ SoA/AoS transfer ratio = 1.06 
+
+ new execution plan #2 for kernel bres_calc
+ number of blocks       = 22 
+ number of block colors = 1 
+ maximum block size     = 256 
+ average thread colors  = 1.09 
+ shared memory required =  22.06 KB
+ average data reuse     = 1.18 
+ data transfer (used)   = 0.80 MB 
+ data transfer (total)  = 1.99 MB 
+ SoA/AoS transfer ratio = 2.47 
+
+ 100  4.36778e-04 
+ 200  3.26659e-04 
+ 300  2.66219e-04 
+ 400  2.25900e-04 
+ 500  1.96707e-04 
+ 600  1.74514e-04 
+ 700  1.57058e-04 
+ 800  1.42967e-04 
+ 900  1.31349e-04 
+ 1000  1.21571e-04 
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+   1000;    0.0000;    0.0000(  0.0000);    9.2898(  0.0000);   29.7616;         ;   save_soln 
+   2000;    0.0000;    0.0000(  0.0000);   45.7223(  0.0000);  11.0999;  11.1730;   adt_calc 
+   2000;    0.0000;    0.0000(  0.0000);   97.2118(  0.0000);  18.0672;  18.5454;   res_calc 
+   2000;    0.0000;    0.0000(  0.0000);    3.1651(  0.0000);   0.5309;   1.3207;   bres_calc 
+   2000;    0.0000;    0.0000(  0.0000);   33.4892(  0.0000);   28.8941;         ;   update 
+Total plan time:   2.1563
+Max total runtime = 188.909386
+--------------------
+--------------------
+
+ Initializing OP2
+reading in grid 
+initialising flow field 
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes    2883601
+     edges    5757200
+    bedges       5600
+     cells    2880000
+
+       map        dim       from         to
+  -----------------------------------------
+     pedge          2      edges      nodes
+    pecell          2      edges      cells
+    pbedge          2     bedges      nodes
+   pbecell          1     bedges      cells
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+   p_bound          1     bedges
+       p_x          2      nodes
+       p_q          4      cells
+    p_qold          4      cells
+     p_adt          1      cells
+     p_res          4      cells
+
+ new execution plan #0 for kernel adt_calc
+ number of blocks       = 7500 
+ number of block colors = 1 
+ maximum block size     = 384 
+ average thread colors  = 1.00 
+ shared memory required =  12.06 KB
+ average data reuse     = 1.99 
+ data transfer (used)   = 242.00 MB 
+ data transfer (total)  = 243.60 MB 
+ SoA/AoS transfer ratio = 1.01 
+
+ new execution plan #1 for kernel res_calc
+ number of blocks       = 22490 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 3.00 
+ shared memory required =  23.44 KB, 26.19 KB, 26.19 KB, 26.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 837.47 MB 
+ data transfer (total)  = 859.67 MB 
+ SoA/AoS transfer ratio = 1.06 
+
+ new execution plan #2 for kernel bres_calc
+ number of blocks       = 22 
+ number of block colors = 1 
+ maximum block size     = 256 
+ average thread colors  = 1.09 
+ shared memory required =  22.06 KB
+ average data reuse     = 1.18 
+ data transfer (used)   = 0.80 MB 
+ data transfer (total)  = 1.99 MB 
+ SoA/AoS transfer ratio = 2.47 
+
+ 100  4.36778e-04 
+ 200  3.26659e-04 
+ 300  2.66219e-04 
+ 400  2.25900e-04 
+ 500  1.96707e-04 
+ 600  1.74514e-04 
+ 700  1.57058e-04 
+ 800  1.42967e-04 
+ 900  1.31349e-04 
+ 1000  1.21571e-04 
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+   1000;    0.0000;    0.0000(  0.0000);    9.5447(  0.0000);   28.9668;         ;   save_soln 
+   2000;    0.0000;    0.0000(  0.0000);   47.4557(  0.0000);  10.6944;  10.7648;   adt_calc 
+   2000;    0.0000;    0.0000(  0.0000);  101.3106(  0.0000);  17.3362;  17.7951;   res_calc 
+   2000;    0.0000;    0.0000(  0.0000);    3.7493(  0.0000);   0.4482;   1.1149;   bres_calc 
+   2000;    0.0000;    0.0000(  0.0000);   33.4499(  0.0000);   28.9280;         ;   update 
+Total plan time:   2.2561
+Max total runtime = 195.551762
+--------------------
+--------------------
+
+ Initializing OP2
+reading in grid 
+initialising flow field 
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes    2883601
+     edges    5757200
+    bedges       5600
+     cells    2880000
+
+       map        dim       from         to
+  -----------------------------------------
+     pedge          2      edges      nodes
+    pecell          2      edges      cells
+    pbedge          2     bedges      nodes
+   pbecell          1     bedges      cells
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+   p_bound          1     bedges
+       p_x          2      nodes
+       p_q          4      cells
+    p_qold          4      cells
+     p_adt          1      cells
+     p_res          4      cells
+
+ new execution plan #0 for kernel adt_calc
+ number of blocks       = 7500 
+ number of block colors = 1 
+ maximum block size     = 384 
+ average thread colors  = 1.00 
+ shared memory required =  12.06 KB
+ average data reuse     = 1.99 
+ data transfer (used)   = 242.00 MB 
+ data transfer (total)  = 243.60 MB 
+ SoA/AoS transfer ratio = 1.01 
+
+ new execution plan #1 for kernel res_calc
+ number of blocks       = 22490 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 3.00 
+ shared memory required =  23.44 KB, 26.19 KB, 26.19 KB, 26.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 837.47 MB 
+ data transfer (total)  = 859.67 MB 
+ SoA/AoS transfer ratio = 1.06 
+
+ new execution plan #2 for kernel bres_calc
+ number of blocks       = 22 
+ number of block colors = 1 
+ maximum block size     = 256 
+ average thread colors  = 1.09 
+ shared memory required =  22.06 KB
+ average data reuse     = 1.18 
+ data transfer (used)   = 0.80 MB 
+ data transfer (total)  = 1.99 MB 
+ SoA/AoS transfer ratio = 2.47 
+
+ 100  4.36778e-04 
+ 200  3.26659e-04 
+ 300  2.66219e-04 
+ 400  2.25900e-04 
+ 500  1.96707e-04 
+ 600  1.74514e-04 
+ 700  1.57058e-04 
+ 800  1.42967e-04 
+ 900  1.31349e-04 
+ 1000  1.21571e-04 
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+   1000;    0.0000;    0.0000(  0.0000);    9.3921(  0.0000);   29.4376;         ;   save_soln 
+   2000;    0.0000;    0.0000(  0.0000);   46.4623(  0.0000);  10.9231;  10.9950;   adt_calc 
+   2000;    0.0000;    0.0000(  0.0000);   99.4099(  0.0000);  17.6677;  18.1353;   res_calc 
+   2000;    0.0000;    0.0000(  0.0000);    3.4041(  0.0000);   0.4937;   1.2279;   bres_calc 
+   2000;    0.0000;    0.0000(  0.0000);   33.7445(  0.0000);   28.6754;         ;   update 
+Total plan time:   2.2280
+Max total runtime = 192.444607
+--------------------
+--------------------
+
+ Initializing OP2
+reading in grid 
+initialising flow field 
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes    2883601
+     edges    5757200
+    bedges       5600
+     cells    2880000
+
+       map        dim       from         to
+  -----------------------------------------
+     pedge          2      edges      nodes
+    pecell          2      edges      cells
+    pbedge          2     bedges      nodes
+   pbecell          1     bedges      cells
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+   p_bound          1     bedges
+       p_x          2      nodes
+       p_q          4      cells
+    p_qold          4      cells
+     p_adt          1      cells
+     p_res          4      cells
+
+ new execution plan #0 for kernel adt_calc
+ number of blocks       = 7500 
+ number of block colors = 1 
+ maximum block size     = 384 
+ average thread colors  = 1.00 
+ shared memory required =  12.06 KB
+ average data reuse     = 1.99 
+ data transfer (used)   = 242.00 MB 
+ data transfer (total)  = 243.60 MB 
+ SoA/AoS transfer ratio = 1.01 
+
+ new execution plan #1 for kernel res_calc
+ number of blocks       = 22490 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 3.00 
+ shared memory required =  23.44 KB, 26.19 KB, 26.19 KB, 26.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 837.47 MB 
+ data transfer (total)  = 859.67 MB 
+ SoA/AoS transfer ratio = 1.06 
+
+ new execution plan #2 for kernel bres_calc
+ number of blocks       = 22 
+ number of block colors = 1 
+ maximum block size     = 256 
+ average thread colors  = 1.09 
+ shared memory required =  22.06 KB
+ average data reuse     = 1.18 
+ data transfer (used)   = 0.80 MB 
+ data transfer (total)  = 1.99 MB 
+ SoA/AoS transfer ratio = 2.47 
+
+ 100  4.36778e-04 
+ 200  3.26659e-04 
+ 300  2.66219e-04 
+ 400  2.25900e-04 
+ 500  1.96707e-04 
+ 600  1.74514e-04 
+ 700  1.57058e-04 
+ 800  1.42967e-04 
+ 900  1.31349e-04 
+ 1000  1.21571e-04 
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+   1000;    0.0000;    0.0000(  0.0000);    9.3931(  0.0000);   29.4343;         ;   save_soln 
+   2000;    0.0000;    0.0000(  0.0000);   46.5422(  0.0000);  10.9043;  10.9761;   adt_calc 
+   2000;    0.0000;    0.0000(  0.0000);   99.9614(  0.0000);  17.5702;  18.0352;   res_calc 
+   2000;    0.0000;    0.0000(  0.0000);    3.4681(  0.0000);   0.4846;   1.2053;   bres_calc 
+   2000;    0.0000;    0.0000(  0.0000);   33.7727(  0.0000);   28.6515;         ;   update 
+Total plan time:   2.2913
+Max total runtime = 193.168819
+--------------------
+--------------------
+
+ Initializing OP2
+reading in grid 
+initialising flow field 
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes    2883601
+     edges    5757200
+    bedges       5600
+     cells    2880000
+
+       map        dim       from         to
+  -----------------------------------------
+     pedge          2      edges      nodes
+    pecell          2      edges      cells
+    pbedge          2     bedges      nodes
+   pbecell          1     bedges      cells
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+   p_bound          1     bedges
+       p_x          2      nodes
+       p_q          4      cells
+    p_qold          4      cells
+     p_adt          1      cells
+     p_res          4      cells
+
+ new execution plan #0 for kernel adt_calc
+ number of blocks       = 7500 
+ number of block colors = 1 
+ maximum block size     = 384 
+ average thread colors  = 1.00 
+ shared memory required =  12.06 KB
+ average data reuse     = 1.99 
+ data transfer (used)   = 242.00 MB 
+ data transfer (total)  = 243.60 MB 
+ SoA/AoS transfer ratio = 1.01 
+
+ new execution plan #1 for kernel res_calc
+ number of blocks       = 22490 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 3.00 
+ shared memory required =  23.44 KB, 26.19 KB, 26.19 KB, 26.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 837.47 MB 
+ data transfer (total)  = 859.67 MB 
+ SoA/AoS transfer ratio = 1.06 
+
+ new execution plan #2 for kernel bres_calc
+ number of blocks       = 22 
+ number of block colors = 1 
+ maximum block size     = 256 
+ average thread colors  = 1.09 
+ shared memory required =  22.06 KB
+ average data reuse     = 1.18 
+ data transfer (used)   = 0.80 MB 
+ data transfer (total)  = 1.99 MB 
+ SoA/AoS transfer ratio = 2.47 
+
+ 100  4.36778e-04 
+ 200  3.26659e-04 
+ 300  2.66219e-04 
+ 400  2.25900e-04 
+ 500  1.96707e-04 
+ 600  1.74514e-04 
+ 700  1.57058e-04 
+ 800  1.42967e-04 
+ 900  1.31349e-04 
+ 1000  1.21571e-04 
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+   1000;    0.0000;    0.0000(  0.0000);    9.5842(  0.0000);   28.8474;         ;   save_soln 
+   2000;    0.0000;    0.0000(  0.0000);   48.2900(  0.0000);  10.5097;  10.5789;   adt_calc 
+   2000;    0.0000;    0.0000(  0.0000);  101.1327(  0.0000);  17.3667;  17.8264;   res_calc 
+   2000;    0.0000;    0.0000(  0.0000);    4.0541(  0.0000);   0.4145;   1.0310;   bres_calc 
+   2000;    0.0000;    0.0000(  0.0000);   33.1836(  0.0000);   29.1601;         ;   update 
+Total plan time:   2.3127
+Max total runtime = 196.278211
+--------------------
+--------------------
+
+ Initializing OP2
+reading in grid 
+initialising flow field 
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes    2883601
+     edges    5757200
+    bedges       5600
+     cells    2880000
+
+       map        dim       from         to
+  -----------------------------------------
+     pedge          2      edges      nodes
+    pecell          2      edges      cells
+    pbedge          2     bedges      nodes
+   pbecell          1     bedges      cells
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+   p_bound          1     bedges
+       p_x          2      nodes
+       p_q          4      cells
+    p_qold          4      cells
+     p_adt          1      cells
+     p_res          4      cells
+
+ new execution plan #0 for kernel adt_calc
+ number of blocks       = 7500 
+ number of block colors = 1 
+ maximum block size     = 384 
+ average thread colors  = 1.00 
+ shared memory required =  12.06 KB
+ average data reuse     = 1.99 
+ data transfer (used)   = 242.00 MB 
+ data transfer (total)  = 243.60 MB 
+ SoA/AoS transfer ratio = 1.01 
+
+ new execution plan #1 for kernel res_calc
+ number of blocks       = 22490 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 3.00 
+ shared memory required =  23.44 KB, 26.19 KB, 26.19 KB, 26.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 837.47 MB 
+ data transfer (total)  = 859.67 MB 
+ SoA/AoS transfer ratio = 1.06 
+
+ new execution plan #2 for kernel bres_calc
+ number of blocks       = 22 
+ number of block colors = 1 
+ maximum block size     = 256 
+ average thread colors  = 1.09 
+ shared memory required =  22.06 KB
+ average data reuse     = 1.18 
+ data transfer (used)   = 0.80 MB 
+ data transfer (total)  = 1.99 MB 
+ SoA/AoS transfer ratio = 2.47 
+
+ 100  4.36778e-04 
+ 200  3.26659e-04 
+ 300  2.66219e-04 
+ 400  2.25900e-04 
+ 500  1.96707e-04 
+ 600  1.74514e-04 
+ 700  1.57058e-04 
+ 800  1.42967e-04 
+ 900  1.31349e-04 
+ 1000  1.21571e-04 
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+   1000;    0.0000;    0.0000(  0.0000);    9.7469(  0.0000);   28.3660;         ;   save_soln 
+   2000;    0.0000;    0.0000(  0.0000);   49.0262(  0.0000);  10.3519;  10.4200;   adt_calc 
+   2000;    0.0000;    0.0000(  0.0000);  108.1206(  0.0000);  16.2443;  16.6742;   res_calc 
+   2000;    0.0000;    0.0000(  0.0000);    4.3475(  0.0000);   0.3865;   0.9615;   bres_calc 
+   2000;    0.0000;    0.0000(  0.0000);   34.4263(  0.0000);   28.1075;         ;   update 
+Total plan time:   2.2645
+Max total runtime = 205.698954
+--------------------
+--------------------
+
+ Initializing OP2
+reading in grid 
+initialising flow field 
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes    2883601
+     edges    5757200
+    bedges       5600
+     cells    2880000
+
+       map        dim       from         to
+  -----------------------------------------
+     pedge          2      edges      nodes
+    pecell          2      edges      cells
+    pbedge          2     bedges      nodes
+   pbecell          1     bedges      cells
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+   p_bound          1     bedges
+       p_x          2      nodes
+       p_q          4      cells
+    p_qold          4      cells
+     p_adt          1      cells
+     p_res          4      cells
+
+ new execution plan #0 for kernel adt_calc
+ number of blocks       = 7500 
+ number of block colors = 1 
+ maximum block size     = 384 
+ average thread colors  = 1.00 
+ shared memory required =  12.06 KB
+ average data reuse     = 1.99 
+ data transfer (used)   = 242.00 MB 
+ data transfer (total)  = 243.60 MB 
+ SoA/AoS transfer ratio = 1.01 
+
+ new execution plan #1 for kernel res_calc
+ number of blocks       = 22490 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 3.00 
+ shared memory required =  23.44 KB, 26.19 KB, 26.19 KB, 26.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 837.47 MB 
+ data transfer (total)  = 859.67 MB 
+ SoA/AoS transfer ratio = 1.06 
+
+ new execution plan #2 for kernel bres_calc
+ number of blocks       = 22 
+ number of block colors = 1 
+ maximum block size     = 256 
+ average thread colors  = 1.09 
+ shared memory required =  22.06 KB
+ average data reuse     = 1.18 
+ data transfer (used)   = 0.80 MB 
+ data transfer (total)  = 1.99 MB 
+ SoA/AoS transfer ratio = 2.47 
+
+ 100  4.36778e-04 
+ 200  3.26659e-04 
+ 300  2.66219e-04 
+ 400  2.25900e-04 
+ 500  1.96707e-04 
+ 600  1.74514e-04 
+ 700  1.57058e-04 
+ 800  1.42967e-04 
+ 900  1.31349e-04 
+ 1000  1.21571e-04 
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+   1000;    0.0000;    0.0000(  0.0000);    9.6846(  0.0000);   28.5484;         ;   save_soln 
+   2000;    0.0000;    0.0000(  0.0000);   48.7855(  0.0000);  10.4029;  10.4714;   adt_calc 
+   2000;    0.0000;    0.0000(  0.0000);  103.4279(  0.0000);  16.9813;  17.4308;   res_calc 
+   2000;    0.0000;    0.0000(  0.0000);    4.2882(  0.0000);   0.3919;   0.9748;   bres_calc 
+   2000;    0.0000;    0.0000(  0.0000);   33.4016(  0.0000);   28.9698;         ;   update 
+Total plan time:   2.3626
+Max total runtime = 199.622804
+--------------------
+--------------------
+
+ Initializing OP2
+reading in grid 
+initialising flow field 
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes    2883601
+     edges    5757200
+    bedges       5600
+     cells    2880000
+
+       map        dim       from         to
+  -----------------------------------------
+     pedge          2      edges      nodes
+    pecell          2      edges      cells
+    pbedge          2     bedges      nodes
+   pbecell          1     bedges      cells
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+   p_bound          1     bedges
+       p_x          2      nodes
+       p_q          4      cells
+    p_qold          4      cells
+     p_adt          1      cells
+     p_res          4      cells
+
+ new execution plan #0 for kernel adt_calc
+ number of blocks       = 7500 
+ number of block colors = 1 
+ maximum block size     = 384 
+ average thread colors  = 1.00 
+ shared memory required =  12.06 KB
+ average data reuse     = 1.99 
+ data transfer (used)   = 242.00 MB 
+ data transfer (total)  = 243.60 MB 
+ SoA/AoS transfer ratio = 1.01 
+
+ new execution plan #1 for kernel res_calc
+ number of blocks       = 22490 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 3.00 
+ shared memory required =  23.44 KB, 26.19 KB, 26.19 KB, 26.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 837.47 MB 
+ data transfer (total)  = 859.67 MB 
+ SoA/AoS transfer ratio = 1.06 
+
+ new execution plan #2 for kernel bres_calc
+ number of blocks       = 22 
+ number of block colors = 1 
+ maximum block size     = 256 
+ average thread colors  = 1.09 
+ shared memory required =  22.06 KB
+ average data reuse     = 1.18 
+ data transfer (used)   = 0.80 MB 
+ data transfer (total)  = 1.99 MB 
+ SoA/AoS transfer ratio = 2.47 
+
+ 100  4.36778e-04 
+ 200  3.26659e-04 
+ 300  2.66219e-04 
+ 400  2.25900e-04 
+ 500  1.96707e-04 
+ 600  1.74514e-04 
+ 700  1.57058e-04 
+ 800  1.42967e-04 
+ 900  1.31349e-04 
+ 1000  1.21571e-04 
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+   1000;    0.0000;    0.0000(  0.0000);    9.6564(  0.0000);   28.6318;         ;   save_soln 
+   2000;    0.0000;    0.0000(  0.0000);   48.2107(  0.0000);  10.5270;  10.5963;   adt_calc 
+   2000;    0.0000;    0.0000(  0.0000);  101.2162(  0.0000);  17.3524;  17.8117;   res_calc 
+   2000;    0.0000;    0.0000(  0.0000);    4.0719(  0.0000);   0.4127;   1.0265;   bres_calc 
+   2000;    0.0000;    0.0000(  0.0000);   33.2305(  0.0000);   29.1190;         ;   update 
+Total plan time:   2.3017
+Max total runtime = 196.418559
+--------------------
+--------------------
+
+ Initializing OP2
+reading in grid 
+initialising flow field 
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes    2883601
+     edges    5757200
+    bedges       5600
+     cells    2880000
+
+       map        dim       from         to
+  -----------------------------------------
+     pedge          2      edges      nodes
+    pecell          2      edges      cells
+    pbedge          2     bedges      nodes
+   pbecell          1     bedges      cells
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+   p_bound          1     bedges
+       p_x          2      nodes
+       p_q          4      cells
+    p_qold          4      cells
+     p_adt          1      cells
+     p_res          4      cells
+
+ new execution plan #0 for kernel adt_calc
+ number of blocks       = 7500 
+ number of block colors = 1 
+ maximum block size     = 384 
+ average thread colors  = 1.00 
+ shared memory required =  12.06 KB
+ average data reuse     = 1.99 
+ data transfer (used)   = 242.00 MB 
+ data transfer (total)  = 243.60 MB 
+ SoA/AoS transfer ratio = 1.01 
+
+ new execution plan #1 for kernel res_calc
+ number of blocks       = 22490 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 3.00 
+ shared memory required =  23.44 KB, 26.19 KB, 26.19 KB, 26.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 837.47 MB 
+ data transfer (total)  = 859.67 MB 
+ SoA/AoS transfer ratio = 1.06 
+
+ new execution plan #2 for kernel bres_calc
+ number of blocks       = 22 
+ number of block colors = 1 
+ maximum block size     = 256 
+ average thread colors  = 1.09 
+ shared memory required =  22.06 KB
+ average data reuse     = 1.18 
+ data transfer (used)   = 0.80 MB 
+ data transfer (total)  = 1.99 MB 
+ SoA/AoS transfer ratio = 2.47 
+
+ 100  4.36778e-04 
+ 200  3.26659e-04 
+ 300  2.66219e-04 
+ 400  2.25900e-04 
+ 500  1.96707e-04 
+ 600  1.74514e-04 
+ 700  1.57058e-04 
+ 800  1.42967e-04 
+ 900  1.31349e-04 
+ 1000  1.21571e-04 
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+   1000;    0.0000;    0.0000(  0.0000);    9.5474(  0.0000);   28.9588;         ;   save_soln 
+   2000;    0.0000;    0.0000(  0.0000);   48.0163(  0.0000);  10.5696;  10.6392;   adt_calc 
+   2000;    0.0000;    0.0000(  0.0000);  101.1697(  0.0000);  17.3604;  17.8198;   res_calc 
+   2000;    0.0000;    0.0000(  0.0000);    3.9959(  0.0000);   0.4205;   1.0461;   bres_calc 
+   2000;    0.0000;    0.0000(  0.0000);   33.2836(  0.0000);   29.0726;         ;   update 
+Total plan time:   2.2940
+Max total runtime = 196.043171
+--------------------
+--------------------
+
+ Initializing OP2
+reading in grid 
+initialising flow field 
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes    2883601
+     edges    5757200
+    bedges       5600
+     cells    2880000
+
+       map        dim       from         to
+  -----------------------------------------
+     pedge          2      edges      nodes
+    pecell          2      edges      cells
+    pbedge          2     bedges      nodes
+   pbecell          1     bedges      cells
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+   p_bound          1     bedges
+       p_x          2      nodes
+       p_q          4      cells
+    p_qold          4      cells
+     p_adt          1      cells
+     p_res          4      cells
+
+ new execution plan #0 for kernel adt_calc
+ number of blocks       = 7500 
+ number of block colors = 1 
+ maximum block size     = 384 
+ average thread colors  = 1.00 
+ shared memory required =  12.06 KB
+ average data reuse     = 1.99 
+ data transfer (used)   = 242.00 MB 
+ data transfer (total)  = 243.60 MB 
+ SoA/AoS transfer ratio = 1.01 
+
+ new execution plan #1 for kernel res_calc
+ number of blocks       = 22490 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 3.00 
+ shared memory required =  23.44 KB, 26.19 KB, 26.19 KB, 26.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 837.47 MB 
+ data transfer (total)  = 859.67 MB 
+ SoA/AoS transfer ratio = 1.06 
+
+ new execution plan #2 for kernel bres_calc
+ number of blocks       = 22 
+ number of block colors = 1 
+ maximum block size     = 256 
+ average thread colors  = 1.09 
+ shared memory required =  22.06 KB
+ average data reuse     = 1.18 
+ data transfer (used)   = 0.80 MB 
+ data transfer (total)  = 1.99 MB 
+ SoA/AoS transfer ratio = 2.47 
+
+ 100  4.36778e-04 
+ 200  3.26659e-04 
+ 300  2.66219e-04 
+ 400  2.25900e-04 
+ 500  1.96707e-04 
+ 600  1.74514e-04 
+ 700  1.57058e-04 
+ 800  1.42967e-04 
+ 900  1.31349e-04 
+ 1000  1.21571e-04 
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+   1000;    0.0000;    0.0000(  0.0000);    9.6835(  0.0000);   28.5517;         ;   save_soln 
+   2000;    0.0000;    0.0000(  0.0000);   48.2144(  0.0000);  10.5261;  10.5955;   adt_calc 
+   2000;    0.0000;    0.0000(  0.0000);  105.9186(  0.0000);  16.5820;  17.0209;   res_calc 
+   2000;    0.0000;    0.0000(  0.0000);    4.1196(  0.0000);   0.4079;   1.0146;   bres_calc 
+   2000;    0.0000;    0.0000(  0.0000);   34.4569(  0.0000);   28.0826;         ;   update 
+Total plan time:   2.3005
+Max total runtime = 202.428146
+--------------------
+--------------------
+
+ Initializing OP2
+reading in grid 
+initialising flow field 
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes    2883601
+     edges    5757200
+    bedges       5600
+     cells    2880000
+
+       map        dim       from         to
+  -----------------------------------------
+     pedge          2      edges      nodes
+    pecell          2      edges      cells
+    pbedge          2     bedges      nodes
+   pbecell          1     bedges      cells
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+   p_bound          1     bedges
+       p_x          2      nodes
+       p_q          4      cells
+    p_qold          4      cells
+     p_adt          1      cells
+     p_res          4      cells
+
+ new execution plan #0 for kernel adt_calc
+ number of blocks       = 7500 
+ number of block colors = 1 
+ maximum block size     = 384 
+ average thread colors  = 1.00 
+ shared memory required =  12.06 KB
+ average data reuse     = 1.99 
+ data transfer (used)   = 242.00 MB 
+ data transfer (total)  = 243.60 MB 
+ SoA/AoS transfer ratio = 1.01 
+
+ new execution plan #1 for kernel res_calc
+ number of blocks       = 22490 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 3.00 
+ shared memory required =  23.44 KB, 26.19 KB, 26.19 KB, 26.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 837.47 MB 
+ data transfer (total)  = 859.67 MB 
+ SoA/AoS transfer ratio = 1.06 
+
+ new execution plan #2 for kernel bres_calc
+ number of blocks       = 22 
+ number of block colors = 1 
+ maximum block size     = 256 
+ average thread colors  = 1.09 
+ shared memory required =  22.06 KB
+ average data reuse     = 1.18 
+ data transfer (used)   = 0.80 MB 
+ data transfer (total)  = 1.99 MB 
+ SoA/AoS transfer ratio = 2.47 
+
+ 100  4.36778e-04 
+ 200  3.26659e-04 
+ 300  2.66219e-04 
+ 400  2.25900e-04 
+ 500  1.96707e-04 
+ 600  1.74514e-04 
+ 700  1.57058e-04 
+ 800  1.42967e-04 
+ 900  1.31349e-04 
+ 1000  1.21571e-04 
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+   1000;    0.0000;    0.0000(  0.0000);   10.1285(  0.0000);   27.2971;         ;   save_soln 
+   2000;    0.0000;    0.0000(  0.0000);   52.0492(  0.0000);   9.7506;   9.8148;   adt_calc 
+   2000;    0.0000;    0.0000(  0.0000);  117.8068(  0.0000);  14.9087;  15.3033;   res_calc 
+   2000;    0.0000;    0.0000(  0.0000);    5.4004(  0.0000);   0.3112;   0.7740;   bres_calc 
+   2000;    0.0000;    0.0000(  0.0000);   35.7434(  0.0000);   27.0718;         ;   update 
+Total plan time:   2.1900
+Max total runtime = 221.162507
+--------------------
+--------------------
+
+ Initializing OP2
+reading in grid 
+initialising flow field 
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes    2883601
+     edges    5757200
+    bedges       5600
+     cells    2880000
+
+       map        dim       from         to
+  -----------------------------------------
+     pedge          2      edges      nodes
+    pecell          2      edges      cells
+    pbedge          2     bedges      nodes
+   pbecell          1     bedges      cells
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+   p_bound          1     bedges
+       p_x          2      nodes
+       p_q          4      cells
+    p_qold          4      cells
+     p_adt          1      cells
+     p_res          4      cells
+
+ new execution plan #0 for kernel adt_calc
+ number of blocks       = 7500 
+ number of block colors = 1 
+ maximum block size     = 384 
+ average thread colors  = 1.00 
+ shared memory required =  12.06 KB
+ average data reuse     = 1.99 
+ data transfer (used)   = 242.00 MB 
+ data transfer (total)  = 243.60 MB 
+ SoA/AoS transfer ratio = 1.01 
+
+ new execution plan #1 for kernel res_calc
+ number of blocks       = 22490 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 3.00 
+ shared memory required =  23.44 KB, 26.19 KB, 26.19 KB, 26.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 837.47 MB 
+ data transfer (total)  = 859.67 MB 
+ SoA/AoS transfer ratio = 1.06 
+
+ new execution plan #2 for kernel bres_calc
+ number of blocks       = 22 
+ number of block colors = 1 
+ maximum block size     = 256 
+ average thread colors  = 1.09 
+ shared memory required =  22.06 KB
+ average data reuse     = 1.18 
+ data transfer (used)   = 0.80 MB 
+ data transfer (total)  = 1.99 MB 
+ SoA/AoS transfer ratio = 2.47 
+
+ 100  4.36778e-04 
+ 200  3.26659e-04 
+ 300  2.66219e-04 
+ 400  2.25900e-04 
+ 500  1.96707e-04 
+ 600  1.74514e-04 
+ 700  1.57058e-04 
+ 800  1.42967e-04 
+ 900  1.31349e-04 
+ 1000  1.21571e-04 
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+   1000;    0.0000;    0.0000(  0.0000);   10.0658(  0.0000);   27.4673;         ;   save_soln 
+   2000;    0.0000;    0.0000(  0.0000);   51.5031(  0.0000);   9.8540;   9.9189;   adt_calc 
+   2000;    0.0000;    0.0000(  0.0000);  114.9372(  0.0000);  15.2809;  15.6853;   res_calc 
+   2000;    0.0000;    0.0000(  0.0000);    5.2272(  0.0000);   0.3215;   0.7997;   bres_calc 
+   2000;    0.0000;    0.0000(  0.0000);   35.3427(  0.0000);   27.3787;         ;   update 
+Total plan time:   2.2831
+Max total runtime = 217.110532
+--------------------
+--------------------
+
+ Initializing OP2
+reading in grid 
+initialising flow field 
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes    2883601
+     edges    5757200
+    bedges       5600
+     cells    2880000
+
+       map        dim       from         to
+  -----------------------------------------
+     pedge          2      edges      nodes
+    pecell          2      edges      cells
+    pbedge          2     bedges      nodes
+   pbecell          1     bedges      cells
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+   p_bound          1     bedges
+       p_x          2      nodes
+       p_q          4      cells
+    p_qold          4      cells
+     p_adt          1      cells
+     p_res          4      cells
+
+ new execution plan #0 for kernel adt_calc
+ number of blocks       = 7500 
+ number of block colors = 1 
+ maximum block size     = 384 
+ average thread colors  = 1.00 
+ shared memory required =  12.06 KB
+ average data reuse     = 1.99 
+ data transfer (used)   = 242.00 MB 
+ data transfer (total)  = 243.60 MB 
+ SoA/AoS transfer ratio = 1.01 
+
+ new execution plan #1 for kernel res_calc
+ number of blocks       = 22490 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 3.00 
+ shared memory required =  23.44 KB, 26.19 KB, 26.19 KB, 26.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 837.47 MB 
+ data transfer (total)  = 859.67 MB 
+ SoA/AoS transfer ratio = 1.06 
+
+ new execution plan #2 for kernel bres_calc
+ number of blocks       = 22 
+ number of block colors = 1 
+ maximum block size     = 256 
+ average thread colors  = 1.09 
+ shared memory required =  22.06 KB
+ average data reuse     = 1.18 
+ data transfer (used)   = 0.80 MB 
+ data transfer (total)  = 1.99 MB 
+ SoA/AoS transfer ratio = 2.47 
+
+ 100  4.36778e-04 
+ 200  3.26659e-04 
+ 300  2.66219e-04 
+ 400  2.25900e-04 
+ 500  1.96707e-04 
+ 600  1.74514e-04 
+ 700  1.57058e-04 
+ 800  1.42967e-04 
+ 900  1.31349e-04 
+ 1000  1.21571e-04 
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+   1000;    0.0000;    0.0000(  0.0000);    9.7760(  0.0000);   28.2814;         ;   save_soln 
+   2000;    0.0000;    0.0000(  0.0000);   49.3175(  0.0000);  10.2907;  10.3585;   adt_calc 
+   2000;    0.0000;    0.0000(  0.0000);  106.5630(  0.0000);  16.4817;  16.9180;   res_calc 
+   2000;    0.0000;    0.0000(  0.0000);    4.4616(  0.0000);   0.3767;   0.9369;   bres_calc 
+   2000;    0.0000;    0.0000(  0.0000);   34.3111(  0.0000);   28.2019;         ;   update 
+Total plan time:   2.2711
+Max total runtime = 204.460991
+--------------------
+Now running Aero OP2
+--------------------
+reading in grid 
+initialising flow field 
+
+ Initializing OP2
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes     180700
+    bedges       1200
+     cells     180000
+
+       map        dim       from         to
+  -----------------------------------------
+    pbedge          1     bedges      nodes
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+       p_x          2      nodes
+    p_phim          1      nodes
+    p_resm          1      nodes
+       p_K         16      cells
+       p_V          1      nodes
+       p_P          1      nodes
+       p_U          1      nodes
+
+ new execution plan #0 for kernel res_calc
+ number of blocks       = 704 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 2.00 
+ shared memory required =  16.19 KB, 16.19 KB, 16.19 KB, 16.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 44.04 MB 
+ data transfer (total)  = 44.67 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #1 for kernel dirichlet
+ number of blocks       = 1 
+ number of block colors = 1 
+ maximum block size     = 3072 
+ average thread colors  = 1.00 
+ shared memory required =  9.38 KB
+ average data reuse     = 1.00 
+ data transfer (used)   = 0.02 MB 
+ data transfer (total)  = 0.05 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #2 for kernel spMV
+ number of blocks       = 469 
+ number of block colors = 3 
+ maximum block size     = 384 
+ average thread colors  = 2.00 
+ shared memory required =  12.12 KB, 12.12 KB, 12.12 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 35.75 MB 
+ data transfer (total)  = 36.07 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74433e-05 iter: 200
+rms = 1.49387e-05 iter: 200
+rms = 8.86210e-06 iter: 200
+rms = 1.37296e-06 iter: 200
+rms = 8.18258e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61539e-08 iter: 200
+rms = 1.18877e-08 iter: 200
+rms = 7.12733e-09 iter: 200
+rms = 1.11479e-09 iter: 200
+rms = 6.70061e-10 iter: 200
+rms = 1.04953e-10 iter: 200
+rms = 6.32227e-11 iter: 200
+rms = 9.91308e-12 iter: 200
+rms = 5.98275e-12 iter: 200
+rms = 9.38810e-13 iter: 200
+rms = 5.67450e-13 iter: 200
+rms = 8.90975e-14 iter: 200
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+     20;    0.0000;    0.0000(  0.0000);    3.5480(  0.0000);   0.2603;   0.2641;   res_calc 
+   3956;    0.0000;    0.0000(  0.0000);    3.3557(  0.0000);   0.0198;   0.0622;   dirichlet 
+     20;    0.0000;    0.0000(  0.0000);    0.0237(  0.0000);    8.5514;         ;   init_cg 
+   3936;    0.0000;    0.0000(  0.0000);   14.5664(  0.0000);  10.1294;  10.2194;   spMV 
+   3936;    0.0000;    0.0000(  0.0000);    3.5544(  0.0000);    3.2016;         ;   dotPV 
+   3936;    0.0000;    0.0000(  0.0000);    3.7915(  0.0000);   10.5060;         ;   updateUR 
+   3936;    0.0000;    0.0000(  0.0000);    3.4794(  0.0000);    1.6353;         ;   dotR 
+   3936;    0.0000;    0.0000(  0.0000);    3.4949(  0.0000);    4.8841;         ;   updateP 
+     20;    0.0000;    0.0000(  0.0000);    0.0155(  0.0000);    9.3300;         ;   update 
+Total plan time:   0.1425
+Max total runtime = 35.879958
+--------------------
+--------------------
+reading in grid 
+initialising flow field 
+
+ Initializing OP2
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes     180700
+    bedges       1200
+     cells     180000
+
+       map        dim       from         to
+  -----------------------------------------
+    pbedge          1     bedges      nodes
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+       p_x          2      nodes
+    p_phim          1      nodes
+    p_resm          1      nodes
+       p_K         16      cells
+       p_V          1      nodes
+       p_P          1      nodes
+       p_U          1      nodes
+
+ new execution plan #0 for kernel res_calc
+ number of blocks       = 704 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 2.00 
+ shared memory required =  16.19 KB, 16.19 KB, 16.19 KB, 16.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 44.04 MB 
+ data transfer (total)  = 44.67 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #1 for kernel dirichlet
+ number of blocks       = 1 
+ number of block colors = 1 
+ maximum block size     = 3072 
+ average thread colors  = 1.00 
+ shared memory required =  9.38 KB
+ average data reuse     = 1.00 
+ data transfer (used)   = 0.02 MB 
+ data transfer (total)  = 0.05 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #2 for kernel spMV
+ number of blocks       = 469 
+ number of block colors = 3 
+ maximum block size     = 384 
+ average thread colors  = 2.00 
+ shared memory required =  12.12 KB, 12.12 KB, 12.12 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 35.75 MB 
+ data transfer (total)  = 36.07 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74433e-05 iter: 200
+rms = 1.49387e-05 iter: 200
+rms = 8.86210e-06 iter: 200
+rms = 1.37296e-06 iter: 200
+rms = 8.18258e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61539e-08 iter: 200
+rms = 1.18877e-08 iter: 200
+rms = 7.12733e-09 iter: 200
+rms = 1.11479e-09 iter: 200
+rms = 6.70061e-10 iter: 200
+rms = 1.04953e-10 iter: 200
+rms = 6.32227e-11 iter: 200
+rms = 9.91308e-12 iter: 200
+rms = 5.98275e-12 iter: 200
+rms = 9.38810e-13 iter: 200
+rms = 5.67450e-13 iter: 200
+rms = 8.90975e-14 iter: 200
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+     20;    0.0000;    0.0000(  0.0000);    3.4424(  0.0000);   0.2683;   0.2722;   res_calc 
+   3956;    0.0000;    0.0000(  0.0000);    0.9994(  0.0000);   0.0665;   0.2089;   dirichlet 
+     20;    0.0000;    0.0000(  0.0000);    0.0118(  0.0000);   17.1560;         ;   init_cg 
+   3936;    0.0000;    0.0000(  0.0000);    7.1674(  0.0000);  20.5862;  20.7692;   spMV 
+   3936;    0.0000;    0.0000(  0.0000);    1.1015(  0.0000);   10.3310;         ;   dotPV 
+   3936;    0.0000;    0.0000(  0.0000);    1.3941(  0.0000);   28.5722;         ;   updateUR 
+   3936;    0.0000;    0.0000(  0.0000);    1.0728(  0.0000);    5.3037;         ;   dotR 
+   3936;    0.0000;    0.0000(  0.0000);    1.1228(  0.0000);   15.2022;         ;   updateP 
+     20;    0.0000;    0.0000(  0.0000);    0.0085(  0.0000);   17.0629;         ;   update 
+Total plan time:   0.1411
+Max total runtime = 16.369393
+--------------------
+--------------------
+reading in grid 
+initialising flow field 
+
+ Initializing OP2
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes     180700
+    bedges       1200
+     cells     180000
+
+       map        dim       from         to
+  -----------------------------------------
+    pbedge          1     bedges      nodes
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+       p_x          2      nodes
+    p_phim          1      nodes
+    p_resm          1      nodes
+       p_K         16      cells
+       p_V          1      nodes
+       p_P          1      nodes
+       p_U          1      nodes
+
+ new execution plan #0 for kernel res_calc
+ number of blocks       = 704 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 2.00 
+ shared memory required =  16.19 KB, 16.19 KB, 16.19 KB, 16.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 44.04 MB 
+ data transfer (total)  = 44.67 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #1 for kernel dirichlet
+ number of blocks       = 1 
+ number of block colors = 1 
+ maximum block size     = 3072 
+ average thread colors  = 1.00 
+ shared memory required =  9.38 KB
+ average data reuse     = 1.00 
+ data transfer (used)   = 0.02 MB 
+ data transfer (total)  = 0.05 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #2 for kernel spMV
+ number of blocks       = 469 
+ number of block colors = 3 
+ maximum block size     = 384 
+ average thread colors  = 2.00 
+ shared memory required =  12.12 KB, 12.12 KB, 12.12 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 35.75 MB 
+ data transfer (total)  = 36.07 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74433e-05 iter: 200
+rms = 1.49387e-05 iter: 200
+rms = 8.86210e-06 iter: 200
+rms = 1.37296e-06 iter: 200
+rms = 8.18258e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61539e-08 iter: 200
+rms = 1.18877e-08 iter: 200
+rms = 7.12733e-09 iter: 200
+rms = 1.11479e-09 iter: 200
+rms = 6.70061e-10 iter: 200
+rms = 1.04953e-10 iter: 200
+rms = 6.32227e-11 iter: 200
+rms = 9.91308e-12 iter: 200
+rms = 5.98275e-12 iter: 200
+rms = 9.38810e-13 iter: 200
+rms = 5.67450e-13 iter: 200
+rms = 8.90975e-14 iter: 200
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+     20;    0.0000;    0.0000(  0.0000);    3.4393(  0.0000);   0.2686;   0.2724;   res_calc 
+   3956;    0.0000;    0.0000(  0.0000);    1.2276(  0.0000);   0.0541;   0.1701;   dirichlet 
+     20;    0.0000;    0.0000(  0.0000);    0.0087(  0.0000);   23.2024;         ;   init_cg 
+   3936;    0.0000;    0.0000(  0.0000);    7.7636(  0.0000);  19.0051;  19.1741;   spMV 
+   3936;    0.0000;    0.0000(  0.0000);    1.3270(  0.0000);    8.5755;         ;   dotPV 
+   3936;    0.0000;    0.0000(  0.0000);    1.5693(  0.0000);   25.3820;         ;   updateUR 
+   3936;    0.0000;    0.0000(  0.0000);    1.2736(  0.0000);    4.4674;         ;   dotR 
+   3936;    0.0000;    0.0000(  0.0000);    1.2938(  0.0000);   13.1928;         ;   updateP 
+     20;    0.0000;    0.0000(  0.0000);    0.0051(  0.0000);   28.4501;         ;   update 
+Total plan time:   0.1400
+Max total runtime = 17.956077
+--------------------
+--------------------
+reading in grid 
+initialising flow field 
+
+ Initializing OP2
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes     180700
+    bedges       1200
+     cells     180000
+
+       map        dim       from         to
+  -----------------------------------------
+    pbedge          1     bedges      nodes
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+       p_x          2      nodes
+    p_phim          1      nodes
+    p_resm          1      nodes
+       p_K         16      cells
+       p_V          1      nodes
+       p_P          1      nodes
+       p_U          1      nodes
+
+ new execution plan #0 for kernel res_calc
+ number of blocks       = 704 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 2.00 
+ shared memory required =  16.19 KB, 16.19 KB, 16.19 KB, 16.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 44.04 MB 
+ data transfer (total)  = 44.67 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #1 for kernel dirichlet
+ number of blocks       = 1 
+ number of block colors = 1 
+ maximum block size     = 3072 
+ average thread colors  = 1.00 
+ shared memory required =  9.38 KB
+ average data reuse     = 1.00 
+ data transfer (used)   = 0.02 MB 
+ data transfer (total)  = 0.05 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #2 for kernel spMV
+ number of blocks       = 469 
+ number of block colors = 3 
+ maximum block size     = 384 
+ average thread colors  = 2.00 
+ shared memory required =  12.12 KB, 12.12 KB, 12.12 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 35.75 MB 
+ data transfer (total)  = 36.07 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74433e-05 iter: 200
+rms = 1.49387e-05 iter: 200
+rms = 8.86210e-06 iter: 200
+rms = 1.37296e-06 iter: 200
+rms = 8.18258e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61539e-08 iter: 200
+rms = 1.18877e-08 iter: 200
+rms = 7.12733e-09 iter: 200
+rms = 1.11479e-09 iter: 200
+rms = 6.70061e-10 iter: 200
+rms = 1.04953e-10 iter: 200
+rms = 6.32227e-11 iter: 200
+rms = 9.91308e-12 iter: 200
+rms = 5.98275e-12 iter: 200
+rms = 9.38810e-13 iter: 200
+rms = 5.67450e-13 iter: 200
+rms = 8.90975e-14 iter: 200
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+     20;    0.0000;    0.0000(  0.0000);    3.5627(  0.0000);   0.2593;   0.2630;   res_calc 
+   3956;    0.0000;    0.0000(  0.0000);    2.0813(  0.0000);   0.0319;   0.1003;   dirichlet 
+     20;    0.0000;    0.0000(  0.0000);    0.0186(  0.0000);   10.8967;         ;   init_cg 
+   3936;    0.0000;    0.0000(  0.0000);   10.4840(  0.0000);  14.0737;  14.1988;   spMV 
+   3936;    0.0000;    0.0000(  0.0000);    2.1616(  0.0000);    5.2646;         ;   dotPV 
+   3936;    0.0000;    0.0000(  0.0000);    2.4413(  0.0000);   16.3161;         ;   updateUR 
+   3936;    0.0000;    0.0000(  0.0000);    2.1525(  0.0000);    2.6433;         ;   dotR 
+   3936;    0.0000;    0.0000(  0.0000);    2.2004(  0.0000);    7.7572;         ;   updateP 
+     20;    0.0000;    0.0000(  0.0000);    0.0073(  0.0000);   19.7591;         ;   update 
+Total plan time:   0.1426
+Max total runtime = 25.158325
+--------------------
+--------------------
+reading in grid 
+initialising flow field 
+
+ Initializing OP2
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes     180700
+    bedges       1200
+     cells     180000
+
+       map        dim       from         to
+  -----------------------------------------
+    pbedge          1     bedges      nodes
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+       p_x          2      nodes
+    p_phim          1      nodes
+    p_resm          1      nodes
+       p_K         16      cells
+       p_V          1      nodes
+       p_P          1      nodes
+       p_U          1      nodes
+
+ new execution plan #0 for kernel res_calc
+ number of blocks       = 704 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 2.00 
+ shared memory required =  16.19 KB, 16.19 KB, 16.19 KB, 16.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 44.04 MB 
+ data transfer (total)  = 44.67 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #1 for kernel dirichlet
+ number of blocks       = 1 
+ number of block colors = 1 
+ maximum block size     = 3072 
+ average thread colors  = 1.00 
+ shared memory required =  9.38 KB
+ average data reuse     = 1.00 
+ data transfer (used)   = 0.02 MB 
+ data transfer (total)  = 0.05 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #2 for kernel spMV
+ number of blocks       = 469 
+ number of block colors = 3 
+ maximum block size     = 384 
+ average thread colors  = 2.00 
+ shared memory required =  12.12 KB, 12.12 KB, 12.12 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 35.75 MB 
+ data transfer (total)  = 36.07 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74433e-05 iter: 200
+rms = 1.49387e-05 iter: 200
+rms = 8.86210e-06 iter: 200
+rms = 1.37296e-06 iter: 200
+rms = 8.18258e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61539e-08 iter: 200
+rms = 1.18877e-08 iter: 200
+rms = 7.12733e-09 iter: 200
+rms = 1.11479e-09 iter: 200
+rms = 6.70061e-10 iter: 200
+rms = 1.04953e-10 iter: 200
+rms = 6.32227e-11 iter: 200
+rms = 9.91308e-12 iter: 200
+rms = 5.98275e-12 iter: 200
+rms = 9.38810e-13 iter: 200
+rms = 5.67450e-13 iter: 200
+rms = 8.90975e-14 iter: 200
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+     20;    0.0000;    0.0000(  0.0000);    3.4952(  0.0000);   0.2643;   0.2680;   res_calc 
+   3956;    0.0000;    0.0000(  0.0000);    1.9478(  0.0000);   0.0341;   0.1072;   dirichlet 
+     20;    0.0000;    0.0000(  0.0000);    0.0183(  0.0000);   11.0457;         ;   init_cg 
+   3936;    0.0000;    0.0000(  0.0000);   10.1448(  0.0000);  14.5442;  14.6736;   spMV 
+   3936;    0.0000;    0.0000(  0.0000);    2.0459(  0.0000);    5.5623;         ;   dotPV 
+   3936;    0.0000;    0.0000(  0.0000);    2.3231(  0.0000);   17.1463;         ;   updateUR 
+   3936;    0.0000;    0.0000(  0.0000);    2.0386(  0.0000);    2.7910;         ;   dotR 
+   3936;    0.0000;    0.0000(  0.0000);    2.0486(  0.0000);    8.3320;         ;   updateP 
+     20;    0.0000;    0.0000(  0.0000);    0.0118(  0.0000);   12.2662;         ;   update 
+Total plan time:   0.1370
+Max total runtime = 24.123358
+--------------------
+--------------------
+reading in grid 
+initialising flow field 
+
+ Initializing OP2
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes     180700
+    bedges       1200
+     cells     180000
+
+       map        dim       from         to
+  -----------------------------------------
+    pbedge          1     bedges      nodes
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+       p_x          2      nodes
+    p_phim          1      nodes
+    p_resm          1      nodes
+       p_K         16      cells
+       p_V          1      nodes
+       p_P          1      nodes
+       p_U          1      nodes
+
+ new execution plan #0 for kernel res_calc
+ number of blocks       = 704 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 2.00 
+ shared memory required =  16.19 KB, 16.19 KB, 16.19 KB, 16.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 44.04 MB 
+ data transfer (total)  = 44.67 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #1 for kernel dirichlet
+ number of blocks       = 1 
+ number of block colors = 1 
+ maximum block size     = 3072 
+ average thread colors  = 1.00 
+ shared memory required =  9.38 KB
+ average data reuse     = 1.00 
+ data transfer (used)   = 0.02 MB 
+ data transfer (total)  = 0.05 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #2 for kernel spMV
+ number of blocks       = 469 
+ number of block colors = 3 
+ maximum block size     = 384 
+ average thread colors  = 2.00 
+ shared memory required =  12.12 KB, 12.12 KB, 12.12 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 35.75 MB 
+ data transfer (total)  = 36.07 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74433e-05 iter: 200
+rms = 1.49387e-05 iter: 200
+rms = 8.86210e-06 iter: 200
+rms = 1.37296e-06 iter: 200
+rms = 8.18258e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61539e-08 iter: 200
+rms = 1.18877e-08 iter: 200
+rms = 7.12733e-09 iter: 200
+rms = 1.11479e-09 iter: 200
+rms = 6.70061e-10 iter: 200
+rms = 1.04953e-10 iter: 200
+rms = 6.32227e-11 iter: 200
+rms = 9.91308e-12 iter: 200
+rms = 5.98275e-12 iter: 200
+rms = 9.38810e-13 iter: 200
+rms = 5.67450e-13 iter: 200
+rms = 8.90975e-14 iter: 200
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+     20;    0.0000;    0.0000(  0.0000);    3.4339(  0.0000);   0.2690;   0.2728;   res_calc 
+   3956;    0.0000;    0.0000(  0.0000);    1.1475(  0.0000);   0.0579;   0.1819;   dirichlet 
+     20;    0.0000;    0.0000(  0.0000);    0.0118(  0.0000);   17.1193;         ;   init_cg 
+   3936;    0.0000;    0.0000(  0.0000);    7.7151(  0.0000);  19.1247;  19.2947;   spMV 
+   3936;    0.0000;    0.0000(  0.0000);    1.2923(  0.0000);    8.8060;         ;   dotPV 
+   3936;    0.0000;    0.0000(  0.0000);    1.5319(  0.0000);   26.0014;         ;   updateUR 
+   3936;    0.0000;    0.0000(  0.0000);    1.2267(  0.0000);    4.6381;         ;   dotR 
+   3936;    0.0000;    0.0000(  0.0000);    1.2991(  0.0000);   13.1394;         ;   updateP 
+     20;    0.0000;    0.0000(  0.0000);    0.0051(  0.0000);   28.5251;         ;   update 
+Total plan time:   0.1416
+Max total runtime = 17.713434
+--------------------
+--------------------
+reading in grid 
+initialising flow field 
+
+ Initializing OP2
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes     180700
+    bedges       1200
+     cells     180000
+
+       map        dim       from         to
+  -----------------------------------------
+    pbedge          1     bedges      nodes
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+       p_x          2      nodes
+    p_phim          1      nodes
+    p_resm          1      nodes
+       p_K         16      cells
+       p_V          1      nodes
+       p_P          1      nodes
+       p_U          1      nodes
+
+ new execution plan #0 for kernel res_calc
+ number of blocks       = 704 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 2.00 
+ shared memory required =  16.19 KB, 16.19 KB, 16.19 KB, 16.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 44.04 MB 
+ data transfer (total)  = 44.67 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #1 for kernel dirichlet
+ number of blocks       = 1 
+ number of block colors = 1 
+ maximum block size     = 3072 
+ average thread colors  = 1.00 
+ shared memory required =  9.38 KB
+ average data reuse     = 1.00 
+ data transfer (used)   = 0.02 MB 
+ data transfer (total)  = 0.05 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #2 for kernel spMV
+ number of blocks       = 469 
+ number of block colors = 3 
+ maximum block size     = 384 
+ average thread colors  = 2.00 
+ shared memory required =  12.12 KB, 12.12 KB, 12.12 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 35.75 MB 
+ data transfer (total)  = 36.07 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74433e-05 iter: 200
+rms = 1.49387e-05 iter: 200
+rms = 8.86210e-06 iter: 200
+rms = 1.37296e-06 iter: 200
+rms = 8.18258e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61539e-08 iter: 200
+rms = 1.18877e-08 iter: 200
+rms = 7.12733e-09 iter: 200
+rms = 1.11479e-09 iter: 200
+rms = 6.70061e-10 iter: 200
+rms = 1.04953e-10 iter: 200
+rms = 6.32227e-11 iter: 200
+rms = 9.91308e-12 iter: 200
+rms = 5.98275e-12 iter: 200
+rms = 9.38810e-13 iter: 200
+rms = 5.67450e-13 iter: 200
+rms = 8.90975e-14 iter: 200
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+     20;    0.0000;    0.0000(  0.0000);    3.6405(  0.0000);   0.2537;   0.2574;   res_calc 
+   3956;    0.0000;    0.0000(  0.0000);    2.1462(  0.0000);   0.0310;   0.0973;   dirichlet 
+     20;    0.0000;    0.0000(  0.0000);    0.0187(  0.0000);   10.8103;         ;   init_cg 
+   3936;    0.0000;    0.0000(  0.0000);   10.8435(  0.0000);  13.6071;  13.7281;   spMV 
+   3936;    0.0000;    0.0000(  0.0000);    2.2796(  0.0000);    4.9919;         ;   dotPV 
+   3936;    0.0000;    0.0000(  0.0000);    2.5560(  0.0000);   15.5839;         ;   updateUR 
+   3936;    0.0000;    0.0000(  0.0000);    2.2283(  0.0000);    2.5534;         ;   dotR 
+   3936;    0.0000;    0.0000(  0.0000);    2.2739(  0.0000);    7.5066;         ;   updateP 
+     20;    0.0000;    0.0000(  0.0000);    0.0102(  0.0000);   14.1639;         ;   update 
+Total plan time:   0.1422
+Max total runtime = 26.045506
+--------------------
+--------------------
+reading in grid 
+initialising flow field 
+
+ Initializing OP2
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes     180700
+    bedges       1200
+     cells     180000
+
+       map        dim       from         to
+  -----------------------------------------
+    pbedge          1     bedges      nodes
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+       p_x          2      nodes
+    p_phim          1      nodes
+    p_resm          1      nodes
+       p_K         16      cells
+       p_V          1      nodes
+       p_P          1      nodes
+       p_U          1      nodes
+
+ new execution plan #0 for kernel res_calc
+ number of blocks       = 704 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 2.00 
+ shared memory required =  16.19 KB, 16.19 KB, 16.19 KB, 16.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 44.04 MB 
+ data transfer (total)  = 44.67 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #1 for kernel dirichlet
+ number of blocks       = 1 
+ number of block colors = 1 
+ maximum block size     = 3072 
+ average thread colors  = 1.00 
+ shared memory required =  9.38 KB
+ average data reuse     = 1.00 
+ data transfer (used)   = 0.02 MB 
+ data transfer (total)  = 0.05 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #2 for kernel spMV
+ number of blocks       = 469 
+ number of block colors = 3 
+ maximum block size     = 384 
+ average thread colors  = 2.00 
+ shared memory required =  12.12 KB, 12.12 KB, 12.12 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 35.75 MB 
+ data transfer (total)  = 36.07 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74433e-05 iter: 200
+rms = 1.49387e-05 iter: 200
+rms = 8.86210e-06 iter: 200
+rms = 1.37296e-06 iter: 200
+rms = 8.18258e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61539e-08 iter: 200
+rms = 1.18877e-08 iter: 200
+rms = 7.12733e-09 iter: 200
+rms = 1.11479e-09 iter: 200
+rms = 6.70061e-10 iter: 200
+rms = 1.04953e-10 iter: 200
+rms = 6.32227e-11 iter: 200
+rms = 9.91308e-12 iter: 200
+rms = 5.98275e-12 iter: 200
+rms = 9.38810e-13 iter: 200
+rms = 5.67450e-13 iter: 200
+rms = 8.90975e-14 iter: 200
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+     20;    0.0000;    0.0000(  0.0000);    3.7568(  0.0000);   0.2459;   0.2494;   res_calc 
+   3956;    0.0000;    0.0000(  0.0000);    3.7040(  0.0000);   0.0179;   0.0564;   dirichlet 
+     20;    0.0000;    0.0000(  0.0000);    0.0250(  0.0000);    8.1044;         ;   init_cg 
+   3936;    0.0000;    0.0000(  0.0000);   15.5825(  0.0000);   9.4689;   9.5531;   spMV 
+   3936;    0.0000;    0.0000(  0.0000);    3.8568(  0.0000);    2.9505;         ;   dotPV 
+   3936;    0.0000;    0.0000(  0.0000);    4.0923(  0.0000);    9.7336;         ;   updateUR 
+   3936;    0.0000;    0.0000(  0.0000);    3.7737(  0.0000);    1.5077;         ;   dotR 
+   3936;    0.0000;    0.0000(  0.0000);    3.8490(  0.0000);    4.4347;         ;   updateP 
+     20;    0.0000;    0.0000(  0.0000);    0.0154(  0.0000);    9.3634;         ;   update 
+Total plan time:   0.1429
+Max total runtime = 38.705365
+--------------------
+--------------------
+reading in grid 
+initialising flow field 
+
+ Initializing OP2
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes     180700
+    bedges       1200
+     cells     180000
+
+       map        dim       from         to
+  -----------------------------------------
+    pbedge          1     bedges      nodes
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+       p_x          2      nodes
+    p_phim          1      nodes
+    p_resm          1      nodes
+       p_K         16      cells
+       p_V          1      nodes
+       p_P          1      nodes
+       p_U          1      nodes
+
+ new execution plan #0 for kernel res_calc
+ number of blocks       = 704 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 2.00 
+ shared memory required =  16.19 KB, 16.19 KB, 16.19 KB, 16.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 44.04 MB 
+ data transfer (total)  = 44.67 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #1 for kernel dirichlet
+ number of blocks       = 1 
+ number of block colors = 1 
+ maximum block size     = 3072 
+ average thread colors  = 1.00 
+ shared memory required =  9.38 KB
+ average data reuse     = 1.00 
+ data transfer (used)   = 0.02 MB 
+ data transfer (total)  = 0.05 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #2 for kernel spMV
+ number of blocks       = 469 
+ number of block colors = 3 
+ maximum block size     = 384 
+ average thread colors  = 2.00 
+ shared memory required =  12.12 KB, 12.12 KB, 12.12 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 35.75 MB 
+ data transfer (total)  = 36.07 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74433e-05 iter: 200
+rms = 1.49387e-05 iter: 200
+rms = 8.86210e-06 iter: 200
+rms = 1.37296e-06 iter: 200
+rms = 8.18258e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61539e-08 iter: 200
+rms = 1.18877e-08 iter: 200
+rms = 7.12733e-09 iter: 200
+rms = 1.11479e-09 iter: 200
+rms = 6.70061e-10 iter: 200
+rms = 1.04953e-10 iter: 200
+rms = 6.32227e-11 iter: 200
+rms = 9.91308e-12 iter: 200
+rms = 5.98275e-12 iter: 200
+rms = 9.38810e-13 iter: 200
+rms = 5.67450e-13 iter: 200
+rms = 8.90975e-14 iter: 200
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+     20;    0.0000;    0.0000(  0.0000);    3.5826(  0.0000);   0.2578;   0.2615;   res_calc 
+   3956;    0.0000;    0.0000(  0.0000);    2.6157(  0.0000);   0.0254;   0.0798;   dirichlet 
+     20;    0.0000;    0.0000(  0.0000);    0.0183(  0.0000);   11.0775;         ;   init_cg 
+   3936;    0.0000;    0.0000(  0.0000);   12.3564(  0.0000);  11.9411;  12.0472;   spMV 
+   3936;    0.0000;    0.0000(  0.0000);    2.7854(  0.0000);    4.0855;         ;   dotPV 
+   3936;    0.0000;    0.0000(  0.0000);    3.0495(  0.0000);   13.0619;         ;   updateUR 
+   3936;    0.0000;    0.0000(  0.0000);    2.7798(  0.0000);    2.0468;         ;   dotR 
+   3936;    0.0000;    0.0000(  0.0000);    2.7757(  0.0000);    6.1495;         ;   updateP 
+     20;    0.0000;    0.0000(  0.0000);    0.0154(  0.0000);    9.3736;         ;   update 
+Total plan time:   0.1383
+Max total runtime = 30.028614
+--------------------
+--------------------
+reading in grid 
+initialising flow field 
+
+ Initializing OP2
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes     180700
+    bedges       1200
+     cells     180000
+
+       map        dim       from         to
+  -----------------------------------------
+    pbedge          1     bedges      nodes
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+       p_x          2      nodes
+    p_phim          1      nodes
+    p_resm          1      nodes
+       p_K         16      cells
+       p_V          1      nodes
+       p_P          1      nodes
+       p_U          1      nodes
+
+ new execution plan #0 for kernel res_calc
+ number of blocks       = 704 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 2.00 
+ shared memory required =  16.19 KB, 16.19 KB, 16.19 KB, 16.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 44.04 MB 
+ data transfer (total)  = 44.67 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #1 for kernel dirichlet
+ number of blocks       = 1 
+ number of block colors = 1 
+ maximum block size     = 3072 
+ average thread colors  = 1.00 
+ shared memory required =  9.38 KB
+ average data reuse     = 1.00 
+ data transfer (used)   = 0.02 MB 
+ data transfer (total)  = 0.05 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #2 for kernel spMV
+ number of blocks       = 469 
+ number of block colors = 3 
+ maximum block size     = 384 
+ average thread colors  = 2.00 
+ shared memory required =  12.12 KB, 12.12 KB, 12.12 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 35.75 MB 
+ data transfer (total)  = 36.07 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74433e-05 iter: 200
+rms = 1.49387e-05 iter: 200
+rms = 8.86210e-06 iter: 200
+rms = 1.37296e-06 iter: 200
+rms = 8.18258e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61539e-08 iter: 200
+rms = 1.18877e-08 iter: 200
+rms = 7.12733e-09 iter: 200
+rms = 1.11479e-09 iter: 200
+rms = 6.70061e-10 iter: 200
+rms = 1.04953e-10 iter: 200
+rms = 6.32227e-11 iter: 200
+rms = 9.91308e-12 iter: 200
+rms = 5.98275e-12 iter: 200
+rms = 9.38810e-13 iter: 200
+rms = 5.67450e-13 iter: 200
+rms = 8.90975e-14 iter: 200
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+     20;    0.0000;    0.0000(  0.0000);    3.5405(  0.0000);   0.2609;   0.2646;   res_calc 
+   3956;    0.0000;    0.0000(  0.0000);    1.8006(  0.0000);   0.0369;   0.1159;   dirichlet 
+     20;    0.0000;    0.0000(  0.0000);    0.0118(  0.0000);   17.0859;         ;   init_cg 
+   3936;    0.0000;    0.0000(  0.0000);   10.0186(  0.0000);  14.7275;  14.8584;   spMV 
+   3936;    0.0000;    0.0000(  0.0000);    1.9285(  0.0000);    5.9009;         ;   dotPV 
+   3936;    0.0000;    0.0000(  0.0000);    2.2026(  0.0000);   18.0849;         ;   updateUR 
+   3936;    0.0000;    0.0000(  0.0000);    1.8163(  0.0000);    3.1326;         ;   dotR 
+   3936;    0.0000;    0.0000(  0.0000);    1.8532(  0.0000);    9.2107;         ;   updateP 
+     20;    0.0000;    0.0000(  0.0000);    0.0092(  0.0000);   15.7726;         ;   update 
+Total plan time:   0.1365
+Max total runtime = 23.231234
+--------------------
+--------------------
+reading in grid 
+initialising flow field 
+
+ Initializing OP2
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes     180700
+    bedges       1200
+     cells     180000
+
+       map        dim       from         to
+  -----------------------------------------
+    pbedge          1     bedges      nodes
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+       p_x          2      nodes
+    p_phim          1      nodes
+    p_resm          1      nodes
+       p_K         16      cells
+       p_V          1      nodes
+       p_P          1      nodes
+       p_U          1      nodes
+
+ new execution plan #0 for kernel res_calc
+ number of blocks       = 704 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 2.00 
+ shared memory required =  16.19 KB, 16.19 KB, 16.19 KB, 16.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 44.04 MB 
+ data transfer (total)  = 44.67 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #1 for kernel dirichlet
+ number of blocks       = 1 
+ number of block colors = 1 
+ maximum block size     = 3072 
+ average thread colors  = 1.00 
+ shared memory required =  9.38 KB
+ average data reuse     = 1.00 
+ data transfer (used)   = 0.02 MB 
+ data transfer (total)  = 0.05 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #2 for kernel spMV
+ number of blocks       = 469 
+ number of block colors = 3 
+ maximum block size     = 384 
+ average thread colors  = 2.00 
+ shared memory required =  12.12 KB, 12.12 KB, 12.12 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 35.75 MB 
+ data transfer (total)  = 36.07 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74433e-05 iter: 200
+rms = 1.49387e-05 iter: 200
+rms = 8.86210e-06 iter: 200
+rms = 1.37296e-06 iter: 200
+rms = 8.18258e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61539e-08 iter: 200
+rms = 1.18877e-08 iter: 200
+rms = 7.12733e-09 iter: 200
+rms = 1.11479e-09 iter: 200
+rms = 6.70061e-10 iter: 200
+rms = 1.04953e-10 iter: 200
+rms = 6.32227e-11 iter: 200
+rms = 9.91308e-12 iter: 200
+rms = 5.98275e-12 iter: 200
+rms = 9.38810e-13 iter: 200
+rms = 5.67450e-13 iter: 200
+rms = 8.90975e-14 iter: 200
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+     20;    0.0000;    0.0000(  0.0000);    3.3812(  0.0000);   0.2732;   0.2771;   res_calc 
+   3956;    0.0000;    0.0000(  0.0000);    0.9755(  0.0000);   0.0681;   0.2140;   dirichlet 
+     20;    0.0000;    0.0000(  0.0000);    0.0087(  0.0000);   23.3917;         ;   init_cg 
+   3936;    0.0000;    0.0000(  0.0000);    7.1456(  0.0000);  20.6490;  20.8326;   spMV 
+   3936;    0.0000;    0.0000(  0.0000);    1.1250(  0.0000);   10.1149;         ;   dotPV 
+   3936;    0.0000;    0.0000(  0.0000);    1.3637(  0.0000);   29.2092;         ;   updateUR 
+   3936;    0.0000;    0.0000(  0.0000);    1.0809(  0.0000);    5.2638;         ;   dotR 
+   3936;    0.0000;    0.0000(  0.0000);    1.0880(  0.0000);   15.6892;         ;   updateP 
+     20;    0.0000;    0.0000(  0.0000);    0.0017(  0.0000);   85.8093;         ;   update 
+Total plan time:   0.1481
+Max total runtime = 16.220483
+--------------------
+--------------------
+reading in grid 
+initialising flow field 
+
+ Initializing OP2
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes     180700
+    bedges       1200
+     cells     180000
+
+       map        dim       from         to
+  -----------------------------------------
+    pbedge          1     bedges      nodes
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+       p_x          2      nodes
+    p_phim          1      nodes
+    p_resm          1      nodes
+       p_K         16      cells
+       p_V          1      nodes
+       p_P          1      nodes
+       p_U          1      nodes
+
+ new execution plan #0 for kernel res_calc
+ number of blocks       = 704 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 2.00 
+ shared memory required =  16.19 KB, 16.19 KB, 16.19 KB, 16.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 44.04 MB 
+ data transfer (total)  = 44.67 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #1 for kernel dirichlet
+ number of blocks       = 1 
+ number of block colors = 1 
+ maximum block size     = 3072 
+ average thread colors  = 1.00 
+ shared memory required =  9.38 KB
+ average data reuse     = 1.00 
+ data transfer (used)   = 0.02 MB 
+ data transfer (total)  = 0.05 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #2 for kernel spMV
+ number of blocks       = 469 
+ number of block colors = 3 
+ maximum block size     = 384 
+ average thread colors  = 2.00 
+ shared memory required =  12.12 KB, 12.12 KB, 12.12 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 35.75 MB 
+ data transfer (total)  = 36.07 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74433e-05 iter: 200
+rms = 1.49387e-05 iter: 200
+rms = 8.86210e-06 iter: 200
+rms = 1.37296e-06 iter: 200
+rms = 8.18258e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61539e-08 iter: 200
+rms = 1.18877e-08 iter: 200
+rms = 7.12733e-09 iter: 200
+rms = 1.11479e-09 iter: 200
+rms = 6.70061e-10 iter: 200
+rms = 1.04953e-10 iter: 200
+rms = 6.32227e-11 iter: 200
+rms = 9.91308e-12 iter: 200
+rms = 5.98275e-12 iter: 200
+rms = 9.38810e-13 iter: 200
+rms = 5.67450e-13 iter: 200
+rms = 8.90975e-14 iter: 200
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+     20;    0.0000;    0.0000(  0.0000);    3.6409(  0.0000);   0.2537;   0.2573;   res_calc 
+   3956;    0.0000;    0.0000(  0.0000);    2.7849(  0.0000);   0.0239;   0.0750;   dirichlet 
+     20;    0.0000;    0.0000(  0.0000);    0.0178(  0.0000);   11.3857;         ;   init_cg 
+   3936;    0.0000;    0.0000(  0.0000);   12.6737(  0.0000);  11.6421;  11.7456;   spMV 
+   3936;    0.0000;    0.0000(  0.0000);    2.8859(  0.0000);    3.9432;         ;   dotPV 
+   3936;    0.0000;    0.0000(  0.0000);    3.1357(  0.0000);   12.7028;         ;   updateUR 
+   3936;    0.0000;    0.0000(  0.0000);    2.8403(  0.0000);    2.0032;         ;   dotR 
+   3936;    0.0000;    0.0000(  0.0000);    2.8789(  0.0000);    5.9291;         ;   updateP 
+     20;    0.0000;    0.0000(  0.0000);    0.0123(  0.0000);   11.7437;         ;   update 
+Total plan time:   0.1415
+Max total runtime = 30.919467
+--------------------
+--------------------
+reading in grid 
+initialising flow field 
+
+ Initializing OP2
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes     180700
+    bedges       1200
+     cells     180000
+
+       map        dim       from         to
+  -----------------------------------------
+    pbedge          1     bedges      nodes
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+       p_x          2      nodes
+    p_phim          1      nodes
+    p_resm          1      nodes
+       p_K         16      cells
+       p_V          1      nodes
+       p_P          1      nodes
+       p_U          1      nodes
+
+ new execution plan #0 for kernel res_calc
+ number of blocks       = 704 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 2.00 
+ shared memory required =  16.19 KB, 16.19 KB, 16.19 KB, 16.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 44.04 MB 
+ data transfer (total)  = 44.67 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #1 for kernel dirichlet
+ number of blocks       = 1 
+ number of block colors = 1 
+ maximum block size     = 3072 
+ average thread colors  = 1.00 
+ shared memory required =  9.38 KB
+ average data reuse     = 1.00 
+ data transfer (used)   = 0.02 MB 
+ data transfer (total)  = 0.05 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #2 for kernel spMV
+ number of blocks       = 469 
+ number of block colors = 3 
+ maximum block size     = 384 
+ average thread colors  = 2.00 
+ shared memory required =  12.12 KB, 12.12 KB, 12.12 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 35.75 MB 
+ data transfer (total)  = 36.07 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74433e-05 iter: 200
+rms = 1.49387e-05 iter: 200
+rms = 8.86210e-06 iter: 200
+rms = 1.37296e-06 iter: 200
+rms = 8.18258e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61539e-08 iter: 200
+rms = 1.18877e-08 iter: 200
+rms = 7.12733e-09 iter: 200
+rms = 1.11479e-09 iter: 200
+rms = 6.70061e-10 iter: 200
+rms = 1.04953e-10 iter: 200
+rms = 6.32227e-11 iter: 200
+rms = 9.91308e-12 iter: 200
+rms = 5.98275e-12 iter: 200
+rms = 9.38810e-13 iter: 200
+rms = 5.67450e-13 iter: 200
+rms = 8.90975e-14 iter: 200
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+     20;    0.0000;    0.0000(  0.0000);    3.4277(  0.0000);   0.2695;   0.2733;   res_calc 
+   3956;    0.0000;    0.0000(  0.0000);    0.5737(  0.0000);   0.1159;   0.3639;   dirichlet 
+     20;    0.0000;    0.0000(  0.0000);    0.0087(  0.0000);   23.2520;         ;   init_cg 
+   3936;    0.0000;    0.0000(  0.0000);    5.7797(  0.0000);  25.5286;  25.7556;   spMV 
+   3936;    0.0000;    0.0000(  0.0000);    0.6900(  0.0000);   16.4924;         ;   dotPV 
+   3936;    0.0000;    0.0000(  0.0000);    0.9483(  0.0000);   42.0027;         ;   updateUR 
+   3936;    0.0000;    0.0000(  0.0000);    0.6318(  0.0000);    9.0062;         ;   dotR 
+   3936;    0.0000;    0.0000(  0.0000);    0.6818(  0.0000);   25.0369;         ;   updateP 
+     20;    0.0000;    0.0000(  0.0000);    0.0017(  0.0000);   84.4234;         ;   update 
+Total plan time:   0.1428
+Max total runtime = 12.791802
+--------------------
+--------------------
+reading in grid 
+initialising flow field 
+
+ Initializing OP2
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes     180700
+    bedges       1200
+     cells     180000
+
+       map        dim       from         to
+  -----------------------------------------
+    pbedge          1     bedges      nodes
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+       p_x          2      nodes
+    p_phim          1      nodes
+    p_resm          1      nodes
+       p_K         16      cells
+       p_V          1      nodes
+       p_P          1      nodes
+       p_U          1      nodes
+
+ new execution plan #0 for kernel res_calc
+ number of blocks       = 704 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 2.00 
+ shared memory required =  16.19 KB, 16.19 KB, 16.19 KB, 16.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 44.04 MB 
+ data transfer (total)  = 44.67 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #1 for kernel dirichlet
+ number of blocks       = 1 
+ number of block colors = 1 
+ maximum block size     = 3072 
+ average thread colors  = 1.00 
+ shared memory required =  9.38 KB
+ average data reuse     = 1.00 
+ data transfer (used)   = 0.02 MB 
+ data transfer (total)  = 0.05 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #2 for kernel spMV
+ number of blocks       = 469 
+ number of block colors = 3 
+ maximum block size     = 384 
+ average thread colors  = 2.00 
+ shared memory required =  12.12 KB, 12.12 KB, 12.12 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 35.75 MB 
+ data transfer (total)  = 36.07 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74433e-05 iter: 200
+rms = 1.49387e-05 iter: 200
+rms = 8.86210e-06 iter: 200
+rms = 1.37296e-06 iter: 200
+rms = 8.18258e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61539e-08 iter: 200
+rms = 1.18877e-08 iter: 200
+rms = 7.12733e-09 iter: 200
+rms = 1.11479e-09 iter: 200
+rms = 6.70061e-10 iter: 200
+rms = 1.04953e-10 iter: 200
+rms = 6.32227e-11 iter: 200
+rms = 9.91308e-12 iter: 200
+rms = 5.98275e-12 iter: 200
+rms = 9.38810e-13 iter: 200
+rms = 5.67450e-13 iter: 200
+rms = 8.90975e-14 iter: 200
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+     20;    0.0000;    0.0000(  0.0000);    3.7613(  0.0000);   0.2456;   0.2491;   res_calc 
+   3956;    0.0000;    0.0000(  0.0000);    1.6315(  0.0000);   0.0407;   0.1279;   dirichlet 
+     20;    0.0000;    0.0000(  0.0000);    0.0152(  0.0000);   13.3282;         ;   init_cg 
+   3936;    0.0000;    0.0000(  0.0000);    9.2229(  0.0000);  15.9980;  16.1403;   spMV 
+   3936;    0.0000;    0.0000(  0.0000);    1.7967(  0.0000);    6.3336;         ;   dotPV 
+   3936;    0.0000;    0.0000(  0.0000);    2.0417(  0.0000);   19.5097;         ;   updateUR 
+   3936;    0.0000;    0.0000(  0.0000);    1.7509(  0.0000);    3.2496;         ;   dotR 
+   3936;    0.0000;    0.0000(  0.0000);    1.7864(  0.0000);    9.5549;         ;   updateP 
+     20;    0.0000;    0.0000(  0.0000);    0.0084(  0.0000);   17.2189;         ;   update 
+Total plan time:   0.1409
+Max total runtime = 22.063223
+--------------------
+--------------------
+reading in grid 
+initialising flow field 
+
+ Initializing OP2
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes     180700
+    bedges       1200
+     cells     180000
+
+       map        dim       from         to
+  -----------------------------------------
+    pbedge          1     bedges      nodes
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+       p_x          2      nodes
+    p_phim          1      nodes
+    p_resm          1      nodes
+       p_K         16      cells
+       p_V          1      nodes
+       p_P          1      nodes
+       p_U          1      nodes
+
+ new execution plan #0 for kernel res_calc
+ number of blocks       = 704 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 2.00 
+ shared memory required =  16.19 KB, 16.19 KB, 16.19 KB, 16.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 44.04 MB 
+ data transfer (total)  = 44.67 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #1 for kernel dirichlet
+ number of blocks       = 1 
+ number of block colors = 1 
+ maximum block size     = 3072 
+ average thread colors  = 1.00 
+ shared memory required =  9.38 KB
+ average data reuse     = 1.00 
+ data transfer (used)   = 0.02 MB 
+ data transfer (total)  = 0.05 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #2 for kernel spMV
+ number of blocks       = 469 
+ number of block colors = 3 
+ maximum block size     = 384 
+ average thread colors  = 2.00 
+ shared memory required =  12.12 KB, 12.12 KB, 12.12 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 35.75 MB 
+ data transfer (total)  = 36.07 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74433e-05 iter: 200
+rms = 1.49387e-05 iter: 200
+rms = 8.86210e-06 iter: 200
+rms = 1.37296e-06 iter: 200
+rms = 8.18258e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61539e-08 iter: 200
+rms = 1.18877e-08 iter: 200
+rms = 7.12733e-09 iter: 200
+rms = 1.11479e-09 iter: 200
+rms = 6.70061e-10 iter: 200
+rms = 1.04953e-10 iter: 200
+rms = 6.32227e-11 iter: 200
+rms = 9.91308e-12 iter: 200
+rms = 5.98275e-12 iter: 200
+rms = 9.38810e-13 iter: 200
+rms = 5.67450e-13 iter: 200
+rms = 8.90975e-14 iter: 200
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+     20;    0.0000;    0.0000(  0.0000);    3.5120(  0.0000);   0.2630;   0.2668;   res_calc 
+   3956;    0.0000;    0.0000(  0.0000);    3.7213(  0.0000);   0.0179;   0.0561;   dirichlet 
+     20;    0.0000;    0.0000(  0.0000);    0.0176(  0.0000);   11.5044;         ;   init_cg 
+   3936;    0.0000;    0.0000(  0.0000);   15.8317(  0.0000);   9.3198;   9.4027;   spMV 
+   3936;    0.0000;    0.0000(  0.0000);    3.9024(  0.0000);    2.9161;         ;   dotPV 
+   3936;    0.0000;    0.0000(  0.0000);    4.2133(  0.0000);    9.4541;         ;   updateUR 
+   3936;    0.0000;    0.0000(  0.0000);    3.8632(  0.0000);    1.4728;         ;   dotR 
+   3936;    0.0000;    0.0000(  0.0000);    3.9098(  0.0000);    4.3658;         ;   updateP 
+     20;    0.0000;    0.0000(  0.0000);    0.0178(  0.0000);    8.1025;         ;   update 
+Total plan time:   0.1385
+Max total runtime = 39.038927
+--------------------
+--------------------
+reading in grid 
+initialising flow field 
+
+ Initializing OP2
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes     180700
+    bedges       1200
+     cells     180000
+
+       map        dim       from         to
+  -----------------------------------------
+    pbedge          1     bedges      nodes
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+       p_x          2      nodes
+    p_phim          1      nodes
+    p_resm          1      nodes
+       p_K         16      cells
+       p_V          1      nodes
+       p_P          1      nodes
+       p_U          1      nodes
+
+ new execution plan #0 for kernel res_calc
+ number of blocks       = 704 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 2.00 
+ shared memory required =  16.19 KB, 16.19 KB, 16.19 KB, 16.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 44.04 MB 
+ data transfer (total)  = 44.67 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #1 for kernel dirichlet
+ number of blocks       = 1 
+ number of block colors = 1 
+ maximum block size     = 3072 
+ average thread colors  = 1.00 
+ shared memory required =  9.38 KB
+ average data reuse     = 1.00 
+ data transfer (used)   = 0.02 MB 
+ data transfer (total)  = 0.05 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #2 for kernel spMV
+ number of blocks       = 469 
+ number of block colors = 3 
+ maximum block size     = 384 
+ average thread colors  = 2.00 
+ shared memory required =  12.12 KB, 12.12 KB, 12.12 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 35.75 MB 
+ data transfer (total)  = 36.07 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74433e-05 iter: 200
+rms = 1.49387e-05 iter: 200
+rms = 8.86210e-06 iter: 200
+rms = 1.37296e-06 iter: 200
+rms = 8.18258e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61539e-08 iter: 200
+rms = 1.18877e-08 iter: 200
+rms = 7.12733e-09 iter: 200
+rms = 1.11479e-09 iter: 200
+rms = 6.70061e-10 iter: 200
+rms = 1.04953e-10 iter: 200
+rms = 6.32227e-11 iter: 200
+rms = 9.91308e-12 iter: 200
+rms = 5.98275e-12 iter: 200
+rms = 9.38810e-13 iter: 200
+rms = 5.67450e-13 iter: 200
+rms = 8.90975e-14 iter: 200
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+     20;    0.0000;    0.0000(  0.0000);    3.6261(  0.0000);   0.2547;   0.2584;   res_calc 
+   3956;    0.0000;    0.0000(  0.0000);    2.2380(  0.0000);   0.0297;   0.0933;   dirichlet 
+     20;    0.0000;    0.0000(  0.0000);    0.0151(  0.0000);   13.3805;         ;   init_cg 
+   3936;    0.0000;    0.0000(  0.0000);   11.0920(  0.0000);  13.3023;  13.4205;   spMV 
+   3936;    0.0000;    0.0000(  0.0000);    2.4312(  0.0000);    4.6806;         ;   dotPV 
+   3936;    0.0000;    0.0000(  0.0000);    2.6212(  0.0000);   15.1966;         ;   updateUR 
+   3936;    0.0000;    0.0000(  0.0000);    2.3678(  0.0000);    2.4029;         ;   dotR 
+   3936;    0.0000;    0.0000(  0.0000);    2.3536(  0.0000);    7.2524;         ;   updateP 
+     20;    0.0000;    0.0000(  0.0000);    0.0087(  0.0000);   16.5230;         ;   update 
+Total plan time:   0.1411
+Max total runtime = 26.802897
+--------------------
+--------------------
+reading in grid 
+initialising flow field 
+
+ Initializing OP2
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes     180700
+    bedges       1200
+     cells     180000
+
+       map        dim       from         to
+  -----------------------------------------
+    pbedge          1     bedges      nodes
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+       p_x          2      nodes
+    p_phim          1      nodes
+    p_resm          1      nodes
+       p_K         16      cells
+       p_V          1      nodes
+       p_P          1      nodes
+       p_U          1      nodes
+
+ new execution plan #0 for kernel res_calc
+ number of blocks       = 704 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 2.00 
+ shared memory required =  16.19 KB, 16.19 KB, 16.19 KB, 16.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 44.04 MB 
+ data transfer (total)  = 44.67 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #1 for kernel dirichlet
+ number of blocks       = 1 
+ number of block colors = 1 
+ maximum block size     = 3072 
+ average thread colors  = 1.00 
+ shared memory required =  9.38 KB
+ average data reuse     = 1.00 
+ data transfer (used)   = 0.02 MB 
+ data transfer (total)  = 0.05 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #2 for kernel spMV
+ number of blocks       = 469 
+ number of block colors = 3 
+ maximum block size     = 384 
+ average thread colors  = 2.00 
+ shared memory required =  12.12 KB, 12.12 KB, 12.12 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 35.75 MB 
+ data transfer (total)  = 36.07 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74433e-05 iter: 200
+rms = 1.49387e-05 iter: 200
+rms = 8.86210e-06 iter: 200
+rms = 1.37296e-06 iter: 200
+rms = 8.18258e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61539e-08 iter: 200
+rms = 1.18877e-08 iter: 200
+rms = 7.12733e-09 iter: 200
+rms = 1.11479e-09 iter: 200
+rms = 6.70061e-10 iter: 200
+rms = 1.04953e-10 iter: 200
+rms = 6.32227e-11 iter: 200
+rms = 9.91308e-12 iter: 200
+rms = 5.98275e-12 iter: 200
+rms = 9.38810e-13 iter: 200
+rms = 5.67450e-13 iter: 200
+rms = 8.90975e-14 iter: 200
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+     20;    0.0000;    0.0000(  0.0000);    3.5218(  0.0000);   0.2623;   0.2660;   res_calc 
+   3956;    0.0000;    0.0000(  0.0000);    1.0614(  0.0000);   0.0626;   0.1967;   dirichlet 
+     20;    0.0000;    0.0000(  0.0000);    0.0098(  0.0000);   20.6933;         ;   init_cg 
+   3936;    0.0000;    0.0000(  0.0000);    7.4906(  0.0000);  19.6979;  19.8731;   spMV 
+   3936;    0.0000;    0.0000(  0.0000);    1.2023(  0.0000);    9.4651;         ;   dotPV 
+   3936;    0.0000;    0.0000(  0.0000);    1.4422(  0.0000);   27.6193;         ;   updateUR 
+   3936;    0.0000;    0.0000(  0.0000);    1.1626(  0.0000);    4.8938;         ;   dotR 
+   3936;    0.0000;    0.0000(  0.0000);    1.1926(  0.0000);   14.3128;         ;   updateP 
+     20;    0.0000;    0.0000(  0.0000);    0.0095(  0.0000);   15.2755;         ;   update 
+Total plan time:   0.1414
+Max total runtime = 17.141029
+--------------------
+--------------------
+reading in grid 
+initialising flow field 
+
+ Initializing OP2
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes     180700
+    bedges       1200
+     cells     180000
+
+       map        dim       from         to
+  -----------------------------------------
+    pbedge          1     bedges      nodes
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+       p_x          2      nodes
+    p_phim          1      nodes
+    p_resm          1      nodes
+       p_K         16      cells
+       p_V          1      nodes
+       p_P          1      nodes
+       p_U          1      nodes
+
+ new execution plan #0 for kernel res_calc
+ number of blocks       = 704 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 2.00 
+ shared memory required =  16.19 KB, 16.19 KB, 16.19 KB, 16.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 44.04 MB 
+ data transfer (total)  = 44.67 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #1 for kernel dirichlet
+ number of blocks       = 1 
+ number of block colors = 1 
+ maximum block size     = 3072 
+ average thread colors  = 1.00 
+ shared memory required =  9.38 KB
+ average data reuse     = 1.00 
+ data transfer (used)   = 0.02 MB 
+ data transfer (total)  = 0.05 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #2 for kernel spMV
+ number of blocks       = 469 
+ number of block colors = 3 
+ maximum block size     = 384 
+ average thread colors  = 2.00 
+ shared memory required =  12.12 KB, 12.12 KB, 12.12 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 35.75 MB 
+ data transfer (total)  = 36.07 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74433e-05 iter: 200
+rms = 1.49387e-05 iter: 200
+rms = 8.86210e-06 iter: 200
+rms = 1.37296e-06 iter: 200
+rms = 8.18258e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61539e-08 iter: 200
+rms = 1.18877e-08 iter: 200
+rms = 7.12733e-09 iter: 200
+rms = 1.11479e-09 iter: 200
+rms = 6.70061e-10 iter: 200
+rms = 1.04953e-10 iter: 200
+rms = 6.32227e-11 iter: 200
+rms = 9.91308e-12 iter: 200
+rms = 5.98275e-12 iter: 200
+rms = 9.38810e-13 iter: 200
+rms = 5.67450e-13 iter: 200
+rms = 8.90975e-14 iter: 200
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+     20;    0.0000;    0.0000(  0.0000);    3.4760(  0.0000);   0.2657;   0.2695;   res_calc 
+   3956;    0.0000;    0.0000(  0.0000);    2.2194(  0.0000);   0.0299;   0.0941;   dirichlet 
+     20;    0.0000;    0.0000(  0.0000);    0.0172(  0.0000);   11.7941;         ;   init_cg 
+   3936;    0.0000;    0.0000(  0.0000);   11.2047(  0.0000);  13.1685;  13.2856;   spMV 
+   3936;    0.0000;    0.0000(  0.0000);    2.4043(  0.0000);    4.7330;         ;   dotPV 
+   3936;    0.0000;    0.0000(  0.0000);    2.6652(  0.0000);   14.9456;         ;   updateUR 
+   3936;    0.0000;    0.0000(  0.0000);    2.3678(  0.0000);    2.4029;         ;   dotR 
+   3936;    0.0000;    0.0000(  0.0000);    2.3755(  0.0000);    7.1855;         ;   updateP 
+     20;    0.0000;    0.0000(  0.0000);    0.0116(  0.0000);   12.4217;         ;   update 
+Total plan time:   0.1408
+Max total runtime = 26.791175
+--------------------
+--------------------
+reading in grid 
+initialising flow field 
+
+ Initializing OP2
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes     180700
+    bedges       1200
+     cells     180000
+
+       map        dim       from         to
+  -----------------------------------------
+    pbedge          1     bedges      nodes
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+       p_x          2      nodes
+    p_phim          1      nodes
+    p_resm          1      nodes
+       p_K         16      cells
+       p_V          1      nodes
+       p_P          1      nodes
+       p_U          1      nodes
+
+ new execution plan #0 for kernel res_calc
+ number of blocks       = 704 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 2.00 
+ shared memory required =  16.19 KB, 16.19 KB, 16.19 KB, 16.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 44.04 MB 
+ data transfer (total)  = 44.67 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #1 for kernel dirichlet
+ number of blocks       = 1 
+ number of block colors = 1 
+ maximum block size     = 3072 
+ average thread colors  = 1.00 
+ shared memory required =  9.38 KB
+ average data reuse     = 1.00 
+ data transfer (used)   = 0.02 MB 
+ data transfer (total)  = 0.05 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #2 for kernel spMV
+ number of blocks       = 469 
+ number of block colors = 3 
+ maximum block size     = 384 
+ average thread colors  = 2.00 
+ shared memory required =  12.12 KB, 12.12 KB, 12.12 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 35.75 MB 
+ data transfer (total)  = 36.07 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74433e-05 iter: 200
+rms = 1.49387e-05 iter: 200
+rms = 8.86210e-06 iter: 200
+rms = 1.37296e-06 iter: 200
+rms = 8.18258e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61539e-08 iter: 200
+rms = 1.18877e-08 iter: 200
+rms = 7.12733e-09 iter: 200
+rms = 1.11479e-09 iter: 200
+rms = 6.70061e-10 iter: 200
+rms = 1.04953e-10 iter: 200
+rms = 6.32227e-11 iter: 200
+rms = 9.91308e-12 iter: 200
+rms = 5.98275e-12 iter: 200
+rms = 9.38810e-13 iter: 200
+rms = 5.67450e-13 iter: 200
+rms = 8.90975e-14 iter: 200
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+     20;    0.0000;    0.0000(  0.0000);    3.4358(  0.0000);   0.2688;   0.2727;   res_calc 
+   3956;    0.0000;    0.0000(  0.0000);    1.9937(  0.0000);   0.0333;   0.1047;   dirichlet 
+     20;    0.0000;    0.0000(  0.0000);    0.0150(  0.0000);   13.4898;         ;   init_cg 
+   3936;    0.0000;    0.0000(  0.0000);   10.3028(  0.0000);  14.3213;  14.4486;   spMV 
+   3936;    0.0000;    0.0000(  0.0000);    2.1281(  0.0000);    5.3474;         ;   dotPV 
+   3936;    0.0000;    0.0000(  0.0000);    2.3953(  0.0000);   16.6298;         ;   updateUR 
+   3936;    0.0000;    0.0000(  0.0000);    2.0695(  0.0000);    2.7493;         ;   dotR 
+   3936;    0.0000;    0.0000(  0.0000);    2.1385(  0.0000);    7.9817;         ;   updateP 
+     20;    0.0000;    0.0000(  0.0000);    0.0052(  0.0000);   27.9414;         ;   update 
+Total plan time:   0.1385
+Max total runtime = 24.532358
+--------------------
+--------------------
+reading in grid 
+initialising flow field 
+
+ Initializing OP2
+
+  OP diagnostic output
+  --------------------
+
+       set       size
+  -------------------
+     nodes     180700
+    bedges       1200
+     cells     180000
+
+       map        dim       from         to
+  -----------------------------------------
+    pbedge          1     bedges      nodes
+     pcell          4      cells      nodes
+
+       dat        dim        set
+  ------------------------------
+       p_x          2      nodes
+    p_phim          1      nodes
+    p_resm          1      nodes
+       p_K         16      cells
+       p_V          1      nodes
+       p_P          1      nodes
+       p_U          1      nodes
+
+ new execution plan #0 for kernel res_calc
+ number of blocks       = 704 
+ number of block colors = 4 
+ maximum block size     = 256 
+ average thread colors  = 2.00 
+ shared memory required =  16.19 KB, 16.19 KB, 16.19 KB, 16.19 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 44.04 MB 
+ data transfer (total)  = 44.67 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #1 for kernel dirichlet
+ number of blocks       = 1 
+ number of block colors = 1 
+ maximum block size     = 3072 
+ average thread colors  = 1.00 
+ shared memory required =  9.38 KB
+ average data reuse     = 1.00 
+ data transfer (used)   = 0.02 MB 
+ data transfer (total)  = 0.05 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+ new execution plan #2 for kernel spMV
+ number of blocks       = 469 
+ number of block colors = 3 
+ maximum block size     = 384 
+ average thread colors  = 2.00 
+ shared memory required =  12.12 KB, 12.12 KB, 12.12 KB
+ average data reuse     = 1.98 
+ data transfer (used)   = 35.75 MB 
+ data transfer (total)  = 36.07 MB 
+ SoA/AoS transfer ratio = 1.00 
+
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74433e-05 iter: 200
+rms = 1.49387e-05 iter: 200
+rms = 8.86210e-06 iter: 200
+rms = 1.37296e-06 iter: 200
+rms = 8.18258e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61539e-08 iter: 200
+rms = 1.18877e-08 iter: 200
+rms = 7.12733e-09 iter: 200
+rms = 1.11479e-09 iter: 200
+rms = 6.70061e-10 iter: 200
+rms = 1.04953e-10 iter: 200
+rms = 6.32227e-11 iter: 200
+rms = 9.91308e-12 iter: 200
+rms = 5.98275e-12 iter: 200
+rms = 9.38810e-13 iter: 200
+rms = 5.67450e-13 iter: 200
+rms = 8.90975e-14 iter: 200
+
+  count   plan time     MPI time(std)        time(std)           GB/s      GB/s   kernel name 
+ -------------------------------------------------------------------------------------------
+     20;    0.0000;    0.0000(  0.0000);    3.3402(  0.0000);   0.2765;   0.2805;   res_calc 
+   3956;    0.0000;    0.0000(  0.0000);    1.0983(  0.0000);   0.0605;   0.1901;   dirichlet 
+     20;    0.0000;    0.0000(  0.0000);    0.0088(  0.0000);   22.9025;         ;   init_cg 
+   3936;    0.0000;    0.0000(  0.0000);    7.5232(  0.0000);  19.6126;  19.7870;   spMV 
+   3936;    0.0000;    0.0000(  0.0000);    1.2344(  0.0000);    9.2191;         ;   dotPV 
+   3936;    0.0000;    0.0000(  0.0000);    1.5059(  0.0000);   26.4519;         ;   updateUR 
+   3936;    0.0000;    0.0000(  0.0000);    1.2208(  0.0000);    4.6608;         ;   dotR 
+   3936;    0.0000;    0.0000(  0.0000);    1.2547(  0.0000);   13.6043;         ;   updateP 
+     20;    0.0000;    0.0000(  0.0000);    0.0052(  0.0000);   28.0630;         ;   update 
+Total plan time:   0.1409
+Max total runtime = 17.239889
+--------------------

@@ -1,0 +1,2124 @@
+CPU information:
+--------------------
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 158
+model name	: Intel(R) Core(TM) i7-7700K CPU @ 4.20GHz
+stepping	: 9
+microcode	: 0xb4
+cpu MHz		: 1092.243
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 8
+core id		: 0
+cpu cores	: 4
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb invpcid_single pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp md_clear flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds
+bogomips	: 8400.00
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 158
+model name	: Intel(R) Core(TM) i7-7700K CPU @ 4.20GHz
+stepping	: 9
+microcode	: 0xb4
+cpu MHz		: 978.132
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 8
+core id		: 1
+cpu cores	: 4
+apicid		: 2
+initial apicid	: 2
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb invpcid_single pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp md_clear flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds
+bogomips	: 8400.00
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 2
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 158
+model name	: Intel(R) Core(TM) i7-7700K CPU @ 4.20GHz
+stepping	: 9
+microcode	: 0xb4
+cpu MHz		: 1023.467
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 8
+core id		: 2
+cpu cores	: 4
+apicid		: 4
+initial apicid	: 4
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb invpcid_single pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp md_clear flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds
+bogomips	: 8400.00
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 3
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 158
+model name	: Intel(R) Core(TM) i7-7700K CPU @ 4.20GHz
+stepping	: 9
+microcode	: 0xb4
+cpu MHz		: 930.631
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 8
+core id		: 3
+cpu cores	: 4
+apicid		: 6
+initial apicid	: 6
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb invpcid_single pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp md_clear flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds
+bogomips	: 8400.00
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 4
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 158
+model name	: Intel(R) Core(TM) i7-7700K CPU @ 4.20GHz
+stepping	: 9
+microcode	: 0xb4
+cpu MHz		: 916.441
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 8
+core id		: 0
+cpu cores	: 4
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb invpcid_single pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp md_clear flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds
+bogomips	: 8400.00
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 5
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 158
+model name	: Intel(R) Core(TM) i7-7700K CPU @ 4.20GHz
+stepping	: 9
+microcode	: 0xb4
+cpu MHz		: 987.558
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 8
+core id		: 1
+cpu cores	: 4
+apicid		: 3
+initial apicid	: 3
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb invpcid_single pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp md_clear flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds
+bogomips	: 8400.00
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 6
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 158
+model name	: Intel(R) Core(TM) i7-7700K CPU @ 4.20GHz
+stepping	: 9
+microcode	: 0xb4
+cpu MHz		: 933.567
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 8
+core id		: 2
+cpu cores	: 4
+apicid		: 5
+initial apicid	: 5
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb invpcid_single pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp md_clear flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds
+bogomips	: 8400.00
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+processor	: 7
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 158
+model name	: Intel(R) Core(TM) i7-7700K CPU @ 4.20GHz
+stepping	: 9
+microcode	: 0xb4
+cpu MHz		: 903.452
+cache size	: 8192 KB
+physical id	: 0
+siblings	: 8
+core id		: 3
+cpu cores	: 4
+apicid		: 7
+initial apicid	: 7
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 22
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb invpcid_single pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp md_clear flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds
+bogomips	: 8400.00
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 39 bits physical, 48 bits virtual
+power management:
+
+--------------------
+Now running Aero AoS
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74431e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86252e-06 iter: 200
+rms = 1.37295e-06 iter: 200
+rms = 8.18299e-07 iter: 200
+rms = 1.27368e-07 iter: 200
+rms = 7.61577e-08 iter: 200
+rms = 1.18874e-08 iter: 200
+rms = 7.12756e-09 iter: 200
+rms = 1.11469e-09 iter: 200
+rms = 6.70027e-10 iter: 200
+rms = 1.04934e-10 iter: 200
+rms = 6.32129e-11 iter: 200
+rms = 9.91026e-12 iter: 200
+rms = 5.98113e-12 iter: 200
+rms = 9.38425e-13 iter: 200
+rms = 5.67221e-13 iter: 200
+rms = 8.90601e-14 iter: 200
+res_calc: 1.48362338, dirichlet_resm: 0.00010907, init_cg: 0.00859369, spMV: 7.26471642, inner = 3.60337850
+Wall clock time: 13.08728467
+CPU clock time: 12.36068196
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74431e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86252e-06 iter: 200
+rms = 1.37295e-06 iter: 200
+rms = 8.18300e-07 iter: 200
+rms = 1.27368e-07 iter: 200
+rms = 7.61577e-08 iter: 200
+rms = 1.18874e-08 iter: 200
+rms = 7.12756e-09 iter: 200
+rms = 1.11469e-09 iter: 200
+rms = 6.70027e-10 iter: 200
+rms = 1.04934e-10 iter: 200
+rms = 6.32128e-11 iter: 200
+rms = 9.91024e-12 iter: 200
+rms = 5.98107e-12 iter: 200
+rms = 9.38428e-13 iter: 200
+rms = 5.67221e-13 iter: 200
+rms = 8.90594e-14 iter: 200
+res_calc: 1.51683763, dirichlet_resm: 0.00010345, init_cg: 0.00863702, spMV: 7.23974302, inner = 3.55271879
+Wall clock time: 12.92555128
+CPU clock time: 12.31830657
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74431e-05 iter: 200
+rms = 1.49387e-05 iter: 200
+rms = 8.86273e-06 iter: 200
+rms = 1.37298e-06 iter: 200
+rms = 8.18325e-07 iter: 200
+rms = 1.27374e-07 iter: 200
+rms = 7.61616e-08 iter: 200
+rms = 1.18884e-08 iter: 200
+rms = 7.12824e-09 iter: 200
+rms = 1.11483e-09 iter: 200
+rms = 6.70124e-10 iter: 200
+rms = 1.04953e-10 iter: 200
+rms = 6.32254e-11 iter: 200
+rms = 9.91255e-12 iter: 200
+rms = 5.98262e-12 iter: 200
+rms = 9.38694e-13 iter: 200
+rms = 5.67420e-13 iter: 200
+rms = 8.90908e-14 iter: 200
+res_calc: 1.48707425, dirichlet_resm: 0.00010758, init_cg: 0.00877952, spMV: 7.30532160, inner = 3.64174644
+Wall clock time: 13.10191104
+CPU clock time: 12.44331282
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74431e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86249e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18295e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61583e-08 iter: 200
+rms = 1.18877e-08 iter: 200
+rms = 7.12771e-09 iter: 200
+rms = 1.11473e-09 iter: 200
+rms = 6.70051e-10 iter: 200
+rms = 1.04939e-10 iter: 200
+rms = 6.32161e-11 iter: 200
+rms = 9.91091e-12 iter: 200
+rms = 5.98146e-12 iter: 200
+rms = 9.38501e-13 iter: 200
+rms = 5.67279e-13 iter: 200
+rms = 8.90785e-14 iter: 200
+res_calc: 1.50178848, dirichlet_resm: 0.00011011, init_cg: 0.00881081, spMV: 7.22756274, inner = 3.59709029
+Wall clock time: 12.99619426
+CPU clock time: 12.33562372
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74431e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86258e-06 iter: 200
+rms = 1.37296e-06 iter: 200
+rms = 8.18308e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61574e-08 iter: 200
+rms = 1.18874e-08 iter: 200
+rms = 7.12745e-09 iter: 200
+rms = 1.11468e-09 iter: 200
+rms = 6.70013e-10 iter: 200
+rms = 1.04933e-10 iter: 200
+rms = 6.32117e-11 iter: 200
+rms = 9.91026e-12 iter: 200
+rms = 5.98104e-12 iter: 200
+rms = 9.38444e-13 iter: 200
+rms = 5.67210e-13 iter: 200
+rms = 8.90692e-14 iter: 200
+res_calc: 1.49464184, dirichlet_resm: 0.00010540, init_cg: 0.00860699, spMV: 7.26301866, inner = 3.56738103
+Wall clock time: 12.96626551
+CPU clock time: 12.33400830
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74431e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86248e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18296e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61584e-08 iter: 200
+rms = 1.18877e-08 iter: 200
+rms = 7.12774e-09 iter: 200
+rms = 1.11473e-09 iter: 200
+rms = 6.70054e-10 iter: 200
+rms = 1.04940e-10 iter: 200
+rms = 6.32165e-11 iter: 200
+rms = 9.91099e-12 iter: 200
+rms = 5.98154e-12 iter: 200
+rms = 9.38509e-13 iter: 200
+rms = 5.67296e-13 iter: 200
+rms = 8.90647e-14 iter: 200
+res_calc: 1.50601484, dirichlet_resm: 0.00010547, init_cg: 0.00866819, spMV: 7.22629818, inner = 3.58640690
+Wall clock time: 12.96793626
+CPU clock time: 12.32775684
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74431e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86248e-06 iter: 200
+rms = 1.37295e-06 iter: 200
+rms = 8.18297e-07 iter: 200
+rms = 1.27370e-07 iter: 200
+rms = 7.61587e-08 iter: 200
+rms = 1.18878e-08 iter: 200
+rms = 7.12778e-09 iter: 200
+rms = 1.11474e-09 iter: 200
+rms = 6.70059e-10 iter: 200
+rms = 1.04941e-10 iter: 200
+rms = 6.32171e-11 iter: 200
+rms = 9.91110e-12 iter: 200
+rms = 5.98162e-12 iter: 200
+rms = 9.38530e-13 iter: 200
+rms = 5.67269e-13 iter: 200
+rms = 8.90785e-14 iter: 200
+res_calc: 1.46894309, dirichlet_resm: 0.00010706, init_cg: 0.00856470, spMV: 7.21581109, inner = 3.60086391
+Wall clock time: 12.98317618
+CPU clock time: 12.29454651
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74431e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86247e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18293e-07 iter: 200
+rms = 1.27370e-07 iter: 200
+rms = 7.61583e-08 iter: 200
+rms = 1.18878e-08 iter: 200
+rms = 7.12776e-09 iter: 200
+rms = 1.11475e-09 iter: 200
+rms = 6.70061e-10 iter: 200
+rms = 1.04942e-10 iter: 200
+rms = 6.32177e-11 iter: 200
+rms = 9.91127e-12 iter: 200
+rms = 5.98169e-12 iter: 200
+rms = 9.38560e-13 iter: 200
+rms = 5.67314e-13 iter: 200
+rms = 8.90735e-14 iter: 200
+res_calc: 1.50951477, dirichlet_resm: 0.00010002, init_cg: 0.00861923, spMV: 7.25755023, inner = 3.59439181
+Wall clock time: 13.01555676
+CPU clock time: 12.37044749
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74431e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86249e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18294e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61580e-08 iter: 200
+rms = 1.18876e-08 iter: 200
+rms = 7.12766e-09 iter: 200
+rms = 1.11472e-09 iter: 200
+rms = 6.70044e-10 iter: 200
+rms = 1.04938e-10 iter: 200
+rms = 6.32152e-11 iter: 200
+rms = 9.91073e-12 iter: 200
+rms = 5.98142e-12 iter: 200
+rms = 9.38504e-13 iter: 200
+rms = 5.67253e-13 iter: 200
+rms = 8.90661e-14 iter: 200
+res_calc: 1.51532336, dirichlet_resm: 0.00010751, init_cg: 0.00874827, spMV: 7.25155372, inner = 3.53926114
+Wall clock time: 12.93012175
+CPU clock time: 12.31527407
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74432e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86239e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18283e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61568e-08 iter: 200
+rms = 1.18876e-08 iter: 200
+rms = 7.12756e-09 iter: 200
+rms = 1.11473e-09 iter: 200
+rms = 6.70040e-10 iter: 200
+rms = 1.04940e-10 iter: 200
+rms = 6.32157e-11 iter: 200
+rms = 9.91110e-12 iter: 200
+rms = 5.98156e-12 iter: 200
+rms = 9.38545e-13 iter: 200
+rms = 5.67257e-13 iter: 200
+rms = 8.90784e-14 iter: 200
+res_calc: 1.46804246, dirichlet_resm: 0.00010815, init_cg: 0.00877665, spMV: 7.26423430, inner = 3.55809635
+Wall clock time: 13.00285686
+CPU clock time: 12.29952861
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74432e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86244e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18286e-07 iter: 200
+rms = 1.27368e-07 iter: 200
+rms = 7.61565e-08 iter: 200
+rms = 1.18876e-08 iter: 200
+rms = 7.12759e-09 iter: 200
+rms = 1.11473e-09 iter: 200
+rms = 6.70051e-10 iter: 200
+rms = 1.04942e-10 iter: 200
+rms = 6.32175e-11 iter: 200
+rms = 9.91136e-12 iter: 200
+rms = 5.98179e-12 iter: 200
+rms = 9.38580e-13 iter: 200
+rms = 5.67310e-13 iter: 200
+rms = 8.90867e-14 iter: 200
+res_calc: 1.47402069, dirichlet_resm: 0.00011102, init_cg: 0.00896323, spMV: 7.24221434, inner = 3.53579476
+Wall clock time: 12.93224816
+CPU clock time: 12.26136098
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74432e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86223e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18250e-07 iter: 200
+rms = 1.27367e-07 iter: 200
+rms = 7.61543e-08 iter: 200
+rms = 1.18877e-08 iter: 200
+rms = 7.12758e-09 iter: 200
+rms = 1.11478e-09 iter: 200
+rms = 6.70075e-10 iter: 200
+rms = 1.04951e-10 iter: 200
+rms = 6.32235e-11 iter: 200
+rms = 9.91293e-12 iter: 200
+rms = 5.98278e-12 iter: 200
+rms = 9.38804e-13 iter: 200
+rms = 5.67463e-13 iter: 200
+rms = 8.91065e-14 iter: 200
+res_calc: 1.49907060, dirichlet_resm: 0.00010759, init_cg: 0.00952875, spMV: 7.22985103, inner = 3.57235842
+Wall clock time: 12.96236401
+CPU clock time: 12.31117850
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74431e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86247e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18295e-07 iter: 200
+rms = 1.27370e-07 iter: 200
+rms = 7.61586e-08 iter: 200
+rms = 1.18878e-08 iter: 200
+rms = 7.12778e-09 iter: 200
+rms = 1.11475e-09 iter: 200
+rms = 6.70061e-10 iter: 200
+rms = 1.04941e-10 iter: 200
+rms = 6.32173e-11 iter: 200
+rms = 9.91116e-12 iter: 200
+rms = 5.98164e-12 iter: 200
+rms = 9.38541e-13 iter: 200
+rms = 5.67308e-13 iter: 200
+rms = 8.90655e-14 iter: 200
+res_calc: 1.47804764, dirichlet_resm: 0.00010668, init_cg: 0.00866332, spMV: 7.18528654, inner = 3.51460822
+Wall clock time: 12.82209217
+CPU clock time: 12.18698558
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74431e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86255e-06 iter: 200
+rms = 1.37295e-06 iter: 200
+rms = 8.18302e-07 iter: 200
+rms = 1.27368e-07 iter: 200
+rms = 7.61576e-08 iter: 200
+rms = 1.18874e-08 iter: 200
+rms = 7.12750e-09 iter: 200
+rms = 1.11468e-09 iter: 200
+rms = 6.70015e-10 iter: 200
+rms = 1.04932e-10 iter: 200
+rms = 6.32113e-11 iter: 200
+rms = 9.91008e-12 iter: 200
+rms = 5.98097e-12 iter: 200
+rms = 9.38411e-13 iter: 200
+rms = 5.67193e-13 iter: 200
+rms = 8.90555e-14 iter: 200
+res_calc: 1.45922476, dirichlet_resm: 0.00011789, init_cg: 0.00879606, spMV: 7.24451161, inner = 3.57051958
+Wall clock time: 13.00649230
+CPU clock time: 12.28344714
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74432e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86228e-06 iter: 200
+rms = 1.37296e-06 iter: 200
+rms = 8.18259e-07 iter: 200
+rms = 1.27371e-07 iter: 200
+rms = 7.61576e-08 iter: 200
+rms = 1.18885e-08 iter: 200
+rms = 7.12820e-09 iter: 200
+rms = 1.11491e-09 iter: 200
+rms = 6.70167e-10 iter: 200
+rms = 1.04967e-10 iter: 200
+rms = 6.32342e-11 iter: 200
+rms = 9.91468e-12 iter: 200
+rms = 5.98390e-12 iter: 200
+rms = 9.38979e-13 iter: 200
+rms = 5.67561e-13 iter: 200
+rms = 8.91205e-14 iter: 200
+res_calc: 1.51678550, dirichlet_resm: 0.00009696, init_cg: 0.00860394, spMV: 7.20983344, inner = 3.54092227
+Wall clock time: 12.88785671
+CPU clock time: 12.27651098
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74432e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86226e-06 iter: 200
+rms = 1.37295e-06 iter: 200
+rms = 8.18266e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61554e-08 iter: 200
+rms = 1.18879e-08 iter: 200
+rms = 7.12770e-09 iter: 200
+rms = 1.11480e-09 iter: 200
+rms = 6.70085e-10 iter: 200
+rms = 1.04953e-10 iter: 200
+rms = 6.32243e-11 iter: 200
+rms = 9.91305e-12 iter: 200
+rms = 5.98283e-12 iter: 200
+rms = 9.38794e-13 iter: 200
+rms = 5.67443e-13 iter: 200
+rms = 8.91010e-14 iter: 200
+res_calc: 1.49424839, dirichlet_resm: 0.00010668, init_cg: 0.00850236, spMV: 7.26476475, inner = 3.59488303
+Wall clock time: 13.03812193
+CPU clock time: 12.36275216
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74431e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86254e-06 iter: 200
+rms = 1.37295e-06 iter: 200
+rms = 8.18304e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61580e-08 iter: 200
+rms = 1.18875e-08 iter: 200
+rms = 7.12756e-09 iter: 200
+rms = 1.11469e-09 iter: 200
+rms = 6.70024e-10 iter: 200
+rms = 1.04934e-10 iter: 200
+rms = 6.32124e-11 iter: 200
+rms = 9.91029e-12 iter: 200
+rms = 5.98106e-12 iter: 200
+rms = 9.38454e-13 iter: 200
+rms = 5.67238e-13 iter: 200
+rms = 8.90442e-14 iter: 200
+res_calc: 1.48309052, dirichlet_resm: 0.00010452, init_cg: 0.00862856, spMV: 7.24862257, inner = 3.57302103
+Wall clock time: 12.95926717
+CPU clock time: 12.31377476
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74431e-05 iter: 200
+rms = 1.49387e-05 iter: 200
+rms = 8.86265e-06 iter: 200
+rms = 1.37297e-06 iter: 200
+rms = 8.18324e-07 iter: 200
+rms = 1.27371e-07 iter: 200
+rms = 7.61600e-08 iter: 200
+rms = 1.18877e-08 iter: 200
+rms = 7.12781e-09 iter: 200
+rms = 1.11473e-09 iter: 200
+rms = 6.70054e-10 iter: 200
+rms = 1.04938e-10 iter: 200
+rms = 6.32157e-11 iter: 200
+rms = 9.91068e-12 iter: 200
+rms = 5.98137e-12 iter: 200
+rms = 9.38468e-13 iter: 200
+rms = 5.67267e-13 iter: 200
+rms = 8.90575e-14 iter: 200
+res_calc: 1.49068211, dirichlet_resm: 0.00010643, init_cg: 0.00851280, spMV: 7.23722558, inner = 3.58247714
+Wall clock time: 12.92922689
+CPU clock time: 12.31925375
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74431e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86251e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18299e-07 iter: 200
+rms = 1.27368e-07 iter: 200
+rms = 7.61577e-08 iter: 200
+rms = 1.18874e-08 iter: 200
+rms = 7.12758e-09 iter: 200
+rms = 1.11469e-09 iter: 200
+rms = 6.70030e-10 iter: 200
+rms = 1.04935e-10 iter: 200
+rms = 6.32133e-11 iter: 200
+rms = 9.91035e-12 iter: 200
+rms = 5.98114e-12 iter: 200
+rms = 9.38446e-13 iter: 200
+rms = 5.67230e-13 iter: 200
+rms = 8.90618e-14 iter: 200
+res_calc: 1.49045244, dirichlet_resm: 0.00010679, init_cg: 0.00852926, spMV: 7.24603528, inner = 3.58530928
+Wall clock time: 12.99383912
+CPU clock time: 12.33067888
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74432e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86230e-06 iter: 200
+rms = 1.37295e-06 iter: 200
+rms = 8.18271e-07 iter: 200
+rms = 1.27367e-07 iter: 200
+rms = 7.61534e-08 iter: 200
+rms = 1.18870e-08 iter: 200
+rms = 7.12697e-09 iter: 200
+rms = 1.11463e-09 iter: 200
+rms = 6.69953e-10 iter: 200
+rms = 1.04926e-10 iter: 200
+rms = 6.32040e-11 iter: 200
+rms = 9.90923e-12 iter: 200
+rms = 5.98008e-12 iter: 200
+rms = 9.38311e-13 iter: 200
+rms = 5.67099e-13 iter: 200
+rms = 8.90494e-14 iter: 200
+res_calc: 1.49885085, dirichlet_resm: 0.00010438, init_cg: 0.00888876, spMV: 7.28164625, inner = 3.58926566
+Wall clock time: 13.07609550
+CPU clock time: 12.37903690
+--------------------
+Now running Aero partial SoA
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74432e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86238e-06 iter: 200
+rms = 1.37295e-06 iter: 200
+rms = 8.18285e-07 iter: 200
+rms = 1.27370e-07 iter: 200
+rms = 7.61579e-08 iter: 200
+rms = 1.18879e-08 iter: 200
+rms = 7.12780e-09 iter: 200
+rms = 1.11478e-09 iter: 200
+rms = 6.70074e-10 iter: 200
+rms = 1.04946e-10 iter: 200
+rms = 6.32199e-11 iter: 200
+rms = 9.91181e-12 iter: 200
+rms = 5.98204e-12 iter: 200
+rms = 9.38615e-13 iter: 200
+rms = 5.67345e-13 iter: 200
+rms = 8.90780e-14 iter: 200
+res_calc: 1.48581650, dirichlet_resm: 0.00006112, init_cg: 0.00480147, spMV: 4.14002428, inner = 0.68990015
+Wall clock time: 6.97440213
+CPU clock time: 6.32085675
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74432e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86230e-06 iter: 200
+rms = 1.37295e-06 iter: 200
+rms = 8.18273e-07 iter: 200
+rms = 1.27368e-07 iter: 200
+rms = 7.61545e-08 iter: 200
+rms = 1.18873e-08 iter: 200
+rms = 7.12723e-09 iter: 200
+rms = 1.11468e-09 iter: 200
+rms = 6.69995e-10 iter: 200
+rms = 1.04934e-10 iter: 200
+rms = 6.32100e-11 iter: 200
+rms = 9.91028e-12 iter: 200
+rms = 5.98087e-12 iter: 200
+rms = 9.38436e-13 iter: 200
+rms = 5.67231e-13 iter: 200
+rms = 8.90577e-14 iter: 200
+res_calc: 1.49658695, dirichlet_resm: 0.00005773, init_cg: 0.00474724, spMV: 4.15097289, inner = 0.70298766
+Wall clock time: 6.96482672
+CPU clock time: 6.35559133
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74432e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86245e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18285e-07 iter: 200
+rms = 1.27367e-07 iter: 200
+rms = 7.61561e-08 iter: 200
+rms = 1.18874e-08 iter: 200
+rms = 7.12744e-09 iter: 200
+rms = 1.11469e-09 iter: 200
+rms = 6.70023e-10 iter: 200
+rms = 1.04936e-10 iter: 200
+rms = 6.32137e-11 iter: 200
+rms = 9.91064e-12 iter: 200
+rms = 5.98132e-12 iter: 200
+rms = 9.38493e-13 iter: 200
+rms = 5.67248e-13 iter: 200
+rms = 8.90631e-14 iter: 200
+res_calc: 1.54073979, dirichlet_resm: 0.00005594, init_cg: 0.00472074, spMV: 4.15009299, inner = 0.71591135
+Wall clock time: 7.00463164
+CPU clock time: 6.41174847
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74431e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86255e-06 iter: 200
+rms = 1.37295e-06 iter: 200
+rms = 8.18300e-07 iter: 200
+rms = 1.27367e-07 iter: 200
+rms = 7.61570e-08 iter: 200
+rms = 1.18872e-08 iter: 200
+rms = 7.12740e-09 iter: 200
+rms = 1.11466e-09 iter: 200
+rms = 6.70002e-10 iter: 200
+rms = 1.04930e-10 iter: 200
+rms = 6.32097e-11 iter: 200
+rms = 9.90977e-12 iter: 200
+rms = 5.98075e-12 iter: 200
+rms = 9.38385e-13 iter: 200
+rms = 5.67197e-13 iter: 200
+rms = 8.90506e-14 iter: 200
+res_calc: 1.53978710, dirichlet_resm: 0.00005840, init_cg: 0.00478309, spMV: 4.16074587, inner = 0.70401796
+Wall clock time: 7.01908645
+CPU clock time: 6.40963879
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74432e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86236e-06 iter: 200
+rms = 1.37295e-06 iter: 200
+rms = 8.18284e-07 iter: 200
+rms = 1.27371e-07 iter: 200
+rms = 7.61584e-08 iter: 200
+rms = 1.18881e-08 iter: 200
+rms = 7.12791e-09 iter: 200
+rms = 1.11480e-09 iter: 200
+rms = 6.70090e-10 iter: 200
+rms = 1.04949e-10 iter: 200
+rms = 6.32219e-11 iter: 200
+rms = 9.91218e-12 iter: 200
+rms = 5.98226e-12 iter: 200
+rms = 9.38662e-13 iter: 200
+rms = 5.67382e-13 iter: 200
+rms = 8.90775e-14 iter: 200
+res_calc: 1.49484694, dirichlet_resm: 0.00005833, init_cg: 0.00473182, spMV: 4.15552871, inner = 0.69595007
+Wall clock time: 7.03722322
+CPU clock time: 6.35132676
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74432e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86244e-06 iter: 200
+rms = 1.37295e-06 iter: 200
+rms = 8.18288e-07 iter: 200
+rms = 1.27368e-07 iter: 200
+rms = 7.61568e-08 iter: 200
+rms = 1.18876e-08 iter: 200
+rms = 7.12758e-09 iter: 200
+rms = 1.11472e-09 iter: 200
+rms = 6.70044e-10 iter: 200
+rms = 1.04940e-10 iter: 200
+rms = 6.32163e-11 iter: 200
+rms = 9.91113e-12 iter: 200
+rms = 5.98161e-12 iter: 200
+rms = 9.38547e-13 iter: 200
+rms = 5.67298e-13 iter: 200
+rms = 8.90707e-14 iter: 200
+res_calc: 1.52586807, dirichlet_resm: 0.00005871, init_cg: 0.00499202, spMV: 4.16589185, inner = 0.69637553
+Wall clock time: 7.06501600
+CPU clock time: 6.39341896
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74432e-05 iter: 200
+rms = 1.49389e-05 iter: 200
+rms = 8.86219e-06 iter: 200
+rms = 1.37287e-06 iter: 200
+rms = 8.18204e-07 iter: 200
+rms = 1.27351e-07 iter: 200
+rms = 7.61422e-08 iter: 200
+rms = 1.18850e-08 iter: 200
+rms = 7.12559e-09 iter: 200
+rms = 1.11439e-09 iter: 200
+rms = 6.69795e-10 iter: 200
+rms = 1.04899e-10 iter: 200
+rms = 6.31866e-11 iter: 200
+rms = 9.90636e-12 iter: 200
+rms = 5.97820e-12 iter: 200
+rms = 9.38001e-13 iter: 200
+rms = 5.66934e-13 iter: 200
+rms = 8.90117e-14 iter: 200
+res_calc: 1.50707545, dirichlet_resm: 0.00005932, init_cg: 0.00469176, spMV: 4.14361293, inner = 0.67329085
+Wall clock time: 6.97055517
+CPU clock time: 6.32896145
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74432e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86225e-06 iter: 200
+rms = 1.37295e-06 iter: 200
+rms = 8.18266e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61558e-08 iter: 200
+rms = 1.18880e-08 iter: 200
+rms = 7.12775e-09 iter: 200
+rms = 1.11481e-09 iter: 200
+rms = 6.70091e-10 iter: 200
+rms = 1.04954e-10 iter: 200
+rms = 6.32251e-11 iter: 200
+rms = 9.91318e-12 iter: 200
+rms = 5.98291e-12 iter: 200
+rms = 9.38821e-13 iter: 200
+rms = 5.67467e-13 iter: 200
+rms = 8.91000e-14 iter: 200
+res_calc: 1.50612195, dirichlet_resm: 0.00005753, init_cg: 0.00478499, spMV: 4.13861975, inner = 0.69431574
+Wall clock time: 6.99375597
+CPU clock time: 6.34415425
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74431e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86253e-06 iter: 200
+rms = 1.37295e-06 iter: 200
+rms = 8.18300e-07 iter: 200
+rms = 1.27368e-07 iter: 200
+rms = 7.61574e-08 iter: 200
+rms = 1.18873e-08 iter: 200
+rms = 7.12749e-09 iter: 200
+rms = 1.11467e-09 iter: 200
+rms = 6.70016e-10 iter: 200
+rms = 1.04932e-10 iter: 200
+rms = 6.32113e-11 iter: 200
+rms = 9.90999e-12 iter: 200
+rms = 5.98089e-12 iter: 200
+rms = 9.38385e-13 iter: 200
+rms = 5.67206e-13 iter: 200
+rms = 8.90462e-14 iter: 200
+res_calc: 1.51511705, dirichlet_resm: 0.00005738, init_cg: 0.00477859, spMV: 4.15880546, inner = 0.69932221
+Wall clock time: 7.00093695
+CPU clock time: 6.37832435
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74432e-05 iter: 200
+rms = 1.49389e-05 iter: 200
+rms = 8.86221e-06 iter: 200
+rms = 1.37292e-06 iter: 200
+rms = 8.18219e-07 iter: 200
+rms = 1.27361e-07 iter: 200
+rms = 7.61501e-08 iter: 200
+rms = 1.18871e-08 iter: 200
+rms = 7.12723e-09 iter: 200
+rms = 1.11476e-09 iter: 200
+rms = 6.70070e-10 iter: 200
+rms = 1.04953e-10 iter: 200
+rms = 6.32254e-11 iter: 200
+rms = 9.91342e-12 iter: 200
+rms = 5.98317e-12 iter: 200
+rms = 9.38871e-13 iter: 200
+rms = 5.67533e-13 iter: 200
+rms = 8.91123e-14 iter: 200
+res_calc: 1.52218539, dirichlet_resm: 0.00005738, init_cg: 0.00498056, spMV: 4.16248673, inner = 0.70732904
+Wall clock time: 7.02821606
+CPU clock time: 6.39728256
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74431e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86255e-06 iter: 200
+rms = 1.37296e-06 iter: 200
+rms = 8.18304e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61580e-08 iter: 200
+rms = 1.18875e-08 iter: 200
+rms = 7.12755e-09 iter: 200
+rms = 1.11469e-09 iter: 200
+rms = 6.70023e-10 iter: 200
+rms = 1.04934e-10 iter: 200
+rms = 6.32125e-11 iter: 200
+rms = 9.91034e-12 iter: 200
+rms = 5.98112e-12 iter: 200
+rms = 9.38444e-13 iter: 200
+rms = 5.67246e-13 iter: 200
+rms = 8.90560e-14 iter: 200
+res_calc: 1.52420494, dirichlet_resm: 0.00005824, init_cg: 0.01478536, spMV: 4.16191263, inner = 0.67377460
+Wall clock time: 7.02838840
+CPU clock time: 6.37494499
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74431e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86250e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18296e-07 iter: 200
+rms = 1.27368e-07 iter: 200
+rms = 7.61577e-08 iter: 200
+rms = 1.18874e-08 iter: 200
+rms = 7.12759e-09 iter: 200
+rms = 1.11470e-09 iter: 200
+rms = 6.70033e-10 iter: 200
+rms = 1.04935e-10 iter: 200
+rms = 6.32137e-11 iter: 200
+rms = 9.91044e-12 iter: 200
+rms = 5.98122e-12 iter: 200
+rms = 9.38461e-13 iter: 200
+rms = 5.67237e-13 iter: 200
+rms = 8.90710e-14 iter: 200
+res_calc: 1.51221800, dirichlet_resm: 0.00005734, init_cg: 0.00479318, spMV: 4.13665410, inner = 0.67979592
+Wall clock time: 6.95440670
+CPU clock time: 6.33376210
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74432e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86229e-06 iter: 200
+rms = 1.37296e-06 iter: 200
+rms = 8.18261e-07 iter: 200
+rms = 1.27372e-07 iter: 200
+rms = 7.61577e-08 iter: 200
+rms = 1.18886e-08 iter: 200
+rms = 7.12820e-09 iter: 200
+rms = 1.11491e-09 iter: 200
+rms = 6.70166e-10 iter: 200
+rms = 1.04968e-10 iter: 200
+rms = 6.32350e-11 iter: 200
+rms = 9.91490e-12 iter: 200
+rms = 5.98413e-12 iter: 200
+rms = 9.39011e-13 iter: 200
+rms = 5.67626e-13 iter: 200
+rms = 8.91129e-14 iter: 200
+res_calc: 1.49989620, dirichlet_resm: 0.00005724, init_cg: 0.00478589, spMV: 4.17990396, inner = 0.69679304
+Wall clock time: 6.98484613
+CPU clock time: 6.38166953
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74431e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86254e-06 iter: 200
+rms = 1.37295e-06 iter: 200
+rms = 8.18301e-07 iter: 200
+rms = 1.27368e-07 iter: 200
+rms = 7.61575e-08 iter: 200
+rms = 1.18873e-08 iter: 200
+rms = 7.12750e-09 iter: 200
+rms = 1.11468e-09 iter: 200
+rms = 6.70015e-10 iter: 200
+rms = 1.04932e-10 iter: 200
+rms = 6.32113e-11 iter: 200
+rms = 9.91001e-12 iter: 200
+rms = 5.98087e-12 iter: 200
+rms = 9.38416e-13 iter: 200
+rms = 5.67211e-13 iter: 200
+rms = 8.90579e-14 iter: 200
+res_calc: 1.49692902, dirichlet_resm: 0.00005719, init_cg: 0.00473951, spMV: 4.15081699, inner = 0.71076913
+Wall clock time: 7.00726640
+CPU clock time: 6.36355491
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74432e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86239e-06 iter: 200
+rms = 1.37295e-06 iter: 200
+rms = 8.18284e-07 iter: 200
+rms = 1.27370e-07 iter: 200
+rms = 7.61575e-08 iter: 200
+rms = 1.18878e-08 iter: 200
+rms = 7.12770e-09 iter: 200
+rms = 1.11476e-09 iter: 200
+rms = 6.70058e-10 iter: 200
+rms = 1.04943e-10 iter: 200
+rms = 6.32178e-11 iter: 200
+rms = 9.91145e-12 iter: 200
+rms = 5.98175e-12 iter: 200
+rms = 9.38575e-13 iter: 200
+rms = 5.67299e-13 iter: 200
+rms = 8.90787e-14 iter: 200
+res_calc: 1.51017696, dirichlet_resm: 0.00006097, init_cg: 0.00477415, spMV: 4.12893178, inner = 0.68686845
+Wall clock time: 7.00826589
+CPU clock time: 6.33104250
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74432e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86235e-06 iter: 200
+rms = 1.37295e-06 iter: 200
+rms = 8.18284e-07 iter: 200
+rms = 1.27371e-07 iter: 200
+rms = 7.61586e-08 iter: 200
+rms = 1.18882e-08 iter: 200
+rms = 7.12795e-09 iter: 200
+rms = 1.11481e-09 iter: 200
+rms = 6.70096e-10 iter: 200
+rms = 1.04951e-10 iter: 200
+rms = 6.32226e-11 iter: 200
+rms = 9.91233e-12 iter: 200
+rms = 5.98233e-12 iter: 200
+rms = 9.38687e-13 iter: 200
+rms = 5.67366e-13 iter: 200
+rms = 8.90874e-14 iter: 200
+res_calc: 1.52107617, dirichlet_resm: 0.00005754, init_cg: 0.00494052, spMV: 4.15193398, inner = 0.69296881
+Wall clock time: 6.97249723
+CPU clock time: 6.37121271
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74432e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86244e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18287e-07 iter: 200
+rms = 1.27368e-07 iter: 200
+rms = 7.61566e-08 iter: 200
+rms = 1.18875e-08 iter: 200
+rms = 7.12751e-09 iter: 200
+rms = 1.11471e-09 iter: 200
+rms = 6.70031e-10 iter: 200
+rms = 1.04937e-10 iter: 200
+rms = 6.32144e-11 iter: 200
+rms = 9.91079e-12 iter: 200
+rms = 5.98140e-12 iter: 200
+rms = 9.38518e-13 iter: 200
+rms = 5.67266e-13 iter: 200
+rms = 8.90727e-14 iter: 200
+res_calc: 1.51434974, dirichlet_resm: 0.00005698, init_cg: 0.00500383, spMV: 4.17649163, inner = 0.69123761
+Wall clock time: 7.06318309
+CPU clock time: 6.38736989
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74431e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86250e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18299e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61581e-08 iter: 200
+rms = 1.18875e-08 iter: 200
+rms = 7.12765e-09 iter: 200
+rms = 1.11471e-09 iter: 200
+rms = 6.70040e-10 iter: 200
+rms = 1.04937e-10 iter: 200
+rms = 6.32145e-11 iter: 200
+rms = 9.91058e-12 iter: 200
+rms = 5.98129e-12 iter: 200
+rms = 9.38473e-13 iter: 200
+rms = 5.67240e-13 iter: 200
+rms = 8.90594e-14 iter: 200
+res_calc: 1.49681773, dirichlet_resm: 0.00006013, init_cg: 0.00476197, spMV: 4.16351820, inner = 0.69582983
+Wall clock time: 7.03210665
+CPU clock time: 6.36122621
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74431e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86248e-06 iter: 200
+rms = 1.37294e-06 iter: 200
+rms = 8.18295e-07 iter: 200
+rms = 1.27369e-07 iter: 200
+rms = 7.61584e-08 iter: 200
+rms = 1.18877e-08 iter: 200
+rms = 7.12774e-09 iter: 200
+rms = 1.11474e-09 iter: 200
+rms = 6.70055e-10 iter: 200
+rms = 1.04940e-10 iter: 200
+rms = 6.32166e-11 iter: 200
+rms = 9.91103e-12 iter: 200
+rms = 5.98155e-12 iter: 200
+rms = 9.38526e-13 iter: 200
+rms = 5.67303e-13 iter: 200
+rms = 8.90730e-14 iter: 200
+res_calc: 1.50973267, dirichlet_resm: 0.00005776, init_cg: 0.00497807, spMV: 4.16131165, inner = 0.70306025
+Wall clock time: 6.99935136
+CPU clock time: 6.37937436
+--------------------
+--------------------
+rms = 6.00030e-04 iter: 136
+rms = 1.67006e-04 iter: 200
+rms = 9.74431e-05 iter: 200
+rms = 1.49388e-05 iter: 200
+rms = 8.86252e-06 iter: 200
+rms = 1.37295e-06 iter: 200
+rms = 8.18300e-07 iter: 200
+rms = 1.27368e-07 iter: 200
+rms = 7.61575e-08 iter: 200
+rms = 1.18873e-08 iter: 200
+rms = 7.12752e-09 iter: 200
+rms = 1.11468e-09 iter: 200
+rms = 6.70020e-10 iter: 200
+rms = 1.04933e-10 iter: 200
+rms = 6.32119e-11 iter: 200
+rms = 9.91009e-12 iter: 200
+rms = 5.98099e-12 iter: 200
+rms = 9.38410e-13 iter: 200
+rms = 5.67221e-13 iter: 200
+rms = 8.90480e-14 iter: 200
+res_calc: 1.54886670, dirichlet_resm: 0.00005684, init_cg: 0.00483975, spMV: 4.17705707, inner = 0.69281075
+Wall clock time: 7.05050988
+CPU clock time: 6.42388079
+--------------------
+Now running Airfoil AoS
+--------------------
+iter =  100, rms = 6.18157e-04
+iter =  200, rms = 4.62303e-04
+iter =  300, rms = 3.76792e-04
+iter =  400, rms = 3.19748e-04
+iter =  500, rms = 2.78444e-04
+iter =  600, rms = 2.47044e-04
+iter =  700, rms = 2.22347e-04
+iter =  800, rms = 2.02410e-04
+iter =  900, rms = 1.85973e-04
+iter = 1000, rms = 1.72140e-04
+adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
+Wall clock time: 255.17112048
+CPU clock time: 254.76892088
+--------------------
+--------------------
+iter =  100, rms = 6.18157e-04
+iter =  200, rms = 4.62303e-04
+iter =  300, rms = 3.76792e-04
+iter =  400, rms = 3.19748e-04
+iter =  500, rms = 2.78444e-04
+iter =  600, rms = 2.47044e-04
+iter =  700, rms = 2.22347e-04
+iter =  800, rms = 2.02410e-04
+iter =  900, rms = 1.85973e-04
+iter = 1000, rms = 1.72140e-04
+adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
+Wall clock time: 257.41381382
+CPU clock time: 255.86240340
+--------------------
+--------------------
+iter =  100, rms = 6.18157e-04
+iter =  200, rms = 4.62303e-04
+iter =  300, rms = 3.76792e-04
+iter =  400, rms = 3.19748e-04
+iter =  500, rms = 2.78444e-04
+iter =  600, rms = 2.47044e-04
+iter =  700, rms = 2.22347e-04
+iter =  800, rms = 2.02410e-04
+iter =  900, rms = 1.85973e-04
+iter = 1000, rms = 1.72140e-04
+adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
+Wall clock time: 255.08410831
+CPU clock time: 254.65279896
+--------------------
+--------------------
+iter =  100, rms = 6.18157e-04
+iter =  200, rms = 4.62303e-04
+iter =  300, rms = 3.76792e-04
+iter =  400, rms = 3.19748e-04
+iter =  500, rms = 2.78444e-04
+iter =  600, rms = 2.47044e-04
+iter =  700, rms = 2.22347e-04
+iter =  800, rms = 2.02410e-04
+iter =  900, rms = 1.85973e-04
+iter = 1000, rms = 1.72140e-04
+adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
+Wall clock time: 255.29062666
+CPU clock time: 254.68542684
+--------------------
+--------------------
+iter =  100, rms = 6.18157e-04
+iter =  200, rms = 4.62303e-04
+iter =  300, rms = 3.76792e-04
+iter =  400, rms = 3.19748e-04
+iter =  500, rms = 2.78444e-04
+iter =  600, rms = 2.47044e-04
+iter =  700, rms = 2.22347e-04
+iter =  800, rms = 2.02410e-04
+iter =  900, rms = 1.85973e-04
+iter = 1000, rms = 1.72140e-04
+adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
+Wall clock time: 255.40608243
+CPU clock time: 254.43639596
+--------------------
+--------------------
+iter =  100, rms = 6.18157e-04
+iter =  200, rms = 4.62303e-04
+iter =  300, rms = 3.76792e-04
+iter =  400, rms = 3.19748e-04
+iter =  500, rms = 2.78444e-04
+iter =  600, rms = 2.47044e-04
+iter =  700, rms = 2.22347e-04
+iter =  800, rms = 2.02410e-04
+iter =  900, rms = 1.85973e-04
+iter = 1000, rms = 1.72140e-04
+adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
+Wall clock time: 255.26315678
+CPU clock time: 254.75101949
+--------------------
+--------------------
+iter =  100, rms = 6.18157e-04
+iter =  200, rms = 4.62303e-04
+iter =  300, rms = 3.76792e-04
+iter =  400, rms = 3.19748e-04
+iter =  500, rms = 2.78444e-04
+iter =  600, rms = 2.47044e-04
+iter =  700, rms = 2.22347e-04
+iter =  800, rms = 2.02410e-04
+iter =  900, rms = 1.85973e-04
+iter = 1000, rms = 1.72140e-04
+adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
+Wall clock time: 255.09567112
+CPU clock time: 254.10535145
+--------------------
+--------------------
+iter =  100, rms = 6.18157e-04
+iter =  200, rms = 4.62303e-04
+iter =  300, rms = 3.76792e-04
+iter =  400, rms = 3.19748e-04
+iter =  500, rms = 2.78444e-04
+iter =  600, rms = 2.47044e-04
+iter =  700, rms = 2.22347e-04
+iter =  800, rms = 2.02410e-04
+iter =  900, rms = 1.85973e-04
+iter = 1000, rms = 1.72140e-04
+adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
+Wall clock time: 255.16778888
+CPU clock time: 254.24108625
+--------------------
+--------------------
+iter =  100, rms = 6.18157e-04
+iter =  200, rms = 4.62303e-04
+iter =  300, rms = 3.76792e-04
+iter =  400, rms = 3.19748e-04
+iter =  500, rms = 2.78444e-04
+iter =  600, rms = 2.47044e-04
+iter =  700, rms = 2.22347e-04
+iter =  800, rms = 2.02410e-04
+iter =  900, rms = 1.85973e-04
+iter = 1000, rms = 1.72140e-04
+adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
+Wall clock time: 256.86498447
+CPU clock time: 255.50658439
+--------------------
+--------------------
+iter =  100, rms = 6.18157e-04
+iter =  200, rms = 4.62303e-04
+iter =  300, rms = 3.76792e-04
+iter =  400, rms = 3.19748e-04
+iter =  500, rms = 2.78444e-04
+iter =  600, rms = 2.47044e-04
+iter =  700, rms = 2.22347e-04
+iter =  800, rms = 2.02410e-04
+iter =  900, rms = 1.85973e-04
+iter = 1000, rms = 1.72140e-04
+adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
+Wall clock time: 255.08624687
+CPU clock time: 254.38539244
+--------------------
+--------------------
+iter =  100, rms = 6.18157e-04
+iter =  200, rms = 4.62303e-04
+iter =  300, rms = 3.76792e-04
+iter =  400, rms = 3.19748e-04
+iter =  500, rms = 2.78444e-04
+iter =  600, rms = 2.47044e-04
+iter =  700, rms = 2.22347e-04
+iter =  800, rms = 2.02410e-04
+iter =  900, rms = 1.85973e-04
+iter = 1000, rms = 1.72140e-04
+adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
+Wall clock time: 255.15534174
+CPU clock time: 254.66438847
+--------------------
+--------------------
+iter =  100, rms = 6.18157e-04
+iter =  200, rms = 4.62303e-04
+iter =  300, rms = 3.76792e-04
+iter =  400, rms = 3.19748e-04
+iter =  500, rms = 2.78444e-04
+iter =  600, rms = 2.47044e-04
+iter =  700, rms = 2.22347e-04
+iter =  800, rms = 2.02410e-04
+iter =  900, rms = 1.85973e-04
+iter = 1000, rms = 1.72140e-04
+adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
+Wall clock time: 270.87871347
+CPU clock time: 265.19575689
+--------------------
+--------------------
+iter =  100, rms = 6.18157e-04
+iter =  200, rms = 4.62303e-04
+iter =  300, rms = 3.76792e-04
+iter =  400, rms = 3.19748e-04
+iter =  500, rms = 2.78444e-04
+iter =  600, rms = 2.47044e-04
+iter =  700, rms = 2.22347e-04
+iter =  800, rms = 2.02410e-04
+iter =  900, rms = 1.85973e-04
+iter = 1000, rms = 1.72140e-04
+adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
+Wall clock time: 255.24718577
+CPU clock time: 254.70993148
+--------------------
+--------------------
+iter =  100, rms = 6.18157e-04
+iter =  200, rms = 4.62303e-04
+iter =  300, rms = 3.76792e-04
+iter =  400, rms = 3.19748e-04
+iter =  500, rms = 2.78444e-04
+iter =  600, rms = 2.47044e-04
+iter =  700, rms = 2.22347e-04
+iter =  800, rms = 2.02410e-04
+iter =  900, rms = 1.85973e-04
+iter = 1000, rms = 1.72140e-04
+adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
+Wall clock time: 255.25881033
+CPU clock time: 254.55347115
+--------------------
+--------------------
+iter =  100, rms = 6.18157e-04
+iter =  200, rms = 4.62303e-04
+iter =  300, rms = 3.76792e-04
+iter =  400, rms = 3.19748e-04
+iter =  500, rms = 2.78444e-04
+iter =  600, rms = 2.47044e-04
+iter =  700, rms = 2.22347e-04
+iter =  800, rms = 2.02410e-04
+iter =  900, rms = 1.85973e-04
+iter = 1000, rms = 1.72140e-04
+adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
+Wall clock time: 256.24629420
+CPU clock time: 255.36820668
+--------------------
+--------------------
+iter =  100, rms = 6.18157e-04
+iter =  200, rms = 4.62303e-04
+iter =  300, rms = 3.76792e-04
+iter =  400, rms = 3.19748e-04
+iter =  500, rms = 2.78444e-04
+iter =  600, rms = 2.47044e-04
+iter =  700, rms = 2.22347e-04
+iter =  800, rms = 2.02410e-04
+iter =  900, rms = 1.85973e-04
+iter = 1000, rms = 1.72140e-04
+adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
+Wall clock time: 256.77145169
+CPU clock time: 255.00106348
+--------------------
+--------------------
+iter =  100, rms = 6.18157e-04
+iter =  200, rms = 4.62303e-04
+iter =  300, rms = 3.76792e-04
+iter =  400, rms = 3.19748e-04
+iter =  500, rms = 2.78444e-04
+iter =  600, rms = 2.47044e-04
+iter =  700, rms = 2.22347e-04
+iter =  800, rms = 2.02410e-04
+iter =  900, rms = 1.85973e-04
+iter = 1000, rms = 1.72140e-04
+adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
+Wall clock time: 255.23477602
+CPU clock time: 254.64258740
+--------------------
+--------------------
+iter =  100, rms = 6.18157e-04
+iter =  200, rms = 4.62303e-04
+iter =  300, rms = 3.76792e-04
+iter =  400, rms = 3.19748e-04
+iter =  500, rms = 2.78444e-04
+iter =  600, rms = 2.47044e-04
+iter =  700, rms = 2.22347e-04
+iter =  800, rms = 2.02410e-04
+iter =  900, rms = 1.85973e-04
+iter = 1000, rms = 1.72140e-04
+adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
+Wall clock time: 255.20467438
+CPU clock time: 254.24715493
+--------------------
+--------------------
+iter =  100, rms = 6.18157e-04
+iter =  200, rms = 4.62303e-04
+iter =  300, rms = 3.76792e-04
+iter =  400, rms = 3.19748e-04
+iter =  500, rms = 2.78444e-04
+iter =  600, rms = 2.47044e-04
+iter =  700, rms = 2.22347e-04
+iter =  800, rms = 2.02410e-04
+iter =  900, rms = 1.85973e-04
+iter = 1000, rms = 1.72140e-04
+adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
+Wall clock time: 256.99973275
+CPU clock time: 255.57908893
+--------------------
+--------------------
+iter =  100, rms = 6.18157e-04
+iter =  200, rms = 4.62303e-04
+iter =  300, rms = 3.76792e-04
+iter =  400, rms = 3.19748e-04
+iter =  500, rms = 2.78444e-04
+iter =  600, rms = 2.47044e-04
+iter =  700, rms = 2.22347e-04
+iter =  800, rms = 2.02410e-04
+iter =  900, rms = 1.85973e-04
+iter = 1000, rms = 1.72140e-04
+adt: 0.00000000, res: 0.00000000, bres: 0.00000000, upd: 0.00000000
+Wall clock time: 255.21671953
+CPU clock time: 254.75607820
+--------------------
+Now running Airfoil partial SoA
+--------------------
+iter =  100, rms = 4.36778e-04
+iter =  200, rms = 3.26659e-04
+iter =  300, rms = 2.66219e-04
+iter =  400, rms = 2.25900e-04
+iter =  500, rms = 1.96707e-04
+iter =  600, rms = 1.74514e-04
+iter =  700, rms = 1.57058e-04
+iter =  800, rms = 1.42967e-04
+iter =  900, rms = 1.31349e-04
+iter = 1000, rms = 1.21571e-04
+adt: 20.85214237, res: 84.46766104, bres: 0.61371160, upd: 36.26215656
+Wall clock time: 152.65396274
+CPU clock time: 152.14243287
+--------------------
+--------------------
+iter =  100, rms = 4.36778e-04
+iter =  200, rms = 3.26659e-04
+iter =  300, rms = 2.66219e-04
+iter =  400, rms = 2.25900e-04
+iter =  500, rms = 1.96707e-04
+iter =  600, rms = 1.74514e-04
+iter =  700, rms = 1.57058e-04
+iter =  800, rms = 1.42967e-04
+iter =  900, rms = 1.31349e-04
+iter = 1000, rms = 1.21571e-04
+adt: 20.86170323, res: 84.41799657, bres: 0.60987084, upd: 36.30674878
+Wall clock time: 152.58509648
+CPU clock time: 152.15356060
+--------------------
+--------------------
+iter =  100, rms = 4.36778e-04
+iter =  200, rms = 3.26659e-04
+iter =  300, rms = 2.66219e-04
+iter =  400, rms = 2.25900e-04
+iter =  500, rms = 1.96707e-04
+iter =  600, rms = 1.74514e-04
+iter =  700, rms = 1.57058e-04
+iter =  800, rms = 1.42967e-04
+iter =  900, rms = 1.31349e-04
+iter = 1000, rms = 1.21571e-04
+adt: 20.89618655, res: 84.52066002, bres: 0.61413291, upd: 36.32667930
+Wall clock time: 152.64986660
+CPU clock time: 152.29946563
+--------------------
+--------------------
+iter =  100, rms = 4.36778e-04
+iter =  200, rms = 3.26659e-04
+iter =  300, rms = 2.66219e-04
+iter =  400, rms = 2.25900e-04
+iter =  500, rms = 1.96707e-04
+iter =  600, rms = 1.74514e-04
+iter =  700, rms = 1.57058e-04
+iter =  800, rms = 1.42967e-04
+iter =  900, rms = 1.31349e-04
+iter = 1000, rms = 1.21571e-04
+adt: 20.97374327, res: 84.61543732, bres: 0.61356669, upd: 36.37297116
+Wall clock time: 152.87075391
+CPU clock time: 152.52252520
+--------------------
+--------------------
+iter =  100, rms = 4.36778e-04
+iter =  200, rms = 3.26659e-04
+iter =  300, rms = 2.66219e-04
+iter =  400, rms = 2.25900e-04
+iter =  500, rms = 1.96707e-04
+iter =  600, rms = 1.74514e-04
+iter =  700, rms = 1.57058e-04
+iter =  800, rms = 1.42967e-04
+iter =  900, rms = 1.31349e-04
+iter = 1000, rms = 1.21571e-04
+adt: 20.89257085, res: 84.41305974, bres: 0.61260154, upd: 36.30095855
+Wall clock time: 152.59661051
+CPU clock time: 152.16894205
+--------------------
+--------------------
+iter =  100, rms = 4.36778e-04
+iter =  200, rms = 3.26659e-04
+iter =  300, rms = 2.66219e-04
+iter =  400, rms = 2.25900e-04
+iter =  500, rms = 1.96707e-04
+iter =  600, rms = 1.74514e-04
+iter =  700, rms = 1.57058e-04
+iter =  800, rms = 1.42967e-04
+iter =  900, rms = 1.31349e-04
+iter = 1000, rms = 1.21571e-04
+adt: 20.86596400, res: 84.30306795, bres: 0.61404949, upd: 36.30451778
+Wall clock time: 152.51746128
+CPU clock time: 152.01771861
+--------------------
+--------------------
+iter =  100, rms = 4.36778e-04
+iter =  200, rms = 3.26659e-04
+iter =  300, rms = 2.66219e-04
+iter =  400, rms = 2.25900e-04
+iter =  500, rms = 1.96707e-04
+iter =  600, rms = 1.74514e-04
+iter =  700, rms = 1.57058e-04
+iter =  800, rms = 1.42967e-04
+iter =  900, rms = 1.31349e-04
+iter = 1000, rms = 1.21571e-04
+adt: 20.88537621, res: 84.57885773, bres: 0.61582657, upd: 36.32900111
+Wall clock time: 152.68196369
+CPU clock time: 152.37125534
+--------------------
+--------------------
+iter =  100, rms = 4.36778e-04
+iter =  200, rms = 3.26659e-04
+iter =  300, rms = 2.66219e-04
+iter =  400, rms = 2.25900e-04
+iter =  500, rms = 1.96707e-04
+iter =  600, rms = 1.74514e-04
+iter =  700, rms = 1.57058e-04
+iter =  800, rms = 1.42967e-04
+iter =  900, rms = 1.31349e-04
+iter = 1000, rms = 1.21571e-04
+adt: 20.86277727, res: 84.56206935, bres: 0.61013027, upd: 36.35859618
+Wall clock time: 152.59492057
+CPU clock time: 152.32405773
+--------------------
+--------------------
+iter =  100, rms = 4.36778e-04
+iter =  200, rms = 3.26659e-04
+iter =  300, rms = 2.66219e-04
+iter =  400, rms = 2.25900e-04
+iter =  500, rms = 1.96707e-04
+iter =  600, rms = 1.74514e-04
+iter =  700, rms = 1.57058e-04
+iter =  800, rms = 1.42967e-04
+iter =  900, rms = 1.31349e-04
+iter = 1000, rms = 1.21571e-04
+adt: 21.30971024, res: 85.40634427, bres: 0.61649921, upd: 36.62710225
+Wall clock time: 155.00550817
+CPU clock time: 154.04365415
+--------------------
+--------------------
+iter =  100, rms = 4.36778e-04
+iter =  200, rms = 3.26659e-04
+iter =  300, rms = 2.66219e-04
+iter =  400, rms = 2.25900e-04
+iter =  500, rms = 1.96707e-04
+iter =  600, rms = 1.74514e-04
+iter =  700, rms = 1.57058e-04
+iter =  800, rms = 1.42967e-04
+iter =  900, rms = 1.31349e-04
+iter = 1000, rms = 1.21571e-04
+adt: 20.90440885, res: 84.45566324, bres: 0.61186146, upd: 36.33159375
+Wall clock time: 152.59766485
+CPU clock time: 152.26051263
+--------------------
+--------------------
+iter =  100, rms = 4.36778e-04
+iter =  200, rms = 3.26659e-04
+iter =  300, rms = 2.66219e-04
+iter =  400, rms = 2.25900e-04
+iter =  500, rms = 1.96707e-04
+iter =  600, rms = 1.74514e-04
+iter =  700, rms = 1.57058e-04
+iter =  800, rms = 1.42967e-04
+iter =  900, rms = 1.31349e-04
+iter = 1000, rms = 1.21571e-04
+adt: 20.91909293, res: 84.48141825, bres: 0.61600954, upd: 36.35682352
+Wall clock time: 152.64929842
+CPU clock time: 152.35673433
+--------------------
+--------------------
+iter =  100, rms = 4.36778e-04
+iter =  200, rms = 3.26659e-04
+iter =  300, rms = 2.66219e-04
+iter =  400, rms = 2.25900e-04
+iter =  500, rms = 1.96707e-04
+iter =  600, rms = 1.74514e-04
+iter =  700, rms = 1.57058e-04
+iter =  800, rms = 1.42967e-04
+iter =  900, rms = 1.31349e-04
+iter = 1000, rms = 1.21571e-04
+adt: 20.88391833, res: 84.45635011, bres: 0.61564771, upd: 36.29650839
+Wall clock time: 152.63591581
+CPU clock time: 152.20855175
+--------------------
+--------------------
+iter =  100, rms = 4.36778e-04
+iter =  200, rms = 3.26659e-04
+iter =  300, rms = 2.66219e-04
+iter =  400, rms = 2.25900e-04
+iter =  500, rms = 1.96707e-04
+iter =  600, rms = 1.74514e-04
+iter =  700, rms = 1.57058e-04
+iter =  800, rms = 1.42967e-04
+iter =  900, rms = 1.31349e-04
+iter = 1000, rms = 1.21571e-04
+adt: 20.90106561, res: 84.53641960, bres: 0.61633922, upd: 36.35897387
+Wall clock time: 152.66407777
+CPU clock time: 152.37854572
+--------------------
+--------------------
+iter =  100, rms = 4.36778e-04
+iter =  200, rms = 3.26659e-04
+iter =  300, rms = 2.66219e-04
+iter =  400, rms = 2.25900e-04
+iter =  500, rms = 1.96707e-04
+iter =  600, rms = 1.74514e-04
+iter =  700, rms = 1.57058e-04
+iter =  800, rms = 1.42967e-04
+iter =  900, rms = 1.31349e-04
+iter = 1000, rms = 1.21571e-04
+adt: 20.86045237, res: 84.54180406, bres: 0.61042247, upd: 36.33847122
+Wall clock time: 152.67816262
+CPU clock time: 152.31061610
+--------------------
+--------------------
+iter =  100, rms = 4.36778e-04
+iter =  200, rms = 3.26659e-04
+iter =  300, rms = 2.66219e-04
+iter =  400, rms = 2.25900e-04
+iter =  500, rms = 1.96707e-04
+iter =  600, rms = 1.74514e-04
+iter =  700, rms = 1.57058e-04
+iter =  800, rms = 1.42967e-04
+iter =  900, rms = 1.31349e-04
+iter = 1000, rms = 1.21571e-04
+adt: 24.90126077, res: 93.77624870, bres: 0.62709137, upd: 39.97989396
+Wall clock time: 176.22096838
+CPU clock time: 170.75490179
+--------------------
+--------------------
+iter =  100, rms = 4.36778e-04
+iter =  200, rms = 3.26659e-04
+iter =  300, rms = 2.66219e-04
+iter =  400, rms = 2.25900e-04
+iter =  500, rms = 1.96707e-04
+iter =  600, rms = 1.74514e-04
+iter =  700, rms = 1.57058e-04
+iter =  800, rms = 1.42967e-04
+iter =  900, rms = 1.31349e-04
+iter = 1000, rms = 1.21571e-04
+adt: 20.87784777, res: 84.20229473, bres: 0.61555172, upd: 36.27999148
+Wall clock time: 152.61368612
+CPU clock time: 151.90530242
+--------------------
+--------------------
+iter =  100, rms = 4.36778e-04
+iter =  200, rms = 3.26659e-04
+iter =  300, rms = 2.66219e-04
+iter =  400, rms = 2.25900e-04
+iter =  500, rms = 1.96707e-04
+iter =  600, rms = 1.74514e-04
+iter =  700, rms = 1.57058e-04
+iter =  800, rms = 1.42967e-04
+iter =  900, rms = 1.31349e-04
+iter = 1000, rms = 1.21571e-04
+adt: 20.87030320, res: 84.38185428, bres: 0.60981044, upd: 36.37862324
+Wall clock time: 152.56500816
+CPU clock time: 152.20251968
+--------------------
+--------------------
+iter =  100, rms = 4.36778e-04
+iter =  200, rms = 3.26659e-04
+iter =  300, rms = 2.66219e-04
+iter =  400, rms = 2.25900e-04
+iter =  500, rms = 1.96707e-04
+iter =  600, rms = 1.74514e-04
+iter =  700, rms = 1.57058e-04
+iter =  800, rms = 1.42967e-04
+iter =  900, rms = 1.31349e-04
+iter = 1000, rms = 1.21571e-04
+adt: 20.86604543, res: 84.41846187, bres: 0.61097723, upd: 36.33067656
+Wall clock time: 152.58774887
+CPU clock time: 152.19802875
+--------------------
+--------------------
+iter =  100, rms = 4.36778e-04
+iter =  200, rms = 3.26659e-04
+iter =  300, rms = 2.66219e-04
+iter =  400, rms = 2.25900e-04
+iter =  500, rms = 1.96707e-04
+iter =  600, rms = 1.74514e-04
+iter =  700, rms = 1.57058e-04
+iter =  800, rms = 1.42967e-04
+iter =  900, rms = 1.31349e-04
+iter = 1000, rms = 1.21571e-04
+adt: 20.86618152, res: 84.38451542, bres: 0.61705006, upd: 36.36220083
+Wall clock time: 152.50789876
+CPU clock time: 152.18285228
+--------------------
+--------------------
+iter =  100, rms = 4.36778e-04
+iter =  200, rms = 3.26659e-04
+iter =  300, rms = 2.66219e-04
+iter =  400, rms = 2.25900e-04
+iter =  500, rms = 1.96707e-04
+iter =  600, rms = 1.74514e-04
+iter =  700, rms = 1.57058e-04
+iter =  800, rms = 1.42967e-04
+iter =  900, rms = 1.31349e-04
+iter = 1000, rms = 1.21571e-04
+adt: 20.88182603, res: 84.46353074, bres: 0.61868001, upd: 36.36833956
+Wall clock time: 152.66002626
+CPU clock time: 152.29476790
+--------------------
+Now running Airfoil full SoA
+--------------------
+iter =  100, rms = 2.51536e-04
+iter =  200, rms = 2.57951e-04
+iter =  300, rms = 9.35496e-05
+iter =  400, rms = 1.11632e-04
+iter =  500, rms = 9.53745e-05
+iter =  600, rms = 9.35231e-05
+iter =  700, rms = 6.57741e-05
+iter =  800, rms = 6.22319e-05
+iter =  900, rms = 6.74453e-05
+iter = 1000, rms = 4.40543e-05
+adt: 23.39430192, res: 100.88919247, bres: 0.81089408, upd: 130.09131986
+Wall clock time: 267.70840734
+CPU clock time: 266.72989782
+--------------------
+--------------------
+iter =  100, rms = 1.79822e-04
+iter =  200, rms = 9.49114e-05
+iter =  300, rms = 1.20488e-04
+iter =  400, rms = 9.06508e-05
+iter =  500, rms = 1.23736e-04
+iter =  600, rms = 8.94851e-05
+iter =  700, rms = 8.16313e-05
+iter =  800, rms = 6.89153e-05
+iter =  900, rms = 5.62933e-05
+iter = 1000, rms = 9.14218e-05
+adt: 23.17132259, res: 100.42990960, bres: 0.80454670, upd: 130.14867393
+Wall clock time: 266.57739943
+CPU clock time: 266.05049729
+--------------------
+--------------------
+iter =  100, rms = 1.03607e-04
+iter =  200, rms = 2.08871e-04
+iter =  300, rms = 1.76336e-04
+iter =  400, rms = 1.00336e-04
+iter =  500, rms = 1.01386e-04
+iter =  600, rms = 6.54890e-05
+iter =  700, rms = 1.02656e-04
+iter =  800, rms = 1.09499e-04
+iter =  900, rms = 1.11806e-04
+iter = 1000, rms = 6.27339e-05
+adt: 23.14363472, res: 100.36478358, bres: 0.80320476, upd: 125.33195712
+Wall clock time: 261.62914405
+CPU clock time: 261.15019432
+--------------------
+--------------------
+iter =  100, rms = 1.60891e-04
+iter =  200, rms = 5.54549e-05
+iter =  300, rms = 1.02854e-04
+iter =  400, rms = 1.40790e-04
+iter =  500, rms = 1.33969e-04
+iter =  600, rms = 1.19917e-04
+iter =  700, rms = 8.48499e-05
+iter =  800, rms = 8.02538e-05
+iter =  900, rms = 6.24194e-05
+iter = 1000, rms = 9.17489e-05
+adt: 23.49243107, res: 101.01634623, bres: 0.80132781, upd: 125.28560381
+Wall clock time: 264.93734728
+CPU clock time: 262.18319252
+--------------------
+--------------------
+iter =  100, rms = 3.52572e-04
+iter =  200, rms = 5.75348e-05
+iter =  300, rms = 1.73018e-04
+iter =  400, rms = 1.38997e-04
+iter =  500, rms = 1.12530e-04
+iter =  600, rms = 8.93882e-05
+iter =  700, rms = 7.12536e-05
+iter =  800, rms = 7.92129e-05
+iter =  900, rms = 8.14435e-05
+iter = 1000, rms = 7.82239e-05
+adt: 23.12646573, res: 100.55651195, bres: 0.80100352, upd: 124.56858107
+Wall clock time: 261.08298558
+CPU clock time: 260.58647282
+--------------------
+--------------------
+iter =  100, rms = 2.23148e-04
+iter =  200, rms = 1.40455e-04
+iter =  300, rms = 1.65893e-04
+iter =  400, rms = 9.79130e-05
+iter =  500, rms = 6.40926e-05
+iter =  600, rms = 9.14090e-05
+iter =  700, rms = 1.09532e-04
+iter =  800, rms = 6.33104e-05
+iter =  900, rms = 5.20692e-05
+iter = 1000, rms = 7.63698e-05
+adt: 23.15135712, res: 100.41444351, bres: 0.80437586, upd: 128.94919477
+Wall clock time: 265.22974489
+CPU clock time: 264.82165922
+--------------------
+--------------------
+iter =  100, rms = 1.37827e-04
+iter =  200, rms = 7.37451e-05
+iter =  300, rms = 9.11033e-05
+iter =  400, rms = 1.10870e-04
+iter =  500, rms = 1.09663e-04
+iter =  600, rms = 7.01013e-05
+iter =  700, rms = 9.90854e-05
+iter =  800, rms = 1.00982e-04
+iter =  900, rms = 9.77168e-05
+iter = 1000, rms = 6.07907e-05
+adt: 23.21812715, res: 100.43222188, bres: 0.80578061, upd: 125.95823896
+Wall clock time: 263.10227690
+CPU clock time: 261.92503016
+--------------------
+--------------------
+iter =  100, rms = 2.18650e-04
+iter =  200, rms = 9.18553e-05
+iter =  300, rms = 1.30000e-04
+iter =  400, rms = 9.74009e-05
+iter =  500, rms = 7.50973e-05
+iter =  600, rms = 6.57269e-05
+iter =  700, rms = 8.42203e-05
+iter =  800, rms = 9.16039e-05
+iter =  900, rms = 7.57755e-05
+iter = 1000, rms = 8.34119e-05
+adt: 23.14370750, res: 100.50239797, bres: 0.80107704, upd: 129.18069207
+Wall clock time: 265.74011260
+CPU clock time: 265.11342230
+--------------------
+--------------------
+iter =  100, rms = 2.83912e-04
+iter =  200, rms = 1.71550e-04
+iter =  300, rms = 1.51299e-04
+iter =  400, rms = 9.67282e-05
+iter =  500, rms = 1.13621e-04
+iter =  600, rms = 3.68704e-05
+iter =  700, rms = 6.02314e-05
+iter =  800, rms = 7.38108e-05
+iter =  900, rms = 5.45483e-05
+iter = 1000, rms = 7.44812e-05
+adt: 23.11153364, res: 100.37442310, bres: 0.80488443, upd: 129.54860176
+Wall clock time: 266.11542302
+CPU clock time: 265.31901759
+--------------------
+--------------------
+iter =  100, rms = 1.06900e-04
+iter =  200, rms = 1.50553e-04
+iter =  300, rms = 1.33495e-04
+iter =  400, rms = 1.07314e-04
+iter =  500, rms = 8.09262e-05
+iter =  600, rms = 8.68314e-05
+iter =  700, rms = 9.31763e-05
+iter =  800, rms = 5.83580e-05
+iter =  900, rms = 4.64327e-05
+iter = 1000, rms = 5.41312e-05
+adt: 23.12318791, res: 100.36598559, bres: 0.80225890, upd: 128.77348080
+Wall clock time: 265.37841104
+CPU clock time: 264.53379002
+--------------------
+--------------------
+iter =  100, rms = 2.03904e-04
+iter =  200, rms = 2.48234e-04
+iter =  300, rms = 1.24080e-04
+iter =  400, rms = 1.32591e-04
+iter =  500, rms = 1.03340e-04
+iter =  600, rms = 7.19647e-05
+iter =  700, rms = 7.61859e-05
+iter =  800, rms = 7.19197e-05
+iter =  900, rms = 6.31838e-05
+iter = 1000, rms = 9.15615e-05
+adt: 23.44036635, res: 101.17028512, bres: 0.80530493, upd: 129.45749790
+Wall clock time: 267.50684236
+CPU clock time: 266.50586420
+--------------------
+--------------------
+iter =  100, rms = 1.87985e-04
+iter =  200, rms = 9.95952e-05
+iter =  300, rms = 1.10916e-04
+iter =  400, rms = 1.52779e-04
+iter =  500, rms = 8.07965e-05
+iter =  600, rms = 8.46446e-05
+iter =  700, rms = 8.35384e-05
+iter =  800, rms = 7.69550e-05
+iter =  900, rms = 9.90200e-05
+iter = 1000, rms = 1.07472e-04
+adt: 23.14795127, res: 100.28080937, bres: 0.79763614, upd: 130.33747028
+Wall clock time: 266.77672037
+CPU clock time: 266.06647216
+--------------------
+--------------------
+iter =  100, rms = 1.06533e-04
+iter =  200, rms = 1.59138e-04
+iter =  300, rms = 9.69443e-05
+iter =  400, rms = 1.11718e-04
+iter =  500, rms = 1.05043e-04
+iter =  600, rms = 7.14264e-05
+iter =  700, rms = 9.47358e-05
+iter =  800, rms = 6.92462e-05
+iter =  900, rms = 6.59325e-05
+iter = 1000, rms = 4.55977e-05
+adt: 23.08776112, res: 100.30581477, bres: 0.80581203, upd: 130.57710094
+Wall clock time: 267.01208944
+CPU clock time: 266.25951773
+--------------------
+--------------------
+iter =  100, rms = 2.36555e-04
+iter =  200, rms = 6.49864e-05
+iter =  300, rms = 1.58235e-04
+iter =  400, rms = 1.53676e-04
+iter =  500, rms = 1.21319e-04
+iter =  600, rms = 1.12411e-04
+iter =  700, rms = 8.56241e-05
+iter =  800, rms = 7.78559e-05
+iter =  900, rms = 8.52250e-05
+iter = 1000, rms = 9.80637e-05
+adt: 25.90808446, res: 105.69711000, bres: 0.80971756, upd: 132.03046930
+Wall clock time: 282.78319679
+CPU clock time: 276.87014450
+--------------------
+--------------------
+iter =  100, rms = 1.48627e-04
+iter =  200, rms = 1.42830e-04
+iter =  300, rms = 1.35490e-04
+iter =  400, rms = 9.44568e-05
+iter =  500, rms = 9.25791e-05
+iter =  600, rms = 1.14818e-04
+iter =  700, rms = 6.56195e-05
+iter =  800, rms = 7.71152e-05
+iter =  900, rms = 8.97047e-05
+iter = 1000, rms = 9.24909e-05
+adt: 23.17598413, res: 100.45921636, bres: 0.80235857, upd: 129.96769332
+Wall clock time: 266.32012233
+CPU clock time: 265.89934473
+--------------------
+--------------------
+iter =  100, rms = 4.83637e-05
+iter =  200, rms = 1.01310e-04
+iter =  300, rms = 1.18404e-04
+iter =  400, rms = 1.32599e-04
+iter =  500, rms = 7.22983e-05
+iter =  600, rms = 3.47952e-05
+iter =  700, rms = 1.05880e-04
+iter =  800, rms = 6.81940e-05
+iter =  900, rms = 7.36411e-05
+iter = 1000, rms = 6.70482e-05
+adt: 23.21691373, res: 100.34396043, bres: 0.80816299, upd: 125.79746879
+Wall clock time: 263.13438146
+CPU clock time: 261.66067458
+--------------------
+--------------------
+iter =  100, rms = 2.84214e-04
+iter =  200, rms = 2.51328e-04
+iter =  300, rms = 1.05353e-04
+iter =  400, rms = 8.77061e-05
+iter =  500, rms = 5.82338e-05
+iter =  600, rms = 1.14876e-04
+iter =  700, rms = 7.95448e-05
+iter =  800, rms = 5.34900e-05
+iter =  900, rms = 5.77648e-05
+iter = 1000, rms = 5.85207e-05
+adt: 23.67083956, res: 101.98026664, bres: 0.81030136, upd: 130.93635916
+Wall clock time: 270.27965757
+CPU clock time: 269.12321018
+--------------------
+--------------------
+iter =  100, rms = 5.80343e-05
+iter =  200, rms = 1.38834e-04
+iter =  300, rms = 1.27757e-04
+iter =  400, rms = 1.18569e-04
+iter =  500, rms = 7.43381e-05
+iter =  600, rms = 9.60645e-05
+iter =  700, rms = 6.94813e-05
+iter =  800, rms = 5.67332e-05
+iter =  900, rms = 4.94131e-05
+iter = 1000, rms = 7.15772e-05
+adt: 23.39974689, res: 101.43409722, bres: 0.80658991, upd: 129.74607747
+Wall clock time: 267.52654084
+CPU clock time: 266.99737089
+--------------------
+--------------------
+iter =  100, rms = 2.49939e-04
+iter =  200, rms = 8.04161e-05
+iter =  300, rms = 7.14902e-05
+iter =  400, rms = 7.15032e-05
+iter =  500, rms = 6.49457e-05
+iter =  600, rms = 8.65085e-05
+iter =  700, rms = 5.38433e-05
+iter =  800, rms = 6.65759e-05
+iter =  900, rms = 4.91216e-05
+iter = 1000, rms = 9.86419e-05
+adt: 23.14822252, res: 100.50179218, bres: 0.80298983, upd: 125.58868415
+Wall clock time: 262.09315556
+CPU clock time: 261.58525271
+--------------------
+--------------------
+iter =  100, rms = 3.87434e-05
+iter =  200, rms = 6.13982e-05
+iter =  300, rms = 1.82158e-04
+iter =  400, rms = 1.21588e-04
+iter =  500, rms = 6.75782e-05
+iter =  600, rms = 6.98326e-05
+iter =  700, rms = 6.20482e-05
+iter =  800, rms = 8.51920e-05
+iter =  900, rms = 5.04008e-05
+iter = 1000, rms = 6.98449e-05
+adt: 23.04839238, res: 100.38822813, bres: 0.80558327, upd: 125.25526439
+Wall clock time: 261.72808778
+CPU clock time: 260.97529495
+--------------------
