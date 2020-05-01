@@ -12,6 +12,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       name: Checkout repository
+      with:
+        submodules: 'true'
     - name: Install dependencies
       run: sudo apt-get -y install git cmake g++ libgomp1 ninja-build
     - name: Build
