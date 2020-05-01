@@ -1,0 +1,36 @@
+diff --git a/op2orig/op2/c/src/core/op_dummy_singlenode.c b/op2orig/op2/c/src/core/op_dummy_singlenode.c
+index f11c205..3a3faf9 100644
+--- a/op2orig/op2/c/src/core/op_dummy_singlenode.c
++++ b/op2orig/op2/c/src/core/op_dummy_singlenode.c
+@@ -160,11 +160,13 @@ int op_is_root() { return 1; }
+ int getHybridGPU() { return OP_hybrid_gpu; }
+ 
+ typedef struct {
++	char unused;
+ } op_export_core;
+ 
+ typedef op_export_core *op_export_handle;
+ 
+ typedef struct {
++	char unused;
+ } op_import_core;
+ 
+ typedef op_import_core *op_import_handle;
+diff --git a/op2orig/op2/c/src/cuda/op_cuda_decl.c b/op2orig/op2/c/src/cuda/op_cuda_decl.c
+index 5b00624..63da86d 100644
+--- a/op2orig/op2/c/src/cuda/op_cuda_decl.c
++++ b/op2orig/op2/c/src/cuda/op_cuda_decl.c
+@@ -350,11 +350,13 @@ void op_fetch_data_idx_char(op_dat dat, char *usr_ptr, int low, int high) {
+ // Dummy for cuda compile
+ 
+ typedef struct {
++	char unused;
+ } op_export_core;
+ 
+ typedef op_export_core *op_export_handle;
+ 
+ typedef struct {
++	char unused;
+ } op_import_core;
+ 
+ typedef op_import_core *op_import_handle;

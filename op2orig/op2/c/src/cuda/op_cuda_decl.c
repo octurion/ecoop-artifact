@@ -350,11 +350,13 @@ void op_fetch_data_idx_char(op_dat dat, char *usr_ptr, int low, int high) {
 // Dummy for cuda compile
 
 typedef struct {
+	char unused;
 } op_export_core;
 
 typedef op_export_core *op_export_handle;
 
 typedef struct {
+	char unused;
 } op_import_core;
 
 typedef op_import_core *op_import_handle;

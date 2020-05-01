@@ -160,11 +160,13 @@ int op_is_root() { return 1; }
 int getHybridGPU() { return OP_hybrid_gpu; }
 
 typedef struct {
+	char unused;
 } op_export_core;
 
 typedef op_export_core *op_export_handle;
 
 typedef struct {
+	char unused;
 } op_import_core;
 
 typedef op_import_core *op_import_handle;
