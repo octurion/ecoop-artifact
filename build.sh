@@ -16,6 +16,11 @@ ninja -C build/
 tar --lzma -xvf op2reimpl/op2_inputs.tar.lzma -C build/op2reimpl/
 
 pushd .
+cd op2orig/op2/c/
+./cmake.local -DCMAKE_BUILD_TYPE=Release
+popd
+
+pushd .
 mkdir op2orig/apps/c/build
 cp build/op2reimpl/new_grid.dat build/op2reimpl/FE_grid.dat op2orig/apps/c/build
 cd op2orig/apps/c/
