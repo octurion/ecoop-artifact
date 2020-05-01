@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # First build all projects but the original OP2 code
 pushd .
