@@ -1,21 +1,11 @@
 cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
-project(model_anim)
-
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_POSITION_INDEPENDENT_CODE ON)
-
-add_subdirectory(lib/benchmark)
+project(stickmen)
 
 add_library(anim src/anim/anim.cpp)
 target_include_directories(anim PRIVATE include/anim INTERFACE include/)
-target_compile_options(anim PRIVATE -Wall -Wextra -Wpedantic)
-target_link_libraries(anim m)
+target_compile_options(anim PRIVATE ${WARN_FLAGS})
 
-add_executable(bench src/test/test.cpp)
-target_include_directories(bench PRIVATE include/test)
-target_compile_options(bench PRIVATE -Wall -Wextra -Wpedantic)
-target_link_libraries(bench anim benchmark)
+add_executable(stickmen src/test/test.cpp)
+target_include_directories(stickmen PRIVATE include/test)
+target_compile_options(stickmen PRIVATE ${WARN_FLAGS})
+target_link_libraries(stickmen anim benchmark)

@@ -1,16 +1,9 @@
 cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
-project(op2meme)
-
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+project(op2reimpl)
 
 find_package(OpenMP REQUIRED)
 
-set(COMMON_FLAGS -Wall -Wextra -Wpedantic ${OpenMP_CXX_FLAGS})
+set(COMMON_FLAGS ${WARN_FLAGS} ${OpenMP_CXX_FLAGS})
 set(LINK_FLAGS ${OpenMP_CXX_FLAGS} m)
 
 add_executable(airfoil src/airfoil.cpp)
