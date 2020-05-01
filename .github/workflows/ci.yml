@@ -15,10 +15,14 @@ jobs:
       with:
         submodules: 'true'
     - name: Install dependencies
-      run: sudo apt-get -y install git cmake g++ libgomp1 ninja-build
-    - name: Build
+      run: sudo apt-get -y install git cmake g++ libgomp1 ninja-build texlive-picture
+    - name: Run CMake
       run: |
         mkdir build
         cd build
         cmake -DCMAKE_BUILD_TYPE=Release -DBENCHMARK_ENABLE_TESTING=OFF -DBENCHMARK_ENABLE_GTEST_TESTS=OFF -DBENCHMARK_ENABLE_LTO=ON -GNinja ..
-        ninja
+        cd ..
+    - name: Build
+      run: ninja -C build/
+    - name: Build LaTeX charts
+      run: ninja -C build/ charts/charts_pdf

@@ -17,3 +17,5 @@ add_subdirectory(forex/)
 add_subdirectory(op2reimpl/)
 add_subdirectory(stickmen/)
 add_subdirectory(traffic/)
+
+add_subdirectory(charts/)
