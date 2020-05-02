@@ -15,7 +15,7 @@ jobs:
       with:
         submodules: 'true'
     - name: Install dependencies
-      run: sudo apt-get -y install git cmake g++ libgomp1 ninja-build texlive-fonts-recommended texlive-pictures xz-utils
+      run: sudo apt-get -y install --no-install-recommends git cmake g++ libgomp1 ninja-build texlive-fonts-recommended texlive-pictures xz-utils
     - name: Build
       run: ./build.sh
     - name: Build LaTeX charts
