@@ -34,10 +34,9 @@ def write_results(f, machines, variants, results):
     for e in zip(*results):
         w.writerow(list(e))
 
-def main(root):
+def main(root, machines):
     num_tries = 20
 
-    machines = ["desktop", "laptop", "graphic", "ray", "voxel"]
     airfoil_variants = ["orig", "aos", "mixed", "soa"]
     aero_variants = ["orig", "aos", "mixed"]
 
@@ -73,4 +72,5 @@ def main(root):
 
 if __name__ == "__main__":
     root = sys.argv[1] if len(sys.argv) >= 2 else os.getcwd()
-    main(root)
+    machines = sys.argv[2].split(",") if len(sys.argv) >= 3 else ["desktop", "laptop", "graphic", "ray", "voxel"]
+    main(root, machines)

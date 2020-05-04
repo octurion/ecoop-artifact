@@ -12,8 +12,7 @@ def write_csv(f, cols, machines, variants):
     for e in zip(*cols):
         w.writerow(list(e))
 
-def main(root):
-    machines = ["desktop", "laptop", "graphic", "ray", "voxel"]
+def main(root, machines):
     variants = ["one", "many"]
     skip_lines = 10
 
@@ -65,4 +64,5 @@ def main(root):
 
 if __name__ == "__main__":
     root = sys.argv[1] if len(sys.argv) >= 2 else os.getcwd()
-    main(root)
+    machines = sys.argv[2].split(",") if len(sys.argv) >= 3 else ["desktop", "laptop", "graphic", "ray", "voxel"]
+    main(root, machines)

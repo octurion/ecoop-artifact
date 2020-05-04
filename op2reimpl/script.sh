@@ -1,21 +1,18 @@
-echo "CPU information:"
-echo "--------------------"
-cat /proc/cpuinfo
-echo "--------------------"
+COUNT=20
 
 echo "Now running Aero AoS"
-for i in {0..19}
+for i in $(seq 1 ${COUNT})
 do
     echo "--------------------"
-    build/aero_aos FE_grid.dat /dev/null
+    build/op2reimpl/aero_aos build/op2reimpl/FE_grid.dat /dev/null
     echo "--------------------"
 done
 
 echo "Now running Aero partial SoA"
-for i in {0..19}
+for i in $(seq 1 ${COUNT})
 do
     echo "--------------------"
-    build/aero FE_grid.dat /dev/null
+    build/op2reimpl/aero build/op2reimpl/FE_grid.dat /dev/null
     echo "--------------------"
 done
 
@@ -25,35 +22,25 @@ done
 # echo "--------------------"
 
 echo "Now running Airfoil AoS"
-for i in {0..19}
+for i in $(seq 1 ${COUNT})
 do
     echo "--------------------"
-    build/airfoil_aos new_grid.dat /dev/null
+    build/op2reimpl/airfoil_aos build/op2reimpl/new_grid.dat /dev/null
     echo "--------------------"
 done
 
 echo "Now running Airfoil partial SoA"
-for i in {0..19}
+for i in $(seq 1 ${COUNT})
 do
     echo "--------------------"
-    build/airfoil new_grid.dat /dev/null
+    build/op2reimpl/airfoil build/op2reimpl/new_grid.dat /dev/null
     echo "--------------------"
 done
 
 echo "Now running Airfoil full SoA"
-for i in {0..19}
+for i in $(seq 1 ${COUNT})
 do
     echo "--------------------"
-    build/airfoil_soa new_grid.dat /dev/null
+    build/op2reimpl/airfoil_soa build/op2reimpl/new_grid.dat /dev/null
     echo "--------------------"
 done
-
-# echo "Now running airfoil full SoA no opts"
-# echo "--------------------"
-# build/airfoil_v2 new_grid.dat /dev/null
-# echo "--------------------"
-
-# echo "Now running airfoil full SoA with opts"
-# echo "--------------------"
-# build/airfoil_v3 new_grid.dat /dev/null
-# echo "--------------------"
