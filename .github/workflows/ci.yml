@@ -9,6 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-16.04
+    name: CI test
     steps:
     - uses: actions/checkout@v2
       name: Checkout repository
@@ -20,3 +21,9 @@ jobs:
       run: ./build.sh
     - name: Build LaTeX charts
       run: ninja -C build/ charts/charts_pdf
+  docker:
+    runs-on: ubuntu-16.04
+    name: Docker image creation
+    steps:
+      - uses: octurion/ecoop-artifact@v1
+        name: Docker image build
