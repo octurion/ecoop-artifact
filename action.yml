@@ -1,5 +1,0 @@
-name: Docker ECOOP artifact
-description: Constructs a Docker image
-runs:
-  using: docker
-  image: Dockerfile
