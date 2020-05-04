@@ -21,9 +21,3 @@ jobs:
       run: ./build.sh
     - name: Build LaTeX charts
       run: ninja -C build/ charts/charts_pdf
-  docker:
-    runs-on: ubuntu-16.04
-    name: Docker image creation
-    steps:
-      - uses: docker/build-action@v1
-        name: Docker image build
