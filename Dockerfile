@@ -13,5 +13,4 @@ RUN apt-get update \
         texlive-fonts-recommended \
         texlive-pictures \
         xz-utils \
-    && rm -rf /var/lib/apt/lists/* \
-    && ./build.sh
+    && rm -rf /var/lib/apt/lists/*
