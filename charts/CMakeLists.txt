@@ -8,6 +8,11 @@ if (LATEX_PDFLATEX_FOUND)
         COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_SOURCE_DIR} ${PROJECT_BINARY_DIR}
         COMMAND ${PDFLATEX_COMPILER} -interaction=nonstopmode ${PROJECT_BINARY_DIR}/charts.tex
         WORKING_DIR ${PROJECT_BINARY_DIR})
+
+    add_custom_target(charts_single_pdf
+        COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_SOURCE_DIR} ${PROJECT_BINARY_DIR}
+        COMMAND ${PDFLATEX_COMPILER} -interaction=nonstopmode ${PROJECT_BINARY_DIR}/charts_single.tex
+        WORKING_DIR ${PROJECT_BINARY_DIR})
 else()
     message(WARNING "No installation of pdflatex found, it will not be possible to generate the charts")
 endif()

@@ -1,0 +1,354 @@
+%%
+%% Copyright 2007, 2008, 2009 Elsevier Ltd
+%%
+%% This file is part of the 'Elsarticle Bundle'.
+%% ---------------------------------------------
+%%
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.2 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%%
+%% The list of all files belonging to the 'Elsarticle Bundle' is
+%% given in the file `manifest.txt'.
+%%
+
+%% Template article for Elsevier's document class `elsarticle'
+%% with numbered style bibliographic references
+%% SP 2008/03/01
+
+\documentclass[preprint,12pt]{elsarticle}
+
+\newcommand{\SHAPES}{{\textsf{SHAPES}}}
+\newcommand{\SHAPESPP}{{\textsf{SHAPES}++}}
+\newcommand{\eg}{\emph{e.g.,}}
+\newcommand{\ie}{\emph{i.e.,}}
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[authoryear,preprint,review,12pt]{elsarticle}
+
+%% For including figures, graphicx.sty has been loaded in
+%% elsarticle.cls. If you prefer to use the old commands
+%% please give \usepackage{epsfig}
+
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers.
+
+\usepackage{tikz}
+\usepackage{pgfplots,pgfplotstable}
+
+\usepgfplotslibrary{groupplots,statistics}
+\pgfplotscreateplotcyclelist{doorscycle}{
+    {red,mark=x}, {blue,mark=x}
+}
+\pgfplotscreateplotcyclelist{op2airfoilcycle}{
+    {orange,mark=x}, {red,mark=x}, {green!60!black,mark=x}, {blue,mark=x}
+}
+\pgfplotscreateplotcyclelist{op2aerocycle}{
+    {orange,mark=x}, {red,mark=x}, {green!60!black,mark=x}
+}
+\pgfplotscreateplotcyclelist{forexcycle}{
+    {red,mark=x}, {green!60!black,mark=x}, {blue,mark=x}
+}
+\pgfplotscreateplotcyclelist{stickmencycle}{
+    {orange,mark=x}, {red,mark=x}, {green!60!black,mark=x}, {blue,mark=x}, {magenta,mark=x}, {teal,mark=x}
+}
+
+\begin{document}
+
+%% Title, authors and addresses
+
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for theassociated footnote;
+%% use the fnref command within \author or \address for footnotes;
+%% use the fntext command for theassociated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for theassociated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+%% \title{Title\tnoteref{label1}}
+%% \tnotetext[label1]{}
+%% \author{Name\corref{cor1}\fnref{label2}}
+%% \ead{email address}
+%% \ead[url]{home page}
+%% \fntext[label2]{}
+%% \cortext[cor1]{}
+%% \address{Address\fnref{label3}}
+%% \fntext[label3]{}
+
+\title{Implementation of \SHAPES{} case studies}
+
+\begin{figure*}[!t]
+\centering
+\begin{tikzpicture}
+    \pgfplotstableread[col sep=comma]{csv_data/aero.csv}\csvaero
+    \begin{axis} [
+        height=6cm,
+        width=\textwidth,
+        ymajorgrids,
+        xmin=0,
+        xlabel={Time (sec)},
+        xlabel style={font=\small},
+        ymin=-0.1, ymax=1.1,
+        ytick={0,1},
+        y tick label as interval,
+        yticklabel style={rotate=90},
+        cycle list name=op2aerocycle,
+        yticklabels={},
+        ticklabel style={font=\tiny},
+        boxplot={
+            draw position={3/20 + floor(\plotnumofactualtype/3) + 1/3*mod(\plotnumofactualtype, 3)},
+            box extend=0.24,
+        }
+    ]
+    \foreach \n in {0,...,2} {
+        \addplot+[boxplot] table[y index=\n] {\csvaero};
+    }
+
+    \end{axis}
+\end{tikzpicture}
+
+\vspace*{-1em}
+\caption{\emph{OP2 Aero} results for the \textcolor{orange}{original OP2}
+    implementation, and the \textcolor{red}{AoS} and
+    \textcolor{green!60!black}{Mixed} ports, respectively.
+    (Bottom to top, lower times are better)}
+\vspace*{-1em}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}
+    \pgfplotstableread[col sep=comma]{csv_data/airfoil.csv}\csvairfoil
+    \begin{axis} [
+        height=6cm,
+        width=\textwidth,
+        ymajorgrids,
+        xmin=0,
+        xlabel={Time (sec)},
+        xlabel style={font=\small},
+        ymin=-0.1, ymax=1.1,
+        ytick={0,1},
+        y tick label as interval,
+        ticklabel style={font=\tiny},
+        cycle list name=op2airfoilcycle,
+        yticklabels={},
+        yticklabel style={rotate=90},
+        boxplot={
+            draw position={1/8 + floor(\plotnumofactualtype/4) + 1/4*mod(\plotnumofactualtype, 4)},
+            box extend=0.22,
+        }
+    ]
+    \foreach \n in {0,...,3} {
+        \addplot+[boxplot] table[y index=\n] {\csvairfoil};
+    }
+    \end{axis}
+\end{tikzpicture}
+
+\vspace*{-1em}
+\caption{\emph{OP2 Airfoil} results for the \textcolor{orange}{original OP2}
+    implementation, and the \textcolor{red}{AoS},
+    \textcolor{green!60!black}{Mixed}, and \textcolor{blue}{SoA} ports, respectively.
+    (Bottom to top, lower times are better)}
+\vspace*{-1em}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}
+    \pgfplotstableread[col sep=comma]{csv_data/stickmen_100x.csv}\csvstickmenfixed
+    \begin{axis} [
+        height=8cm,
+        ymajorgrids,
+        width=\textwidth,
+        cycle list name=stickmencycle,
+        xlabel={Time (msec)},
+        xmin=0,
+        ytick={0,1},
+        y tick label as interval,
+        boxplot={
+            draw position={1/11 + floor(\plotnumofactualtype/6) + 1/6*mod(\plotnumofactualtype, 6)},
+            box extend=0.15,
+        },
+        yticklabels={},
+        yticklabel style={rotate=90},
+        ticklabel style={font=\tiny}
+    ]
+    \foreach \n in {0,...,5} {
+        \addplot+[boxplot] table[y index=\n] {\csvstickmenfixed};
+    }
+
+    \end{axis}
+\end{tikzpicture}
+
+\vspace*{-1em}
+\caption{\emph{Skeletal animation} results for
+    \textcolor{orange}{Scattered-AoS},
+    \textcolor{red}{Pooled-AoS},
+    \textcolor{green!60!black}{Scattered-Mixed},
+    \textcolor{blue}{Pooled-Mixed},
+    \textcolor{magenta}{Scattered-SoA}, and
+    \textcolor{teal}{Pooled-SoA}
+    layouts, respectively (where $N = 5000$). (Bottom to top, lower times are better)}
+\vspace*{-1em}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[mark=star]
+    \pgfplotstableread[col sep=comma]{csv_data/stickmen_out_single.csv}\csvstickmendesktop
+    \begin{axis}[
+            height=6cm,
+            width=0.9\textwidth,
+            legend style={font=\tiny},
+            cycle list name=stickmencycle,
+            table/x index={0},
+            xlabel style={font=\small},
+            ylabel near ticks,
+            y tick label style={/pgf/number format/fixed, rotate=90},
+            legend pos=outer north east,
+            ticklabel style={font=\tiny},
+            ylabel={\small Time (sec)}
+        ]
+        \foreach \n in {1,...,6} {
+            \addplot table [y index=\n] {\csvstickmendesktop};
+        }
+        \legend{Scattered-Aos,Pooled-Aos,Scattered-Mixed,Pooled-Mixed,Scattered-Soa,Pooled-Soa}
+    \end{axis}
+\end{tikzpicture}
+\caption{\emph{Stickmen} results}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}
+    \pgfplotstableread[col sep=comma]{csv_data/traffic.csv}\csvtraffic
+    \begin{axis} [
+        height=6cm,
+        width=\textwidth,
+        ymajorgrids,
+        cycle list name=doorscycle,
+        xlabel={Time (msec)},
+        xmin=0,
+        ytick={0,1},
+        y tick label as interval,
+        boxplot={
+            %draw position={1/3 + floor(\plotnumofactualtype/2) + 1/3*mod(\plotnumofactualtype,2)},
+            draw position={1/4 + floor(\plotnumofactualtype/2) + 1/2*mod(\plotnumofactualtype, 2)},
+            box extend=0.4,
+        },
+        yticklabels={},
+        yticklabel style={rotate=90},
+        ticklabel style={font=\tiny}
+    ]
+    \foreach \n in {0,...,1} {
+        \addplot+[boxplot] table[y index=\n] {\csvtraffic};
+    }
+
+    \end{axis}
+\end{tikzpicture}
+
+\vspace*{-1em}
+\caption{\emph{Traffic} results, for \textcolor{red}{AoS} and
+    \textcolor{blue}{Mixed} layouts, respectively. (Bottom to top, lower times are better)}
+\vspace*{-1em}
+\end{figure*}
+
+\begin{figure*}[!t]
+\begin{tikzpicture}
+    \pgfplotstableread[col sep=comma]{csv_data/doors50.csv}\csvdoorsfifty
+    \pgfplotstableread[col sep=comma]{csv_data/doors70.csv}\csvdoorsseventy
+    \pgfplotstableread[col sep=comma]{csv_data/doors90.csv}\csvdoorsninety
+    \begin{groupplot} [
+        height=6cm,
+        width=0.4\textwidth,
+        ymajorgrids,
+        cycle list name=doorscycle,
+        xmin=0,
+        xlabel={Time (msec)},
+        ytick={0,1},
+        group style = {group size = {3 by 1}, horizontal sep=2em},
+        y tick label as interval,
+        yticklabels={,},
+        boxplot={
+            %draw position={1/3 + floor(\plotnumofactualtype/2) + 1/3*mod(\plotnumofactualtype,2)},
+            draw position={1/4 + floor(\plotnumofactualtype/2) + 1/2*mod(\plotnumofactualtype, 2)},
+            box extend=0.4,
+        },
+        yticklabel style={rotate=90},
+        ticklabel style={font=\tiny}
+    ]
+
+    \nextgroupplot[
+        yticklabels={},
+        title={\small 50\%}
+    ]
+    \foreach \n in {0,...,1} {
+        \addplot+[boxplot] table[y index=\n] {\csvdoorsfifty};
+    }
+
+    \nextgroupplot[title={\small 70\%}]
+    \foreach \n in {0,...,1} {
+        \addplot+[boxplot] table[y index=\n] {\csvdoorsseventy};
+    }
+
+    \nextgroupplot[title={\small 90\%}]
+    \foreach \n in {0,...,1} {
+        \addplot+[boxplot] table[y index=\n] {\csvdoorsninety};
+    }
+
+    \end{groupplot}
+\end{tikzpicture}
+
+\vspace*{-1em}
+\caption{\emph{Doors} results for \textcolor{red}{one} and
+    \textcolor{blue}{many} pools, respectively. (Bottom to top, lower times are better)}
+\vspace*{-1em}
+\end{figure*}
+
+\begin{figure*}[!t]
+\centering
+\begin{tikzpicture}
+    \pgfplotstableread[col sep=comma]{csv_data/forex.csv}\csvforex
+    \begin{axis} [
+        height=6cm,
+        width=\textwidth,
+        ymajorgrids,
+        cycle list name=forexcycle,
+        xmin=0,
+        xlabel={Time (nsec)},
+        ytick={0,1},
+        y tick label as interval,
+        boxplot={
+            %draw position={1/3 + floor(\plotnumofactualtype/2) + 1/3*mod(\plotnumofactualtype,2)},
+            draw position={3/20 + floor(\plotnumofactualtype/3) + 1/3*mod(\plotnumofactualtype, 3)},
+            box extend=0.25,
+        },
+        yticklabels={},
+        yticklabel style={rotate=90},
+        ticklabel style={font=\tiny}
+    ]
+    \foreach \n in {0,...,2} {
+        \addplot+[boxplot] table[y index=\n] {\csvforex};
+    }
+
+    \end{axis}
+\end{tikzpicture}
+
+\vspace*{-1em}
+\caption{\emph{Currency} results for \textcolor{red}{one AoS pool},
+    \textcolor{green!60!black}{one AoS and one Mixed pool}, and
+    \textcolor{blue}{one AoS and one SoA pool}, respectively. (Bottom to top, lower times are better)}
+\vspace*{-1em}
+\end{figure*}
+
+\end{document}
+\endinput

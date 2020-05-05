@@ -20,4 +20,6 @@ jobs:
     - name: Build
       run: ./build.sh
     - name: Build LaTeX charts
-      run: ninja -C build/ charts/charts_pdf
+      run: |
+          ./gen_charts.sh
+          ./gen_charts.sh --single
