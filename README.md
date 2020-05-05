@@ -78,5 +78,5 @@ Come up with names for your machines. We use `desktop`, `laptop`, `graphic`,
   `results/` directories on all machines in one directory (e.g.
   `consolidated/`).
 - `./gather.sh -m=single -i=consolidated/ -o=charts/csv_data/ all`
-- `./gen_charts.sh
+- `./gen_charts.sh`
 - The resulting charts are located in `build/charts/charts.pdf`
