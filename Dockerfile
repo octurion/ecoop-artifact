@@ -14,3 +14,7 @@ RUN apt-get update \
         texlive-pictures \
         xz-utils \
     && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /root
+
+RUN ./build.sh
