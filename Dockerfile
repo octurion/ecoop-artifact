@@ -1,6 +1,5 @@
-FROM ubuntu:16.04 AS build
+FROM ubuntu:16.04
 
-COPY . /root
 RUN apt-get update \
     && apt-get -y install --no-install-recommends \
         git \
@@ -14,6 +13,8 @@ RUN apt-get update \
         texlive-pictures \
         xz-utils \
     && rm -rf /var/lib/apt/lists/*
+
+COPY . /root
 
 WORKDIR /root
 RUN ./build.sh
