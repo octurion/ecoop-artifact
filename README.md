@@ -67,9 +67,15 @@ make sure to let the case studies run overnight :)
 
 1. If you are using Docker, run:
 
-- `docker run -w /root -it YOUR_CONTAINER_ID`
+- `mkdir local_mount`
+- `docker run --mount type=bind,source=${PWD}/local_mount,destination=/mount -w /root -it YOUR_CONTAINER_ID`
 
 Where `YOUR_CONTAINER_ID` is the container identifier from above.
+
+While inside the Docker container, you can transfer files from the Docker
+container's filesystem to the local filesystem by copying them to the `/mount`
+container directory. Any copied files will be accessible from the local file
+system in the `./local_mount/` directory.
 
 2. Run the following:
 
@@ -81,19 +87,27 @@ Where `YOUR_CONTAINER_ID` is the container identifier from above.
 
 4. To extract the PDF from the Docker container:
 
-- Exit the Docker container with, e.g. `Ctrl+D` or `exit`.
-- Run `docker cp YOUR_CONTAINER_ID:build/charts/charts_single.pdf DESTINATION_DIR`
+- **Don't exit the container yet!**
+- Run `cp build/charts/charts_single.pdf /mount`
+
+The chart should be located in `./local_mount/charts_single.pdf`
 
 ## If you want to run the case studies on multiple machines
 
 1. Come up with names for your machines. We use `desktop`, `laptop`, `graphic`,
-`ray`, `voxel` as our machine names.
+`ray`, `voxel` as our machine names in our paper.
 
 2. If you are using Docker, on each machine, run:
 
-- `docker run -w /root -it YOUR_CONTAINER_ID`
+- `mkdir local_mount`
+- `docker run --mount type=bind,source=${PWD}/local_mount,destination=/mount -w /root -it YOUR_CONTAINER_ID`
 
 Where `YOUR_CONTAINER_ID` is the container identifier from above.
+
+While inside the Docker container, you can transfer files from the Docker
+container's filesystem to the local filesystem by copying them to the `/mount`
+container directory. Any copied files will be accessible from the local file
+system in the `./local_mount/` directory.
 
 3. On each machine, run:
 
@@ -103,14 +117,19 @@ Where `YOUR_CONTAINER_ID` is the container identifier from above.
   `results/` directories on all machines in one directory (e.g.
   `consolidated/`).
 
+  If using Docker, you can copy the generated files to the `/mount` directory.
+  The generated files will be accessible from `./local_mount/`
+
 5. Run the following:
 
-- `./gather.sh -m=single -i=consolidated/ -o=charts/csv_data/ all`
+- `./gather.sh -m=desktop,laptop,graphic,ray,voxel -i=consolidated/ -o=charts/csv_data/ all`
 - `./gen_charts.sh`
 
 6. The resulting charts are located in `build/charts/charts.pdf`
 
 7. To extract the PDF from the Docker container:
 
-- Exit the Docker container with, e.g. `Ctrl+D` or `exit`.
-- Run `docker cp YOUR_CONTAINER_ID:build/charts/charts.pdf DESTINATION_DIR`
+- **Don't exit the container yet!**
+- Run `cp build/charts/charts.pdf /mount`
+
+The chart should be located in `./local_mount/charts.pdf`
