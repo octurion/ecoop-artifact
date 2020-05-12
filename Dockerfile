@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:16.04 AS build
 
 COPY . /root
 RUN apt-get update \
@@ -16,5 +16,4 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root
-
 RUN ./build.sh

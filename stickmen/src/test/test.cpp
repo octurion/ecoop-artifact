@@ -1878,9 +1878,9 @@ static bool initialized = false;
 void initialize()
 {
 	if (!initialized) {
-		ModelInput input0 = parse_files("../../resources/hellknight.md5mesh", "../../resources/hellknight.md5anim");
-		ModelInput input1 = parse_files("../../resources/boblampclean.md5mesh", "../../resources/boblampclean.md5anim");
-		ModelInput input2 = parse_files("../../resources/deer.md5mesh", "../../resources/deer.md5anim");
+		ModelInput input0 = parse_files("stickmen/resources/hellknight.md5mesh", "stickmen/resources/hellknight.md5anim");
+		ModelInput input1 = parse_files("stickmen/resources/boblampclean.md5mesh", "stickmen/resources/boblampclean.md5anim");
+		ModelInput input2 = parse_files("stickmen/resources/deer.md5mesh", "stickmen/resources/deer.md5anim");
 		INPUTS[0] = std::move(input0);
 		INPUTS[1] = std::move(input1);
 		INPUTS[2] = std::move(input2);

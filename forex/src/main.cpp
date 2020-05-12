@@ -13,7 +13,7 @@
 
 #define RATE_MAX_LEN 15
 #define ISO_8601_LEN 10
-#define INPUT_FILE "../eurofxref-hist.csv"
+#define INPUT_FILE "forex/eurofxref-hist.csv"
 
 #define DATE_RECENT "2018-01-01"
 #define PROB_RECENT 0.8
